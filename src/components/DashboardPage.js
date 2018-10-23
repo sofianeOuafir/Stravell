@@ -1,8 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import PostList from './PostList';
 
 const DashboardPage = () => (
   <div>
-    Dashboard page content
+    <Link to="posts/create" className="button">
+      Create Post
+    </Link>
+    <PostList />
   </div>
 );
 

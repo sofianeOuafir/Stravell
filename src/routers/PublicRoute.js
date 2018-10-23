@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
+import { history } from './AppRouter';
+
 
 export const PublicRoute = ({
   isAuthenticated,
@@ -8,8 +10,8 @@ export const PublicRoute = ({
   ...rest
 }) => (
     <Route {...rest} component={(props) => (
-      isAuthenticated ? (
-        <Redirect to="/dashboard" />
+      isAuthenticated && history.location.pathname === '/login' ? (
+        <Redirect to="/" />
       ) : (
           <Component {...props} />
         )
