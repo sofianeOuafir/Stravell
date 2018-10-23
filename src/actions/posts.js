@@ -3,4 +3,10 @@ const addPost = (post) => ({
   post
 });
 
-export { addPost };
+const editPost = ({ id, updates}) => ({
+  type: 'EDIT_POST',
+  id,
+  updates
+});
+
+export { addPost, editPost };

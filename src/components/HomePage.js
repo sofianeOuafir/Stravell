@@ -1,11 +1,16 @@
 import React from 'react';
 import PostList from '../components/PostList';
+import { connect } from "react-redux";
 
-const HomePage = () => (
+const HomePage = (props) => (
   <div> 
     <p>Home page</p>
-    <PostList />
+    <PostList posts={props.posts} />
   </div>
 );
 
-export default HomePage;
+const mapStateToProps = (state) => ({
+  posts: state.posts
+});
+
+export default connect(mapStateToProps)(HomePage);

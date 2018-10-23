@@ -1,32 +1,35 @@
-import React from 'react';
-import moment from 'moment';
-
+import React from "react";
+import moment from "moment";
+import uuid from "uuid";
 class PostForm extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
-      title: props.post && props.post.title || '',
-      body: props.post && props.post.body || '',
-      createdAt: props.post && moment(props.post.createdAt) || moment(),
+      id: (props.post && props.post.id) || uuid(),
+      title: (props.post && props.post.title) || "",
+      body: (props.post && props.post.body) || "",
+      createdAt: (props.post && moment(props.post.createdAt)) || moment(),
       updatedAt: moment(),
-      uid: props.post && props.post.uid || props.uid 
-    }
+      uid: (props.post && props.post.uid) || props.uid,
+      error: ""
+    };
   }
 
-  onTitleChange = (e) => {
+  onTitleChange = e => {
     const title = e.target.value;
-    this.setState(() => ({ title }))
+    this.setState(() => ({ title }));
   };
 
-  onBodyChange = (e) => {
+  onBodyChange = e => {
     const body = e.target.value;
-    this.setState(() => ({ body }))
+    this.setState(() => ({ body }));
   };
 
-  onSubmit = (e) => {
+  onSubmit = e => {
     e.preventDefault();
-    if(this.state.title != '' && this.state.body != '') {
+    if (this.state.title != "" && this.state.body != "") {
       this.props.onSubmit({
+        id: this.state.id,
         title: this.state.title,
         body: this.state.body,
         createdAt: this.state.createdAt,
@@ -34,20 +37,24 @@ class PostForm extends React.Component {
         uid: this.state.uid
       });
     } else {
-      this.setState((params) => ({ error: 'Please provide a title and a body' }));
+      this.setState(params => ({ error: "Please provide a title and a body" }));
     }
+  };
 
-  }
-
-  render () {
+  render() {
     return (
       <form onSubmit={this.onSubmit}>
-      {!!this.state.error && <p>{ this.state.error }</p>}
-      <input type="text" onChange={this.onTitleChange} autoFocus value={this.state.title} />
-      <textarea onChange={this.onBodyChange} value={this.state.body}></textarea>
-      <button>Save Post</button>
-    </form>
-    )
+        {!!this.state.error && <p>{this.state.error}</p>}
+        <input
+          type="text"
+          onChange={this.onTitleChange}
+          autoFocus
+          value={this.state.title}
+        />
+        <textarea onChange={this.onBodyChange} value={this.state.body} />
+        <button>Save Post</button>
+      </form>
+    );
   }
 }
 
