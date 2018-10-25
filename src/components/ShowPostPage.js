@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {Editor} from 'draft-js';
 
 const ShowPostPage = (props) => (
   <div>
     <h1>{props.post.title}</h1>
-    <p>
-      {props.post.body}
-    </p>
+    <Editor readOnly={true} editorState={props.post.body} ></Editor>
   </div>
 );
 

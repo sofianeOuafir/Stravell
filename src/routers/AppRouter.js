@@ -11,6 +11,7 @@ import Header from '../components/Header';
 import AddPostPage from '../components/AddPostPage';
 import EditPostPage from '../components/EditPostPage';
 import ShowPostPage from '../components/ShowPostPage';
+import UserWallPage from '../components/UserWallPage';
 
 export const history = createHistory();
 
@@ -21,6 +22,7 @@ const AppRouter = () => (
       <Switch>
         <PublicRoute path="/" component={HomePage} exact={true} />
         <PublicRoute path="/login" component={LoginPage} />
+        <PublicRoute path="/users/:uid" component={UserWallPage} />
         <PublicRoute path='/posts/show/:id' component={ShowPostPage} />
         <PrivateRoute path="/dashboard" component={DashboardPage} />
         <PrivateRoute path="/posts/create" component={AddPostPage} />

@@ -1,13 +1,15 @@
 import React from "react";
 import moment from "moment";
 import uuid from "uuid";
+import MyEditor from './MyEditor';
+import {EditorState} from 'draft-js';
 class PostForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       id: (props.post && props.post.id) || uuid(),
       title: (props.post && props.post.title) || "",
-      body: (props.post && props.post.body) || "",
+      body: (props.post && props.post.body) || EditorState.createEmpty(),
       createdAt: (props.post && moment(props.post.createdAt)) || moment(),
       updatedAt: moment(),
       uid: (props.post && props.post.uid) || props.uid,
@@ -20,14 +22,13 @@ class PostForm extends React.Component {
     this.setState(() => ({ title }));
   };
 
-  onBodyChange = e => {
-    const body = e.target.value;
-    this.setState(() => ({ body }));
+  onBodyChange = editorState => {
+    this.setState(() => ({ body: editorState }));
   };
 
   onSubmit = e => {
     e.preventDefault();
-    if (this.state.title != "" && this.state.body != "") {
+    if (this.state.title != "" && this.state.body.getCurrentContent().hasText()) {
       this.props.onSubmit({
         id: this.state.id,
         title: this.state.title,
@@ -51,7 +52,7 @@ class PostForm extends React.Component {
           autoFocus
           value={this.state.title}
         />
-        <textarea onChange={this.onBodyChange} value={this.state.body} />
+        <MyEditor editorState={this.state.body} onChange={this.onBodyChange} />
         <button>Save Post</button>
       </form>
     );
