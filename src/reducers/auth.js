@@ -3,8 +3,8 @@ export default (state = {}, action) => {
     case 'LOGIN':
       return {
         uid: action.uid,
-        displayName: action.displayName,
-        photoUrl: action.photoURL
+        userName: action.userName,
+        userPhotoURL: action.userPhotoURL
       };
     case 'LOGOUT':
       return {};

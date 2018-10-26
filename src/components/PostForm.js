@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment";
 import uuid from "uuid";
+import { connect } from 'react-redux';
 import MyEditor from './MyEditor';
 import {EditorState} from 'draft-js';
 class PostForm extends React.Component {
@@ -13,6 +14,7 @@ class PostForm extends React.Component {
       createdAt: (props.post && moment(props.post.createdAt)) || moment(),
       updatedAt: moment(),
       uid: (props.post && props.post.uid) || props.uid,
+      userName: (props.post && props.post.userName) || props.userName,
       error: ""
     };
   }
@@ -35,7 +37,8 @@ class PostForm extends React.Component {
         body: this.state.body,
         createdAt: this.state.createdAt,
         updatedAt: this.state.updatedAt,
-        uid: this.state.uid
+        uid: this.state.uid,
+        userName: this.state.userName
       });
     } else {
       this.setState(params => ({ error: "Please provide a title and a body" }));
@@ -59,4 +62,9 @@ class PostForm extends React.Component {
   }
 }
 
-export default PostForm;
+const mapStateToProps = (state) => ({
+  uid: state.auth.uid,
+  userName: state.auth.userName
+});
+
+export default connect(mapStateToProps)(PostForm);

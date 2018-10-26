@@ -13,15 +13,11 @@ class AddPostPage extends React.Component {
     return (
       <div>
       <p>Add post page here</p>
-      <PostForm onSubmit={this.onSubmit} uid={ this.props.uid } />
+      <PostForm onSubmit={this.onSubmit} />
     </div>
     )
   }
 }
-
-const mapStateToProps = (state) => ({
-  uid: state.auth.uid
-});
 
 const mapDispatchToProps = (dispatch) => ({
   addPost: (post) => {
@@ -29,4 +25,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddPostPage);
+export default connect(undefined, mapDispatchToProps)(AddPostPage);

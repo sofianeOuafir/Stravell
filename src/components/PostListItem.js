@@ -12,7 +12,7 @@ const PostListItem = ({ post, isOwnedByCurrentUser }) => (
         {post.body.getCurrentContent().getPlainText()}
       </p>
     </Link>
-    <Link to={`/users/${post.uid}`}>{post.uid}</Link>
+    <Link to={`/users/${post.uid}`}>{post.userName}</Link>
     {isOwnedByCurrentUser && <Link to={`/posts/edit/${post.id}`}>Edit</Link>}
     <p>{moment(post.createAt).format('MMMM Do, YYYY')}</p>
   </div>
