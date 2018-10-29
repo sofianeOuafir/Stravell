@@ -1,0 +1,20 @@
+.search-bar {
+  padding: $xs-size $s-size;
+  border-radius: 12px;
+  border: none;
+  width: 23.8rem;
+}
+
+.search-bar--header {
+  @extend .search-bar;
+  margin-right: $s-size;
+}
+
+.search-bar--home-page {
+  @extend .search-bar;
+  border: 1px $warm-peach solid;
+  
+  ::placeholder {
+    color: $warm-peach;
+  }
+}

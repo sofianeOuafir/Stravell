@@ -1,5 +1,5 @@
 .header {
-  background: $dark-blue;
+  background: $warm-peach;
 }
 
 .header__content {
@@ -15,4 +15,9 @@
   h1 {
     margin: 0;
   }
+}
+
+.header__user-name {
+  margin-left: $s-size;
+  color: white;
 }

@@ -14,7 +14,7 @@ const PostListItem = ({ post, isOwnedByCurrentUser }) => (
     </Link>
     <Link to={`/users/${post.uid}`}>{post.userName}</Link>
     {isOwnedByCurrentUser && <Link to={`/posts/edit/${post.id}`}>Edit</Link>}
-    <p>{moment(post.createAt).format('MMMM Do, YYYY')}</p>
+    <p>{moment(post.createdAt).format('MMMM Do, YYYY')}</p>
   </div>
 );
 
