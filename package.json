@@ -37,6 +37,7 @@
     "react-avatar": "^3.4.6",
     "react-dates": "12.3.0",
     "react-dom": "15.6.1",
+    "react-icons": "^3.2.2",
     "react-modal": "2.2.3",
     "react-redux": "5.0.5",
     "react-router-dom": "4.1.2",

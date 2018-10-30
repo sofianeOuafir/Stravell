@@ -13,11 +13,24 @@
   color: white;
   text-decoration: none;
   h1 {
+    font-size: $font-size-extra-large;
     margin: 0;
   }
 }
 
-.header__user-name {
-  margin-left: $s-size;
-  color: white;
+.header__right {
+  display: flex;
+  align-items: center;
+}
+
+.header__user-photo {
+  margin-right: $s-size;
+}
+
+.header__search-bar {
+  margin-right: $s-size;
+}
+
+.header__dropdown-menu-icon {
+  margin-right: 1rem;
 }

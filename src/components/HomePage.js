@@ -5,7 +5,7 @@ import SearchBar from './SearchBar';
 
 const HomePage = (props) => (
   <div className="content-container"> 
-    <SearchBar placeholder="Search" className="show-for-mobile search-bar--home-page" />
+    <SearchBar placeholder="Search" className="show-for-mobile search-bar search-bar--warm-peach" />
     <PostList posts={props.posts} />
   </div>
 );
