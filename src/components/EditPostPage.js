@@ -2,6 +2,7 @@ import React from "react";
 import PostForm from "./PostForm";
 import { connect } from "react-redux";
 import { editPost } from '../actions/posts';
+import PageHeader from './PageHeader';
 
 class EditPostPage extends React.Component {
   constructor(props) {
@@ -18,8 +19,10 @@ class EditPostPage extends React.Component {
   render() {
     return (
       <div>
-        <p>Edit Page</p>
-        <PostForm post={this.props.post} onSubmit={this.onSubmit}  />
+        <PageHeader title="Edit Post" />
+        <div className="content-container">
+          <PostForm post={this.props.post} onSubmit={this.onSubmit}  />
+        </div>
       </div>
     );
   }

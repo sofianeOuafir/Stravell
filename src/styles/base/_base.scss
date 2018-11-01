@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  font-weight: 330;
 }
 
 html {
@@ -16,6 +15,7 @@ body {
 
 button {
   cursor: pointer;
+  font-weight: $favourite-font-weight;
 }
 
 button:disabled {

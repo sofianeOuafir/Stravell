@@ -1,28 +1,34 @@
-import React from 'react';
-import PostForm from './PostForm';
-import { connect } from 'react-redux';
-import { addPost } from '../actions/posts';
+import React from "react";
+import PostForm from "./PostForm";
+import { connect } from "react-redux";
+import { addPost } from "../actions/posts";
+import PageHeader from './PageHeader';
 
 class AddPostPage extends React.Component {
   onSubmit = post => {
     this.props.addPost(post);
-    this.props.history.push('/dashboard');
-  }
+    this.props.history.push("/dashboard");
+  };
 
-  render () {
+  render() {
     return (
       <div>
-      <p>Add post page here</p>
-      <PostForm onSubmit={this.onSubmit} />
-    </div>
-    )
+        <PageHeader title="Create Post" />
+        <div className="content-container">
+          <PostForm onSubmit={this.onSubmit} /> 
+        </div>
+      </div>
+    );
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  addPost: (post) => {
+const mapDispatchToProps = dispatch => ({
+  addPost: post => {
     dispatch(addPost(post));
   }
 });
 
-export default connect(undefined, mapDispatchToProps)(AddPostPage);
+export default connect(
+  undefined,
+  mapDispatchToProps
+)(AddPostPage);

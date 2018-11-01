@@ -1,17 +1,25 @@
-import React from 'react';
-import PostList from '../components/PostList';
+import React from "react";
+import PostList from "../components/PostList";
 import { connect } from "react-redux";
-import SearchBar from './SearchBar';
+import SearchBar from "./SearchBar";
+import PageHeader from "./PageHeader";
 
-const HomePage = (props) => (
-  <div className="content-container"> 
-    <SearchBar placeholder="Search" className="show-for-mobile search-bar search-bar--warm-peach" />
-    <PostList posts={props.posts} />
+const HomePage = props => (
+  <div>
+    <PageHeader title={`Welcome ${props.userName ? `, ${props.userName}` : ''} :)`} />
+    <div className="content-container">
+      <SearchBar
+        placeholder="Search"
+        className="show-for-mobile search-bar search-bar--warm-peach"
+      />
+      <PostList posts={props.posts} />
+    </div>
   </div>
 );
 
-const mapStateToProps = (state) => ({
-  posts: state.posts
+const mapStateToProps = state => ({
+  posts: state.posts,
+  userName: state.auth.userName
 });
 
 export default connect(mapStateToProps)(HomePage);

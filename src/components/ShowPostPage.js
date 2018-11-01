@@ -1,11 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {Editor} from 'draft-js';
+import PageHeader from './PageHeader';
 
 const ShowPostPage = (props) => (
   <div>
-    <h1>{props.post.title}</h1>
-    <Editor readOnly={true} editorState={props.post.body} ></Editor>
+    <PageHeader title={props.post.title} />
+    <div className="content-container">
+      <Editor readOnly={true} editorState={props.post.body} ></Editor>
+    </div>
   </div>
 );
 
