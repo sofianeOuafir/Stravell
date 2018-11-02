@@ -5,6 +5,7 @@ import configureStore from './store/configureStore';
 import './styles/styles.scss';
 import 'normalize.css/normalize.css';
 import 'draft-js/dist/Draft.css';
+import 'megadraft/dist/css/megadraft.css';
 import { firebase } from './firebase/firebase';
 import LoadingPage from './components/LoadingPage';
 import { login, logout } from './actions/auth';

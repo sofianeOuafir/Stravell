@@ -1,33 +1,44 @@
-import React from 'react';
-import {Editor, RichUtils} from 'draft-js';
+import React from "react";
+import { MegadraftEditor } from "megadraft";
+import actions from "megadraft/lib/actions/default";
+import { FaFont, FaUnderline } from 'react-icons/fa';
 
+const FaFontIcon = (props) => (
+  <FaFont size="18" />
+);
+
+const FaUnderlineIcon = (props) => (
+  <FaUnderline size="18" />
+);
+
+const styleMap = {
+  HEADER_ONE: {
+    fontSize: 30
+  }
+};
+
+const customActions = actions.concat([
+  { type: "inline", label: "U", style: "UNDERLINE", icon: FaUnderlineIcon },
+  { type: "inline", label: "H1", style: "HEADER_ONE", icon: FaFontIcon }
+]);
 class MyEditor extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  handleKeyCommand = (command, editorState) => {
-    const newState = RichUtils.handleKeyCommand(editorState, command);
-    if (newState) {
-      this.props.onChange(newState);
-      return 'handled';
-    }
-    return 'not-handled';
-  }
-
-  onBoldClick = (e) => {
-    e.preventDefault();
-    this.props.onChange(RichUtils.toggleInlineStyle(this.props.editorState, 'BOLD'));
-  }
-
   render() {
     return (
       <div>
-        <button onClick={this.onBoldClick}>Make it Bold</button>
-        <Editor editorState={this.props.editorState} onChange={this.props.onChange} handleKeyCommand={this.handleKeyCommand} />
+        <MegadraftEditor
+          customStyleMap={styleMap}
+          actions={customActions}
+          {...this.props}
+        />
       </div>
     );
   }
 }
+
+
 
 export default MyEditor;

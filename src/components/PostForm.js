@@ -1,16 +1,16 @@
 import React from "react";
 import moment from "moment";
 import uuid from "uuid";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import MyEditor from './MyEditor';
-import {EditorState} from 'draft-js';
+import { editorStateFromRaw } from "megadraft";
 class PostForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       id: (props.post && props.post.id) || uuid(),
       title: (props.post && props.post.title) || "",
-      body: (props.post && props.post.body) || EditorState.createEmpty(),
+      body: (props.post && props.post.body) || editorStateFromRaw(null),
       createdAt: (props.post && moment(props.post.createdAt)) || moment(),
       updatedAt: moment(),
       uid: (props.post && props.post.uid) || props.uid,
@@ -30,7 +30,10 @@ class PostForm extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
-    if (this.state.title != "" && this.state.body.getCurrentContent().hasText()) {
+    if (
+      this.state.title != "" &&
+      this.state.body.getCurrentContent().hasText()
+    ) {
       this.props.onSubmit({
         id: this.state.id,
         title: this.state.title,
@@ -47,22 +50,30 @@ class PostForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className="form" onSubmit={this.onSubmit}>
         {!!this.state.error && <p>{this.state.error}</p>}
         <input
+          placeholder="Write a title here"
+          className="text-input"
           type="text"
           onChange={this.onTitleChange}
           autoFocus
           value={this.state.title}
         />
-        <MyEditor editorState={this.state.body} onChange={this.onBodyChange} />
-        <button>Save Post</button>
+        <MyEditor
+          placeholder="Write your article here"
+          editorState={this.state.body}
+          onChange={this.onBodyChange}
+        />
+        <div>
+          <button className="button">Save Post</button>
+        </div>
       </form>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   uid: state.auth.uid,
   userName: state.auth.userName
 });
