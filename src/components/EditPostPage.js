@@ -1,7 +1,7 @@
 import React from "react";
 import PostForm from "./PostForm";
 import { connect } from "react-redux";
-import { editPost } from '../actions/posts';
+import { startEditPost } from '../actions/posts';
 import PageHeader from './PageHeader';
 
 class EditPostPage extends React.Component {
@@ -9,7 +9,7 @@ class EditPostPage extends React.Component {
     super(props);
   }
   onSubmit = (post) => {
-    this.props.editPost({
+    this.props.startEditPost({
       id: this.props.post.id, 
       updates: post
     });
@@ -37,8 +37,8 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  editPost: ({ id, updates }) => {
-    dispatch(editPost({
+  startEditPost: ({ id, updates }) => {
+    dispatch(startEditPost({
       id, 
       updates
     }));

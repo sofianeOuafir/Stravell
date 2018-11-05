@@ -1,20 +1,18 @@
 import React from "react";
 import moment from "moment";
-import uuid from "uuid";
 import { connect } from "react-redux";
+import { editorStateFromRaw, editorStateToJSON } from "megadraft";
 import MyEditor from './MyEditor';
-import { editorStateFromRaw } from "megadraft";
+
+
 class PostForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: (props.post && props.post.id) || uuid(),
       title: (props.post && props.post.title) || "",
-      body: (props.post && props.post.body) || editorStateFromRaw(null),
+      body: (props.post && editorStateFromRaw(JSON.parse(props.post.body))) || editorStateFromRaw(null),
       createdAt: (props.post && moment(props.post.createdAt)) || moment(),
       updatedAt: moment(),
-      uid: (props.post && props.post.uid) || props.uid,
-      userName: (props.post && props.post.userName) || props.userName,
       error: ""
     };
   }
@@ -35,13 +33,10 @@ class PostForm extends React.Component {
       this.state.body.getCurrentContent().hasText()
     ) {
       this.props.onSubmit({
-        id: this.state.id,
         title: this.state.title,
-        body: this.state.body,
-        createdAt: this.state.createdAt,
-        updatedAt: this.state.updatedAt,
-        uid: this.state.uid,
-        userName: this.state.userName
+        body: editorStateToJSON(this.state.body),
+        createdAt: this.state.createdAt.valueOf(),
+        updatedAt: this.state.updatedAt.valueOf()
       });
     } else {
       this.setState(params => ({ error: "Please provide a title and a body" }));
@@ -73,9 +68,4 @@ class PostForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  uid: state.auth.uid,
-  userName: state.auth.userName
-});
-
-export default connect(mapStateToProps)(PostForm);
+export default connect()(PostForm);

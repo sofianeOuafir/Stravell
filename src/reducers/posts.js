@@ -1,3 +1,5 @@
+import { FaAcquisitionsIncorporated } from "react-icons/fa";
+
 const postsReducer = (state = [], action) => {
   switch(action.type) {
     case 'ADD_POST':
@@ -16,6 +18,8 @@ const postsReducer = (state = [], action) => {
           return post;
         }
       })
+    case 'SET_POSTS': 
+      return action.posts
     default:
       return state;
   }

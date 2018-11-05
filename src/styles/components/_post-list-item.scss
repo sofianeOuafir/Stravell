@@ -1,0 +1,14 @@
+.post-list-item {
+  border: 1px black solid;
+  width: 50%;
+  @media (max-width: $desktop-breakpoint) {
+    width: 100%;
+  }
+}
+
+.post-list-item__article-link,
+.post-list-item__author-link,
+.post-list-item__edit-post-link {
+  text-decoration: none;
+  color: $dark-grey;
+}
