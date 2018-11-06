@@ -1,16 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
-import { editorStateFromRaw } from "megadraft";
+import { EditorState, convertFromRaw } from "draft-js";
 import MyEditor from "./MyEditor";
 import PageHeader from "./PageHeader";
 
 const ShowPostPage = ({ post }) => {
-  const body = editorStateFromRaw(JSON.parse(post.body));
+  const body = EditorState.createWithContent(convertFromRaw(JSON.parse(post.body)));
   return (
     <div>
       <PageHeader title={post.title} />
       <div className="content-container">
-        <MyEditor readOnly={true} editorState={body} />
+        <MyEditor readOnly={true} editorState={body} onChange={() => {}} />
       </div>
     </div>
   );

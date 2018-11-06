@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 import { connect } from "react-redux";
-import { editorStateFromRaw, editorStateToJSON } from "megadraft";
+import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
 import MyEditor from './MyEditor';
 
 
@@ -10,7 +10,8 @@ class PostForm extends React.Component {
     super(props);
     this.state = {
       title: (props.post && props.post.title) || "",
-      body: (props.post && editorStateFromRaw(JSON.parse(props.post.body))) || editorStateFromRaw(null),
+      
+      body: (props.post && EditorState.createWithContent(convertFromRaw(JSON.parse(props.post.body)))) || EditorState.createEmpty(),
       createdAt: (props.post && moment(props.post.createdAt)) || moment(),
       updatedAt: moment(),
       error: ""
@@ -34,7 +35,7 @@ class PostForm extends React.Component {
     ) {
       this.props.onSubmit({
         title: this.state.title,
-        body: editorStateToJSON(this.state.body),
+        body: JSON.stringify(convertToRaw(this.state.body.getCurrentContent())),
         createdAt: this.state.createdAt.valueOf(),
         updatedAt: this.state.updatedAt.valueOf()
       });

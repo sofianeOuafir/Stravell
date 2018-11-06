@@ -2,18 +2,18 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import { editorStateFromRaw } from "megadraft";
+import { convertFromRaw } from "draft-js";
 import Avatar from 'react-avatar';
 
 const PostListItem = ({ post, isOwnedByCurrentUser }) => {
-  let body = editorStateFromRaw(JSON.parse(post.body));
+  let body = convertFromRaw(JSON.parse(post.body));
 
   return (
     <div className="post-list-item">
       <Link className="post-list-item__article-link" to={`/posts/show/${post.id}`}>
         <div>
           <p>{post.title}</p>
-          <p>{body.getCurrentContent().getPlainText()}</p>
+          <p>{body.getPlainText()}</p>
           <p>{moment(post.createdAt).format("MMMM Do, YYYY")}</p>
         </div>
       </Link>
