@@ -7,6 +7,8 @@ import "normalize.css/normalize.css";
 import "draft-js/dist/Draft.css";
 import 'draft-js-undo-plugin/lib/plugin.css';
 import 'draft-js-emoji-plugin/lib/plugin.css';
+import 'draft-js-image-plugin/lib/plugin.css';
+import 'draft-js-focus-plugin/lib/plugin.css';
 import { firebase } from "./firebase/firebase";
 import LoadingPage from "./components/LoadingPage";
 import { login, logout } from "./actions/auth";
