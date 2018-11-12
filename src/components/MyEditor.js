@@ -7,7 +7,7 @@ import createAlignmentPlugin from "draft-js-alignment-plugin";
 import createFocusPlugin from "draft-js-focus-plugin";
 import createResizeablePlugin from "draft-js-resizeable-plugin";
 import createBlockDndPlugin from "draft-js-drag-n-drop-plugin";
-import createDragNDropUploadPlugin from "@mikeljames/draft-js-drag-n-drop-upload-plugin";
+import createDragNDropUploadPlugin from './../lib/draft-js-drag-n-drop-upload-plugin/';
 
 const emojiPlugin = createEmojiPlugin();
 const { EmojiSuggestions, EmojiSelect } = emojiPlugin;
@@ -29,8 +29,17 @@ const decorator = composeDecorators(
 const imagePlugin = createImagePlugin({ decorator });
 
 const dragNDropFileUploadPlugin = createDragNDropUploadPlugin({
-  handleUpload: () => {
-    console.log("yo");
+  handleUpload: (files, success) => {
+
+    // let uploadedFiles = [];
+    // readFiles(files).then(function (placeholders) {
+    //   placeholders.forEach(function (placeholder) {
+    //     uploadedFiles.push(placeholder)
+    //   });
+
+      success();
+    // });
+    
   },
   addImage: imagePlugin.addImage
 });
