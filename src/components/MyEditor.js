@@ -7,10 +7,27 @@ import createAlignmentPlugin from "draft-js-alignment-plugin";
 import createFocusPlugin from "draft-js-focus-plugin";
 import createResizeablePlugin from "draft-js-resizeable-plugin";
 import createBlockDndPlugin from "draft-js-drag-n-drop-plugin";
-import createDragNDropUploadPlugin from './../lib/draft-js-drag-n-drop-upload-plugin/';
-import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
-import { uploadFile } from './../aws/s3';
+import createLinkifyPlugin from 'draft-js-linkify-plugin';
+import createLinkPlugin from 'draft-js-anchor-plugin';
+import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
+import {
+  ItalicButton,
+  BoldButton,
+  UnderlineButton,
+  CodeButton,
+  HeadlineOneButton,
+  HeadlineTwoButton,
+  HeadlineThreeButton,
+  OrderedListButton,
+  UnorderedListButton,
+  BlockquoteButton
+} from "draft-js-buttons";
 
+import { uploadFile } from './../aws/s3';
+import createDragNDropUploadPlugin from './../lib/draft-js-drag-n-drop-upload-plugin/';
+
+const inlineToolbarPlugin = createInlineToolbarPlugin();
+const linkPlugin = createLinkPlugin();
 const emojiPlugin = createEmojiPlugin();
 const { EmojiSuggestions, EmojiSelect } = emojiPlugin;
 const undoPlugin = createUndoPlugin();
@@ -19,8 +36,11 @@ const alignmentPlugin = createAlignmentPlugin();
 const focusPlugin = createFocusPlugin();
 const resizeablePlugin = createResizeablePlugin();
 const blockDndPlugin = createBlockDndPlugin();
-const sideToolbarPlugin = createSideToolbarPlugin();
+const linkifyPlugin = createLinkifyPlugin({ target: '_blank' });
+
+const { InlineToolbar } = inlineToolbarPlugin;
 const { AlignmentTool } = alignmentPlugin;
+const { LinkButton } = linkPlugin;
 
 const decorator = composeDecorators(
   resizeablePlugin.decorator,
@@ -45,7 +65,9 @@ const dragNDropFileUploadPlugin = createDragNDropUploadPlugin({
 });
 
 const plugins = [
-  sideToolbarPlugin,
+  inlineToolbarPlugin,
+  linkPlugin,
+  linkifyPlugin,
   dragNDropFileUploadPlugin,
   undoPlugin,
   emojiPlugin,
@@ -82,6 +104,25 @@ class MyEditor extends React.Component {
             <EmojiSuggestions />
             <EmojiSelect />
             <AlignmentTool />
+            <InlineToolbar>
+            {
+              externalProps => (
+                <div>
+                  <ItalicButton {...externalProps} />
+                  <BoldButton {...externalProps} />
+                  <UnderlineButton {...externalProps} />
+                  <CodeButton {...externalProps} />
+                  <LinkButton {...externalProps} />
+                  <HeadlineOneButton {...externalProps} />
+                  <HeadlineTwoButton {...externalProps} />
+                  <HeadlineThreeButton {...externalProps} />
+                  <OrderedListButton {...externalProps} />
+                  <UnorderedListButton {...externalProps} />
+                  <BlockquoteButton {...externalProps} />
+                </div>
+              )
+            }
+            </InlineToolbar>
           </div>
         )}
       </div>
