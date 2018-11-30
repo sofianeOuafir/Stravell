@@ -43,7 +43,6 @@ const mapDispatchToProps = (dispatch) => ({
       updates
     }));
   }
-  
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditPostPage);

@@ -19,7 +19,7 @@ export const Header = ({
     <div className="content-container">
       <div className="header__content">
         <Link className="header__title" to="/">
-          <h1>Wanderlust</h1>
+          <h1>Astalavista</h1>
         </Link>
         <div className="header__right">
           <SearchBar

@@ -8,6 +8,8 @@ import createFocusPlugin from "draft-js-focus-plugin";
 import createResizeablePlugin from "draft-js-resizeable-plugin";
 import createBlockDndPlugin from "draft-js-drag-n-drop-plugin";
 import createDragNDropUploadPlugin from './../lib/draft-js-drag-n-drop-upload-plugin/';
+import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
+import { uploadFile } from './../aws/s3';
 
 const emojiPlugin = createEmojiPlugin();
 const { EmojiSuggestions, EmojiSelect } = emojiPlugin;
@@ -17,6 +19,7 @@ const alignmentPlugin = createAlignmentPlugin();
 const focusPlugin = createFocusPlugin();
 const resizeablePlugin = createResizeablePlugin();
 const blockDndPlugin = createBlockDndPlugin();
+const sideToolbarPlugin = createSideToolbarPlugin();
 const { AlignmentTool } = alignmentPlugin;
 
 const decorator = composeDecorators(
@@ -29,22 +32,20 @@ const decorator = composeDecorators(
 const imagePlugin = createImagePlugin({ decorator });
 
 const dragNDropFileUploadPlugin = createDragNDropUploadPlugin({
-  handleUpload: (files, success) => {
-
-    // let uploadedFiles = [];
-    // readFiles(files).then(function (placeholders) {
-    //   placeholders.forEach(function (placeholder) {
-    //     uploadedFiles.push(placeholder)
-    //   });
-
-      success();
-    // });
-    
+  handleUpload: (files, success, failure) => {
+    files.forEach(file => {
+      uploadFile(file).then((data) => {
+        success(data);
+      }).catch((err) => {
+        failure(err);
+      })
+    });
   },
   addImage: imagePlugin.addImage
 });
 
 const plugins = [
+  sideToolbarPlugin,
   dragNDropFileUploadPlugin,
   undoPlugin,
   emojiPlugin,

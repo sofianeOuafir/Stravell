@@ -1,10 +1,11 @@
 export default ({handleUpload, addImage}) => {
   return {
     handleDroppedFiles: (selection, files, ref) => {
-      handleUpload(files, () => {
-        // call callback with uploadedFile as an argument
-        console.log('yaaay');
-        // add uploaded files to editor here 
+      handleUpload(files, (uploadedFile) => {
+        const {Location, Key, Bucket} = uploadedFile;
+        ref.setEditorState(addImage(ref.getEditorState(), Location));
+      }, (err) => {
+        alert(err);
       });
     }
   }
