@@ -6,7 +6,7 @@ import PageHeader from "./PageHeader";
 
 const HomePage = props => (
   <div>
-    <PageHeader title={`Welcome ${props.userName ? `, ${props.userName}` : ''} :)`} />
+    <PageHeader title={`Welcome${props.userName ? `, ${props.userName}` : ''} :)`} />
     <div className="content-container">
       <SearchBar
         placeholder="Search"

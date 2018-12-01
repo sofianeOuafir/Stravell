@@ -31,7 +31,6 @@ const linkPlugin = createLinkPlugin();
 const emojiPlugin = createEmojiPlugin();
 const { EmojiSuggestions, EmojiSelect } = emojiPlugin;
 const undoPlugin = createUndoPlugin();
-const { UndoButton, RedoButton } = undoPlugin;
 const alignmentPlugin = createAlignmentPlugin();
 const focusPlugin = createFocusPlugin();
 const resizeablePlugin = createResizeablePlugin();
@@ -99,8 +98,6 @@ class MyEditor extends React.Component {
         />
         {!this.props.readOnly && (
           <div>
-            <UndoButton />
-            <RedoButton />
             <EmojiSuggestions />
             <EmojiSelect />
             <AlignmentTool />

@@ -1,9 +1,14 @@
 .post-list-item {
-  border: 1px black solid;
+  border-right: 1px $grey solid;
   width: 50%;
+  margin-bottom: $xl-size;
   @media (max-width: $desktop-breakpoint) {
     width: 100%;
   }
+}
+
+.post-list-item--no-border {
+  border-right: none;
 }
 
 .post-list-item__article-link,
@@ -11,4 +16,8 @@
 .post-list-item__edit-post-link {
   text-decoration: none;
   color: $dark-grey;
+}
+
+.post-list-item__article-image {
+  width: 95%;
 }

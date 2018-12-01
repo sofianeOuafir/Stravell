@@ -25,7 +25,7 @@ export const uploadFile = (file) => {
 			ACL: 'public-read'
 		}, function(err, data) {
 			if (err) {
-				reject(`There was an error uploading your photo`);
+				reject(`There was an error when trying to upload your image`);
 			} else {
 				resolve(data);
 			}

@@ -2,18 +2,18 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import { convertFromRaw } from "draft-js";
 import Avatar from 'react-avatar';
 
-const PostListItem = ({ post, isOwnedByCurrentUser }) => {
-  let body = convertFromRaw(JSON.parse(post.body));
+import { isOdd } from './../lib/utils/math';
 
+const PostListItem = ({ post, isOwnedByCurrentUser, index}) => {
   return (
-    <div className="post-list-item">
+    <div className={`post-list-item ${isOdd(index) ? 'post-list-item--no-border' : '' }`}>
       <Link className="post-list-item__article-link" to={`/posts/show/${post.id}`}>
         <div>
-          <p>{post.title}</p>
-          <p>{body.getPlainText()}</p>
+          <img className="post-list-item__article-image" src={`${post.image}`} alt={`${post.image}`} />
+          <h1>{post.title}</h1>
+          <h2>{post.description}</h2>
           <p>{moment(post.createdAt).format("MMMM Do, YYYY")}</p>
         </div>
       </Link>
