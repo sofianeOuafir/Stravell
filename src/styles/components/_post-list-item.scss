@@ -2,8 +2,13 @@
   border-right: 1px $grey solid;
   width: 50%;
   margin-bottom: $xl-size;
+  padding: 0 $m-size;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   @media (max-width: $desktop-breakpoint) {
     width: 100%;
+    border-right: none;
   }
 }
 
@@ -11,13 +16,30 @@
   border-right: none;
 }
 
-.post-list-item__article-link,
+.post-list-item__link,
 .post-list-item__author-link,
 .post-list-item__edit-post-link {
   text-decoration: none;
   color: $dark-grey;
 }
 
-.post-list-item__article-image {
-  width: 95%;
+.post-list-item__link {
+  text-align: center;
+}
+
+.post-list-item__image {
+  width: 100%;
+}
+
+.post-list-item__title {
+  font-size: $font-size-large;
+}
+
+.post-list-item__description {
+  font-size: $font-size-normal;
+  font-weight: $favourite-font-weight;
+}
+
+.post-list-item__title-description-container{
+  text-align: left;
 }

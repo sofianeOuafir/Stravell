@@ -2,29 +2,44 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import Avatar from 'react-avatar';
+import Avatar from "react-avatar";
 
-import { isOdd } from './../lib/utils/math';
+import { isOdd } from "./../lib/utils/math";
 
-const PostListItem = ({ post, isOwnedByCurrentUser, index}) => {
+const PostListItem = ({ post, isOwnedByCurrentUser, index }) => {
   return (
-    <div className={`post-list-item ${isOdd(index) ? 'post-list-item--no-border' : '' }`}>
-      <Link className="post-list-item__article-link" to={`/posts/show/${post.id}`}>
-        <div>
-          <img className="post-list-item__article-image" src={`${post.image}`} alt={`${post.image}`} />
-          <h1>{post.title}</h1>
-          <h2>{post.description}</h2>
-          <p>{moment(post.createdAt).format("MMMM Do, YYYY")}</p>
+    <div
+      className={`post-list-item ${
+        isOdd(index) ? "post-list-item--no-border" : ""
+      }`}
+    >
+      <Link className="post-list-item__link" to={`/posts/show/${post.id}`}>
+
+        <img
+          className="post-list-item__image"
+          src={`${post.image}`}
+          alt={`${post.image}`}
+        />
+        <div className="post-list-item__title-description-container">
+          <h1 className="post-list-item__title">{post.title}</h1>
+          <h2 className="post-list-item__description">{post.description}</h2>
         </div>
       </Link>
-
-      <Link className="post-list-item__author-link" to={`/users/${post.uid}`}>
-      <Avatar size="40" round={true} src={post.userPhotoURL} />
-      {post.userName}
-      </Link>
-      {isOwnedByCurrentUser && (
-        <Link className="post-list-item__edit-post-link" to={`/posts/edit/${post.id}`}>Edit</Link>
-      )}
+      <div>
+        <Link className="post-list-item__author-link" to={`/users/${post.uid}`}>
+          <Avatar size="40" round={true} src={post.userPhotoURL} />
+          {post.userName}
+          <p>{moment(post.createdAt).format("MMMM Do, YYYY")}</p>
+        </Link>
+        {isOwnedByCurrentUser && (
+          <Link
+            className="post-list-item__edit-post-link"
+            to={`/posts/edit/${post.id}`}
+          >
+            Edit
+          </Link>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,11 +1,11 @@
 import AWS from 'aws-sdk';
 
 // Initialize the Amazon Cognito credentials provider
-AWS.config.region = 'us-east-2'; // Region
+AWS.config.region = process.env.S3_BUCKET_REGION;
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-	IdentityPoolId: 'us-east-2:a3099d42-9e75-4cdd-9a2c-f98f1910a001',
-	secretAccessKey: 'v2Lnz+hqw8Qx3/9nczJhuXxt0+iN/ODxGOnER77H',
-	accessKeyId: 'AKIAJ6I5JNB3MIDRFGVQ'
+	IdentityPoolId: process.env.S3_IDENTITY_POOL_ID,
+	secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+	accessKeyId: process.env.S3_ACCESS_KEY_ID
 });
 
 const s3 = new AWS.S3({
