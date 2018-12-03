@@ -5,7 +5,7 @@ const PostList = (props) => (
   <div className="post-list">
     { 
       props.posts.map((post, key) => (
-        <PostListItem key={key} index={key} post={post} />
+        <PostListItem key={key} index={key} post={post} editable={props.editable} />
       ))
     }
   </div>

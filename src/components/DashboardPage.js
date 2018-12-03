@@ -11,7 +11,7 @@ const DashboardPage = props => (
       <Link to="posts/create" className="button">
         Create Post
       </Link>
-      <PostList posts={props.posts} />
+      <PostList posts={props.posts} editable={true} />
     </div>
   </div>
 );

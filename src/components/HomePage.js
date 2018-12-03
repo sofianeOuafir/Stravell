@@ -12,7 +12,7 @@ const HomePage = props => (
         placeholder="Search"
         className="show-for-mobile search-bar search-bar--warm-peach"
       />
-      <PostList posts={props.posts} />
+      <PostList posts={props.posts} editable={false} />
     </div>
   </div>
 );

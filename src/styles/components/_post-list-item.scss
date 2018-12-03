@@ -17,8 +17,7 @@
 }
 
 .post-list-item__link,
-.post-list-item__author-link,
-.post-list-item__edit-post-link {
+.post-list-item__author {
   text-decoration: none;
   color: $dark-grey;
 }
@@ -42,4 +41,13 @@
 
 .post-list-item__title-description-container{
   text-align: left;
+}
+
+.post-list-item__avatar {
+  margin-right: $s-size;
+}
+
+.post-list-item__author-edit-container {
+  display: flex;
+  justify-content: space-between;
 }

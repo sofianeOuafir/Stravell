@@ -30,7 +30,7 @@ class UserWallPage extends React.Component {
           <div>
             <PageHeader title={this.state.title} />
             <div className="content-container">
-              <PostList posts={this.props.posts} />
+              <PostList posts={this.props.posts} editable={false} />
             </div>
           </div>
         )}
