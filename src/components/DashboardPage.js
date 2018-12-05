@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PostList from "./PostList";
 import { connect } from "react-redux";
+import FilterablePostList from "./FilterablePostList";
 import PageHeader from "./PageHeader";
-import SearchBar from './SearchBar';
-import { getVisiblePosts } from './../selectors/posts';
 
 const DashboardPage = props => (
   <div>
@@ -13,26 +11,17 @@ const DashboardPage = props => (
       <Link to="posts/create" className="button button--with-bottom-margin">
         Create Post
       </Link>
-      <SearchBar autoFocus />
-      <PostList
+      <FilterablePostList
+        SearchBarAutoFocus={true}
         posts={props.posts}
-        editable={true}
-        className="post-list post-list--no-border-top"
-        noPostText={getNoPostText(props.posts, props.filters.text)}
+        noPostText={`The world is looking forward to hear about your stories! :)`}
       />
     </div>
   </div>
 );
 
-const getNoPostText = (posts, textFilter) => {
-  return posts.length === 0 && textFilter.length === 0
-  ? `The world is looking forward to hear about your stories! :)`
-  : `No results were found for ${textFilter}.`
-}
-
-const mapStateToProps = ({filters, posts, auth}) => ({
-  posts: getVisiblePosts(posts.filter(post => post.uid === auth.uid), filters),
-  filters
+const mapStateToProps = ({ posts, auth }) => ({
+  posts: posts.filter(post => post.uid === auth.uid)
 });
 
 export default connect(mapStateToProps)(DashboardPage);
