@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { IoIosHome, IoIosPower } from "react-icons/io";
 import Avatar from "react-avatar";
 import { startLogout } from "../actions/auth";
-import SearchBar from "./SearchBar";
 import DropdownMenu from "./DropdownMenu";
 import { history } from "./../routers/AppRouter";
 
@@ -22,11 +21,6 @@ export const Header = ({
           <h1>Astalavista</h1>
         </Link>
         <div className="header__right">
-          <SearchBar
-            placeholder="Search"
-            className="search-bar header__search-bar show-for-desktop"
-            autoFocus={true}
-          />
           {isAuthenticated ? (
             <div className="header__right">
               <Link

@@ -5,3 +5,7 @@
   border-bottom: 1px $grey solid;
   padding: $xl-size 0;
 }
+
+.post-list--no-border-top {
+  border-top: none;
+}

@@ -1,13 +1,18 @@
 .search-bar {
+  font-size: $font-size-large;
+  font-weight: $favourite-font-weight;
   padding: $xs-size $s-size;
-  border-radius: 12px;
-  border: none;
-  width: 30rem;
+  border: 1px white solid;
+  width: 100%;
   outline: none;
 }
 
-.search-bar--warm-peach {
-  border: 1px $warm-peach solid;
-  color: $warm-peach;
+.search-bar__container {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px $grey solid;
 }
 
+.search-bar__icon {
+  font-size: $font-size-extra-large;
+}

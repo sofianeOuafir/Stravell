@@ -3,23 +3,28 @@ import PostList from "../components/PostList";
 import { connect } from "react-redux";
 import SearchBar from "./SearchBar";
 import PageHeader from "./PageHeader";
+import { getVisiblePosts } from './../selectors/posts';
 
 const HomePage = props => (
   <div>
-    <PageHeader title={`Welcome${props.userName ? `, ${props.userName}` : ''} :)`} />
+    <PageHeader
+      title={`Welcome${props.userName ? `, ${props.userName}` : ""} :)`}
+    />
     <div className="content-container">
-      <SearchBar
-        placeholder="Search"
-        className="show-for-mobile search-bar search-bar--warm-peach"
+      <SearchBar autoFocus={true} />
+      <PostList 
+        posts={props.posts} 
+        className="post-list post-list--no-border-top" 
+        noPostText={`No results were found for ${props.filters.text}.`}
       />
-      <PostList posts={props.posts} editable={false} />
     </div>
   </div>
 );
 
-const mapStateToProps = state => ({
-  posts: state.posts,
-  userName: state.auth.userName
+const mapStateToProps = ({posts, auth, filters}) => ({
+  posts: getVisiblePosts(posts, filters),
+  userName: auth.userName,
+  filters
 });
 
 export default connect(mapStateToProps)(HomePage);
