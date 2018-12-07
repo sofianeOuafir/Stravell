@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { EditorState, convertFromRaw } from "draft-js";
-import Avatar from "react-avatar";
 import MyEditor from "./MyEditor";
 import PageHeader from "./PageHeader";
 import { getDateFormat } from "./../lib/utils/date";
 import { Helmet } from "react-helmet";
 import * as Constants from "./../constants/constants";
+import PostAuthor from './PostAuthor';
 
 const ShowPostPage = ({ post }) => {
   const body = EditorState.createWithContent(
@@ -17,16 +17,15 @@ const ShowPostPage = ({ post }) => {
       <Helmet>
         <title>{`${Constants.APP_NAME} | ${post.title}`}</title>
       </Helmet>
-      <PageHeader className="page-header">
+      <PageHeader>
         <h1 className="favourite-font-weight m0">{post.title}</h1>
-        <div className="flex align-items--center my1">
-          <Avatar
-            className="mr1"
-            size="50"
-            round={true}
-            src={post.userPhotoURL}
+        <div className="my1">
+          <PostAuthor
+            authorUid={post.uid}
+            avatarSize={50}
+            authorPhotoURL={post.userPhotoURL}
+            authorName={post.userName}
           />
-          <span>{post.userName}</span>
         </div>
         <span>{getDateFormat(post.createdAt)}</span>
       </PageHeader>

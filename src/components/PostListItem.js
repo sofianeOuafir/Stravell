@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import Avatar from "react-avatar";
 import { getDateFormat } from './../lib/utils/date';
-
+import PostAuthor from './PostAuthor';
 import { isOdd } from "./../lib/utils/math";
 
 const PostListItem = ({ post, isOwnedByCurrentUser, index, editable }) => {
@@ -26,10 +25,7 @@ const PostListItem = ({ post, isOwnedByCurrentUser, index, editable }) => {
       </Link>
       <div>
         <div className="post-list-item__author-edit-container"> 
-          <Link className="post-list-item__author" to={`/users/${post.uid}`}>
-            <Avatar className="post-list-item__avatar" size="40" round={true} src={post.userPhotoURL} />
-            {post.userName}
-          </Link>
+          <PostAuthor authorUid={post.uid} avatarSize={40} authorPhotoURL={post.userPhotoURL} authorName={post.userName} />
           {isOwnedByCurrentUser && editable && (
             <Link
               className="button"

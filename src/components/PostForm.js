@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment";
 import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
+import { titleize, capitalize } from 'underscore.string';
 
 import MyEditor from "./MyEditor";
 import { uploadFile } from "./../aws/s3";
@@ -26,12 +27,12 @@ class PostForm extends React.Component {
 
   onDescriptionChange = e => {
     const description = e.target.value;
-    this.setState(() => ({ description }));
+    this.setState(() => ({ description: capitalize(description) }));
   };
 
   onTitleChange = e => {
     const title = e.target.value;
-    this.setState(() => ({ title }));
+    this.setState(() => ({ title: titleize(title) }));
   };
 
   onImageChange = e => {

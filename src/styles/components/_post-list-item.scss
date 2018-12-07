@@ -16,8 +16,7 @@
   border-right: none;
 }
 
-.post-list-item__link,
-.post-list-item__author {
+.post-list-item__link{
   text-decoration: none;
   color: $dark-grey;
 }
@@ -41,10 +40,6 @@
 
 .post-list-item__title-description-container{
   text-align: left;
-}
-
-.post-list-item__avatar {
-  margin-right: $s-size;
 }
 
 .post-list-item__author-edit-container {
