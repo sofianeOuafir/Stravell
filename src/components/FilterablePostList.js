@@ -22,6 +22,7 @@ class FilterablePostList extends React.Component {
       <div>
         {this.props.posts.length > 0 && <SearchBar autoFocus={this.props.SearchBarAutoFocus} />}
         <PostList
+          editable={this.props.editable}
           className="post-list post-list--no-border-top"
           posts={this.props.filteredPosts}
           noPostText={this.getNoPostText()}

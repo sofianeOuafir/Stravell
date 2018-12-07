@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import moment from "moment";
 import Avatar from "react-avatar";
+import { getDateFormat } from './../lib/utils/date';
 
 import { isOdd } from "./../lib/utils/math";
 
@@ -39,7 +39,7 @@ const PostListItem = ({ post, isOwnedByCurrentUser, index, editable }) => {
             </Link>
           )}
         </div>
-        <p>{moment(post.createdAt).format("MMMM Do, YYYY")}</p>
+        <p>{getDateFormat(post.createdAt)}</p>
       </div>
     </div>
   );

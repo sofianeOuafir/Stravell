@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PageHeader from "./PageHeader";
 import { startGetUser } from "./../actions/users";
 import LoadingPage from "./LoadingPage";
-import FilterablePostList from './FilterablePostList'
+import FilterablePostList from './FilterablePostList';
 
 class UserWallPage extends React.Component {
   constructor(props) {

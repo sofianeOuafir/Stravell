@@ -29,3 +29,31 @@ button:disabled {
 .favourite-font-weight{
   font-weight: $favourite-font-weight;
 }
+
+.flex {
+  display: flex;
+}
+
+.align-items--center {
+  align-items: center;
+}
+
+.mr1 {
+  margin-right: $s-size;
+}
+
+.mb1 {
+  margin-bottom: $s-size;
+}
+
+.mt1 {
+  margin-top: $s-size;
+}
+
+.my1 {
+  @extend .mt1, .mb1;
+}
+
+.m0 {
+  margin: 0;
+}
