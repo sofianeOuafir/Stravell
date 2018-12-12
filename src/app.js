@@ -34,7 +34,6 @@ const renderApp = () => {
 };
 
 ReactDOM.render(<LoadingPage />, document.getElementById("app"));
-
 firebase.auth().onAuthStateChanged(user => {
   store.dispatch(startSetPosts()).then(() => {
     if (user) {

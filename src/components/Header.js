@@ -6,6 +6,7 @@ import Avatar from "react-avatar";
 import { startLogout } from "../actions/auth";
 import DropdownMenu from "./DropdownMenu";
 import { history } from "./../routers/AppRouter";
+import { APP_NAME } from './../constants/constants';
 
 export const Header = ({
   startLogout,
@@ -18,7 +19,7 @@ export const Header = ({
     <div className="content-container">
       <div className="header__content">
         <Link className="header__title" to="/">
-          <h1>Astalavista</h1>
+          <h1>{APP_NAME}</h1>
         </Link>
         <div className="header__right">
           {isAuthenticated ? (

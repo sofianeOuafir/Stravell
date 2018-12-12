@@ -1,10 +1,15 @@
 import React from "react";
 import moment from "moment";
 import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
-import { titleize, capitalize } from 'underscore.string';
-
 import MyEditor from "./MyEditor";
 import { uploadFile } from "./../aws/s3";
+import {
+  formatTitle,
+  formatDescription,
+  getTitleError,
+  getDescriptionError,
+  getImageError
+} from "./../lib/utils/post";
 
 class PostForm extends React.Component {
   constructor(props) {
@@ -21,28 +26,36 @@ class PostForm extends React.Component {
         EditorState.createEmpty(),
       createdAt: (props.post && moment(props.post.createdAt)) || moment(),
       updatedAt: moment(),
-      error: ""
+      titleError: "",
+      descriptionError: "",
+      imageError: "",
+      bodyError: ""
     };
   }
 
   onDescriptionChange = e => {
     const description = e.target.value;
-    this.setState(() => ({ description: capitalize(description) }));
+    this.setState(() => ({
+      description: description,
+      descriptionError: getDescriptionError(description)
+    }));
   };
 
   onTitleChange = e => {
     const title = e.target.value;
-    this.setState(() => ({ title: titleize(title) }));
+    this.setState(() => ({ title: title, titleError: getTitleError(title) }));
   };
 
   onImageChange = e => {
     const file = e.target.files[0];
-    uploadFile(file).then(({Location}) => {
-      this.setState(() => ({ image: Location }))
-    }).catch((err) => {
-      alert(err);
-    })
-  }
+    uploadFile(file)
+      .then(({ Location }) => {
+        this.setState(() => ({ image: Location, imageError: getImageError(Location) }));
+      })
+      .catch(err => {
+        alert(err);
+      });
+  };
 
   onBodyChange = editorState => {
     this.setState(() => ({ body: editorState }));
@@ -50,15 +63,21 @@ class PostForm extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
+    let errors = {
+      title: getTitleError(this.state.title),
+      description: getDescriptionError(this.state.description),
+      image: getImageError(this.state.image),
+      body: ""
+    };
     if (
-      this.state.title != "" &&
-      this.state.description != "" &&
-      this.state.image != "" &&
-      this.state.body.getCurrentContent().hasText()
+      errors.title === "" &&
+      errors.description === "" &&
+      errors.image === "" &&
+      errors.body === ""
     ) {
       this.props.onSubmit({
-        title: this.state.title,
-        description: this.state.description,
+        title: formatTitle(this.state.title),
+        description: formatDescription(this.state.description),
         image: this.state.image,
         body: JSON.stringify(convertToRaw(this.state.body.getCurrentContent())),
         createdAt: this.state.createdAt.valueOf(),
@@ -66,7 +85,10 @@ class PostForm extends React.Component {
       });
     } else {
       this.setState(() => ({
-        error: "Please provide a title, a body, a description and an Image"
+        titleError: errors.title,
+        descriptionError: errors.description,
+        imageError: errors.image,
+        bodyErrors: errors.body
       }));
     }
   };
@@ -83,6 +105,7 @@ class PostForm extends React.Component {
           autoFocus
           value={this.state.title}
         />
+        {this.state.titleError && <p>{this.state.titleError}</p>}
         <input
           placeholder="Write a small description here"
           className="text-input"
@@ -90,15 +113,12 @@ class PostForm extends React.Component {
           onChange={this.onDescriptionChange}
           value={this.state.description}
         />
-        <input 
-          type="file" 
-          accept="image/*"
-          onChange={this.onImageChange}
-        />
-        {
-          this.state.image && 
+        {this.state.descriptionError && <p>{this.state.descriptionError}</p>}
+        <input type="file" accept="image/*" onChange={this.onImageChange} />
+        {this.state.imageError && <p>{this.state.imageError}</p>}
+        {this.state.image && (
           <img src={`${this.state.image}`} alt={`${this.state.image}`} />
-        }
+        )}
         <MyEditor
           placeholder="Write your article here"
           editorState={this.state.body}

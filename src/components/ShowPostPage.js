@@ -5,7 +5,6 @@ import MyEditor from "./MyEditor";
 import PageHeader from "./PageHeader";
 import { getDateFormat } from "./../lib/utils/date";
 import { Helmet } from "react-helmet";
-import * as Constants from "./../constants/constants";
 import PostAuthor from './PostAuthor';
 
 const ShowPostPage = ({ post }) => {
@@ -15,7 +14,7 @@ const ShowPostPage = ({ post }) => {
   return (
     <div>
       <Helmet>
-        <title>{`${Constants.APP_NAME} | ${post.title}`}</title>
+        <title>{`${post.title}`}</title>
       </Helmet>
       <PageHeader>
         <h1 className="favourite-font-weight m0">{post.title}</h1>
