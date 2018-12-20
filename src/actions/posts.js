@@ -62,6 +62,7 @@ const startSetPosts = () => {
     let posts = [];
     return database
       .ref("posts")
+      .orderByChild("createdAt")
       .once("value")
       .then(snapshot => {
         snapshot.forEach(snapshotChild => {
@@ -70,6 +71,7 @@ const startSetPosts = () => {
             ...snapshotChild.val()
           });
         });
+        posts = posts.reverse()
         dispatch(setPosts(posts));
       });
   };

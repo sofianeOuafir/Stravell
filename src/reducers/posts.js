@@ -4,8 +4,8 @@ const postsReducer = (state = [], action) => {
   switch(action.type) {
     case 'ADD_POST':
       return [
-        ...state,
-        action.post
+        action.post,
+        ...state
       ]
     case 'EDIT_POST':
       return state.map((post) => {
