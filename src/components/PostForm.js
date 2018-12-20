@@ -99,16 +99,16 @@ class PostForm extends React.Component {
         titleError: errors.title,
         descriptionError: errors.description,
         imageError: errors.image,
-        bodyErrors: errors.body
+        bodyError: errors.body
       }));
     }
   }
 
-  getValidationIcon = (error, withAbsolutePosition = true) => {
+  getValidationIcon = (error) => {
     if(error) {
-      return <FaTimes className={`${withAbsolutePosition ? 'icon' : '' } c-warm-peach`}/>;
+      return <FaTimes className={`icon c-warm-peach`}/>;
     } else {
-      return <FaCheck className={`${withAbsolutePosition ? 'icon' : '' } c-limegreen`} />;
+      return <FaCheck className={`icon c-limegreen`} />;
     }
   }
 
@@ -158,10 +158,7 @@ class PostForm extends React.Component {
 
         </div>
         <div className="form__input-container">
-          <div className="flex align-items--center mb1">
-            { this.getValidationIcon(this.state.bodyError, false) }
-            { this.state.bodyError && <p className="error">{this.state.bodyError}</p>}
-          </div>
+          { this.state.bodyError && <p className="error">{this.state.bodyError}</p>}
           <MyEditor
             placeholder="Write your article here"
             editorState={this.state.body}
