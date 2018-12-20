@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { IoIosHome, IoIosPower } from "react-icons/io";
+import { IoIosHome, IoIosPower, IoMdCreate } from "react-icons/io";
 import Avatar from "react-avatar";
 import { startLogout } from "../actions/auth";
 import DropdownMenu from "./DropdownMenu";
@@ -13,7 +13,8 @@ export const Header = ({
   isAuthenticated,
   userName,
   userPhotoURL,
-  redirectToDashboard
+  redirectToDashboard,
+  redirectToCreatePost
 }) => (
   <header className="header">
     <div className="content-container">
@@ -31,6 +32,9 @@ export const Header = ({
                 <Avatar round={true} size="40" src={userPhotoURL} />
               </Link>
               <DropdownMenu title={userName}>
+                <button onClick={redirectToCreatePost}>
+                  <IoMdCreate className="header__dropdown-menu-icon" /> Create Post
+                </button>
                 <button onClick={redirectToDashboard}>
                   <IoIosHome className="header__dropdown-menu-icon" /> Dashboard
                 </button>
@@ -52,7 +56,8 @@ export const Header = ({
 
 const mapDispatchToProps = dispatch => ({
   startLogout: () => dispatch(startLogout()),
-  redirectToDashboard: () => history.push("/dashboard")
+  redirectToDashboard: () => history.push("/dashboard"),
+  redirectToCreatePost: () => history.push("/posts/create")
 });
 
 const mapStateToProps = state => {
