@@ -15,7 +15,7 @@ export default (WrappedComponent, { title }) => {
           <Helmet>
             <title>{title}</title>
           </Helmet>
-          <WrappedComponent {...this.props} />;
+          <WrappedComponent {...this.props} />
         </div>
       );
     }
