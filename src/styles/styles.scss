@@ -1,5 +1,6 @@
 @import './base/settings';
 @import './base/base';
+@import './base/_colours.scss';
 @import './components/box-layout';
 @import './components/button';
 @import './components/header';
@@ -18,3 +19,4 @@
 @import './components/post-list';
 @import './components/dashboard-page';
 @import './components/show-post-page';
+@import './components/editor';

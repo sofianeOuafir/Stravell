@@ -2,11 +2,27 @@
   display: flex;
   flex-direction: column;
   >* {
-    margin-bottom: $m-size;
+    margin-bottom: $s-size;
   }
 }
 
-.form__error {
-  margin: 0 0 $m-size 0;
+.form__input-container {
+  position: relative;
+}
+
+.form__input-container input {
+  text-indent: 30px;
+  width:100%;
+}
+
+.form__input-container .icon {
+  top: $m-size;
+  left: $s-size;
+  position: absolute;
+}
+
+.form__input-container .error {
+  margin: 0px;
+  color: $warm-peach;
   font-style: italic;
 }

@@ -6,14 +6,13 @@ import "./styles/styles.scss";
 import "normalize.css/normalize.css";
 import "draft-js/dist/Draft.css";
 import 'draft-js-undo-plugin/lib/plugin.css';
-import 'draft-js-emoji-plugin/lib/plugin.css';
 import 'draft-js-image-plugin/lib/plugin.css';
 import 'draft-js-focus-plugin/lib/plugin.css';
 import 'draft-js-alignment-plugin/lib/plugin.css';
 import 'draft-js-linkify-plugin/lib/plugin.css';
 import 'draft-js-inline-toolbar-plugin/lib/plugin.css';
 import { firebase } from "./firebase/firebase";
-import LoadingPage from "./components/LoadingPage";
+import Loading from "./components/Loading";
 import { login, logout } from "./actions/auth";
 import AppRouter, { history } from "./routers/AppRouter";
 import { startGetUser, startAddUser } from "./actions/users";
@@ -33,7 +32,7 @@ const renderApp = () => {
   }
 };
 
-ReactDOM.render(<LoadingPage />, document.getElementById("app"));
+ReactDOM.render(<div className="loading-container"><Loading size="big" /></div>, document.getElementById("app"));
 firebase.auth().onAuthStateChanged(user => {
   store.dispatch(startSetPosts()).then(() => {
     if (user) {

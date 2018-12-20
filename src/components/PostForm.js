@@ -1,14 +1,17 @@
 import React from "react";
 import moment from "moment";
 import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
+import { FaCheck, FaTimes } from "react-icons/fa";
 import MyEditor from "./MyEditor";
 import { uploadFile } from "./../aws/s3";
+import Loading from "./Loading";
 import {
   formatTitle,
   formatDescription,
   getTitleError,
   getDescriptionError,
-  getImageError
+  getImageError,
+  getBodyError
 } from "./../lib/utils/post";
 
 class PostForm extends React.Component {
@@ -29,7 +32,8 @@ class PostForm extends React.Component {
       titleError: "",
       descriptionError: "",
       imageError: "",
-      bodyError: ""
+      bodyError: "",
+      imageUploading: false
     };
   }
 
@@ -48,17 +52,24 @@ class PostForm extends React.Component {
 
   onImageChange = e => {
     const file = e.target.files[0];
-    uploadFile(file)
-      .then(({ Location }) => {
-        this.setState(() => ({ image: Location, imageError: getImageError(Location) }));
-      })
-      .catch(err => {
-        alert(err);
-      });
+    if(!file) {
+      return;
+    }
+    this.setState(() => ({ imageUploading: true }), () => {
+      uploadFile(file)
+        .then(({ Location }) => {
+          this.setState(() => ({ image: Location, imageError: getImageError(Location), imageUploading: false }));
+        })
+        .catch(err => {
+          alert(err);
+          this.setState(() => ({ imageUploading: false }))
+        });
+    });
   };
 
   onBodyChange = editorState => {
-    this.setState(() => ({ body: editorState }));
+    const body = editorState.getCurrentContent().getPlainText();
+    this.setState(() => ({ body: editorState, bodyError: getBodyError(body) }));
   };
 
   onSubmit = e => {
@@ -67,7 +78,7 @@ class PostForm extends React.Component {
       title: getTitleError(this.state.title),
       description: getDescriptionError(this.state.description),
       image: getImageError(this.state.image),
-      body: ""
+      body: getBodyError(this.state.body.getCurrentContent().getPlainText())
     };
     if (
       errors.title === "" &&
@@ -91,44 +102,77 @@ class PostForm extends React.Component {
         bodyErrors: errors.body
       }));
     }
-  };
+  }
+
+  getValidationIcon = (error, withAbsolutePosition = true) => {
+    if(error) {
+      return <FaTimes className={`${withAbsolutePosition ? 'icon' : '' } c-warm-peach`}/>;
+    } else {
+      return <FaCheck className={`${withAbsolutePosition ? 'icon' : '' } c-limegreen`} />;
+    }
+  }
 
   render() {
     return (
       <form className="form" onSubmit={this.onSubmit}>
-        {!!this.state.error && <p>{this.state.error}</p>}
-        <input
-          placeholder="Write a title here"
-          className="text-input"
-          type="text"
-          onChange={this.onTitleChange}
-          autoFocus
-          value={this.state.title}
-        />
-        {this.state.titleError && <p>{this.state.titleError}</p>}
-        <input
-          placeholder="Write a small description here"
-          className="text-input"
-          type="text"
-          onChange={this.onDescriptionChange}
-          value={this.state.description}
-        />
-        {this.state.descriptionError && <p>{this.state.descriptionError}</p>}
-        <input type="file" accept="image/*" onChange={this.onImageChange} />
-        {this.state.imageError && <p>{this.state.imageError}</p>}
-        {this.state.image && (
-          <img src={`${this.state.image}`} alt={`${this.state.image}`} />
-        )}
-        <MyEditor
-          placeholder="Write your article here"
-          editorState={this.state.body}
-          onChange={this.onBodyChange}
-        />
+        <div className="form__input-container">
+          { this.getValidationIcon(this.state.titleError) }
+          <input
+            placeholder="Write a title here"
+            className="text-input"
+            type="text"
+            onChange={this.onTitleChange}
+            autoFocus
+            value={this.state.title}
+          />
+          {this.state.titleError && <p className="error">{this.state.titleError}</p>}
+        </div>
+        <div className="form__input-container">
+          { this.getValidationIcon(this.state.descriptionError) }
+          <input
+            placeholder="Write a small description here"
+            className="text-input"
+            type="text"
+            onChange={this.onDescriptionChange}
+            value={this.state.description}
+          />
+          {this.state.descriptionError && <p className="error">{this.state.descriptionError}</p>}
+        </div>
+        <div className="form__input-container">
+          { this.getValidationIcon(this.state.imageError) }  
+          <input type="file" accept="image/*" onChange={this.onImageChange} className="text-input" />
+          {this.state.imageError && <p className="error">{this.state.imageError}</p>}
+          <div className="quarterwidth flex align-items--center justify-content--center mt2">
+            { this.state.imageUploading ? 
+              (
+                <Loading size="small" />
+              )
+              :
+              (
+                this.state.image && (
+                  <img src={`${this.state.image}`} alt={`${this.state.image}`} className="fullwidth" />
+                )
+              )
+            }
+          </div>
+
+        </div>
+        <div className="form__input-container">
+          <div className="flex align-items--center mb1">
+            { this.getValidationIcon(this.state.bodyError, false) }
+            { this.state.bodyError && <p className="error">{this.state.bodyError}</p>}
+          </div>
+          <MyEditor
+            placeholder="Write your article here"
+            editorState={this.state.body}
+            onChange={this.onBodyChange}
+          />
+        </div>
         <div>
           <button className="button">Save Post</button>
         </div>
       </form>
-    );
+    )
   }
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import PageHeader from "./PageHeader";
 import { startGetUser } from "./../actions/users";
-import LoadingPage from "./LoadingPage";
+import Loading from "./Loading";
 import FilterablePostList from './FilterablePostList';
 
 class UserWallPage extends React.Component {
@@ -25,7 +25,9 @@ class UserWallPage extends React.Component {
     return (
       <div>
         {!this.state.title ? (
-          <LoadingPage />
+          <div className="loading-container">
+            <Loading size="big" />
+          </div>
         ) : (
           <div>
             <PageHeader title={this.state.title} />

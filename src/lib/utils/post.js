@@ -3,7 +3,8 @@ import {
   MIN_NUM_OF_CHARACTERS_FOR_TITLE,
   MAX_NUM_OF_CHARACTERS_FOR_TITLE,
   MIN_NUM_OF_CHARACTERS_FOR_DESCRIPTION,
-  MAX_NUM_OF_CHARACTERS_FOR_DESCRIPTION
+  MAX_NUM_OF_CHARACTERS_FOR_DESCRIPTION,
+  MIN_NUM_OF_CHARACTERS_FOR_BODY
 } from "./../../constants/constants";
 
 export const formatTitle = title => {
@@ -13,6 +14,21 @@ export const formatTitle = title => {
 export const formatDescription = description => {
   return capitalize(description).trim();
 };
+
+const formatBody = body => {
+  return body.trim();
+}
+
+export const getBodyError = body => {
+  const formattedBody = formatBody(body);
+  if(formattedBody.length === 0) {
+    return "You should provide a content to your post.";
+  } else if (formattedBody.length < MIN_NUM_OF_CHARACTERS_FOR_BODY) {
+    return `The post content should be minimum ${MIN_NUM_OF_CHARACTERS_FOR_BODY} characters long`;
+  } else {
+    return "";
+  }
+}
 
 export const getTitleError = title => {
   const formattedTitle = formatTitle(title);

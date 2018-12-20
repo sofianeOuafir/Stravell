@@ -1,7 +1,6 @@
 import React from "react";
 import Editor, { composeDecorators } from "draft-js-plugins-editor";
 import createUndoPlugin from "draft-js-undo-plugin";
-import createEmojiPlugin from "draft-js-emoji-plugin";
 import createImagePlugin from "draft-js-image-plugin";
 import createAlignmentPlugin from "draft-js-alignment-plugin";
 import createFocusPlugin from "draft-js-focus-plugin";
@@ -28,8 +27,6 @@ import createDragNDropUploadPlugin from './../lib/draft-js-drag-n-drop-upload-pl
 
 const inlineToolbarPlugin = createInlineToolbarPlugin();
 const linkPlugin = createLinkPlugin();
-const emojiPlugin = createEmojiPlugin();
-const { EmojiSuggestions, EmojiSelect } = emojiPlugin;
 const undoPlugin = createUndoPlugin();
 const alignmentPlugin = createAlignmentPlugin();
 const focusPlugin = createFocusPlugin();
@@ -69,7 +66,6 @@ const plugins = [
   linkifyPlugin,
   dragNDropFileUploadPlugin,
   undoPlugin,
-  emojiPlugin,
   imagePlugin,
   alignmentPlugin,
   focusPlugin,
@@ -88,7 +84,7 @@ class MyEditor extends React.Component {
 
   render() {
     return (
-      <div onClick={this.focus}>
+      <div onClick={this.focus} className={ !this.props.readOnly && "editor-container" } >
         <Editor
           plugins={plugins}
           {...this.props}
@@ -98,8 +94,6 @@ class MyEditor extends React.Component {
         />
         {!this.props.readOnly && (
           <div>
-            <EmojiSuggestions />
-            <EmojiSelect />
             <AlignmentTool />
             <InlineToolbar>
             {
@@ -123,7 +117,7 @@ class MyEditor extends React.Component {
           </div>
         )}
       </div>
-    );
+    )
   }
 }
 

@@ -38,6 +38,10 @@ button:disabled {
   align-items: center;
 }
 
+.justify-content--center {
+  justify-content: center;
+}
+
 .mr1 {
   margin-right: $s-size;
 }
@@ -46,8 +50,16 @@ button:disabled {
   margin-bottom: $s-size;
 }
 
+.mb2 {
+  margin-bottom: $m-size;
+}
+
 .mt1 {
   margin-top: $s-size;
+}
+
+.mt2 {
+  margin-top: $m-size;
 }
 
 .my1 {
@@ -58,10 +70,43 @@ button:disabled {
   margin: 0;
 }
 
+.ml3 {
+  margin-left: $l-size;
+}
+
+.pl1 {
+  padding-left: $s-size;
+}
+
+.pt2 {
+  padding-top: $m-size;
+}
+
+.py1 {
+  padding-top: $s-size;
+  padding-bottom: $s-size;
+}
+
 .no-text-decoration {
   text-decoration: none;
 }
 
-.c-dark-grey {
-  color: $dark-grey;
+.italic {
+  font-style: italic;
+}
+
+.relative {
+  position: relative;
+}
+
+.fullwidth {
+  width: 100%;
+}
+
+.halfwidth {
+  width: 50%;
+}
+
+.quarterwidth {
+  width: 25%;
 }
