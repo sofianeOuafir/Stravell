@@ -8,7 +8,7 @@ const postsReducer = (state = [], action) => {
         ...state
       ]
     case 'EDIT_POST':
-      return state.map((post) => {
+      return [...state.map((post) => {
         if(post.id === action.id){
           return {
             ...post,
@@ -17,9 +17,9 @@ const postsReducer = (state = [], action) => {
         }else {
           return post;
         }
-      })
+      })]
     case 'SET_POSTS': 
-      return action.posts
+      return [...action.posts]
     default:
       return state;
   }

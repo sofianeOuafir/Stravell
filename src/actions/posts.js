@@ -59,21 +59,24 @@ const setPosts = posts => ({
 
 const startSetPosts = () => {
   return dispatch => {
-    let posts = [];
-    return database
+    return new Promise((resolve, reject) => {
+      let posts = [];
+      database
       .ref("posts")
       .orderByChild("createdAt")
-      .once("value")
-      .then(snapshot => {
+      .on("value", snapshot => {
         snapshot.forEach(snapshotChild => {
           posts.push({
             id: snapshotChild.key,
             ...snapshotChild.val()
           });
         });
-        posts = posts.reverse()
+        posts = posts.reverse();
         dispatch(setPosts(posts));
+        resolve();
       });
+      
+    })
   };
 };
 
