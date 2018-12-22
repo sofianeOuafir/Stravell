@@ -1,10 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import PageHeader from "./PageHeader";
 
 const NotFoundPage = () => (
-  <div>
+  <PageHeader>
     404 - <Link to="/">Go home</Link>
-  </div>
+  </PageHeader>
 );
 
 export default NotFoundPage;
