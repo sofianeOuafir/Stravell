@@ -60,11 +60,11 @@ const setPosts = posts => ({
 const startSetPosts = () => {
   return dispatch => {
     return new Promise((resolve, reject) => {
-      let posts = [];
       database
       .ref("posts")
       .orderByChild("createdAt")
       .on("value", snapshot => {
+        let posts = [];
         snapshot.forEach(snapshotChild => {
           posts.push({
             id: snapshotChild.key,
