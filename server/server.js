@@ -6,8 +6,8 @@ const port = process.env.PORT || 3000;
 var enforce = require('express-sslify');
 var http = require('http');
 
-app.use(express.static(publicPath));
 app.use(enforce.HTTPS());
+app.use(express.static(publicPath));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
