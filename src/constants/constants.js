@@ -1,4 +1,4 @@
-export const APP_NAME = 'Astalavista';
+export const APP_NAME = 'Stravell';
 export const HOME_PAGE_TITLE = `${APP_NAME} | Home`;
 export const LOG_IN_PAGE_TITLE = `${APP_NAME} | Log In`;
 export const DASHBOARD_PAGE_TITLE = `${APP_NAME} | Dashboard`;
