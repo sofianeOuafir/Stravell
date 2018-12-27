@@ -4,6 +4,7 @@ const app = express();
 const publicPath = path.join(__dirname, '..', 'public');
 const port = process.env.PORT || 3000;
 var enforce = require('express-sslify');
+var http = require('http');
 
 app.use(express.static(publicPath));
 app.use(enforce.HTTPS());
@@ -12,6 +13,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
 });
 
-app.listen(port, () => {
-  console.log('Server is up!');
+http.createServer(app).listen(port, function() {
+  console.log('Express server listening on port ' + port);
 });
