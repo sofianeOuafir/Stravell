@@ -23,14 +23,6 @@ const startAddPost = (postData = {}) => {
     return database
       .ref("posts")
       .push(post)
-      .then(ref => {
-        dispatch(
-          addPost({
-            id: ref.key,
-            ...post
-          })
-        );
-      })
       .catch(e => console.log(e));
   };
 };
@@ -46,9 +38,6 @@ const startEditPost = ({ id, updates }) => {
     database
       .ref(`posts/${id}`)
       .update(updates)
-      .then(ref => {
-        dispatch(editPost({ id, updates }));
-      });
   };
 };
 
