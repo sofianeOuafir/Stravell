@@ -2168,10 +2168,6 @@ expand-range@^1.8.1:
   dependencies:
     fill-range "^2.1.0"
 
-express-sslify@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/express-sslify/-/express-sslify-1.2.0.tgz#30e84bceed1557eb187672bbe1430a0a2a100d9c"
-
 express@4.15.4, express@^4.13.3:
   version "4.15.4"
   resolved "https://registry.yarnpkg.com/express/-/express-4.15.4.tgz#032e2253489cf8fce02666beca3d11ed7a2daed1"
