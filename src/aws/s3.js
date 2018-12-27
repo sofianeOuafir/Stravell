@@ -9,7 +9,7 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 });
 
 const s3 = new AWS.S3({
-  params: {Bucket: 'astalavista-blog'}
+  params: {Bucket: process.env.S3_BUCKET_NAME}
 });
 
 export const uploadFile = (file) => {
