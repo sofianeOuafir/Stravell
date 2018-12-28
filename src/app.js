@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import configureStore from "./store/configureStore";
+import ReactGA from 'react-ga';
 import "./styles/styles.scss";
 import "normalize.css/normalize.css";
 import "draft-js/dist/Draft.css";
@@ -59,4 +60,10 @@ firebase.auth().onAuthStateChanged(user => {
       renderApp();
     }
   }).catch(() => {});
+});
+
+// initialize React Google Analytics and track page views
+ReactGA.initialize(process.env.GA_TRACKING_CODE);
+history.listen(location => {
+  ReactGA.pageview(location.pathname)
 });

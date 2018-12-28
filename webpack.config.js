@@ -58,7 +58,8 @@ module.exports = (env) => {
         'process.env.S3_IDENTITY_POOL_ID': JSON.stringify(process.env.S3_IDENTITY_POOL_ID),
         'process.env.S3_SECRET_ACCESS_KEY': JSON.stringify(process.env.S3_SECRET_ACCESS_KEY),
         'process.env.S3_ACCESS_KEY_ID': JSON.stringify(process.env.S3_ACCESS_KEY_ID),
-        'process.env.S3_BUCKET_NAME': JSON.stringify(process.env.S3_BUCKET_NAME)
+        'process.env.S3_BUCKET_NAME': JSON.stringify(process.env.S3_BUCKET_NAME),
+        'process.env.GA_TRACKING_CODE': JSON.stringify(process.env.GA_TRACKING_CODE)
       })
     ],
     devtool: isProduction ? 'source-map' : 'inline-source-map',
