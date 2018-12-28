@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 app.use(express.static(publicPath));
 
 app.get('*', (req, res) => {
-  if(req.get('host') === 'stravell.herokuapp.com'){
+  if(req.get('host') === 'stravell.herokuapp.com' || req.protocol === 'http'){
     res.redirect(301, 'https://stravell.com' + req.path)
     return;
   }
