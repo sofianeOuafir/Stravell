@@ -7,9 +7,14 @@ const port = process.env.PORT || 3000;
 app.use(express.static(publicPath));
 
 app.get('*', (req, res) => {
+  if(req.get('host') === 'stravell.herokuapp.com'){
+    res.redirect(301, 'https://stravell.com' + req.path)
+    return;
+  }
+  
   res.sendFile(path.join(publicPath, 'index.html'));
 });
 
 app.listen(port, () => {
-  console.log('Server is up!');
+  console.log('Server is up at: ' + port);
 });
