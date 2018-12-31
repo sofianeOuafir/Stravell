@@ -28,9 +28,7 @@ const ShowPostPage = ({ post }) => {
         </div>
         <span>{getDateFormat(post.createdAt)}</span>
       </PageHeader>
-      <div className="center">
-        <img src={`${post.image}`} alt="" className="almost-fullwidth"/>
-      </div>
+      <img src={`${post.image}`} alt="" className="fullwidth"/>
       <div className="content-container">
         <MyEditor readOnly={true} editorState={body} onChange={() => {}} />
       </div>
