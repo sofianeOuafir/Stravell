@@ -8,7 +8,7 @@ const addPost = post => ({
 const startAddPost = (postData = {}) => {
   return (dispatch, getState) => {
     const { uid, userName, userPhotoURL } = getState().auth;
-    const { title, body, description, image, createdAt, updatedAt } = postData;
+    const { title, body, description, image, createdAt, updatedAt, s3FolderName } = postData;
     const post = {
       uid,
       userName,
@@ -18,7 +18,8 @@ const startAddPost = (postData = {}) => {
       image,
       body,
       createdAt,
-      updatedAt
+      updatedAt, 
+      s3FolderName
     };
     return database
       .ref("posts")

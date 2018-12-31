@@ -12,10 +12,9 @@ const s3 = new AWS.S3({
   params: {Bucket: process.env.S3_BUCKET_NAME}
 });
 
-export const uploadFile = (file) => {
-	const albumName = 'pictures'
+export const uploadFile = ({ file, location }) => {
 	const { name: fileName } = file;
-  var albumPhotosKey = encodeURIComponent(albumName) + '/';
+  var albumPhotosKey = location + '/';
 	var photoKey = albumPhotosKey + fileName;
 	
 	return new Promise((resolve, reject) => {

@@ -2,6 +2,7 @@ import React from "react";
 import moment from "moment";
 import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
 import { FaCheck, FaTimes } from "react-icons/fa";
+import uuid from 'uuid';
 import MyEditor from "./MyEditor";
 import { uploadFile } from "./../aws/s3";
 import Loading from "./Loading";
@@ -28,6 +29,7 @@ class PostForm extends React.Component {
           )) ||
         EditorState.createEmpty(),
       createdAt: (props.post && moment(props.post.createdAt)) || moment(),
+      s3FolderName: (props.post && props.post.s3FolderName) || uuid(),
       updatedAt: moment(),
       titleError: "",
       descriptionError: "",
@@ -51,12 +53,12 @@ class PostForm extends React.Component {
   };
 
   onImageChange = e => {
-    const file = e.target.files[0];
+    const file = new File([e.target.files[0]], `main`, {type: e.target.files[0].type});
     if(!file) {
       return;
     }
     this.setState(() => ({ imageUploading: true }), () => {
-      uploadFile(file)
+      uploadFile({ file, location: `pictures/${this.state.s3FolderName}` })
         .then(({ Location }) => {
           this.setState(() => ({ image: Location, imageError: getImageError(Location), imageUploading: false }));
         })
@@ -92,7 +94,8 @@ class PostForm extends React.Component {
         image: this.state.image,
         body: JSON.stringify(convertToRaw(this.state.body.getCurrentContent())),
         createdAt: this.state.createdAt.valueOf(),
-        updatedAt: this.state.updatedAt.valueOf()
+        updatedAt: this.state.updatedAt.valueOf(),
+        s3FolderName: this.state.s3FolderName
       });
     } else {
       this.setState(() => ({
@@ -163,6 +166,7 @@ class PostForm extends React.Component {
             placeholder="Write your article here"
             editorState={this.state.body}
             onChange={this.onBodyChange}
+            s3FolderName={this.state.s3FolderName}
           />
         </div>
         <div>

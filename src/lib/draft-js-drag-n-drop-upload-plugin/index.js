@@ -6,7 +6,7 @@ export default ({handleUpload, addImage}) => {
         ref.setEditorState(addImage(ref.getEditorState(), Location));
       }, (err) => {
         alert(err);
-      });
+      }, ref.getProps());
     }
   }
 }

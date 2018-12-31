@@ -48,9 +48,9 @@ const decorator = composeDecorators(
 const imagePlugin = createImagePlugin({ decorator });
 
 const dragNDropFileUploadPlugin = createDragNDropUploadPlugin({
-  handleUpload: (files, success, failure) => {
+  handleUpload: (files, success, failure, editorProps) => {
     files.forEach(file => {
-      uploadFile(file).then((data) => {
+      uploadFile({ file, location: `pictures/${editorProps.s3FolderName}` }).then((data) => {
         success(data);
       }).catch((err) => {
         failure(err);
