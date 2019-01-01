@@ -8,7 +8,7 @@ import createResizeablePlugin from "draft-js-resizeable-plugin";
 import createBlockDndPlugin from "draft-js-drag-n-drop-plugin";
 import createLinkifyPlugin from 'draft-js-linkify-plugin';
 import createLinkPlugin from 'draft-js-anchor-plugin';
-import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
+import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
 import {
   ItalicButton,
   BoldButton,
@@ -25,7 +25,7 @@ import {
 import { uploadFile } from './../aws/s3';
 import createDragNDropUploadPlugin from './../lib/draft-js-drag-n-drop-upload-plugin/';
 
-const inlineToolbarPlugin = createInlineToolbarPlugin();
+const sideToolbarPlugin = createSideToolbarPlugin();
 const linkPlugin = createLinkPlugin();
 const undoPlugin = createUndoPlugin();
 const alignmentPlugin = createAlignmentPlugin();
@@ -34,7 +34,7 @@ const resizeablePlugin = createResizeablePlugin();
 const blockDndPlugin = createBlockDndPlugin();
 const linkifyPlugin = createLinkifyPlugin({ target: '_blank' });
 
-const { InlineToolbar } = inlineToolbarPlugin;
+const { SideToolbar } = sideToolbarPlugin;
 const { AlignmentTool } = alignmentPlugin;
 const { LinkButton } = linkPlugin;
 
@@ -61,7 +61,7 @@ const dragNDropFileUploadPlugin = createDragNDropUploadPlugin({
 });
 
 const plugins = [
-  inlineToolbarPlugin,
+  sideToolbarPlugin,
   linkPlugin,
   linkifyPlugin,
   dragNDropFileUploadPlugin,
@@ -95,7 +95,7 @@ class MyEditor extends React.Component {
         {!this.props.readOnly && (
           <div>
             <AlignmentTool />
-            <InlineToolbar>
+            <SideToolbar>
             {
               externalProps => (
                 <div>
@@ -113,7 +113,7 @@ class MyEditor extends React.Component {
                 </div>
               )
             }
-            </InlineToolbar>
+            </SideToolbar>
           </div>
         )}
       </div>
