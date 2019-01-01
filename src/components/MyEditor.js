@@ -9,6 +9,7 @@ import createBlockDndPlugin from "draft-js-drag-n-drop-plugin";
 import createLinkifyPlugin from 'draft-js-linkify-plugin';
 import createLinkPlugin from 'draft-js-anchor-plugin';
 import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
+import { FaImages } from 'react-icons/fa';
 import {
   ItalicButton,
   BoldButton,
@@ -76,18 +77,46 @@ const plugins = [
 class MyEditor extends React.Component {
   constructor(props) {
     super(props);
+    const { editorState, ...rest } = props;
+    this.state = {
+      editorState
+    };
+    this.rest = rest;
   }
 
   focus = () => {
     this.editor.focus();
   };
 
+  componentWillReceiveProps(newProps) {
+    this.setState({editorState: newProps.editorState});
+  }
+
+  triggerPopupForUpload = (e) => {
+    e.preventDefault();
+    document.getElementById('imageUploads').click();
+  }
+
+  uploadImage = (e) => {
+    const file = e.target.files[0];
+    uploadFile({ file, location: `pictures/${this.props.s3FolderName}` })
+    .then(({ Location }) => {
+      this.setState(() => ({ editorState: imagePlugin.addImage(this.state.editorState, Location) }));
+    })
+    .catch(err => {
+      alert(err);
+    });
+  }
+
   render() {
     return (
       <div onClick={this.focus} className={ !this.props.readOnly && "editor-container" } >
+        <input type="file" id="imageUploads" className="hide" onChange={this.uploadImage} />
         <Editor
           plugins={plugins}
-          {...this.props}
+          editorState={this.state.editorState}
+          {...this.rest}
+  
           ref={element => {
             this.editor = element;
           }}
@@ -110,6 +139,9 @@ class MyEditor extends React.Component {
                   <OrderedListButton {...externalProps} />
                   <UnorderedListButton {...externalProps} />
                   <BlockquoteButton {...externalProps} />
+                  <div className="draftJsToolbar__buttonWrapper__1Dmqh">
+                    <button className="draftJsToolbar__button__qi1gf" onClick={this.triggerPopupForUpload}><FaImages/></button>                  
+                  </div>
                 </div>
               )
             }
