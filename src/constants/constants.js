@@ -1,5 +1,5 @@
 export const APP_NAME = 'Stravell';
-export const HOME_PAGE_TITLE = `${APP_NAME} | Social Travel Blog`;
+export const HOME_PAGE_TITLE = `${APP_NAME} | Social Travel Blog For Any Travellers Who Wants To Share their Experience`;
 export const LOG_IN_PAGE_TITLE = `${APP_NAME} | Log In`;
 export const DASHBOARD_PAGE_TITLE = `${APP_NAME} | Dashboard`;
 export const APP_POST_PAGE_TITLE = `${APP_NAME} | Add Post`;
