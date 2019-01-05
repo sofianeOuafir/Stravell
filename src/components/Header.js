@@ -45,7 +45,7 @@ export const Header = ({
             </div>
           ) : (
             <Link className="button button--link" to="/login">
-              Login
+              Log in
             </Link>
           )}
         </div>
