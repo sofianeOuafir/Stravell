@@ -61,10 +61,10 @@ const dragNDropFileUploadPlugin = createDragNDropUploadPlugin({
   addImage: imagePlugin.addImage
 });
 
-const plugins = [
+export const plugins = [
   sideToolbarPlugin,
-  linkPlugin,
   linkifyPlugin,
+  linkPlugin,
   dragNDropFileUploadPlugin,
   undoPlugin,
   imagePlugin,
