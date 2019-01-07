@@ -1,4 +1,6 @@
 import { titleize, capitalize } from "underscore.string";
+import validator from 'validator';
+
 import {
   MIN_NUM_OF_CHARACTERS_FOR_TITLE,
   MAX_NUM_OF_CHARACTERS_FOR_TITLE,
@@ -63,5 +65,13 @@ export const getImageError = imageUrl => {
   }
 
   return "";
+};
+
+export const getProvidedURLError = providedURL => {
+  if(validator.isURL(providedURL, { require_protocol: true })){
+    return "";
+  }
+
+  return "The URL format provided is not correct (should be in format http://www.google.com)";
 }
 

@@ -8,7 +8,17 @@ const addPost = post => ({
 const startAddPost = (postData = {}) => {
   return (dispatch, getState) => {
     const { uid, userName, userPhotoURL } = getState().auth;
-    const { title, body, description, image, createdAt, updatedAt, s3FolderName } = postData;
+    const {
+      title,
+      body,
+      description,
+      image,
+      createdAt,
+      updatedAt,
+      s3FolderName,
+      providedURL,
+      provideURL
+    } = postData;
     const post = {
       uid,
       userName,
@@ -18,8 +28,10 @@ const startAddPost = (postData = {}) => {
       image,
       body,
       createdAt,
-      updatedAt, 
-      s3FolderName
+      updatedAt,
+      s3FolderName,
+      providedURL,
+      provideURL
     };
     return database
       .ref("posts")
@@ -36,9 +48,7 @@ const editPost = ({ id, updates }) => ({
 
 const startEditPost = ({ id, updates }) => {
   return dispatch => {
-    database
-      .ref(`posts/${id}`)
-      .update(updates)
+    database.ref(`posts/${id}`).update(updates);
   };
 };
 
@@ -51,22 +61,21 @@ const startSetPosts = () => {
   return dispatch => {
     return new Promise((resolve, reject) => {
       database
-      .ref("posts")
-      .orderByChild("createdAt")
-      .on("value", snapshot => {
-        let posts = [];
-        snapshot.forEach(snapshotChild => {
-          posts.push({
-            id: snapshotChild.key,
-            ...snapshotChild.val()
+        .ref("posts")
+        .orderByChild("createdAt")
+        .on("value", snapshot => {
+          let posts = [];
+          snapshot.forEach(snapshotChild => {
+            posts.push({
+              id: snapshotChild.key,
+              ...snapshotChild.val()
+            });
           });
+          posts = posts.reverse();
+          dispatch(setPosts(posts));
+          resolve();
         });
-        posts = posts.reverse();
-        dispatch(setPosts(posts));
-        resolve();
-      });
-      
-    })
+    });
   };
 };
 
