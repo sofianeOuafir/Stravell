@@ -54,6 +54,10 @@ button:disabled {
   margin-bottom: $m-size;
 }
 
+.mb3 {
+  margin-bottom: $m-size;
+}
+
 .mt1 {
   margin-top: $s-size;
 }
@@ -85,6 +89,10 @@ button:disabled {
 .py1 {
   padding-top: $s-size;
   padding-bottom: $s-size;
+}
+
+.pb3 {
+  padding-bottom: $l-size;
 }
 
 .no-text-decoration {

@@ -145,7 +145,7 @@ class PostForm extends React.Component {
 
   render() {
     return (
-      <form className="form" onSubmit={this.onSubmit}>
+      <form className="form mb3 pb3" onSubmit={this.onSubmit}>
         <div className="form__input-container">
           {this.getValidationIcon(this.state.titleError)}
           <input
