@@ -14,6 +14,7 @@ export default (WrappedComponent, { title }) => {
         <div>
           <Helmet>
             <title>{title}</title>
+            <meta name="description" content={title} />
           </Helmet>
           <WrappedComponent {...this.props} />
         </div>
