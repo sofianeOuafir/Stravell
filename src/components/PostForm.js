@@ -198,7 +198,7 @@ class PostForm extends React.Component {
             )}
           </div>
         </div>
-        <div className="form__input-container">
+        <div>
           <p>What do you want to do today?</p>
           <Checkbox
             handleChange={this.onProvideURLChange}

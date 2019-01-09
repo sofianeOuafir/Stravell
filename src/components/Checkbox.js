@@ -9,6 +9,7 @@ class Checkbox extends React.Component {
     return (
       <div>
         <input
+          className="mr1"
           onChange={this.props.handleChange}
           type="checkbox"
           checked={this.props.checked}
