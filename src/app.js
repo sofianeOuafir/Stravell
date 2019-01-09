@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import configureStore from "./store/configureStore";
 import ReactGA from 'react-ga';
-import stringQuery from 'stringquery';
+import qs from 'query-string';
 import "./styles/styles.scss";
 import "normalize.css/normalize.css";
 import "draft-js/dist/Draft.css";
@@ -70,7 +70,7 @@ history.listen(location => {
   ReactGA.pageview(location.pathname)
 });
 
-const queryStringObject = stringQuery(history.location.search);
+const queryStringObject = qs.parse(history.location.search);
 const searchQuery = queryStringObject.s;
 if(searchQuery) {
   store.dispatch(setTextFilter(searchQuery));
