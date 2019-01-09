@@ -24,25 +24,38 @@ const {
   APP_POST_PAGE_TITLE,
   EDIT_POST_PAGE_TITLE,
   NOT_FOUND_PAGE_TITLE,
-  USER_WALL_PAGE_TITLE
+  USER_WALL_PAGE_TITLE,
+
+  HOME_PAGE_DESCRIPTION,
+  LOG_IN_PAGE_DESCRIPTION,
+  DASHBOARD_PAGE_DESCRIPTION,
+  APP_POST_PAGE_DESCRIPTION,
+  EDIT_POST_PAGE_DESCRIPTION,
+  NOT_FOUND_PAGE_DESCRIPTION,
+  USER_WALL_PAGE_DESCRIPTION
 } = Constants;
 
-const HomePageWithTitle = withTitle(HomePage, { title: HOME_PAGE_TITLE });
-const LoginPageWithTitle = withTitle(LoginPage, { title: LOG_IN_PAGE_TITLE });
+const HomePageWithTitle = withTitle(HomePage, { title: HOME_PAGE_TITLE, description: HOME_PAGE_DESCRIPTION });
+const LoginPageWithTitle = withTitle(LoginPage, { title: LOG_IN_PAGE_TITLE, description: LOG_IN_PAGE_DESCRIPTION });
 const DashboardPageWithTitle = withTitle(DashboardPage, {
-  title: DASHBOARD_PAGE_TITLE
+  title: DASHBOARD_PAGE_TITLE,
+  description: DASHBOARD_PAGE_DESCRIPTION
 });
 const AddPostPageWithTitle = withTitle(AddPostPage, {
-  title: APP_POST_PAGE_TITLE
+  title: APP_POST_PAGE_TITLE,
+  description: APP_POST_PAGE_DESCRIPTION
 });
 const EditPostPageWithTitle = withTitle(EditPostPage, {
-  title: EDIT_POST_PAGE_TITLE
+  title: EDIT_POST_PAGE_TITLE,
+  description: EDIT_POST_PAGE_DESCRIPTION
 });
 const NotFoundPageWithTitle = withTitle(NotFoundPage, {
-  title: NOT_FOUND_PAGE_TITLE
+  title: NOT_FOUND_PAGE_TITLE,
+  description: NOT_FOUND_PAGE_DESCRIPTION
 });
 const UserWallPageWithTitle = withTitle(UserWallPage, {
-  title: USER_WALL_PAGE_TITLE
+  title: USER_WALL_PAGE_TITLE,
+  description: USER_WALL_PAGE_DESCRIPTION
 });
 
 const AppRouter = props => (

@@ -30,7 +30,7 @@ const ShowPostPage = ({ post }) => {
     <div>
       <Helmet>
         <title>{`${post.title}`}</title>
-        <meta name="description" content={post.title} />
+        <meta name="description" content={post.description} />
       </Helmet>
       <PageHeader>
         <h1 className="favourite-font-weight m0">{post.title}</h1>
