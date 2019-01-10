@@ -209,7 +209,7 @@ class PostForm extends React.Component {
             handleChange={this.onProvideURLChange}
             checked={this.state.provideURL}
             label="I want to provide an URL for this post (users will be redirected
-                            to the provided URL)."
+                            to the provided URL). "
           />
         </div>
         {
