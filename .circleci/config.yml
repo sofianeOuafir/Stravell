@@ -13,13 +13,6 @@ jobs:
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
-        environment: 
-          FIREBASE_API_KEY=AIzaSyDBUdRiuUha2QWFCIqqNUPVzEm8e24w76I
-          FIREBASE_AUTH_DOMAIN=stravell-test.firebaseapp.com
-          FIREBASE_DATABASE_URL=https://stravell-test.firebaseio.com
-          FIREBASE_PROJECT_ID=stravell-test
-          FIREBASE_STORAGE_BUCKET=stravell-test.appspot.com
-          FIREBASE_MESSAGING_SENDER_ID=297743888022
 
     working_directory: ~/repo
 
