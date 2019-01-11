@@ -17,6 +17,7 @@ exports[`should correctly render LoginPage 1`] = `
     </p>
     <button
       className="button mb1 button--warm-peach"
+      id="googleLoginButton"
     >
       Log in with Google
     </button>

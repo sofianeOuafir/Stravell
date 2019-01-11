@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import FilterablePostList from "./FilterablePostList";
 import PageHeader from "./PageHeader";
 
-const DashboardPage = props => {
+export const DashboardPage = props => {
   return (
     <div>
       <PageHeader title="Dashboard" />

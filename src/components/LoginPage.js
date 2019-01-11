@@ -8,7 +8,7 @@ export const LoginPage = ({ startLogin, startFacebookLogin }) => (
     <div className="box-layout__box">
       <h1 className="box-layout__title favourite-font-weight">{ APP_NAME }</h1>
       <p>{ SLOGAN }</p>
-      <button className="button mb1 button--warm-peach" onClick={startLogin}>Log in with Google</button>
+      <button id="googleLoginButton" className="button mb1 button--warm-peach" onClick={startLogin}>Log in with Google</button>
       <button className="button button--warm-peach" onClick={startFacebookLogin}>Log in with Facebook</button>
     </div>
   </div>

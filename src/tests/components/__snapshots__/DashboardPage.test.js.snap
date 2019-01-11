@@ -2,6 +2,24 @@
 
 exports[`should render DashboardPage correctly 1`] = `
 <div>
-  Dashboard page content
+  <PageHeader
+    title="Dashboard"
+  />
+  <div
+    className="content-container"
+  >
+    <Link
+      className="button button--with-bottom-margin"
+      replace={false}
+      to="posts/create"
+    >
+      Create Post
+    </Link>
+    <Connect(FilterablePostList)
+      SearchBarAutoFocus={true}
+      editable={true}
+      noPostText="The world is looking forward to hear about your stories! :)"
+    />
+  </div>
 </div>
 `;
