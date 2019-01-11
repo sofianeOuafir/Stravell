@@ -32,13 +32,13 @@ export const Header = ({
                 <Avatar round={true} size="40" src={userPhotoURL} />
               </Link>
               <DropdownMenu title={userName}>
-                <button onClick={redirectToCreatePost}>
+                <button id="createButton" onClick={redirectToCreatePost}>
                   <IoMdCreate className="header__dropdown-menu-icon" /> Create Post
                 </button>
-                <button onClick={redirectToDashboard}>
+                <button id="dashboardButton" onClick={redirectToDashboard}>
                   <IoIosHome className="header__dropdown-menu-icon" /> Dashboard
                 </button>
-                <button onClick={startLogout}>
+                <button id="logOutButton" onClick={startLogout}>
                   <IoIosPower className="header__dropdown-menu-icon" /> Log Out
                 </button>
               </DropdownMenu>
@@ -60,11 +60,11 @@ const mapDispatchToProps = dispatch => ({
   redirectToCreatePost: () => history.push("/posts/create")
 });
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ auth }) => {
   return {
-    isAuthenticated: !!state.auth.uid,
-    userName: state.auth.userName,
-    userPhotoURL: state.auth.userPhotoURL
+    isAuthenticated: !!auth.uid,
+    userName: auth.userName,
+    userPhotoURL: auth.userPhotoURL
   };
 };
 

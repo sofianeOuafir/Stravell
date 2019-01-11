@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render Header correctly 1`] = `
+exports[`A user is authenticated should render Header correctly 1`] = `
 <header
   className="header"
 >
@@ -16,16 +16,94 @@ exports[`should render Header correctly 1`] = `
         to="/"
       >
         <h1>
-          Blog
+          Stravell
         </h1>
       </Link>
-      <Link
-        className="button button--link"
-        replace={false}
-        to="/login"
+      <div
+        className="header__right"
       >
-        Login
+        <div
+          className="header__right"
+        >
+          <Link
+            className="header__user-photo show-for-desktop"
+            replace={false}
+            to="/dashboard"
+          >
+            <withAvatarConfig
+              round={true}
+              size="40"
+              src="myPhotoURL"
+            />
+          </Link>
+          <DropDownMenu
+            title="Sofiane"
+          >
+            <button
+              id="createButton"
+              onClick={[Function]}
+            >
+              <IoMdCreate
+                className="header__dropdown-menu-icon"
+              />
+               Create Post
+            </button>
+            <button
+              id="dashboardButton"
+              onClick={[Function]}
+            >
+              <IoIosHome
+                className="header__dropdown-menu-icon"
+              />
+               Dashboard
+            </button>
+            <button
+              id="logOutButton"
+              onClick={[Function]}
+            >
+              <IoIosPower
+                className="header__dropdown-menu-icon"
+              />
+               Log Out
+            </button>
+          </DropDownMenu>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+`;
+
+exports[`There is no user authenticated should render Header correctly 1`] = `
+<header
+  className="header"
+>
+  <div
+    className="content-container"
+  >
+    <div
+      className="header__content"
+    >
+      <Link
+        className="header__title"
+        replace={false}
+        to="/"
+      >
+        <h1>
+          Stravell
+        </h1>
       </Link>
+      <div
+        className="header__right"
+      >
+        <Link
+          className="button button--link"
+          replace={false}
+          to="/login"
+        >
+          Log in
+        </Link>
+      </div>
     </div>
   </div>
 </header>
