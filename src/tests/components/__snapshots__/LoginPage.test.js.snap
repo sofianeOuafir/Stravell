@@ -8,17 +8,22 @@ exports[`should correctly render LoginPage 1`] = `
     className="box-layout__box"
   >
     <h1
-      className="box-layout__title"
+      className="box-layout__title favourite-font-weight"
     >
-      Blog
+      Stravell
     </h1>
     <p>
-      Blog your life.
+      Let's explore the world together.
     </p>
     <button
-      className="button"
+      className="button mb1 button--warm-peach"
     >
-      Login with Google
+      Log in with Google
+    </button>
+    <button
+      className="button button--warm-peach"
+    >
+      Log in with Facebook
     </button>
   </div>
 </div>
