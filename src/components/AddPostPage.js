@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { startAddPost } from "../actions/posts";
 import PageHeader from './PageHeader';
 
-class AddPostPage extends React.Component {
+export class AddPostPage extends React.Component {
   onSubmit = post => {
     this.props.startAddPost(post);
     this.props.history.push("/dashboard");

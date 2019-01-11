@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import FilterablePostList from "./FilterablePostList";
 import PageHeader from "./PageHeader";
+import { NO_ELEMENT_POST_LIST_DASHBOARD_TEXT } from './../constants/constants';
 
 export const DashboardPage = props => {
   return (
@@ -16,7 +17,7 @@ export const DashboardPage = props => {
           editable={true}
           SearchBarAutoFocus={true}
           posts={props.posts}
-          noPostText={`The world is looking forward to hear about your stories! :)`}
+          noPostText={NO_ELEMENT_POST_LIST_DASHBOARD_TEXT}
         />
       </div>
     </div>
@@ -24,8 +25,7 @@ export const DashboardPage = props => {
 };
 
 const mapStateToProps = ({ posts, auth }) => ({
-  posts: posts.filter(post => post.uid === auth.uid),
-  userName: auth.userName
+  posts: posts.filter(post => post.uid === auth.uid)
 });
 
 export default connect(mapStateToProps)(DashboardPage);

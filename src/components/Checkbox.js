@@ -1,26 +1,21 @@
 import React from "react";
-import uuid from 'uuid';
-class Checkbox extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+import uuid from "uuid";
 
-  render() {
-    const id = uuid();
-    return (
-      <div>
-        <input
-          id={id}
-          name={id}
-          className="mr1"
-          onChange={this.props.handleChange}
-          type="checkbox"
-          checked={this.props.checked}
-        />
-        <label htmlFor={id}>{ this.props.label }</label>
-      </div>
-    );
-  }
-}
+export const Checkbox = ({ handleChange, checked, label }) => {
+  const id = uuid();
+  return (
+    <div>
+      <input
+        id={id}
+        name={id}
+        className="mr1"
+        onChange={handleChange}
+        type="checkbox"
+        checked={checked}
+      />
+      <label htmlFor={id}>{label}</label>
+    </div>
+  );
+};
 
 export default Checkbox;

@@ -1,6 +1,6 @@
 import React from "react";
 
-class DropDownMenu extends React.Component {
+export class DropDownMenu extends React.Component {
   constructor(props) {
     super(props);
 

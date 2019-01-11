@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`checked props is false should render correctly 1`] = `
+<div>
+  <input
+    checked={false}
+    className="mr1"
+    id="abc123"
+    name="abc123"
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <label
+    htmlFor="abc123"
+  >
+    My checkbox
+  </label>
+</div>
+`;
+
+exports[`checked props is true should render correctly 1`] = `
+<div>
+  <input
+    checked={true}
+    className="mr1"
+    id="abc123"
+    name="abc123"
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <label
+    htmlFor="abc123"
+  >
+    My checkbox
+  </label>
+</div>
+`;
