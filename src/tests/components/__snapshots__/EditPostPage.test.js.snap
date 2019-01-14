@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<div>
+  <PageHeader
+    title="Edit Post"
+  />
+  <div
+    className="content-container"
+  >
+    <PostForm
+      onSubmit={[Function]}
+      post={
+        Object {
+          "id": 1,
+        }
+      }
+    />
+  </div>
+</div>
+`;

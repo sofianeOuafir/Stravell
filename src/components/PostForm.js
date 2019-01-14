@@ -252,4 +252,5 @@ class PostForm extends React.Component {
   }
 }
 
+export { PostForm };
 export default PostForm;

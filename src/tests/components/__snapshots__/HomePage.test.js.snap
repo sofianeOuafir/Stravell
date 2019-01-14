@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A userName prop is provided should render correctly 1`] = `
+<div>
+  <PageHeader
+    title="Welcome, Sofiane"
+  />
+  <div
+    className="content-container"
+  >
+    <Connect(FilterablePostList)
+      SearchBarAutoFocus={true}
+      noPostText="Become a legend by being the very first person to publish a post in here!"
+      posts={Array []}
+    />
+  </div>
+</div>
+`;
+
+exports[`no username prop is provided should render correctly 1`] = `
+<div>
+  <PageHeader
+    title="Welcome"
+  />
+  <div
+    className="content-container"
+  >
+    <Connect(FilterablePostList)
+      SearchBarAutoFocus={true}
+      noPostText="Become a legend by being the very first person to publish a post in here!"
+      posts={Array []}
+    />
+  </div>
+</div>
+`;

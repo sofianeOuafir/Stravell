@@ -4,10 +4,11 @@ import { connect } from "react-redux";
 import { startEditPost } from '../actions/posts';
 import PageHeader from './PageHeader';
 
-class EditPostPage extends React.Component {
+export class EditPostPage extends React.Component {
   constructor(props) {
     super(props);
   }
+
   onSubmit = (post) => {
     this.props.startEditPost({
       id: this.props.post.id, 

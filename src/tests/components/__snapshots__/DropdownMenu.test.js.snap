@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly with default values 1`] = `
+<div
+  className="dropdown-menu"
+>
+  <button
+    className="foobar"
+    onClick={[Function]}
+  >
+    Foo
+  </button>
+</div>
+`;
+
+exports[`should set the component state to be showMenu = true when the main button get clicked 1`] = `
+<div
+  className="dropdown-menu"
+>
+  <button
+    className="foobar"
+    onClick={[Function]}
+  >
+    Foo
+  </button>
+  <div
+    className="dropdown-menu__content"
+  >
+    <button>
+      Bar
+    </button>
+  </div>
+</div>
+`;

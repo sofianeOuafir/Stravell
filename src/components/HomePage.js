@@ -2,17 +2,18 @@ import React from "react";
 import { connect } from "react-redux";
 import FilterablePostList from "../components/FilterablePostList";
 import PageHeader from "./PageHeader";
+import { NO_ELEMENT_POST_LIST_HOME_PAGE_TEXT } from './../constants/constants'
 
-const HomePage = props => (
+export const HomePage = ({ userName, posts }) => (
   <div>
     <PageHeader
-      title={`Welcome${props.userName ? `, ${props.userName}` : ""} :)`}
+      title={`Welcome${userName ? `, ${userName}` : ""}`}
     />
     <div className="content-container">
       <FilterablePostList
         SearchBarAutoFocus={true}
-        posts={props.posts}
-        noPostText={`Become a legend by being the very first person to publish a post in here! :)`}
+        posts={posts}
+        noPostText={NO_ELEMENT_POST_LIST_HOME_PAGE_TEXT}
       />
     </div>
   </div>

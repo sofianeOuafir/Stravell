@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 import PostList from "./PostList";
 import { getVisiblePosts } from "./../selectors/posts";
 
-class FilterablePostList extends React.Component {
+export class FilterablePostList extends React.Component {
   constructor(props) {
     super(props);
   }
