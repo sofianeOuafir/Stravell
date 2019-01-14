@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<Link
+  className="no-text-decoration c-dark-grey"
+  replace={false}
+  to="/users/1pUNibuDtBPmdsBPpAqlNEZYc9r2"
+>
+  <withAvatarConfig
+    className="mr1"
+    round={true}
+    size={40}
+    src="https://graph.facebook.com/2307269322671171/picture"
+  />
+  Samia Ouafir
+</Link>
+`;

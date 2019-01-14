@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the component is rendered with a children prop should render correctly 1`] = `
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <p>
+      My amazing children
+    </p>
+  </div>
+</div>
+`;
+
+exports[`the component is rendered with a title prop should render correctly 1`] = `
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <h1
+      className="page-header__title"
+    >
+      My amazing title
+    </h1>
+  </div>
+</div>
+`;

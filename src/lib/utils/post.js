@@ -6,7 +6,8 @@ import {
   MAX_NUM_OF_CHARACTERS_FOR_TITLE,
   MIN_NUM_OF_CHARACTERS_FOR_DESCRIPTION,
   MAX_NUM_OF_CHARACTERS_FOR_DESCRIPTION,
-  MIN_NUM_OF_CHARACTERS_FOR_BODY
+  MIN_NUM_OF_CHARACTERS_FOR_BODY,
+  DESCRIPTION_TOO_SHORT_ERROR
 } from "./../../constants/constants";
 
 export const formatTitle = title => {
@@ -50,7 +51,7 @@ export const getDescriptionError = description => {
   if (formattedDescription.length === 0) {
     return "You should provide a description";
   } else if (formattedDescription.length < MIN_NUM_OF_CHARACTERS_FOR_DESCRIPTION) {
-    return `Description should be minimum ${MIN_NUM_OF_CHARACTERS_FOR_DESCRIPTION} characters long`;
+    return DESCRIPTION_TOO_SHORT_ERROR;
   } else if (formattedDescription.length > MAX_NUM_OF_CHARACTERS_FOR_DESCRIPTION) {
     return `Title should be maximum ${MAX_NUM_OF_CHARACTERS_FOR_DESCRIPTION} characters long`;
   } else {

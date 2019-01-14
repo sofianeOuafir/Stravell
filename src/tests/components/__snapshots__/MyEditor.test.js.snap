@@ -1,0 +1,185 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`editor is not read only should render correctly 1`] = `
+<div
+  className="editor-container"
+  onClick={[Function]}
+>
+  <input
+    className="hide"
+    id="imageUploads"
+    onChange={[Function]}
+    type="file"
+  />
+  <PluginEditor
+    customStyleMap={Object {}}
+    decorators={Array []}
+    defaultBlockRenderMap={true}
+    defaultKeyBindings={true}
+    defaultKeyCommands={true}
+    editorState={Object {}}
+    onChange={[Function]}
+    plugins={
+      Array [
+        Object {
+          "SideToolbar": [Function],
+          "initialize": [Function],
+          "onChange": [Function],
+        },
+        Object {
+          "decorators": Array [
+            Object {
+              "component": [Function],
+              "strategy": [Function],
+            },
+          ],
+        },
+        Object {
+          "LinkButton": [Function],
+          "decorators": Array [
+            Object {
+              "component": [Function],
+              "matchesEntityType": [Function],
+              "strategy": [Function],
+            },
+          ],
+          "initialize": [Function],
+        },
+        Object {
+          "handleDroppedFiles": [Function],
+        },
+        Object {
+          "RedoButton": [Function],
+          "UndoButton": [Function],
+          "initialize": [Function],
+        },
+        Object {
+          "addImage": [Function],
+          "blockRendererFn": [Function],
+        },
+        Object {
+          "AlignmentTool": [Function],
+          "blockRendererFn": [Function],
+          "decorator": [Function],
+          "initialize": [Function],
+        },
+        Object {
+          "blockRendererFn": [Function],
+          "decorator": [Function],
+          "handleKeyCommand": [Function],
+          "handleReturn": [Function],
+          "keyBindingFn": [Function],
+          "onChange": [Function],
+          "onDownArrow": [Function],
+          "onUpArrow": [Function],
+        },
+        Object {
+          "blockRendererFn": [Function],
+          "decorator": [Function],
+          "initialize": [Function],
+        },
+        Object {
+          "decorator": [Function],
+          "handleDrop": [Function],
+          "initialize": [Function],
+        },
+      ]
+    }
+    readOnly={false}
+  />
+  <div>
+    <Decorated(AlignmentTool) />
+    <Decorated(Toolbar) />
+  </div>
+</div>
+`;
+
+exports[`editor is read only should render correctly 1`] = `
+<div
+  className={false}
+  onClick={[Function]}
+>
+  <input
+    className="hide"
+    id="imageUploads"
+    onChange={[Function]}
+    type="file"
+  />
+  <PluginEditor
+    customStyleMap={Object {}}
+    decorators={Array []}
+    defaultBlockRenderMap={true}
+    defaultKeyBindings={true}
+    defaultKeyCommands={true}
+    editorState={Object {}}
+    onChange={[Function]}
+    plugins={
+      Array [
+        Object {
+          "SideToolbar": [Function],
+          "initialize": [Function],
+          "onChange": [Function],
+        },
+        Object {
+          "decorators": Array [
+            Object {
+              "component": [Function],
+              "strategy": [Function],
+            },
+          ],
+        },
+        Object {
+          "LinkButton": [Function],
+          "decorators": Array [
+            Object {
+              "component": [Function],
+              "matchesEntityType": [Function],
+              "strategy": [Function],
+            },
+          ],
+          "initialize": [Function],
+        },
+        Object {
+          "handleDroppedFiles": [Function],
+        },
+        Object {
+          "RedoButton": [Function],
+          "UndoButton": [Function],
+          "initialize": [Function],
+        },
+        Object {
+          "addImage": [Function],
+          "blockRendererFn": [Function],
+        },
+        Object {
+          "AlignmentTool": [Function],
+          "blockRendererFn": [Function],
+          "decorator": [Function],
+          "initialize": [Function],
+        },
+        Object {
+          "blockRendererFn": [Function],
+          "decorator": [Function],
+          "handleKeyCommand": [Function],
+          "handleReturn": [Function],
+          "keyBindingFn": [Function],
+          "onChange": [Function],
+          "onDownArrow": [Function],
+          "onUpArrow": [Function],
+        },
+        Object {
+          "blockRendererFn": [Function],
+          "decorator": [Function],
+          "initialize": [Function],
+        },
+        Object {
+          "decorator": [Function],
+          "handleDrop": [Function],
+          "initialize": [Function],
+        },
+      ]
+    }
+    readOnly={true}
+  />
+</div>
+`;

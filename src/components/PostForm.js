@@ -47,7 +47,7 @@ class PostForm extends React.Component {
   onDescriptionChange = e => {
     const description = e.target.value;
     this.setState(() => ({
-      description: description,
+      description,
       descriptionError: getDescriptionError(description)
     }));
   };
@@ -163,6 +163,7 @@ class PostForm extends React.Component {
         <div className="form__input-container">
           {this.getValidationIcon(this.state.descriptionError)}
           <input
+            id="descriptionInput"
             placeholder="Write a small description here"
             className="text-input"
             type="text"

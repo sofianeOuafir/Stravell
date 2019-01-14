@@ -21,6 +21,8 @@ export const MIN_NUM_OF_CHARACTERS_FOR_DESCRIPTION = 5;
 export const MAX_NUM_OF_CHARACTERS_FOR_DESCRIPTION = 180;
 export const MIN_NUM_OF_CHARACTERS_FOR_BODY = 100;
 
+export const DESCRIPTION_TOO_SHORT_ERROR = `Description should be minimum ${MIN_NUM_OF_CHARACTERS_FOR_DESCRIPTION} characters long`;
+
 export const SLOGAN = "Let's explore the world together."
 
 export const NO_ELEMENT_POST_LIST_DASHBOARD_TEXT = 'The world is looking forward to hear about your stories!';

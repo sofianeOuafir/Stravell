@@ -23,6 +23,7 @@ exports[`should correctly render LoginPage 1`] = `
     </button>
     <button
       className="button button--warm-peach"
+      id="facebookLoginButton"
     >
       Log in with Facebook
     </button>
