@@ -14,6 +14,7 @@ exports[`post - description the description is changing should render correctly 
     <input
       autoFocus={true}
       className="text-input"
+      id="titleInput"
       onChange={[Function]}
       placeholder="Write a title here"
       type="text"
@@ -44,6 +45,100 @@ exports[`post - description the description is changing should render correctly 
     <input
       accept="image/*"
       className="text-input"
+      id="imageInput"
+      onChange={[Function]}
+      type="file"
+    />
+    <div
+      className="quarterwidth flex align-items--center justify-content--center mt2"
+    />
+  </div>
+  <div>
+    <p>
+      What do you want to do today?
+    </p>
+    <Checkbox
+      checked={true}
+      handleChange={[Function]}
+      label="I want to write the content of the post."
+    />
+    <Checkbox
+      checked={false}
+      handleChange={[Function]}
+      label="I want to provide an URL for this post (users will be redirected to the provided URL). "
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <MyEditor
+      editorState={Object {}}
+      onChange={[Function]}
+      placeholder="Write your article here"
+      s3FolderName="abc123"
+    />
+  </div>
+  <div>
+    <button
+      className="button"
+    >
+      Save Post
+    </button>
+  </div>
+</form>
+`;
+
+exports[`post - description the description is too long should render correctly 1`] = `
+<form
+  className="form mb3 pb3"
+  onSubmit={[Function]}
+>
+  <div
+    className="form__input-container"
+  >
+    <FaCheck
+      className="icon c-limegreen"
+    />
+    <input
+      autoFocus={true}
+      className="text-input"
+      id="titleInput"
+      onChange={[Function]}
+      placeholder="Write a title here"
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <FaTimes
+      className="icon c-warm-peach"
+    />
+    <input
+      className="text-input"
+      id="descriptionInput"
+      onChange={[Function]}
+      placeholder="Write a small description here"
+      type="text"
+      value="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    />
+    <p
+      className="error"
+    >
+      Description should be maximum 180 characters long
+    </p>
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <FaCheck
+      className="icon c-limegreen"
+    />
+    <input
+      accept="image/*"
+      className="text-input"
+      id="imageInput"
       onChange={[Function]}
       type="file"
     />
@@ -100,6 +195,7 @@ exports[`post - description the description is too short should render correctly
     <input
       autoFocus={true}
       className="text-input"
+      id="titleInput"
       onChange={[Function]}
       placeholder="Write a title here"
       type="text"
@@ -135,6 +231,559 @@ exports[`post - description the description is too short should render correctly
     <input
       accept="image/*"
       className="text-input"
+      id="imageInput"
+      onChange={[Function]}
+      type="file"
+    />
+    <div
+      className="quarterwidth flex align-items--center justify-content--center mt2"
+    />
+  </div>
+  <div>
+    <p>
+      What do you want to do today?
+    </p>
+    <Checkbox
+      checked={true}
+      handleChange={[Function]}
+      label="I want to write the content of the post."
+    />
+    <Checkbox
+      checked={false}
+      handleChange={[Function]}
+      label="I want to provide an URL for this post (users will be redirected to the provided URL). "
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <MyEditor
+      editorState={Object {}}
+      onChange={[Function]}
+      placeholder="Write your article here"
+      s3FolderName="abc123"
+    />
+  </div>
+  <div>
+    <button
+      className="button"
+    >
+      Save Post
+    </button>
+  </div>
+</form>
+`;
+
+exports[`post - image An error occur when the image get uploaded should render correctly 1`] = `
+<form
+  className="form mb3 pb3"
+  onSubmit={[Function]}
+>
+  <div
+    className="form__input-container"
+  >
+    <FaCheck
+      className="icon c-limegreen"
+    />
+    <input
+      autoFocus={true}
+      className="text-input"
+      id="titleInput"
+      onChange={[Function]}
+      placeholder="Write a title here"
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <FaCheck
+      className="icon c-limegreen"
+    />
+    <input
+      className="text-input"
+      id="descriptionInput"
+      onChange={[Function]}
+      placeholder="Write a small description here"
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <FaCheck
+      className="icon c-limegreen"
+    />
+    <input
+      accept="image/*"
+      className="text-input"
+      id="imageInput"
+      onChange={[Function]}
+      type="file"
+    />
+    <div
+      className="quarterwidth flex align-items--center justify-content--center mt2"
+    >
+      <LoadingPage
+        size="small"
+      />
+    </div>
+  </div>
+  <div>
+    <p>
+      What do you want to do today?
+    </p>
+    <Checkbox
+      checked={true}
+      handleChange={[Function]}
+      label="I want to write the content of the post."
+    />
+    <Checkbox
+      checked={false}
+      handleChange={[Function]}
+      label="I want to provide an URL for this post (users will be redirected to the provided URL). "
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <MyEditor
+      editorState={Object {}}
+      onChange={[Function]}
+      placeholder="Write your article here"
+      s3FolderName="abc123"
+    />
+  </div>
+  <div>
+    <button
+      className="button"
+    >
+      Save Post
+    </button>
+  </div>
+</form>
+`;
+
+exports[`post - image An error occured when the image get uploaded should render correctly 1`] = `
+<form
+  className="form mb3 pb3"
+  onSubmit={[Function]}
+>
+  <div
+    className="form__input-container"
+  >
+    <FaCheck
+      className="icon c-limegreen"
+    />
+    <input
+      autoFocus={true}
+      className="text-input"
+      id="titleInput"
+      onChange={[Function]}
+      placeholder="Write a title here"
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <FaCheck
+      className="icon c-limegreen"
+    />
+    <input
+      className="text-input"
+      id="descriptionInput"
+      onChange={[Function]}
+      placeholder="Write a small description here"
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <FaCheck
+      className="icon c-limegreen"
+    />
+    <input
+      accept="image/*"
+      className="text-input"
+      id="imageInput"
+      onChange={[Function]}
+      type="file"
+    />
+    <div
+      className="quarterwidth flex align-items--center justify-content--center mt2"
+    >
+      <LoadingPage
+        size="small"
+      />
+    </div>
+  </div>
+  <div>
+    <p>
+      What do you want to do today?
+    </p>
+    <Checkbox
+      checked={true}
+      handleChange={[Function]}
+      label="I want to write the content of the post."
+    />
+    <Checkbox
+      checked={false}
+      handleChange={[Function]}
+      label="I want to provide an URL for this post (users will be redirected to the provided URL). "
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <MyEditor
+      editorState={Object {}}
+      onChange={[Function]}
+      placeholder="Write your article here"
+      s3FolderName="abc123"
+    />
+  </div>
+  <div>
+    <button
+      className="button"
+    >
+      Save Post
+    </button>
+  </div>
+</form>
+`;
+
+exports[`post - image the image get changed should render correctly 1`] = `
+<form
+  className="form mb3 pb3"
+  onSubmit={[Function]}
+>
+  <div
+    className="form__input-container"
+  >
+    <FaCheck
+      className="icon c-limegreen"
+    />
+    <input
+      autoFocus={true}
+      className="text-input"
+      id="titleInput"
+      onChange={[Function]}
+      placeholder="Write a title here"
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <FaCheck
+      className="icon c-limegreen"
+    />
+    <input
+      className="text-input"
+      id="descriptionInput"
+      onChange={[Function]}
+      placeholder="Write a small description here"
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <FaCheck
+      className="icon c-limegreen"
+    />
+    <input
+      accept="image/*"
+      className="text-input"
+      id="imageInput"
+      onChange={[Function]}
+      type="file"
+    />
+    <div
+      className="quarterwidth flex align-items--center justify-content--center mt2"
+    >
+      <img
+        alt="https://somewhere.com"
+        className="fullwidth"
+        src="https://somewhere.com"
+      />
+    </div>
+  </div>
+  <div>
+    <p>
+      What do you want to do today?
+    </p>
+    <Checkbox
+      checked={true}
+      handleChange={[Function]}
+      label="I want to write the content of the post."
+    />
+    <Checkbox
+      checked={false}
+      handleChange={[Function]}
+      label="I want to provide an URL for this post (users will be redirected to the provided URL). "
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <MyEditor
+      editorState={Object {}}
+      onChange={[Function]}
+      placeholder="Write your article here"
+      s3FolderName="abc123"
+    />
+  </div>
+  <div>
+    <button
+      className="button"
+    >
+      Save Post
+    </button>
+  </div>
+</form>
+`;
+
+exports[`post - title the title is changing should render correctly 1`] = `
+<form
+  className="form mb3 pb3"
+  onSubmit={[Function]}
+>
+  <div
+    className="form__input-container"
+  >
+    <FaCheck
+      className="icon c-limegreen"
+    />
+    <input
+      autoFocus={true}
+      className="text-input"
+      id="titleInput"
+      onChange={[Function]}
+      placeholder="Write a title here"
+      type="text"
+      value="A new title"
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <FaCheck
+      className="icon c-limegreen"
+    />
+    <input
+      className="text-input"
+      id="descriptionInput"
+      onChange={[Function]}
+      placeholder="Write a small description here"
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <FaCheck
+      className="icon c-limegreen"
+    />
+    <input
+      accept="image/*"
+      className="text-input"
+      id="imageInput"
+      onChange={[Function]}
+      type="file"
+    />
+    <div
+      className="quarterwidth flex align-items--center justify-content--center mt2"
+    />
+  </div>
+  <div>
+    <p>
+      What do you want to do today?
+    </p>
+    <Checkbox
+      checked={true}
+      handleChange={[Function]}
+      label="I want to write the content of the post."
+    />
+    <Checkbox
+      checked={false}
+      handleChange={[Function]}
+      label="I want to provide an URL for this post (users will be redirected to the provided URL). "
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <MyEditor
+      editorState={Object {}}
+      onChange={[Function]}
+      placeholder="Write your article here"
+      s3FolderName="abc123"
+    />
+  </div>
+  <div>
+    <button
+      className="button"
+    >
+      Save Post
+    </button>
+  </div>
+</form>
+`;
+
+exports[`post - title the title is too long should render correctly 1`] = `
+<form
+  className="form mb3 pb3"
+  onSubmit={[Function]}
+>
+  <div
+    className="form__input-container"
+  >
+    <FaTimes
+      className="icon c-warm-peach"
+    />
+    <input
+      autoFocus={true}
+      className="text-input"
+      id="titleInput"
+      onChange={[Function]}
+      placeholder="Write a title here"
+      type="text"
+      value="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    />
+    <p
+      className="error"
+    >
+      Title should be maximum 80 characters long
+    </p>
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <FaCheck
+      className="icon c-limegreen"
+    />
+    <input
+      className="text-input"
+      id="descriptionInput"
+      onChange={[Function]}
+      placeholder="Write a small description here"
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <FaCheck
+      className="icon c-limegreen"
+    />
+    <input
+      accept="image/*"
+      className="text-input"
+      id="imageInput"
+      onChange={[Function]}
+      type="file"
+    />
+    <div
+      className="quarterwidth flex align-items--center justify-content--center mt2"
+    />
+  </div>
+  <div>
+    <p>
+      What do you want to do today?
+    </p>
+    <Checkbox
+      checked={true}
+      handleChange={[Function]}
+      label="I want to write the content of the post."
+    />
+    <Checkbox
+      checked={false}
+      handleChange={[Function]}
+      label="I want to provide an URL for this post (users will be redirected to the provided URL). "
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <MyEditor
+      editorState={Object {}}
+      onChange={[Function]}
+      placeholder="Write your article here"
+      s3FolderName="abc123"
+    />
+  </div>
+  <div>
+    <button
+      className="button"
+    >
+      Save Post
+    </button>
+  </div>
+</form>
+`;
+
+exports[`post - title the title is too short should render correctly 1`] = `
+<form
+  className="form mb3 pb3"
+  onSubmit={[Function]}
+>
+  <div
+    className="form__input-container"
+  >
+    <FaTimes
+      className="icon c-warm-peach"
+    />
+    <input
+      autoFocus={true}
+      className="text-input"
+      id="titleInput"
+      onChange={[Function]}
+      placeholder="Write a title here"
+      type="text"
+      value="aaaa"
+    />
+    <p
+      className="error"
+    >
+      Title should be minimum 5 characters long
+    </p>
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <FaCheck
+      className="icon c-limegreen"
+    />
+    <input
+      className="text-input"
+      id="descriptionInput"
+      onChange={[Function]}
+      placeholder="Write a small description here"
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <FaCheck
+      className="icon c-limegreen"
+    />
+    <input
+      accept="image/*"
+      className="text-input"
+      id="imageInput"
       onChange={[Function]}
       type="file"
     />

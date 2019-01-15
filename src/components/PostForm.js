@@ -76,8 +76,7 @@ class PostForm extends React.Component {
             }));
           })
           .catch(err => {
-            alert(err);
-            this.setState(() => ({ imageUploading: false }));
+            this.setState(() => ({ imageUploading: false, imageError: err }));
           });
       }
     );
@@ -149,6 +148,7 @@ class PostForm extends React.Component {
         <div className="form__input-container">
           {this.getValidationIcon(this.state.titleError)}
           <input
+            id="titleInput"
             placeholder="Write a title here"
             className="text-input"
             type="text"
@@ -177,6 +177,7 @@ class PostForm extends React.Component {
         <div className="form__input-container">
           {this.getValidationIcon(this.state.imageError)}
           <input
+            id="imageInput"
             type="file"
             accept="image/*"
             onChange={this.onImageChange}

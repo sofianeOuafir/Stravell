@@ -22,6 +22,9 @@ export const MAX_NUM_OF_CHARACTERS_FOR_DESCRIPTION = 180;
 export const MIN_NUM_OF_CHARACTERS_FOR_BODY = 100;
 
 export const DESCRIPTION_TOO_SHORT_ERROR = `Description should be minimum ${MIN_NUM_OF_CHARACTERS_FOR_DESCRIPTION} characters long`;
+export const DESCRIPTION_TOO_LONG_ERROR = `Description should be maximum ${MAX_NUM_OF_CHARACTERS_FOR_DESCRIPTION} characters long`;
+export const TITLE_TOO_SHORT_ERROR = `Title should be minimum ${MIN_NUM_OF_CHARACTERS_FOR_TITLE} characters long`;
+export const TITLE_TOO_LONG_ERROR = `Title should be maximum ${MAX_NUM_OF_CHARACTERS_FOR_TITLE} characters long`;
 
 export const SLOGAN = "Let's explore the world together."
 

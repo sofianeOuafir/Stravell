@@ -7,7 +7,10 @@ import {
   MIN_NUM_OF_CHARACTERS_FOR_DESCRIPTION,
   MAX_NUM_OF_CHARACTERS_FOR_DESCRIPTION,
   MIN_NUM_OF_CHARACTERS_FOR_BODY,
-  DESCRIPTION_TOO_SHORT_ERROR
+  DESCRIPTION_TOO_SHORT_ERROR,
+  DESCRIPTION_TOO_LONG_ERROR,
+  TITLE_TOO_SHORT_ERROR,
+  TITLE_TOO_LONG_ERROR
 } from "./../../constants/constants";
 
 export const formatTitle = title => {
@@ -38,9 +41,9 @@ export const getTitleError = title => {
   if (formattedTitle.length === 0) {
     return "You should provide a title";
   } else if (formattedTitle.length < MIN_NUM_OF_CHARACTERS_FOR_TITLE) {
-    return `Title should be minimum ${MIN_NUM_OF_CHARACTERS_FOR_TITLE} characters long`;
+    return TITLE_TOO_SHORT_ERROR;
   } else if (formattedTitle.length > MAX_NUM_OF_CHARACTERS_FOR_TITLE) {
-    return `Title should be maximum ${MAX_NUM_OF_CHARACTERS_FOR_TITLE} characters long`;
+    return TITLE_TOO_LONG_ERROR;
   } else {
     return "";
   }
@@ -53,7 +56,7 @@ export const getDescriptionError = description => {
   } else if (formattedDescription.length < MIN_NUM_OF_CHARACTERS_FOR_DESCRIPTION) {
     return DESCRIPTION_TOO_SHORT_ERROR;
   } else if (formattedDescription.length > MAX_NUM_OF_CHARACTERS_FOR_DESCRIPTION) {
-    return `Title should be maximum ${MAX_NUM_OF_CHARACTERS_FOR_DESCRIPTION} characters long`;
+    return DESCRIPTION_TOO_LONG_ERROR;
   } else {
     return "";
   }
