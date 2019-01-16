@@ -94,6 +94,10 @@ class PostForm extends React.Component {
     this.setState(() => ({ providedURL, providedURLError: getProvidedURLError(providedURL) }));
   };
 
+  onProvideURLChange = (provideURL) => {
+    this.setState(() => ({ provideURL }));
+  };
+
   onSubmit = e => {
     e.preventDefault();
     let errors = {
@@ -140,13 +144,9 @@ class PostForm extends React.Component {
     }
   };
 
-  onProvideURLChange = () => {
-    this.setState(() => ({ provideURL: !this.state.provideURL, writePost: !this.state.writePost }));
-  };
-
   render() {
     return (
-      <form className="form mb3 pb3" onSubmit={this.onSubmit}>
+      <form id="form" className="form mb3 pb3" onSubmit={this.onSubmit}>
         <div className="form__input-container">
           {this.getValidationIcon(this.state.titleError)}
           <input
@@ -205,12 +205,14 @@ class PostForm extends React.Component {
         <div>
           <p>What do you want to do today?</p>
           <Checkbox
-            handleChange={this.onProvideURLChange}
+            id="provideURLFalse"
+            onChange={() => { this.onProvideURLChange(false) }}
             checked={!this.state.provideURL}
             label="I want to write the content of the post."
           />
           <Checkbox
-            handleChange={this.onProvideURLChange}
+            id="provideURLTrue"
+            onChange={() => { this.onProvideURLChange(true) }}
             checked={this.state.provideURL}
             label="I want to provide an URL for this post (users will be redirected
                             to the provided URL). "
@@ -221,11 +223,11 @@ class PostForm extends React.Component {
           <div className="form__input-container">
             {this.getValidationIcon(this.state.providedURLError)}
             <input
+              id="providedURLInput"
               placeholder="Provide an URL here"
               className="text-input"
               type="text"
               onChange={this.onProvidedURLChange}
-              autoFocus
               value={this.state.providedURL}
             />
             {this.state.providedURLError && (
@@ -240,6 +242,7 @@ class PostForm extends React.Component {
             <p className="error">{this.state.bodyError}</p>
           )}
           <MyEditor
+            id="editor"
             placeholder="Write your article here"
             editorState={this.state.body}
             onChange={this.onBodyChange}

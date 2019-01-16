@@ -2,8 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Checkbox } from './../../components/Checkbox';
 
-const handleChange = jest.fn();
-let props = { handleChange, checked: true, label: 'My checkbox' };
+const onChange = jest.fn();
+let props = { onChange, checked: true, label: 'My checkbox', id: 'abc123' };
 
 
 describe('checked props is false', () => {
@@ -22,8 +22,8 @@ describe('checked props is true', () => {
   });
 });
 
-test('should trigger handleChange method when checkbox get checked', () => {
+test('should trigger onChange method when checkbox get checked', () => {
   const wrapper = shallow(<Checkbox { ...props } />);
   wrapper.find('input').simulate('change');
-  expect(handleChange).toHaveBeenCalled();
+  expect(onChange).toHaveBeenCalled();
 });

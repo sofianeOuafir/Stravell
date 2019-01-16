@@ -1,15 +1,13 @@
 import React from "react";
-import uuid from "uuid";
 
-export const Checkbox = ({ handleChange, checked, label }) => {
-  const id = uuid();
+export const Checkbox = ({ onChange, checked, label, id }) => {
   return (
     <div>
       <input
         id={id}
         name={id}
         className="mr1"
-        onChange={handleChange}
+        onChange={onChange}
         type="checkbox"
         checked={checked}
       />

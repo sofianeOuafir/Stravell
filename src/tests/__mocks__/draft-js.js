@@ -1,14 +1,7 @@
-export {
-  
-  
-}
+const draftJs = require.requireActual('draft-js');
+let EditorState = draftJs.EditorState;
+const convertFromRaw = draftJs.convertFromRaw;
+const convertToRaw = draftJs.convertToRaw;
+EditorState.createEmpty = () => ({});
 
-const EditorState = {
-  createEmpty: () => {
-    return {
-      
-    }
-  }
-}
-
-export { EditorState };
+export { EditorState, convertFromRaw, convertToRaw };
