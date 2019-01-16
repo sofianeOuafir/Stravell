@@ -1,13 +1,13 @@
 import React from "react";
 import PostListItem from "./PostListItem";
 
-const PostList = props => {
-  const editable = props.editable ? true : false;
-  const className = props.className ? props.className : "post-list"
+const PostList = ({ editable, className, posts, noPostText }) => {
+  editable = editable ? editable : false;
+  className = className ? className : "post-list"
   return (
-    props.posts.length > 0 ? (
+    posts.length > 0 ? (
       <div className={className}>
-        {props.posts.map((post, key) => (
+        {posts.map((post, key) => (
           <PostListItem
             key={key}
             index={key}
@@ -18,7 +18,7 @@ const PostList = props => {
       </div>
     ) : (
       <h2 className="favourite-font-weight">
-        {props.noPostText}
+        {noPostText}
       </h2>
     )
   );
