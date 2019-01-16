@@ -61,7 +61,9 @@ class PostForm extends React.Component {
     const file = new File([e.target.files[0]], `main`, {
       type: e.target.files[0].type
     });
-    if (!file) {
+    const formatAccepted = ['image/png', 'image/jpeg', 'image/jpg', 'image/gif', 'image/svg'];
+    if (!formatAccepted.includes(file.type)) {
+      this.setState(() => ({ imageError: 'The format of the uploaded image is not accepted.' }));
       return;
     }
     this.setState(

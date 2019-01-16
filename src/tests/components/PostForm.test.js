@@ -155,13 +155,13 @@ describe("post - title", () => {
 });
 
 describe("post - image", () => {
-  const file = { type: ".png" };
-  const eventObject = { target: { files: [file] } };
+  describe("the image got changed and uploaded successfully", () => {
+    let file = { type: "image/png" };
+    const eventObject = { target: { files: [file] } };
 
-  describe("the image get changed", () => {
     beforeEach(() => {
       uploadFile.mockImplementation(() => {
-        const Location = 'https://somewhere.com';
+        const Location = "https://somewhere.com";
         return Promise.resolve({ Location });
       });
     });
@@ -171,7 +171,7 @@ describe("post - image", () => {
       return Promise.resolve().then(() => {
         expect(wrapper.state("image")).toEqual("https://somewhere.com");
         done();
-      });
+      })
     });
 
     test("should render correctly", done => {
@@ -184,27 +184,48 @@ describe("post - image", () => {
     });
   });
 
-  describe('An error occured when the image get uploaded', () => {
+  describe('the format of the file is not an accepted format', () => {
+    let file = { type: "something weird" };
+    const eventObject = { target: { files: [file] } };
+    test("should change the state correctly", () => {
+      wrapper.find("#imageInput").simulate("change", eventObject);
+      expect(wrapper.state("imageError")).toEqual("The format of the uploaded image is not accepted.");
+    });
+
+    test("should render correctly", () => {
+      wrapper.find("#imageInput").simulate("change", eventObject);
+      expect(wrapper).toMatchSnapshot();
+    });
+  });
+
+  describe("An error occured when the image got uploaded", () => {
+    let file = { type: "image/png" };
+    const eventObject = { target: { files: [file] } };
+
     beforeEach(() => {
       uploadFile.mockImplementation(() => {
-        return Promise.reject('an error occurred');
+        return Promise.reject("an error occurred");
       });
     });
 
-    test("should change the state correctly", (done) => {
+    test("should change the state correctly", done => {
       wrapper.find("#imageInput").simulate("change", eventObject);
       return Promise.resolve().then(() => {
-        wrapper.update();
-        expect(wrapper.state("imageError")).toEqual('an error occurred');
-        done();
-      })
+        return Promise.resolve().then(() => {
+          expect(wrapper.update().state("imageError")).toEqual("an error occurred");
+          done();
+        });
+      });
     });
 
-    test('should render correctly', (done) => {
+    test("should render correctly", done => {
       wrapper.find("#imageInput").simulate("change", eventObject);
       return Promise.resolve().then(() => {
-        expect(wrapper).toMatchSnapshot();
-        done();
+        return Promise.resolve().then(() => {
+          wrapper.update();
+          expect(wrapper).toMatchSnapshot();
+          done();
+        })
       });
     });
   });

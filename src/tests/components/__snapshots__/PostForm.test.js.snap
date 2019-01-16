@@ -274,7 +274,7 @@ exports[`post - description the description is too short should render correctly
 </form>
 `;
 
-exports[`post - image An error occur when the image get uploaded should render correctly 1`] = `
+exports[`post - image An error occured when the image got uploaded should render correctly 1`] = `
 <form
   className="form mb3 pb3"
   onSubmit={[Function]}
@@ -313,8 +313,8 @@ exports[`post - image An error occur when the image get uploaded should render c
   <div
     className="form__input-container"
   >
-    <FaCheck
-      className="icon c-limegreen"
+    <FaTimes
+      className="icon c-warm-peach"
     />
     <input
       accept="image/*"
@@ -323,13 +323,14 @@ exports[`post - image An error occur when the image get uploaded should render c
       onChange={[Function]}
       type="file"
     />
+    <p
+      className="error"
+    >
+      an error occurred
+    </p>
     <div
       className="quarterwidth flex align-items--center justify-content--center mt2"
-    >
-      <LoadingPage
-        size="small"
-      />
-    </div>
+    />
   </div>
   <div>
     <p>
@@ -366,7 +367,7 @@ exports[`post - image An error occur when the image get uploaded should render c
 </form>
 `;
 
-exports[`post - image An error occured when the image get uploaded should render correctly 1`] = `
+exports[`post - image the format of the file is not an accepted format should render correctly 1`] = `
 <form
   className="form mb3 pb3"
   onSubmit={[Function]}
@@ -405,8 +406,8 @@ exports[`post - image An error occured when the image get uploaded should render
   <div
     className="form__input-container"
   >
-    <FaCheck
-      className="icon c-limegreen"
+    <FaTimes
+      className="icon c-warm-peach"
     />
     <input
       accept="image/*"
@@ -415,13 +416,14 @@ exports[`post - image An error occured when the image get uploaded should render
       onChange={[Function]}
       type="file"
     />
+    <p
+      className="error"
+    >
+      The format of the uploaded image is not accepted.
+    </p>
     <div
       className="quarterwidth flex align-items--center justify-content--center mt2"
-    >
-      <LoadingPage
-        size="small"
-      />
-    </div>
+    />
   </div>
   <div>
     <p>
@@ -458,7 +460,7 @@ exports[`post - image An error occured when the image get uploaded should render
 </form>
 `;
 
-exports[`post - image the image get changed should render correctly 1`] = `
+exports[`post - image the image got changed and uploaded successfully should render correctly 1`] = `
 <form
   className="form mb3 pb3"
   onSubmit={[Function]}
