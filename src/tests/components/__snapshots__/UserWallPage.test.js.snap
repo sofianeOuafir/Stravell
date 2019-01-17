@@ -1,17 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should call startGetUser on componentDidMount 1`] = `
-<div>
-  <div
-    className="loading-container"
-  >
-    <LoadingPage
-      size="big"
-    />
-  </div>
-</div>
-`;
-
 exports[`should render correctly 1`] = `
 <div>
   <div>
