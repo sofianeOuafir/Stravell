@@ -10,7 +10,13 @@ import {
   DESCRIPTION_TOO_SHORT_ERROR,
   DESCRIPTION_TOO_LONG_ERROR,
   TITLE_TOO_SHORT_ERROR,
-  TITLE_TOO_LONG_ERROR
+  TITLE_TOO_LONG_ERROR,
+  NO_TITLE_PROVIDED_ERROR,
+  NO_BODY_PROVIDED_ERROR,
+  BODY_TOO_SHORT_ERROR,
+  NO_DESCRIPTION_PROVIDED_ERROR,
+  NO_IMAGE_URL_PROVIDED_ERROR,
+  PROVIDED_URL_ERROR
 } from "./../../constants/constants";
 
 export const formatTitle = title => {
@@ -18,19 +24,19 @@ export const formatTitle = title => {
 };
 
 export const formatDescription = description => {
-  return capitalize(description).trim();
+  return capitalize(description.trim());
 };
 
-const formatBody = body => {
+export const formatBody = body => {
   return body.trim();
 }
 
 export const getBodyError = body => {
   const formattedBody = formatBody(body);
   if(formattedBody.length === 0) {
-    return "You should provide a content to your post.";
+    return NO_BODY_PROVIDED_ERROR;
   } else if (formattedBody.length < MIN_NUM_OF_CHARACTERS_FOR_BODY) {
-    return `The post content should be minimum ${MIN_NUM_OF_CHARACTERS_FOR_BODY} characters long`;
+    return BODY_TOO_SHORT_ERROR;
   } else {
     return "";
   }
@@ -39,7 +45,7 @@ export const getBodyError = body => {
 export const getTitleError = title => {
   const formattedTitle = formatTitle(title);
   if (formattedTitle.length === 0) {
-    return "You should provide a title";
+    return NO_TITLE_PROVIDED_ERROR;
   } else if (formattedTitle.length < MIN_NUM_OF_CHARACTERS_FOR_TITLE) {
     return TITLE_TOO_SHORT_ERROR;
   } else if (formattedTitle.length > MAX_NUM_OF_CHARACTERS_FOR_TITLE) {
@@ -52,7 +58,7 @@ export const getTitleError = title => {
 export const getDescriptionError = description => {
   const formattedDescription = formatDescription(description);
   if (formattedDescription.length === 0) {
-    return "You should provide a description";
+    return NO_DESCRIPTION_PROVIDED_ERROR;
   } else if (formattedDescription.length < MIN_NUM_OF_CHARACTERS_FOR_DESCRIPTION) {
     return DESCRIPTION_TOO_SHORT_ERROR;
   } else if (formattedDescription.length > MAX_NUM_OF_CHARACTERS_FOR_DESCRIPTION) {
@@ -65,7 +71,7 @@ export const getDescriptionError = description => {
 export const getImageError = imageUrl => {
   const formattedImageUrl = imageUrl.trim();
   if(formattedImageUrl.length === 0) {
-    return "You should provide an image";
+    return NO_IMAGE_URL_PROVIDED_ERROR;
   }
 
   return "";
@@ -76,6 +82,6 @@ export const getProvidedURLError = providedURL => {
     return "";
   }
 
-  return "The URL format provided is not correct (should be in format http://www.google.com)";
+  return PROVIDED_URL_ERROR;
 }
 

@@ -15,26 +15,10 @@ import {
 import posts from "./../fixtures/posts";
 import { uploadFile } from "./../../aws/s3.js";
 import { getTitleError } from './../../lib/utils/post.js';
-
+import { generateTooLongString, generateTooShortString } from './../helpers/helpers';
 jest.mock("./../../aws/s3.js", () => ({
   uploadFile: jest.fn()
 }));
-
-const generateTooShortString = length => {
-  let word = "";
-  for (var i = 0; i < length - 1; i++) {
-    word += "a";
-  }
-  return word;
-};
-
-const generateTooLongString = length => {
-  let word = "";
-  for (var i = 0; i < length + 1; i++) {
-    word += "a";
-  }
-  return word;
-};
 
 let wrapper;
 
