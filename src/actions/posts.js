@@ -79,4 +79,4 @@ const startSetPosts = () => {
   };
 };
 
-export { startEditPost, startAddPost, startSetPosts };
+export { startEditPost, addPost, startAddPost, editPost, startSetPosts, setPosts };
