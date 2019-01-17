@@ -13,6 +13,8 @@ exports[`the component get passed a non empty array of posts should render corre
           "description": "Discovering the beauty of my country, my home.",
           "id": "-LV-kv5VGQDljYtMPt9v",
           "image": "https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main",
+          "provideURL": false,
+          "providedURL": "",
           "s3FolderName": "ea5f10a1-10c3-4cfd-a607-982678db7159",
           "title": "Don't Forget Where You Come From.",
           "uid": "YYFEgQAdBuQIsox3ojncZtpSAmG3",

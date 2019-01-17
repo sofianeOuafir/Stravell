@@ -21,7 +21,7 @@ function getPluginDecorators() {
   return new MultiDecorator([new CompositeDecorator(decorators)]);
 }
 
-const ShowPostPage = ({ post }) => {
+export const ShowPostPage = ({ post }) => {
   const body = EditorState.createWithContent(
     convertFromRaw(JSON.parse(post.body)),
     getPluginDecorators()

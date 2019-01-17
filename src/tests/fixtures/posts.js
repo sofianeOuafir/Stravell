@@ -12,6 +12,8 @@ export default [
     uid: "YYFEgQAdBuQIsox3ojncZtpSAmG3",
     updatedAt: 1546221085951,
     userName: "Jenna Jacquelyn",
+    provideURL: false,
+    providedURL: "",
     userPhotoURL: "https://graph.facebook.com/10161147754845459/picture"
   }
 ];

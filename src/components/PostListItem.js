@@ -5,7 +5,7 @@ import { getDateFormat } from './../lib/utils/date';
 import PostAuthor from './PostAuthor';
 import { isOdd } from "./../lib/utils/math";
 
-const PostListItem = ({ post, isOwnedByCurrentUser, index, editable }) => {
+export const PostListItem = ({ post, isOwnedByCurrentUser, index, editable }) => {
   const postListItemContent = (
     <div>
       <img

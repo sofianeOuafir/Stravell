@@ -5,7 +5,7 @@ import { startGetUser } from "./../actions/users";
 import Loading from "./Loading";
 import FilterablePostList from './FilterablePostList';
 
-class UserWallPage extends React.Component {
+export class UserWallPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,7 +24,7 @@ class UserWallPage extends React.Component {
   render() {
     return (
       <div>
-        {!this.state.title ? (
+        {!this.state.user ? (
           <div className="loading-container">
             <Loading size="big" />
           </div>
