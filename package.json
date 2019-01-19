@@ -5,17 +5,18 @@
   "author": "Sofiane Ouafir",
   "license": "MIT",
   "scripts": {
-    "build:dev": "webpack",
-    "build:prod": "webpack -p --env production",
-    "dev-server": "webpack-dev-server",
+    "dev": "next",
+    "build": "next build",
     "test": "cross-env NODE_ENV=test jest --config=jest.config.json",
-    "start": "node server/server.js",
-    "heroku-postbuild": "yarn run build:prod"
+    "start": "next start",
+    "heroku-postbuild": "yarn run build"
   },
   "engines": {
     "node": "8.11.2"
   },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
     "aws-sdk": "^2.366.0",
     "babel-cli": "6.24.1",
     "babel-core": "6.25.0",
@@ -43,7 +44,9 @@
     "firebase": "4.2.0",
     "history": "4.7.2",
     "moment": "2.19.3",
-    "node-sass": "4.5.3",
+    "next": "^7.0.2",
+    "next-link": "^2.0.0",
+    "node-sass": "^4.11.0",
     "normalize.css": "7.0.0",
     "numeral": "2.0.6",
     "prop-types": "^15.6.2",
@@ -67,7 +70,7 @@
     "underscore.string": "^3.3.5",
     "uuid": "3.1.0",
     "validator": "8.0.0",
-    "webpack": "3.1.0"
+    "webpack": "4.5"
   },
   "devDependencies": {
     "cross-env": "5.0.5",
