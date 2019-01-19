@@ -4,7 +4,7 @@ import authReducer from '../reducers/auth';
 import postsReducer from '../reducers/posts';
 import filtersReducer from '../reducers/filters';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+//const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default () => {
   const store = createStore(
@@ -12,8 +12,8 @@ export default () => {
       auth: authReducer,
       posts: postsReducer,
       filters: filtersReducer
-    }),
-    composeEnhancers(applyMiddleware(thunk))
+    })
+    // composeEnhancers(applyMiddleware(thunk))
   );
 
   return store;

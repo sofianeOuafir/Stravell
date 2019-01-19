@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import React from "react";
 import Avatar from "react-avatar";
 
 const PostAuthor = ({ authorUid, avatarSize, authorPhotoURL, authorName }) => (
-  <Link className="no-text-decoration c-dark-grey" to={`/users/${authorUid}`}>
+  <Link className="no-text-decoration c-dark-grey" href={""}>
+    <div>
     <Avatar className="mr1" size={avatarSize} round={true} src={authorPhotoURL} />
     {authorName}
+    </div>
+
   </Link>
 );
 
