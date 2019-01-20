@@ -19,9 +19,11 @@ export const Header = ({
   <header className="header">
     <div className="content-container">
       <div className="header__content">
-        <Link className="header__title" to="/">
-          <h1>{APP_NAME}</h1>
-        </Link>
+        <div className="header__title">
+          <Link href="/">
+            <h1>{APP_NAME}</h1>
+          </Link>
+        </div>
         <div className="header__right">
           {isAuthenticated ? (
             <div className="header__right">
@@ -44,8 +46,8 @@ export const Header = ({
               </DropdownMenu>
             </div>
           ) : (
-            <Link className="button button--link" to="/login">
-              Log in
+            <Link href="/login">
+              <span className="button button--link">Log in</span>
             </Link>
           )}
         </div>

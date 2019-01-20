@@ -13,7 +13,6 @@ export const DASHBOARD_PAGE_DESCRIPTION = `${APP_NAME} | Dashboard page`;
 export const APP_POST_PAGE_DESCRIPTION = `${APP_NAME} | This page allow you to write, blog an article and share your experience about your travels, trip and best wanderlust.`;
 export const EDIT_POST_PAGE_DESCRIPTION = `${APP_NAME} | This page allow you to edit a travel post, article you've written.`;
 export const NOT_FOUND_PAGE_DESCRIPTION = `${APP_NAME} | 404 Not Found`;
-export const USER_WALL_PAGE_DESCRIPTION = `${APP_NAME}`;
 
 export const MIN_NUM_OF_CHARACTERS_FOR_TITLE = 5;
 export const MAX_NUM_OF_CHARACTERS_FOR_TITLE = 80;

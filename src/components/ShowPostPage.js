@@ -52,7 +52,7 @@ export const ShowPostPage = page(withRouter(({ post }) => {
       </div>
     </div>
   );
-}), { title: 'yoo', description: 'yoo' });
+}), { withHead: false });
 
 ShowPostPage.getInitialProps = async function(context) {
   const post = await new Promise((resolve, reject) => {
@@ -66,9 +66,5 @@ ShowPostPage.getInitialProps = async function(context) {
   });
   return { post };
 };
-
-// const mapStateToProps = (state, props) => ({
-//   post: state.posts.find(post => post.id === props.id) 
-// });
 
 export default ShowPostPage;

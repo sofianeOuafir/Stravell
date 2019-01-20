@@ -1,6 +1,5 @@
-const sass = require('@zeit/next-sass');
-const css = require('@zeit/next-css');
-
+const withCSS = require('@zeit/next-css')
+const withSass = require('@zeit/next-sass')
 // to be updated for production
 // process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 // let localEnv;
@@ -12,10 +11,10 @@ const css = require('@zeit/next-css');
 
 const webpack = require('webpack');
 
-module.exports = {
+module.exports = withCSS(withSass({
   webpack(config) {
     config.plugins.push(new webpack.EnvironmentPlugin(require('dotenv').config({ path: '.env.development' }).parsed))
 
     return config
   }
-}
+}));
