@@ -1,7 +1,5 @@
-const withCSS = require('@zeit/next-css');
-module.exports = withCSS();
-const withSass = require('@zeit/next-sass');
-module.exports = withSass();
+const sass = require('@zeit/next-sass');
+const css = require('@zeit/next-css');
 
 // to be updated for production
 // process.env.NODE_ENV = process.env.NODE_ENV || 'development';

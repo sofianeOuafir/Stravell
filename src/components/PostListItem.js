@@ -32,7 +32,7 @@ export const PostListItem = ({ post, isOwnedByCurrentUser, index, editable }) =>
             { postListItemContent }
           </a>
         ) : (
-          <Link className="post-list-item__link" href={`/posts/show/${post.id}`}>
+          <Link className="post-list-item__link" href={`/post?id=${post.id}`}>
             { postListItemContent }
           </Link>
         )

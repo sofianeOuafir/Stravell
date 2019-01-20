@@ -1,13 +1,15 @@
 import React from "react";
-import { connect } from "react-redux";
+import {withRouter} from 'next/router';
 import MultiDecorator from "draft-js-plugins-editor/lib/Editor/MultiDecorator";
-import { CompositeDecorator } from "draft-js";
-import { EditorState, convertFromRaw } from "draft-js";
+import { EditorState, convertFromRaw, CompositeDecorator } from "draft-js";
+import Head from 'next/head';
+
 import MyEditor, { plugins } from "./MyEditor";
 import PageHeader from "./PageHeader";
 import { getDateFormat } from "./../lib/utils/date";
-import { Helmet } from "react-helmet";
 import PostAuthor from './PostAuthor';
+import database from "./../firebase/firebase";
+import page from './../hocs/page';
 
 function getPluginDecorators() {
   let decorators = [];
@@ -21,17 +23,17 @@ function getPluginDecorators() {
   return new MultiDecorator([new CompositeDecorator(decorators)]);
 }
 
-export const ShowPostPage = ({ post }) => {
+export const ShowPostPage = page(withRouter(({ post }) => {
   const body = EditorState.createWithContent(
     convertFromRaw(JSON.parse(post.body)),
     getPluginDecorators()
   );
   return (
     <div>
-      <Helmet>
+      <Head>
         <title>{`${post.title}`}</title>
         <meta name="description" content={post.description} />
-      </Helmet>
+      </Head>
       <PageHeader>
         <h1 className="favourite-font-weight m0">{post.title}</h1>
         <div className="my1">
@@ -50,10 +52,23 @@ export const ShowPostPage = ({ post }) => {
       </div>
     </div>
   );
+}), { title: 'yoo', description: 'yoo' });
+
+ShowPostPage.getInitialProps = async function(context) {
+  const post = await new Promise((resolve, reject) => {
+    const { id } = context.query;
+    database
+    .ref(`posts/${id}`)
+    .on("value", snapshot => {
+      let post = { id: snapshot.key, ...snapshot.val() } ;
+      resolve(post);
+    });
+  });
+  return { post };
 };
 
-const mapStateToProps = (state, props) => ({
-  post: state.posts.find(post => post.id === props.match.params.id)
-});
+// const mapStateToProps = (state, props) => ({
+//   post: state.posts.find(post => post.id === props.id) 
+// });
 
-export default connect(mapStateToProps)(ShowPostPage);
+export default ShowPostPage;

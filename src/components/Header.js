@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { connect } from "react-redux";
 import { IoIosHome, IoIosPower, IoMdCreate } from "react-icons/io";
 import Avatar from "react-avatar";
 import { startLogout } from "../actions/auth";
 import DropdownMenu from "./DropdownMenu";
-import { history } from "./../routers/AppRouter";
+// import { history } from "./../routers/AppRouter";
 import { APP_NAME } from './../constants/constants';
 
 export const Header = ({
@@ -69,6 +69,5 @@ const mapStateToProps = ({ auth }) => {
 };
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(Header);

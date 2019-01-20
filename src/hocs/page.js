@@ -1,5 +1,6 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import Head from 'next/head';
+import Header from './../components/Header';
 
 // This function takes a component...
 export default (WrappedComponent, { title, description }) => {
@@ -12,10 +13,11 @@ export default (WrappedComponent, { title, description }) => {
     render() {
       return (
         <div>
-          <Helmet>
+          <Head>
             <title>{title}</title>
             <meta name="description" content={description} />
-          </Helmet>
+          </Head>
+          <Header />
           <WrappedComponent {...this.props} />
         </div>
       );
