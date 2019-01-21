@@ -28,7 +28,7 @@ export const HomePage = page(
   { title: HOME_PAGE_TITLE, description: HOME_PAGE_DESCRIPTION }
 );
 
-HomePage.getInitialProps = async function() {
+HomePage.getInitialProps = async function({ req, reduxStore }) {
   const posts = await new Promise((resolve, reject) => {
     database
       .ref("posts")

@@ -1,8 +1,13 @@
 import React from "react";
 import PostForm from "./PostForm";
 import { connect } from "react-redux";
+import Router, { withRouter } from 'next/router';
+
 import { startEditPost } from '../actions/posts';
 import PageHeader from './PageHeader';
+import database from "./../firebase/firebase";
+import page from '../hocs/page';
+import { DASHBOARD_PAGE_TITLE, DASHBOARD_PAGE_DESCRIPTION } from './../constants/constants';
 
 export class EditPostPage extends React.Component {
   constructor(props) {
@@ -14,7 +19,7 @@ export class EditPostPage extends React.Component {
       id: this.props.post.id, 
       updates: post
     });
-    this.props.history.push('/dashboard')
+    this.props.router.push('/dashboard')
   };
 
   render() {
@@ -29,12 +34,44 @@ export class EditPostPage extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => {
-  return {
-    post: state.posts.find(
-      post => post.id === props.match.params.id
-    )
-  };
+const Component = page(withRouter(EditPostPage), { title: DASHBOARD_PAGE_TITLE, description: DASHBOARD_PAGE_DESCRIPTION });
+
+Component.getInitialProps = async function({ query, req, reduxStore, res }) {
+  const post = await new Promise((resolve, reject) => {
+    const { id } = query;
+    database
+    .ref(`posts/${id}`)
+    .on("value", snapshot => {
+      let post = { id: snapshot.key, ...snapshot.val() } ;
+      resolve(post);
+    });
+  });
+
+  let authorised = false;
+  if (req && req.session) {
+    const user = req.session.decodedToken;
+    if (user.user_id === post.uid) {
+      authorised = true;
+    }
+  } else {
+    if (reduxStore.getState().auth.uid === post.uid) {
+      authorised = true;
+    }
+  }
+
+  if (authorised) {
+    return { post };
+  } else {
+    if( res ) {
+      res.writeHead(302, {
+        Location: '/'
+      });
+      res.end()
+    }
+    else {
+      Router.push('/')
+    }
+  }
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -46,4 +83,6 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditPostPage);
+
+
+export default connect(null, mapDispatchToProps)(Component);

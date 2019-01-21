@@ -45,7 +45,7 @@ export const PostListItem = ({ post, isOwnedByCurrentUser, index, editable }) =>
           {isOwnedByCurrentUser && editable && (
             <Link
               
-              href={`/posts/edit/${post.id}`}
+              href={`/editPost?id=${post.id}`}
             >
               <span className="button">Edit</span>   
             </Link>

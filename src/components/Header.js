@@ -33,7 +33,7 @@ export const Header = ({
                 <Avatar className="header__user-photo show-for-desktop" round={true} size="40" src={userPhotoURL} />
               </Link>
               <DropdownMenu title={userName}>
-                <Link href="">
+                <Link href="/createPost">
                   <button id="createButton">
                     <IoMdCreate className="header__dropdown-menu-icon" /> Create Post
                   </button>
