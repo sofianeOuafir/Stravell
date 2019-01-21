@@ -13,8 +13,7 @@ export const Header = ({
   isAuthenticated,
   userName,
   userPhotoURL,
-  redirectToDashboard,
-  redirectToCreatePost
+  uid
 }) => (
   <header className="header">
     <div className="content-container">
@@ -28,18 +27,22 @@ export const Header = ({
           {isAuthenticated ? (
             <div className="header__right">
               <Link
-                to="/dashboard"
-                className="header__user-photo show-for-desktop"
+                href={`/dashboard?uid=${uid}`}
+                
               >
-                <Avatar round={true} size="40" src={userPhotoURL} />
+                <Avatar className="header__user-photo show-for-desktop" round={true} size="40" src={userPhotoURL} />
               </Link>
               <DropdownMenu title={userName}>
-                <button id="createButton" onClick={redirectToCreatePost}>
-                  <IoMdCreate className="header__dropdown-menu-icon" /> Create Post
-                </button>
-                <button id="dashboardButton" onClick={redirectToDashboard}>
-                  <IoIosHome className="header__dropdown-menu-icon" /> Dashboard
-                </button>
+                <Link href="">
+                  <button id="createButton">
+                    <IoMdCreate className="header__dropdown-menu-icon" /> Create Post
+                  </button>
+                </Link>
+                <Link href={`/dashboard?uid=${uid}`}>
+                  <button id="dashboardButton">
+                    <IoIosHome className="header__dropdown-menu-icon" /> Dashboard
+                  </button>
+                </Link>
                 <button id="logOutButton" onClick={startLogout}>
                   <IoIosPower className="header__dropdown-menu-icon" /> Log Out
                 </button>
@@ -57,13 +60,12 @@ export const Header = ({
 );
 
 const mapDispatchToProps = dispatch => ({
-  startLogout: () => dispatch(startLogout()),
-  redirectToDashboard: () => history.push("/dashboard"),
-  redirectToCreatePost: () => history.push("/posts/create")
+  startLogout: () => dispatch(startLogout())
 });
 
 const mapStateToProps = ({ auth }) => {
   return {
+    uid: auth.uid,
     isAuthenticated: !!auth.uid,
     userName: auth.userName,
     userPhotoURL: auth.userPhotoURL
@@ -71,5 +73,6 @@ const mapStateToProps = ({ auth }) => {
 };
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Header);

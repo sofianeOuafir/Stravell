@@ -1,15 +1,21 @@
-const path = require('path');
-const express = require('express');
-const app = express();
-const publicPath = path.join(__dirname, '..', 'public');
-const port = process.env.PORT || 3000;
+const express = require('express')
+const bodyParser = require('body-parser')
+const next = require('next')
 
-app.use(express.static(publicPath));
+const port = parseInt(process.env.PORT, 10) || 3000
+const dev = process.env.NODE_ENV !== 'production'
+const app = next({ dev })
+const handle = app.getRequestHandler()
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(publicPath, 'index.html'));
-});
+app.prepare().then(() => {
+  const server = express();
+  server.use(bodyParser.json());
+  server.get('*', (req, res) => {
+    return handle(req, res)
+  });
 
-app.listen(port, () => {
-  console.log('Server is up at: ' + port);
-});
+  server.listen(port, err => {
+    if (err) throw err
+    console.log(`> Ready on port ${port}`)
+  })
+})

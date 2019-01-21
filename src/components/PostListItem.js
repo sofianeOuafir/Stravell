@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Link from "next/link";
+
 import { getDateFormat } from './../lib/utils/date';
 import PostAuthor from './PostAuthor';
 import { isOdd } from "./../lib/utils/math";
@@ -32,7 +33,7 @@ export const PostListItem = ({ post, isOwnedByCurrentUser, index, editable }) =>
             { postListItemContent }
           </a>
         ) : (
-          <Link className="post-list-item__link" href={`/post?id=${post.id}`}>
+          <Link href={`/post?id=${post.id}`}>
             { postListItemContent }
           </Link>
         )
@@ -43,10 +44,10 @@ export const PostListItem = ({ post, isOwnedByCurrentUser, index, editable }) =>
           <PostAuthor authorUid={post.uid} avatarSize={40} authorPhotoURL={post.userPhotoURL} authorName={post.userName} />
           {isOwnedByCurrentUser && editable && (
             <Link
-              className="button"
+              
               href={`/posts/edit/${post.id}`}
             >
-              Edit
+              <span className="button">Edit</span>   
             </Link>
           )}
         </div>
@@ -60,4 +61,4 @@ const mapStateToProps = (state, props) => ({
   isOwnedByCurrentUser: state.auth.uid === props.post.uid
 });
 
-export default PostListItem;
+export default connect(mapStateToProps)(PostListItem);

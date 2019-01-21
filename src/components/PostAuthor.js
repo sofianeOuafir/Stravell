@@ -3,12 +3,18 @@ import React from "react";
 import Avatar from "react-avatar";
 
 const PostAuthor = ({ authorUid, avatarSize, authorPhotoURL, authorName }) => (
-  <Link className="no-text-decoration c-dark-grey" href={`/user?uid=${authorUid}`}>
+  <Link
+    href={`/user?uid=${authorUid}`}
+  >
     <div>
-    <Avatar className="mr1" size={avatarSize} round={true} src={authorPhotoURL} />
-    {authorName}
+      <Avatar
+        className="mr1"
+        size={avatarSize}
+        round={true}
+        src={authorPhotoURL}
+      />
+      <span className="c-dark-grey">{authorName}</span>
     </div>
-
   </Link>
 );
 

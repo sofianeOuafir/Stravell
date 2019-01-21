@@ -5,7 +5,7 @@
   "author": "Sofiane Ouafir",
   "license": "MIT",
   "scripts": {
-    "dev": "next",
+    "dev": "node server/server.js",
     "build": "next build",
     "test": "cross-env NODE_ENV=test jest --config=jest.config.json",
     "start": "next start",
@@ -26,6 +26,7 @@
     "babel-polyfill": "6.26.0",
     "babel-preset-env": "1.5.2",
     "babel-preset-react": "6.24.1",
+    "body-parser": "^1.18.3",
     "css-loader": "0.28.4",
     "draft-js": "^0.10.5",
     "draft-js-alignment-plugin": "^2.0.5",

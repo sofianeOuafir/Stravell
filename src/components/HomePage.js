@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from 'react-redux';
 
 import FilterablePostList from "../components/FilterablePostList";
 import PageHeader from "./PageHeader";
@@ -47,4 +48,8 @@ HomePage.getInitialProps = async function() {
   return { posts };
 };
 
-export default HomePage;
+const mapStateToProps = ({ auth }) => ({
+  userName: auth.userName
+});
+
+export default connect(mapStateToProps)(HomePage);
