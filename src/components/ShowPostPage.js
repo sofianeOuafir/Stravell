@@ -1,5 +1,4 @@
 import React from "react";
-import {withRouter} from 'next/router';
 import MultiDecorator from "draft-js-plugins-editor/lib/Editor/MultiDecorator";
 import { EditorState, convertFromRaw, CompositeDecorator } from "draft-js";
 import Head from 'next/head';
@@ -23,7 +22,7 @@ function getPluginDecorators() {
   return new MultiDecorator([new CompositeDecorator(decorators)]);
 }
 
-export const ShowPostPage = page(withRouter(({ post }) => {
+export const ShowPostPage = page(({ post }) => {
   const body = EditorState.createWithContent(
     convertFromRaw(JSON.parse(post.body)),
     getPluginDecorators()
@@ -52,7 +51,7 @@ export const ShowPostPage = page(withRouter(({ post }) => {
       </div>
     </div>
   );
-}), { withHead: false });
+}, { withHead: false });
 
 ShowPostPage.getInitialProps = async function(context) {
   const post = await new Promise((resolve, reject) => {
