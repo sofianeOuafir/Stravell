@@ -27,8 +27,8 @@ export const Header = ({
           {isAuthenticated ? (
             <div className="header__right">
               <Link
+                prefetch
                 href={`/dashboard?uid=${uid}`}
-                
               >
                 <Avatar className="header__user-photo show-for-desktop" round={true} size="40" src={userPhotoURL} />
               </Link>
