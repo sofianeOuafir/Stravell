@@ -3,6 +3,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import Router, { withRouter } from "next/router";
 import ReactGA from "react-ga";
+import NProgress from 'nprogress'
 
 import withReduxStore from "../src/hocs/withReduxStore";
 import { startSetPosts } from "../src/actions/posts";
@@ -29,9 +30,13 @@ class MyApp extends App {
     // initialize React Google Analytics and track page views
     ReactGA.initialize(process.env.GA_TRACKING_CODE);
     ReactGA.pageview(Router.route);
-    Router.onRouteChangeStart = location => {
+    Router.events.on('routeChangeStart', (location) => {
       ReactGA.pageview(location);
-    };
+      NProgress.start();
+    });
+
+    Router.events.on('routeChangeComplete', () => NProgress.done())
+    Router.events.on('routeChangeError', () => NProgress.done())
 
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
