@@ -19,14 +19,14 @@ export default (
           <meta charSet="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" type="image/png" href="/static/images/favicon.png" />
-          <Head>
+
             {withTitleAndDescription && (
-              <div>
+              <Head>
                 <title>{title}</title>
                 <meta name="description" content={description} />
-              </div>
+              </Head>
             )}
-          </Head>
+
           <Header />
           <WrappedComponent {...this.props} />
         </div>
