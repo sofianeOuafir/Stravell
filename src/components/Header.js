@@ -27,7 +27,6 @@ export const Header = ({
           {isAuthenticated ? (
             <div className="header__right">
               <Link
-                prefetch
                 href={`/dashboard?uid=${uid}`}
                 
               >
