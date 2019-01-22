@@ -1,12 +1,14 @@
 import App, { Container } from "next/app";
 import React from "react";
 import { Provider } from "react-redux";
-import { withRouter } from 'next/router'
+import Router, { withRouter } from "next/router";
+import ReactGA from "react-ga";
 
 import withReduxStore from "../src/hocs/withReduxStore";
 import { startSetPosts } from "../src/actions/posts";
 import { firebase } from "./../src/firebase/firebase";
 import { login, logout } from "./../src/actions/auth";
+import { setTextFilter } from "./../src/actions/filters";
 import "./../src/styles/styles.scss";
 import "normalize.css/normalize.css";
 import "draft-js/dist/Draft.css";
@@ -19,6 +21,18 @@ import "draft-js-side-toolbar-plugin/lib/plugin.css";
 
 class MyApp extends App {
   componentDidMount() {
+    const searchQuery = Router.query.s;
+    if (searchQuery) {
+      this.props.reduxStore.dispatch(setTextFilter(searchQuery));
+    }
+
+    // initialize React Google Analytics and track page views
+    ReactGA.initialize(process.env.GA_TRACKING_CODE);
+    ReactGA.pageview(Router.route);
+    Router.onRouteChangeStart = location => {
+      ReactGA.pageview(location);
+    };
+
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         return user
@@ -41,7 +55,9 @@ class MyApp extends App {
             this.props.reduxStore.dispatch(
               login({ uid, userName, userPhotoURL })
             );
-            this.props.router.push('/');
+
+            if (this.props.router.route === "/login")
+              this.props.router.push("/");
           });
       } else {
         fetch("/api/logout", {

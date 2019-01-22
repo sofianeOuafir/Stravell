@@ -3,9 +3,9 @@ import Link from "next/link";
 import { connect } from "react-redux";
 import { IoIosHome, IoIosPower, IoMdCreate } from "react-icons/io";
 import Avatar from "react-avatar";
+
 import { startLogout } from "../actions/auth";
 import DropdownMenu from "./DropdownMenu";
-// import { history } from "./../routers/AppRouter";
 import { APP_NAME } from './../constants/constants';
 
 export const Header = ({
@@ -18,11 +18,11 @@ export const Header = ({
   <header className="header">
     <div className="content-container">
       <div className="header__content">
-        <div className="header__title">
-          <Link href="/">
+        <Link prefetch href="/">
+          <a className="header__title">
             <h1>{APP_NAME}</h1>
-          </Link>
-        </div>
+          </a>
+        </Link>
         <div className="header__right">
           {isAuthenticated ? (
             <div className="header__right">
@@ -33,12 +33,12 @@ export const Header = ({
                 <Avatar className="header__user-photo show-for-desktop" round={true} size="40" src={userPhotoURL} />
               </Link>
               <DropdownMenu title={userName}>
-                <Link href="/createPost">
+                <Link prefetch href="/createPost">
                   <button id="createButton">
                     <IoMdCreate className="header__dropdown-menu-icon" /> Create Post
                   </button>
                 </Link>
-                <Link href={`/dashboard?uid=${uid}`}>
+                <Link prefetch href={`/dashboard?uid=${uid}`}>
                   <button id="dashboardButton">
                     <IoIosHome className="header__dropdown-menu-icon" /> Dashboard
                   </button>
@@ -49,8 +49,8 @@ export const Header = ({
               </DropdownMenu>
             </div>
           ) : (
-            <Link href="/login">
-              <span className="button button--link">Log in</span>
+            <Link prefetch href="/login">
+              <a className="button button--link">Log in</a>
             </Link>
           )}
         </div>

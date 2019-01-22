@@ -18,10 +18,10 @@ export const DashboardPage = page(
       <div>
         <PageHeader title="Dashboard" />
         <div className="content-container">
-          <Link href="posts/create">
-            <span className="button button--with-bottom-margin">
+          <Link href="/createPost">
+            <a className="button button--with-bottom-margin">
               Create Post
-            </span>
+            </a>
           </Link>
           <FilterablePostList
             editable={true}
@@ -41,15 +41,14 @@ DashboardPage.getInitialProps = async function({ query, req, reduxStore, res }) 
   let authorised = false;
   if (req && req.session) {
     const user = req.session.decodedToken;
-    if (user.user_id === query.uid) {
+    if (user.user_id == query.uid) {
       authorised = true;
     }
   } else {
-    if (reduxStore.getState().auth.uid === uid) {
+    if (reduxStore.getState().auth.uid == uid) {
       authorised = true;
     }
   }
-
   if (authorised) {
     const snapshot = await database
       .ref("posts")
