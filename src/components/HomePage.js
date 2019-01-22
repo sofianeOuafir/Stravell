@@ -17,8 +17,6 @@ export const HomePage = page(
     <div>
       <PageHeader title={`Welcome${userName ? `, ${userName}` : ""}`} />
       <div className="content-container">
-        { process.env.FIREBASE_API_KEY }
-        { process.env.FIREBASE_PROJECT_ID }
         <FilterablePostList
           SearchBarAutoFocus={true}
           posts={posts}

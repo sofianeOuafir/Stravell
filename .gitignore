@@ -4,4 +4,3 @@ public/dist/
 .env.development
 coverage/
 .next
-server/credentials.json
