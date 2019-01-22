@@ -33,7 +33,7 @@ export const PostListItem = ({ post, isOwnedByCurrentUser, index, editable }) =>
             { postListItemContent }
           </a>
         ) : (
-          <Link prefetch href={`/post?id=${post.id}`}>
+          <Link href={`/post?id=${post.id}`}>
             <a className="post-list-item__link">
               { postListItemContent }
             </a>
@@ -46,7 +46,6 @@ export const PostListItem = ({ post, isOwnedByCurrentUser, index, editable }) =>
           <PostAuthor authorUid={post.uid} avatarSize={40} authorPhotoURL={post.userPhotoURL} authorName={post.userName} />
           {isOwnedByCurrentUser && editable && (
             <Link
-              prefetch
               href={`/editPost?id=${post.id}`}
             >
               <a className="button">Edit</a>          
