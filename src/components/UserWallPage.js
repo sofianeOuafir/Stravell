@@ -29,7 +29,7 @@ export const UserWallPage = page(
       </div>
     );
   }),
-  { withHead: false }
+  { withTitleAndDescription: false }
 );
 
 UserWallPage.getInitialProps = async function(context) {

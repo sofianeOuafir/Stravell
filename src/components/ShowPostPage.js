@@ -51,7 +51,7 @@ export const ShowPostPage = page(({ post }) => {
       </div>
     </div>
   );
-}, { withHead: false });
+}, { withTitleAndDescription: false });
 
 ShowPostPage.getInitialProps = async function(context) {
   const post = await new Promise((resolve, reject) => {
