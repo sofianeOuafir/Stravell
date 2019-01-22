@@ -19,7 +19,7 @@ export class EditPostPage extends React.Component {
       id: this.props.post.id, 
       updates: post
     });
-    this.props.router.push('/dashboard')
+    this.props.router.push(`/dashboard?uid=${this.props.uid}`)
   };
 
   render() {
@@ -83,6 +83,10 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
+const mapStateToProps = (state) => ({
+  uid: state.auth.uid
+});
 
 
-export default connect(null, mapDispatchToProps)(Component);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Component);
