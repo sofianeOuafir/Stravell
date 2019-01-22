@@ -11,7 +11,7 @@ import { ADD_POST_PAGE_TITLE, ADD_POST_PAGE_DESCRIPTION } from './../constants/c
 export class AddPostPage extends React.Component {
   onSubmit = post => {
     this.props.startAddPost(post);
-    this.props.router.push("/dashboard");
+    this.props.router.push(`/dashboard?uid=${this.props.uid}`)
   };
 
   render() {
@@ -62,7 +62,11 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
+const mapStateToProps = (state) => ({
+  uid: state.auth.uid
+});
+
 export default connect(
-  undefined,
+  mapStateToProps,
   mapDispatchToProps
 )(Component);
