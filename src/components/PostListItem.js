@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import Link from "next/link";
+
 import { getDateFormat } from './../lib/utils/date';
 import PostAuthor from './PostAuthor';
 import { isOdd } from "./../lib/utils/math";
@@ -32,8 +33,10 @@ export const PostListItem = ({ post, isOwnedByCurrentUser, index, editable }) =>
             { postListItemContent }
           </a>
         ) : (
-          <Link className="post-list-item__link" to={`/posts/show/${post.id}`}>
-            { postListItemContent }
+          <Link prefetch href={`/post?id=${post.id}`}>
+            <a className="post-list-item__link">
+              { postListItemContent }
+            </a>
           </Link>
         )
       }
@@ -43,10 +46,10 @@ export const PostListItem = ({ post, isOwnedByCurrentUser, index, editable }) =>
           <PostAuthor authorUid={post.uid} avatarSize={40} authorPhotoURL={post.userPhotoURL} authorName={post.userName} />
           {isOwnedByCurrentUser && editable && (
             <Link
-              className="button"
-              to={`/posts/edit/${post.id}`}
+              prefetch
+              href={`/editPost?id=${post.id}`}
             >
-              Edit
+              <a className="button">Edit</a>          
             </Link>
           )}
         </div>
