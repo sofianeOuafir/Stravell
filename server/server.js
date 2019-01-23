@@ -70,6 +70,42 @@ app.prepare().then(() => {
     res.json({ status: true })
   })
 
+  server.get('/p/create', (req, res) => {
+    const actualPage = '/createPost'
+    const queryParams = { } 
+    app.render(req, res, actualPage, queryParams)
+  })
+
+  server.get('/s/:text', (req, res) => {
+    const actualPage = '/'
+    const queryParams = { s: req.params.text } 
+    app.render(req, res, actualPage, queryParams)
+  })
+
+  server.get('/p/show/:title/:id', (req, res) => {
+    const actualPage = '/post'
+    const queryParams = { id: req.params.id } 
+    app.render(req, res, actualPage, queryParams)
+  })
+
+  server.get('/dashboard/:username/:uid', (req, res) => {
+    const actualPage = '/dashboard'
+    const queryParams = { uid: req.params.uid } 
+    app.render(req, res, actualPage, queryParams)
+  })
+
+  server.get('/p/edit/:title/:id', (req, res) => {
+    const actualPage = '/editPost'
+    const queryParams = { id: req.params.id } 
+    app.render(req, res, actualPage, queryParams)
+  })
+
+  server.get('/u/show/:username/:uid', (req, res) => {
+    const actualPage = '/user'
+    const queryParams = { uid: req.params.uid } 
+    app.render(req, res, actualPage, queryParams)
+  })
+
   server.get('*', (req, res) => {
     return handle(req, res)
   })

@@ -3,10 +3,11 @@ import Link from "next/link";
 import { connect } from "react-redux";
 import { IoIosHome, IoIosPower, IoMdCreate } from "react-icons/io";
 import Avatar from "react-avatar";
+import { slugify } from "underscore.string";
 
 import { startLogout } from "../actions/auth";
 import DropdownMenu from "./DropdownMenu";
-import { APP_NAME } from './../constants/constants';
+import { APP_NAME } from "./../constants/constants";
 
 export const Header = ({
   startLogout,
@@ -28,19 +29,31 @@ export const Header = ({
             <div className="header__right">
               <Link
                 prefetch
+                as={`/dashboard/${slugify(userName)}/${uid}`}
                 href={`/dashboard?uid=${uid}`}
               >
-                <Avatar className="header__user-photo show-for-desktop" round={true} size="40" src={userPhotoURL} />
+                <Avatar
+                  className="header__user-photo show-for-desktop"
+                  round={true}
+                  size="40"
+                  src={userPhotoURL}
+                />
               </Link>
               <DropdownMenu title={userName}>
-                <Link prefetch href="/createPost">
+                <Link prefetch as={"/p/create"} href="/createPost">
                   <button id="createButton">
-                    <IoMdCreate className="header__dropdown-menu-icon" /> Create Post
+                    <IoMdCreate className="header__dropdown-menu-icon" /> Create
+                    Post
                   </button>
                 </Link>
-                <Link prefetch href={`/dashboard?uid=${uid}`}>
+                <Link
+                  prefetch
+                  as={`/dashboard/${slugify(userName)}/${uid}`}
+                  href={`/dashboard?uid=${uid}`}
+                >
                   <button id="dashboardButton">
-                    <IoIosHome className="header__dropdown-menu-icon" /> Dashboard
+                    <IoIosHome className="header__dropdown-menu-icon" />{" "}
+                    Dashboard
                   </button>
                 </Link>
                 <button id="logOutButton" onClick={startLogout}>

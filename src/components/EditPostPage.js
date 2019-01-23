@@ -2,12 +2,13 @@ import React from "react";
 import PostForm from "./PostForm";
 import { connect } from "react-redux";
 import Router, { withRouter } from 'next/router';
+import { slugify } from 'underscore.string';
 
 import { startEditPost } from '../actions/posts';
 import PageHeader from './PageHeader';
 import database from "./../firebase/firebase";
 import page from '../hocs/page';
-import { DASHBOARD_PAGE_TITLE, DASHBOARD_PAGE_DESCRIPTION } from './../constants/constants';
+import { EDIT_POST_PAGE_DESCRIPTION, EDIT_POST_PAGE_TITLE } from './../constants/constants';
 
 export class EditPostPage extends React.Component {
   constructor(props) {
@@ -19,7 +20,7 @@ export class EditPostPage extends React.Component {
       id: this.props.post.id, 
       updates: post
     });
-    this.props.router.push(`/dashboard?uid=${this.props.uid}`)
+    this.props.router.push(`/dashboard?uid=${this.props.uid}`, `/dashboard/${slugify(this.props.userName)}/${this.props.uid}`)
   };
 
   render() {
@@ -34,7 +35,7 @@ export class EditPostPage extends React.Component {
   }
 }
 
-const Component = page(withRouter(EditPostPage), { title: DASHBOARD_PAGE_TITLE, description: DASHBOARD_PAGE_DESCRIPTION });
+const Component = page(withRouter(EditPostPage), { title: EDIT_POST_PAGE_TITLE, description: EDIT_POST_PAGE_DESCRIPTION });
 
 Component.getInitialProps = async function({ query, req, reduxStore, res }) {
   const post = await new Promise((resolve, reject) => {
@@ -84,7 +85,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-  uid: state.auth.uid
+  uid: state.auth.uid,
+  userName: state.auth.userName
 });
 
 
