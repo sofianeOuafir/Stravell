@@ -1,7 +1,6 @@
 import React from "react";
 import { withRouter } from "next/router";
 import Head from 'next/head';
-import { connect } from 'react-redux';
 
 import PageHeader from "./PageHeader";
 import FilterablePostList from "./FilterablePostList";
@@ -10,20 +9,20 @@ import database from "./../firebase/firebase";
 import { APP_NAME } from './../constants/constants'
 
 export const UserWallPage = page(
-  withRouter(({ posts, userName }) => {
+  withRouter(({ posts, user }) => {
     return (
       <div>
         <Head>
-          <title>{`${APP_NAME} | ${userName}`}</title>
-          <meta name="description" content={`This page describe ${userName}'s profile`} />
+          <title>{`${APP_NAME} | ${user.userName}`}</title>
+          <meta name="description" content={`This page describe ${user.userName}'s profile`} />
         </Head>
         <div>
-          <PageHeader title={userName} />
+          <PageHeader title={user.userName} />
           <div className="content-container">
             <FilterablePostList
               SearchBarAutoFocus={true}
               posts={posts}
-              noPostText={`${userName} has not published any post yet.`}
+              noPostText={`${user.userName} has not published any post yet.`}
             />
           </div>
         </div>
@@ -48,11 +47,9 @@ UserWallPage.getInitialProps = async function(context) {
     });
   });
   posts = posts.reverse();
-  return { posts };
+  const userSnapshot = await database.ref(`users/${uid}`).once("value");
+  const user = { uid: userSnapshot.key, ...userSnapshot.val() };
+  return { posts, user };
 };
 
-const mapStateToProps = (state) => ({
-  userName: state.auth.userName
-});
-
-export default connect(mapStateToProps)(UserWallPage);
+export default UserWallPage;
