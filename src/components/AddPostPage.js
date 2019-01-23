@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from 'next/router';
+import { slugify } from 'underscore.string';
 
 import PostForm from "./PostForm";
 import { startAddPost } from "../actions/posts";
@@ -11,7 +12,7 @@ import { ADD_POST_PAGE_TITLE, ADD_POST_PAGE_DESCRIPTION } from './../constants/c
 export class AddPostPage extends React.Component {
   onSubmit = post => {
     this.props.startAddPost(post);
-    this.props.router.push(`/dashboard?uid=${this.props.uid}`)
+    this.props.router.push(`/dashboard?uid=${this.props.uid}`, `/dashboard/${slugify(this.props.userName)}/${this.props.uid}`)
   };
 
   render() {
@@ -63,7 +64,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = (state) => ({
-  uid: state.auth.uid
+  uid: state.auth.uid,
+  userName: state.auth.userName
 });
 
 export default connect(

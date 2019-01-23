@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Link from "next/link";
+import { slugify } from 'underscore.string';
 
 import { getDateFormat } from './../lib/utils/date';
 import PostAuthor from './PostAuthor';
@@ -33,7 +34,7 @@ export const PostListItem = ({ post, isOwnedByCurrentUser, index, editable }) =>
             { postListItemContent }
           </a>
         ) : (
-          <Link prefetch href={`/post?id=${post.id}`}>
+          <Link as={`/p/show/${slugify(post.title)}/${post.id}`} prefetch href={`/post?id=${post.id}`}>
             <a className="post-list-item__link">
               { postListItemContent }
             </a>
@@ -47,6 +48,7 @@ export const PostListItem = ({ post, isOwnedByCurrentUser, index, editable }) =>
           {isOwnedByCurrentUser && editable && (
             <Link
               prefetch
+              as={`/p/edit/${slugify(post.title)}/${post.id}`}
               href={`/editPost?id=${post.id}`}
             >
               <a className="button">Edit</a>          

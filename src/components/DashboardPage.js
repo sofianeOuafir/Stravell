@@ -18,7 +18,7 @@ export const DashboardPage = page(
       <div>
         <PageHeader title="Dashboard" />
         <div className="content-container">
-          <Link href="/createPost">
+          <Link as="/p/create" href="/createPost">
             <a className="button button--with-bottom-margin">
               Create Post
             </a>
