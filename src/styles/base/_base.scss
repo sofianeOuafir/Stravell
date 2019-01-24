@@ -34,12 +34,20 @@ button:disabled {
   display: flex;
 }
 
+.center {
+  text-align: center;
+}
+
 .align-items--center {
   align-items: center;
 }
 
 .justify-content--center {
   justify-content: center;
+}
+
+.flex-direction--column {
+  flex-direction: column;
 }
 
 .mr1 {
@@ -70,6 +78,10 @@ button:disabled {
   @extend .mt1, .mb1;
 }
 
+.my2 {
+  @extend .mt2, .mb2;
+}
+
 .m0 {
   margin: 0;
 }
@@ -89,6 +101,11 @@ button:disabled {
 .py1 {
   padding-top: $s-size;
   padding-bottom: $s-size;
+}
+
+.py2 {
+  padding-top: $m-size;
+  padding-bottom: $m-size;
 }
 
 .pb3 {
@@ -125,4 +142,8 @@ button:disabled {
 
 .border {
   border: 1px black solid;
+}
+
+.dashed-border {
+  border: 1px black dashed;
 }
