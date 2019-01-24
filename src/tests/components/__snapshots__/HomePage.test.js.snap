@@ -1,7 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A userName prop is provided should render correctly 1`] = `
-<div>
+<Layout
+  description="Stravell | Travel social blog containing lot of articles about travels and activities. Travellers of the whole world share their experiences about the trip they've made. You can read, write or find articles about the best wanderlust!"
+  title="Stravell | Stravell - Read, Write and Find Travel Articles From Travellers."
+>
   <PageHeader
     title="Welcome, Sofiane"
   />
@@ -14,11 +17,14 @@ exports[`A userName prop is provided should render correctly 1`] = `
       posts={Array []}
     />
   </div>
-</div>
+</Layout>
 `;
 
 exports[`no username prop is provided should render correctly 1`] = `
-<div>
+<Layout
+  description="Stravell | Travel social blog containing lot of articles about travels and activities. Travellers of the whole world share their experiences about the trip they've made. You can read, write or find articles about the best wanderlust!"
+  title="Stravell | Stravell - Read, Write and Find Travel Articles From Travellers."
+>
   <PageHeader
     title="Welcome"
   />
@@ -31,5 +37,5 @@ exports[`no username prop is provided should render correctly 1`] = `
       posts={Array []}
     />
   </div>
-</div>
+</Layout>
 `;

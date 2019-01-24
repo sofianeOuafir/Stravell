@@ -89,14 +89,16 @@ exports[`editor is not read only should render correctly 1`] = `
   />
   <div>
     <Decorated(AlignmentTool) />
-    <Decorated(Toolbar) />
+    <Decorated(Toolbar)>
+      <Component />
+    </Decorated(Toolbar)>
   </div>
 </div>
 `;
 
 exports[`editor is read only should render correctly 1`] = `
 <div
-  className={false}
+  className=""
   onClick={[Function]}
 >
   <input

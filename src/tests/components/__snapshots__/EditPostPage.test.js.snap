@@ -1,7 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render correctly 1`] = `
-<div>
+<Layout
+  description="Stravell | This page allow you to edit a travel post, article you've written."
+  title="Stravell | Edit Post"
+>
   <PageHeader
     title="Edit Post"
   />
@@ -17,5 +20,5 @@ exports[`should render correctly 1`] = `
       }
     />
   </div>
-</div>
+</Layout>
 `;

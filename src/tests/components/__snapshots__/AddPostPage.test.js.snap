@@ -1,7 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render correctly 1`] = `
-<div>
+<Layout
+  description="Stravell | This page allow you to write, blog an article and share your experience about your travels, trip and best wanderlust."
+  title="Stravell | Add Post"
+>
   <PageHeader
     title="Create Post"
   />
@@ -12,5 +15,5 @@ exports[`should render correctly 1`] = `
       onSubmit={[Function]}
     />
   </div>
-</div>
+</Layout>
 `;

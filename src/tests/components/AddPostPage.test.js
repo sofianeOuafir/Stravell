@@ -4,8 +4,10 @@ import { AddPostPage } from '../../components/AddPostPage';
 import { PostForm } from './../../components/PostForm';
 
 const startAddPost = jest.fn();
-const history = { push: jest.fn() };
-const props = { startAddPost, history };
+const router = { push: jest.fn() };
+const uid = 1;
+const userName = 'Sofiane'
+const props = { startAddPost, router, uid, userName };
 let wrapper;
 
 beforeEach(() => {
@@ -19,5 +21,5 @@ test('should render correctly', () => {
 test('should add the post and redirect the user to the dashboard when the form get submitted', () => {
   wrapper.find(PostForm).simulate('submit', { });
   expect(startAddPost).toHaveBeenCalled();
-  expect(history.push).toHaveBeenCalledWith('/dashboard');
+  expect(router.push).toHaveBeenCalledWith('/dashboard?uid=1', "/dashboard/sofiane/1");
 });

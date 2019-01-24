@@ -110,7 +110,7 @@ class MyEditor extends React.Component {
 
   render() {
     return (
-      <div onClick={this.focus} className={ !this.props.readOnly && "editor-container" } >
+      <div onClick={this.focus} className={!this.props.readOnly ? "editor-container" : "" } >
         <input type="file" id="imageUploads" className="hide" onChange={this.uploadImage} />
         <Editor
           plugins={plugins}

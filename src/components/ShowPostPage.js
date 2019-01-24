@@ -8,7 +8,8 @@ import PageHeader from "./PageHeader";
 import { getDateFormat } from "./../lib/utils/date";
 import PostAuthor from './PostAuthor';
 import database from "./../firebase/firebase";
-import page from './../hocs/page';
+import Layout from "./Layout";
+
 
 function getPluginDecorators() {
   let decorators = [];
@@ -22,13 +23,13 @@ function getPluginDecorators() {
   return new MultiDecorator([new CompositeDecorator(decorators)]);
 }
 
-export const ShowPostPage = page(({ post }) => {
+export const ShowPostPage = ({ post }) => {
   const body = EditorState.createWithContent(
     convertFromRaw(JSON.parse(post.body)),
     getPluginDecorators()
   );
   return (
-    <div>
+    <Layout withTitleAndDescription={false}>
       <Head>
         <title>{`${post.title}`}</title>
         <meta name="description" content={post.description} />
@@ -47,11 +48,11 @@ export const ShowPostPage = page(({ post }) => {
       </PageHeader>
       <img src={`${post.image}`} alt="" className="fullwidth"/>
       <div className="content-container">
-        <MyEditor readOnly editorState={body} onChange={() => {}} />
+        <MyEditor readOnly={true} editorState={body} onChange={() => {}} />
       </div>
-    </div>
+    </Layout>
   );
-}, { withTitleAndDescription: false });
+};
 
 ShowPostPage.getInitialProps = async function(context) {
   const post = await new Promise((resolve, reject) => {

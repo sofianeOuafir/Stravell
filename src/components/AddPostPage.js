@@ -6,8 +6,8 @@ import { slugify } from 'underscore.string';
 import PostForm from "./PostForm";
 import { startAddPost } from "../actions/posts";
 import PageHeader from './PageHeader';
-import page from './../hocs/page';
 import { ADD_POST_PAGE_TITLE, ADD_POST_PAGE_DESCRIPTION } from './../constants/constants';
+import Layout from "./Layout";
 
 export class AddPostPage extends React.Component {
   onSubmit = post => {
@@ -17,19 +17,19 @@ export class AddPostPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <Layout title={ADD_POST_PAGE_TITLE} description={ADD_POST_PAGE_DESCRIPTION}>
         <PageHeader title="Create Post" />
         <div className="content-container">
           <PostForm onSubmit={this.onSubmit} /> 
         </div>
-      </div>
+      </Layout>
     );
   }
 }
 
-const Component = page(withRouter(AddPostPage), { title: ADD_POST_PAGE_TITLE, description: ADD_POST_PAGE_DESCRIPTION });
 
-Component.getInitialProps = async function({ req, reduxStore, res }) {
+
+AddPostPage.getInitialProps = async function({ req, reduxStore, res }) {
   let authorised = false;
   if (req && req.session) {
     const user = req.session.decodedToken;
@@ -71,4 +71,4 @@ const mapStateToProps = (state) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Component);
+)(withRouter(AddPostPage));

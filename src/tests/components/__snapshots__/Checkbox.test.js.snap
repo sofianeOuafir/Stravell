@@ -7,7 +7,7 @@ exports[`checked props is false should render correctly 1`] = `
     className="mr1"
     id="abc123"
     name="abc123"
-    onChange={[Function]}
+    onChange={[MockFunction]}
     type="checkbox"
   />
   <label
@@ -25,7 +25,7 @@ exports[`checked props is true should render correctly 1`] = `
     className="mr1"
     id="abc123"
     name="abc123"
-    onChange={[Function]}
+    onChange={[MockFunction]}
     type="checkbox"
   />
   <label

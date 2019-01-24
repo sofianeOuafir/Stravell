@@ -1,13 +1,13 @@
 {
   "name": "stravell",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "author": "Sofiane Ouafir",
   "license": "MIT",
   "scripts": {
     "dev": "node server/server.js",
     "build": "next build",
-    "test": "cross-env NODE_ENV=test jest --config=jest.config.json",
+    "test": "cross-env NODE_ENV=test jest",
     "start": "NODE_ENV=production node server/server.js",
     "heroku-postbuild": "yarn run build"
   },
@@ -43,11 +43,11 @@
     "nprogress": "^0.2.0",
     "numeral": "2.0.6",
     "prop-types": "^15.6.2",
-    "react": "15.6.1",
+    "react": "^16.7.0",
     "react-addons-shallow-compare": "15.6.0",
     "react-avatar": "^3.4.6",
     "react-dates": "12.3.0",
-    "react-dom": "15.6.1",
+    "react-dom": "^16.7.0",
     "react-ga": "^2.5.6",
     "react-icons": "^3.2.2",
     "react-modal": "2.2.3",
@@ -63,12 +63,16 @@
     "validator": "8.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "babel-core": "^7.0.0-bridge",
+    "babel-jest": "^23.6.0",
     "cross-env": "5.0.5",
     "dotenv": "4.0.0",
-    "enzyme": "2.9.1",
-    "enzyme-to-json": "1.5.1",
-    "jest": "20.0.4",
-    "react-test-renderer": "15.6.1",
-    "webpack-dev-server": "2.5.1"
+    "enzyme": "3.4.3",
+    "enzyme-adapter-react-16": "1.2.0",
+    "enzyme-to-json": "^3.3.5",
+    "jest": "^23.6.0",
+    "react-addons-test-utils": "15.6.2",
+    "react-test-renderer": "16.4.2"
   }
 }

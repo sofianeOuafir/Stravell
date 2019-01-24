@@ -7,9 +7,8 @@ import { slugify } from 'underscore.string';
 import { startEditPost } from '../actions/posts';
 import PageHeader from './PageHeader';
 import database from "./../firebase/firebase";
-import page from '../hocs/page';
 import { EDIT_POST_PAGE_DESCRIPTION, EDIT_POST_PAGE_TITLE } from './../constants/constants';
-
+import Layout from "./Layout";
 export class EditPostPage extends React.Component {
   constructor(props) {
     super(props);
@@ -25,19 +24,17 @@ export class EditPostPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <Layout title={EDIT_POST_PAGE_TITLE} description={EDIT_POST_PAGE_DESCRIPTION}>
         <PageHeader title="Edit Post" />
         <div className="content-container">
           <PostForm post={this.props.post} onSubmit={this.onSubmit}  />
         </div>
-      </div>
+      </Layout>
     );
   }
 }
 
-const Component = page(withRouter(EditPostPage), { title: EDIT_POST_PAGE_TITLE, description: EDIT_POST_PAGE_DESCRIPTION });
-
-Component.getInitialProps = async function({ query, req, reduxStore, res }) {
+EditPostPage.getInitialProps = async function({ query, req, reduxStore, res }) {
   const post = await new Promise((resolve, reject) => {
     const { id } = query;
     database
@@ -91,4 +88,4 @@ const mapStateToProps = (state) => ({
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Component);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(EditPostPage));

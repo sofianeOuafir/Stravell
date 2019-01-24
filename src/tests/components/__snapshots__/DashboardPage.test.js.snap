@@ -1,7 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render DashboardPage correctly 1`] = `
-<div>
+<Layout
+  description="Stravell | Dashboard page"
+  title="Stravell | Dashboard"
+>
   <PageHeader
     title="Dashboard"
   />
@@ -9,11 +12,14 @@ exports[`should render DashboardPage correctly 1`] = `
     className="content-container"
   >
     <Link
-      className="button button--with-bottom-margin"
-      replace={false}
-      to="posts/create"
+      as="/p/create"
+      href="/createPost"
     >
-      Create Post
+      <a
+        className="button button--with-bottom-margin"
+      >
+        Create Post
+      </a>
     </Link>
     <Connect(FilterablePostList)
       SearchBarAutoFocus={true}
@@ -21,5 +27,5 @@ exports[`should render DashboardPage correctly 1`] = `
       noPostText="The world is looking forward to hear about your stories!"
     />
   </div>
-</div>
+</Layout>
 `;

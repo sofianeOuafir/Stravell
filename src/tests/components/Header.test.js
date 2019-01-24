@@ -19,16 +19,6 @@ describe("A user is authenticated", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test("should redirect to dashboard when clicking on dashboard button", () => {
-    wrapper.find('#dashboardButton').simulate("click");
-    expect(history.push).toHaveBeenCalledWith('/dashboard');
-  });
-
-  test("should redirect to add page when clicking on create button", () => {
-    wrapper.find('#createButton').simulate("click");
-    expect(history.push).toHaveBeenCalledWith('/posts/create');
-  });
-
   test("should call startLogout on button click", () => {
     wrapper.find("#logOutButton").simulate("click");
     expect(startLogout).toHaveBeenCalled();
