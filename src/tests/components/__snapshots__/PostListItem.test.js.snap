@@ -189,11 +189,15 @@ exports[`the post belongs to the current user and props.editable is true should 
         avatarSize={40}
       />
       <Link
-        className="button"
-        replace={false}
-        to="/posts/edit/-LV-kv5VGQDljYtMPt9v"
+        as="/p/edit/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
+        href="/editPost?id=-LV-kv5VGQDljYtMPt9v"
+        prefetch={true}
       >
-        Edit
+        <a
+          className="button"
+        >
+          Edit
+        </a>
       </Link>
     </div>
     <p>
@@ -208,31 +212,35 @@ exports[`the post contains a body and no URL has been provided should render cor
   className="post-list-item "
 >
   <Link
-    className="post-list-item__link"
-    replace={false}
-    to="/posts/show/-LV-kv5VGQDljYtMPt9v"
+    as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
+    href="/post?id=-LV-kv5VGQDljYtMPt9v"
+    prefetch={true}
   >
-    <div>
-      <img
-        alt="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-        className="post-list-item__image"
-        src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-      />
-      <div
-        className="post-list-item__title-description-container"
-      >
-        <h1
-          className="post-list-item__title"
+    <a
+      className="post-list-item__link"
+    >
+      <div>
+        <img
+          alt="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
+          className="post-list-item__image"
+          src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
+        />
+        <div
+          className="post-list-item__title-description-container"
         >
-          Don't Forget Where You Come From.
-        </h1>
-        <h2
-          className="post-list-item__description"
-        >
-          Discovering the beauty of my country, my home.
-        </h2>
+          <h1
+            className="post-list-item__title"
+          >
+            Don't Forget Where You Come From.
+          </h1>
+          <h2
+            className="post-list-item__description"
+          >
+            Discovering the beauty of my country, my home.
+          </h2>
+        </div>
       </div>
-    </div>
+    </a>
   </Link>
   <div>
     <div

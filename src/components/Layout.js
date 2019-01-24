@@ -3,8 +3,7 @@ import Head from "next/head";
 
 import Header from './Header';
 
-
-export default ({ withTitleAndDescription = true, title, description, children }) => (
+const Layout = ({ withTitleAndDescription = true, title, description, children }) => (
   <div>
     <meta charSet="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -21,3 +20,5 @@ export default ({ withTitleAndDescription = true, title, description, children }
     {children}
   </div>
 );
+
+export default Layout;

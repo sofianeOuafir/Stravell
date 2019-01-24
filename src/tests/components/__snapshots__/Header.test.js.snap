@@ -11,13 +11,16 @@ exports[`A user is authenticated should render Header correctly 1`] = `
       className="header__content"
     >
       <Link
-        className="header__title"
-        replace={false}
-        to="/"
+        href="/"
+        prefetch={true}
       >
-        <h1>
-          Stravell
-        </h1>
+        <a
+          className="header__title"
+        >
+          <h1>
+            Stravell
+          </h1>
+        </a>
       </Link>
       <div
         className="header__right"
@@ -26,11 +29,12 @@ exports[`A user is authenticated should render Header correctly 1`] = `
           className="header__right"
         >
           <Link
-            className="header__user-photo show-for-desktop"
-            replace={false}
-            to="/dashboard"
+            as="/dashboard/sofiane/undefined"
+            href="/dashboard?uid=undefined"
+            prefetch={true}
           >
             <withAvatarConfig
+              className="header__user-photo show-for-desktop"
               round={true}
               size="40"
               src="myPhotoURL"
@@ -39,27 +43,38 @@ exports[`A user is authenticated should render Header correctly 1`] = `
           <DropDownMenu
             title="Sofiane"
           >
-            <button
-              id="createButton"
-              onClick={[Function]}
+            <Link
+              as="/p/create"
+              href="/createPost"
+              prefetch={true}
             >
-              <IoMdCreate
-                className="header__dropdown-menu-icon"
-              />
-               Create Post
-            </button>
-            <button
-              id="dashboardButton"
-              onClick={[Function]}
+              <button
+                id="createButton"
+              >
+                <IoMdCreate
+                  className="header__dropdown-menu-icon"
+                />
+                 Create Post
+              </button>
+            </Link>
+            <Link
+              as="/dashboard/sofiane/undefined"
+              href="/dashboard?uid=undefined"
+              prefetch={true}
             >
-              <IoIosHome
-                className="header__dropdown-menu-icon"
-              />
-               Dashboard
-            </button>
+              <button
+                id="dashboardButton"
+              >
+                <IoIosHome
+                  className="header__dropdown-menu-icon"
+                />
+                 
+                Dashboard
+              </button>
+            </Link>
             <button
               id="logOutButton"
-              onClick={[Function]}
+              onClick={[MockFunction]}
             >
               <IoIosPower
                 className="header__dropdown-menu-icon"
@@ -85,23 +100,29 @@ exports[`There is no user authenticated should render Header correctly 1`] = `
       className="header__content"
     >
       <Link
-        className="header__title"
-        replace={false}
-        to="/"
+        href="/"
+        prefetch={true}
       >
-        <h1>
-          Stravell
-        </h1>
+        <a
+          className="header__title"
+        >
+          <h1>
+            Stravell
+          </h1>
+        </a>
       </Link>
       <div
         className="header__right"
       >
         <Link
-          className="button button--link"
-          replace={false}
-          to="/login"
+          href="/login"
+          prefetch={true}
         >
-          Log in
+          <a
+            className="button button--link"
+          >
+            Log in
+          </a>
         </Link>
       </div>
     </div>

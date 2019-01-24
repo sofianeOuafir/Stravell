@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render correctly 1`] = `
-<div>
+<Layout
+  withTitleAndDescription={false}
+>
+  <SideEffect(Head)>
+    <title>
+      Stravell | Sofiane
+    </title>
+    <meta
+      content="This page describe Sofiane's profile"
+      name="description"
+    />
+  </SideEffect(Head)>
   <div>
     <PageHeader
       title="Sofiane"
@@ -34,5 +45,5 @@ exports[`should render correctly 1`] = `
       />
     </div>
   </div>
-</div>
+</Layout>
 `;

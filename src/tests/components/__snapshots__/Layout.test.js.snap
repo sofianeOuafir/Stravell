@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`a title and description are provided should render correctly 1`] = `
+<div>
+  <meta
+    charSet="UTF-8"
+  />
+  <meta
+    content="width=device-width, initial-scale=1"
+    name="viewport"
+  />
+  <link
+    href="/static/images/favicon.png"
+    rel="icon"
+    type="image/png"
+  />
+  <SideEffect(Head)>
+    <title>
+      my title
+    </title>
+    <meta
+      content="my description"
+      name="description"
+    />
+  </SideEffect(Head)>
+  <Connect(Header) />
+  <p>
+    hello
+  </p>
+</div>
+`;
+
+exports[`not title and description are provided should render correctly 1`] = `
+<div>
+  <meta
+    charSet="UTF-8"
+  />
+  <meta
+    content="width=device-width, initial-scale=1"
+    name="viewport"
+  />
+  <link
+    href="/static/images/favicon.png"
+    rel="icon"
+    type="image/png"
+  />
+  <Connect(Header) />
+  <p>
+    hello
+  </p>
+</div>
+`;

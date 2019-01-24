@@ -1,32 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should correctly render LoginPage 1`] = `
-<div
-  className="box-layout"
+<Layout
+  description="Stravell | Log in page."
+  title="Stravell | Log In"
 >
   <div
-    className="box-layout__box"
+    className="box-layout"
   >
-    <h1
-      className="box-layout__title favourite-font-weight"
+    <div
+      className="box-layout__box"
     >
-      Stravell
-    </h1>
-    <p>
-      Let's explore the world together.
-    </p>
-    <button
-      className="button mb1 button--warm-peach"
-      id="googleLoginButton"
-    >
-      Log in with Google
-    </button>
-    <button
-      className="button button--warm-peach"
-      id="facebookLoginButton"
-    >
-      Log in with Facebook
-    </button>
+      <h1
+        className="box-layout__title favourite-font-weight"
+      >
+        Stravell
+      </h1>
+      <p>
+        Let's explore the world together.
+      </p>
+      <button
+        className="button mb1 button--warm-peach"
+        id="googleLoginButton"
+      >
+        Log in with Google
+      </button>
+      <button
+        className="button button--warm-peach"
+        id="facebookLoginButton"
+      >
+        Log in with Facebook
+      </button>
+    </div>
   </div>
-</div>
+</Layout>
 `;

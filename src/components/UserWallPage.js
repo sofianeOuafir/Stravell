@@ -1,5 +1,4 @@
 import React from "react";
-import { withRouter } from "next/router";
 import Head from "next/head";
 
 import PageHeader from "./PageHeader";
@@ -8,29 +7,29 @@ import Layout from "./Layout";
 import database from "./../firebase/firebase";
 import { APP_NAME } from "./../constants/constants";
 
-export const UserWallPage = withRouter(({ posts, user }) => {
+export const UserWallPage = ({ posts, userName }) => {
   return (
     <Layout withTitleAndDescription={false}>
       <Head>
-        <title>{`${APP_NAME} | ${user.userName}`}</title>
+        <title>{`${APP_NAME} | ${userName}`}</title>
         <meta
           name="description"
-          content={`This page describe ${user.userName}'s profile`}
+          content={`This page describe ${userName}'s profile`}
         />
       </Head>
       <div>
-        <PageHeader title={user.userName} />
+        <PageHeader title={userName} />
         <div className="content-container">
           <FilterablePostList
             SearchBarAutoFocus={true}
             posts={posts}
-            noPostText={`${user.userName} has not published any post yet.`}
+            noPostText={`${userName} has not published any post yet.`}
           />
         </div>
       </div>
     </Layout>
   );
-});
+};
 
 UserWallPage.getInitialProps = async function(context) {
   const { uid } = context.query;
@@ -49,7 +48,7 @@ UserWallPage.getInitialProps = async function(context) {
   posts = posts.reverse();
   const userSnapshot = await database.ref(`users/${uid}`).once("value");
   const user = { uid: userSnapshot.key, ...userSnapshot.val() };
-  return { posts, user };
+  return { posts, userName: user.userName };
 };
 
 export default UserWallPage;
