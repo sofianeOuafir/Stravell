@@ -1,36 +1,36 @@
 import React from "react";
 import { withRouter } from "next/router";
-import Head from 'next/head';
+import Head from "next/head";
 
 import PageHeader from "./PageHeader";
 import FilterablePostList from "./FilterablePostList";
-import page from "./../hocs/page";
+import Layout from "./Layout";
 import database from "./../firebase/firebase";
-import { APP_NAME } from './../constants/constants'
+import { APP_NAME } from "./../constants/constants";
 
-export const UserWallPage = page(
-  withRouter(({ posts, user }) => {
-    return (
+export const UserWallPage = withRouter(({ posts, user }) => {
+  return (
+    <Layout withTitleAndDescription={false}>
+      <Head>
+        <title>{`${APP_NAME} | ${user.userName}`}</title>
+        <meta
+          name="description"
+          content={`This page describe ${user.userName}'s profile`}
+        />
+      </Head>
       <div>
-        <Head>
-          <title>{`${APP_NAME} | ${user.userName}`}</title>
-          <meta name="description" content={`This page describe ${user.userName}'s profile`} />
-        </Head>
-        <div>
-          <PageHeader title={user.userName} />
-          <div className="content-container">
-            <FilterablePostList
-              SearchBarAutoFocus={true}
-              posts={posts}
-              noPostText={`${user.userName} has not published any post yet.`}
-            />
-          </div>
+        <PageHeader title={user.userName} />
+        <div className="content-container">
+          <FilterablePostList
+            SearchBarAutoFocus={true}
+            posts={posts}
+            noPostText={`${user.userName} has not published any post yet.`}
+          />
         </div>
       </div>
-    );
-  }),
-  { withTitleAndDescription: false }
-);
+    </Layout>
+  );
+});
 
 UserWallPage.getInitialProps = async function(context) {
   const { uid } = context.query;

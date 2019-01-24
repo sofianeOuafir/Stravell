@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Router from 'next/router';
+import Router from "next/router";
 
 import FilterablePostList from "./FilterablePostList";
 import PageHeader from "./PageHeader";
@@ -9,34 +9,37 @@ import {
   DASHBOARD_PAGE_TITLE,
   DASHBOARD_PAGE_DESCRIPTION
 } from "./../constants/constants";
-import page from "./../hocs/page";
+import Layout from "./Layout";
 import database from "./../firebase/firebase";
 
-export const DashboardPage = page(
-  ({ posts }) => {
-    return (
-      <div>
-        <PageHeader title="Dashboard" />
-        <div className="content-container">
-          <Link as="/p/create" href="/createPost">
-            <a className="button button--with-bottom-margin">
-              Create Post
-            </a>
-          </Link>
-          <FilterablePostList
-            editable={true}
-            SearchBarAutoFocus={true}
-            posts={posts}
-            noPostText={NO_ELEMENT_POST_LIST_DASHBOARD_TEXT}
-          />
-        </div>
+export const DashboardPage = ({ posts }) => {
+  return (
+    <Layout
+      title={DASHBOARD_PAGE_TITLE}
+      description={DASHBOARD_PAGE_DESCRIPTION}
+    >
+      <PageHeader title="Dashboard" />
+      <div className="content-container">
+        <Link as="/p/create" href="/createPost">
+          <a className="button button--with-bottom-margin">Create Post</a>
+        </Link>
+        <FilterablePostList
+          editable={true}
+          SearchBarAutoFocus={true}
+          posts={posts}
+          noPostText={NO_ELEMENT_POST_LIST_DASHBOARD_TEXT}
+        />
       </div>
-    );
-  },
-  { title: DASHBOARD_PAGE_TITLE, description: DASHBOARD_PAGE_DESCRIPTION }
-);
+    </Layout>
+  );
+};
 
-DashboardPage.getInitialProps = async function({ query, req, reduxStore, res }) {
+DashboardPage.getInitialProps = async function({
+  query,
+  req,
+  reduxStore,
+  res
+}) {
   const { uid } = query;
   let authorised = false;
   if (req && req.session) {
@@ -66,14 +69,13 @@ DashboardPage.getInitialProps = async function({ query, req, reduxStore, res }) 
 
     return { posts };
   } else {
-    if( res ) {
+    if (res) {
       res.writeHead(302, {
-        Location: '/'
+        Location: "/"
       });
-      res.end()
-    }
-    else {
-      Router.push('/')
+      res.end();
+    } else {
+      Router.push("/");
     }
   }
 };
