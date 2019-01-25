@@ -2,18 +2,6 @@
 
 exports[`a title and description are provided should render correctly 1`] = `
 <div>
-  <meta
-    charSet="UTF-8"
-  />
-  <meta
-    content="width=device-width, initial-scale=1"
-    name="viewport"
-  />
-  <link
-    href="/static/images/favicon.png"
-    rel="icon"
-    type="image/png"
-  />
   <SideEffect(Head)>
     <title>
       my title
@@ -32,18 +20,6 @@ exports[`a title and description are provided should render correctly 1`] = `
 
 exports[`not title and description are provided should render correctly 1`] = `
 <div>
-  <meta
-    charSet="UTF-8"
-  />
-  <meta
-    content="width=device-width, initial-scale=1"
-    name="viewport"
-  />
-  <link
-    href="/static/images/favicon.png"
-    rel="icon"
-    type="image/png"
-  />
   <Connect(Header) />
   <p>
     hello
