@@ -3,9 +3,12 @@ import moment from "moment";
 import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import uuid from "uuid";
+
 import MyEditor from "./MyEditor";
 import { uploadFile } from "./../aws/s3";
 import Loading from "./Loading";
+import SearchLocationInput from "./SearchLocationInput";
+
 import {
   formatTitle,
   formatDescription,
@@ -40,7 +43,7 @@ class PostForm extends React.Component {
       imageError: "",
       bodyError: "",
       providedURLError: "",
-      imageUploading: false,
+      imageUploading: false
     };
   }
 
@@ -61,9 +64,17 @@ class PostForm extends React.Component {
     const file = new File([e.target.files[0]], `main`, {
       type: e.target.files[0].type
     });
-    const formatAccepted = ['image/png', 'image/jpeg', 'image/jpg', 'image/gif', 'image/svg'];
+    const formatAccepted = [
+      "image/png",
+      "image/jpeg",
+      "image/jpg",
+      "image/gif",
+      "image/svg"
+    ];
     if (!formatAccepted.includes(file.type)) {
-      this.setState(() => ({ imageError: 'The format of the uploaded image is not accepted.' }));
+      this.setState(() => ({
+        imageError: "The format of the uploaded image is not accepted."
+      }));
       return;
     }
     this.setState(
@@ -91,10 +102,13 @@ class PostForm extends React.Component {
 
   onProvidedURLChange = e => {
     const providedURL = e.target.value;
-    this.setState(() => ({ providedURL, providedURLError: getProvidedURLError(providedURL) }));
+    this.setState(() => ({
+      providedURL,
+      providedURLError: getProvidedURLError(providedURL)
+    }));
   };
 
-  onProvideURLChange = (provideURL) => {
+  onProvideURLChange = provideURL => {
     this.setState(() => ({ provideURL }));
   };
 
@@ -177,6 +191,9 @@ class PostForm extends React.Component {
           )}
         </div>
         <div className="form__input-container">
+          <SearchLocationInput />
+        </div>
+        <div className="form__input-container">
           {this.getValidationIcon(this.state.imageError)}
           <input
             id="imageInput"
@@ -206,20 +223,23 @@ class PostForm extends React.Component {
           <p>What do you want to do today?</p>
           <Checkbox
             id="provideURLFalse"
-            onChange={() => { this.onProvideURLChange(false) }}
+            onChange={() => {
+              this.onProvideURLChange(false);
+            }}
             checked={!this.state.provideURL}
             label="I want to write the content of the post."
           />
           <Checkbox
             id="provideURLTrue"
-            onChange={() => { this.onProvideURLChange(true) }}
+            onChange={() => {
+              this.onProvideURLChange(true);
+            }}
             checked={this.state.provideURL}
             label="I want to provide an URL for this post (users will be redirected
                             to the provided URL). "
           />
         </div>
-        {
-          this.state.provideURL &&
+        {this.state.provideURL && (
           <div className="form__input-container">
             {this.getValidationIcon(this.state.providedURLError)}
             <input
@@ -234,22 +254,22 @@ class PostForm extends React.Component {
               <p className="error">{this.state.providedURLError}</p>
             )}
           </div>
-        }
+        )}
 
-        {
-          !this.state.provideURL && <div className="form__input-container">
-          {this.state.bodyError && (
-            <p className="error">{this.state.bodyError}</p>
-          )}
-          <MyEditor
-            id="editor"
-            placeholder="Write your article here"
-            editorState={this.state.body}
-            onChange={this.onBodyChange}
-            s3FolderName={this.state.s3FolderName}
-          />
-        </div>
-        }
+        {!this.state.provideURL && (
+          <div className="form__input-container">
+            {this.state.bodyError && (
+              <p className="error">{this.state.bodyError}</p>
+            )}
+            <MyEditor
+              id="editor"
+              placeholder="Write your article here"
+              editorState={this.state.body}
+              onChange={this.onBodyChange}
+              s3FolderName={this.state.s3FolderName}
+            />
+          </div>
+        )}
 
         <div>
           <button className="button">Save Post</button>

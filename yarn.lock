@@ -6846,6 +6846,13 @@ react-moment-proptypes@^1.4.0:
   dependencies:
     moment ">=1.6.0"
 
+react-places-autocomplete@^7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/react-places-autocomplete/-/react-places-autocomplete-7.2.0.tgz#85319ff42a1e3e0d2b02cc40471c1e2911e6dfbe"
+  dependencies:
+    lodash.debounce "^4.0.8"
+    prop-types "^15.5.8"
+
 react-portal@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/react-portal/-/react-portal-3.1.0.tgz#865c44fb72a1da106c649206936559ce891ee899"
