@@ -1,39 +1,15 @@
 import React from 'react';
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
+import PlacesAutocomplete from 'react-places-autocomplete';
 
 
 class SearchLocationInput extends React.Component {
-  
-  // Define Constructor
-  constructor(props) {
-    super(props);
-
-    // Declare State
-    this.state = { address: '' };
-  }
-
-  handleChange = address => {
-    this.setState({ address });
-  };
-
-  handleSelect = address => {
-    this.setState({ address });
-    geocodeByAddress(address)
-      .then(results => getLatLng(results[0]))
-      .then(latLng => console.log('Success', latLng))
-      .catch(error => console.error('Error', error));
-  };
-
   render() {
     return (
       <div>
       <PlacesAutocomplete
-        value={this.state.address}
-        onChange={this.handleChange}
-        onSelect={this.handleSelect}
+        value={this.props.value}
+        onChange={this.props.handleChange}
+        onSelect={this.props.onSelect}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>

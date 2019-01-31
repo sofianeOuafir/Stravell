@@ -3,6 +3,7 @@ import moment from "moment";
 import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import uuid from "uuid";
+import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 
 import MyEditor from "./MyEditor";
 import { uploadFile } from "./../aws/s3";
@@ -33,6 +34,9 @@ class PostForm extends React.Component {
             convertFromRaw(JSON.parse(props.post.body))
           )) ||
         EditorState.createEmpty(),
+      address: (props.post && props.post.address) || "",
+      lat: (props.post && props.post.lat) || "",
+      lng: (props.post && props.post.lng) || "",
       createdAt: (props.post && moment(props.post.createdAt)) || moment(),
       s3FolderName: (props.post && props.post.s3FolderName) || uuid(),
       updatedAt: moment(),
@@ -46,6 +50,21 @@ class PostForm extends React.Component {
       imageUploading: false
     };
   }
+
+  onAddressChange = address => {
+    this.setState(() => ({ address }));
+  };
+
+  onAddressSelect = address => {
+    this.setState(() => ({ address }));
+    geocodeByAddress(address)
+      .then(results => getLatLng(results[0]))
+      .then(latLng => {
+        const { lat, lng } = latLng;
+        this.setState(() => ({ lat, lng }));
+      })
+      .catch(error => console.error("Error", error));
+  };
 
   onDescriptionChange = e => {
     const description = e.target.value;
@@ -191,7 +210,11 @@ class PostForm extends React.Component {
           )}
         </div>
         <div className="form__input-container">
-          <SearchLocationInput />
+          <SearchLocationInput
+            value={this.state.address}
+            handleChange={this.onAddressChange}
+            onSelect={this.onAddressSelect}
+          />
         </div>
         <div className="form__input-container">
           {this.getValidationIcon(this.state.imageError)}
