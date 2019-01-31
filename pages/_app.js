@@ -5,6 +5,7 @@ import Router, { withRouter } from "next/router";
 import ReactGA from "react-ga";
 import NProgress from 'nprogress'
 
+import { startGetUser, startAddUser } from "../src/actions/users";
 import withReduxStore from "../src/hocs/withReduxStore";
 import { startSetPosts } from "../src/actions/posts";
 import { firebase } from "./../src/firebase/firebase";
@@ -60,6 +61,11 @@ class MyApp extends App {
             this.props.reduxStore.dispatch(
               login({ uid, userName, userPhotoURL })
             );
+            this.props.reduxStore.dispatch(startGetUser(uid)).then(snapshot => {
+              if (snapshot.val() === null) {
+                this.props.reduxStore.dispatch(startAddUser({ userName, uid, userPhotoURL, email }));
+              }
+            });
 
             if (this.props.router.route === "/login")
               this.props.router.push("/");
