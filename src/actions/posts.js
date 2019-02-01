@@ -20,7 +20,9 @@ const startAddPost = (postData = {}) => {
       provideURL,
       address, 
       lat,
-      lng
+      lng,
+      country,
+      countryCode
     } = postData;
     const post = {
       uid,
@@ -37,7 +39,9 @@ const startAddPost = (postData = {}) => {
       provideURL,
       address, 
       lat,
-      lng
+      lng,
+      country,
+      countryCode
     };
     return database
       .ref("posts")

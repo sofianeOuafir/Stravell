@@ -37,6 +37,8 @@ class PostForm extends React.Component {
       address: (props.post && props.post.address) || "",
       lat: (props.post && props.post.lat) || "",
       lng: (props.post && props.post.lng) || "",
+      country: (props.post && props.post.country) || "",
+      countryCode: (props.post && props.post.countryCode) || "",
       createdAt: (props.post && moment(props.post.createdAt)) || moment(),
       s3FolderName: (props.post && props.post.s3FolderName) || uuid(),
       updatedAt: moment(),
@@ -57,8 +59,17 @@ class PostForm extends React.Component {
 
   onAddressSelect = address => {
     this.setState(() => ({ address }));
-    geocodeByAddress(address)
-      .then(results => getLatLng(results[0]))
+    geocodeByAddress(address).then(results => {
+      const countryAddressComponent = results[0].address_components.find((addressComponent) => {
+        return addressComponent.types.includes("country") === true
+      });
+      const country = countryAddressComponent.long_name;
+      const countryCode = countryAddressComponent.short_name;
+      this.setState(() => ({ country, countryCode }));
+      return results
+    }).then(results => {
+        return getLatLng(results[0])
+      })
       .then(latLng => {
         const { lat, lng } = latLng;
         this.setState(() => ({ lat, lng }));
@@ -159,7 +170,9 @@ class PostForm extends React.Component {
         provideURL: this.state.provideURL,
         address: this.state.address,
         lng: this.state.lng,
-        lat: this.state.lat
+        lat: this.state.lat,
+        country: this.state.country,
+        countryCode: this.state.countryCode
       });
     } else {
       this.setState(() => ({

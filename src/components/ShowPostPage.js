@@ -47,7 +47,11 @@ export const ShowPostPage = ({ post }) => {
           </div>
           <span>{getDateFormat(post.createdAt)}</span>
         </div>
-        <Address address={post.address} iconClassName="ml1 mr1" />
+        {
+          post.address && (
+            <Address address={post.address} iconClassName="ml1 mr1" />
+          )
+        }
       </PageHeader>
       <img src={`${post.image}`} alt="" className="fullwidth" />
       <div className="content-container">
