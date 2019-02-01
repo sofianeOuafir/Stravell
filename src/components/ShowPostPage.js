@@ -9,7 +9,7 @@ import { getDateFormat } from "./../lib/utils/date";
 import PostAuthor from "./PostAuthor";
 import database from "./../firebase/firebase";
 import Layout from "./Layout";
-import Address from './Address';
+import Address from "./Address";
 
 function getPluginDecorators() {
   let decorators = [];
@@ -36,22 +36,19 @@ export const ShowPostPage = ({ post }) => {
       </Head>
       <PageHeader>
         <h1 className="favourite-font-weight m0">{post.title}</h1>
-        <div className="flex justify-content--between align-items--center">
-          <div className="my1">
-            <PostAuthor
-              authorUid={post.uid}
-              avatarSize={50}
-              authorPhotoURL={post.userPhotoURL}
-              authorName={post.userName}
-            />
-          </div>
+        <div className="my1 flex justify-content--between align-items--center">
+          <PostAuthor
+            authorUid={post.uid}
+            avatarSize={50}
+            authorPhotoURL={post.userPhotoURL}
+            authorName={post.userName}
+          />
+
           <span>{getDateFormat(post.createdAt)}</span>
         </div>
-        {
-          post.address && (
-            <Address address={post.address} iconClassName="ml1 mr1" />
-          )
-        }
+        {post.address && (
+          <Address address={post.address} iconClassName="ml1 mr1" />
+        )}
       </PageHeader>
       <img src={`${post.image}`} alt="" className="fullwidth" />
       <div className="content-container">

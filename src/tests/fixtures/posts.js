@@ -14,6 +14,11 @@ export default [
     userName: "Jenna Jacquelyn",
     provideURL: false,
     providedURL: "",
-    userPhotoURL: "https://graph.facebook.com/10161147754845459/picture"
+    userPhotoURL: "https://graph.facebook.com/10161147754845459/picture",
+    address: 'Cannes',
+    lat: 1.1223,
+    lng: 1.3343,
+    country: 'France',
+    countryCode: 'FR'
   }
 ];
