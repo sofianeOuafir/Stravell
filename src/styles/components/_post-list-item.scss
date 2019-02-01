@@ -46,3 +46,29 @@
   display: flex;
   justify-content: space-between;
 }
+
+.post-list-item__content-container {
+  position: relative;
+}
+
+.post-list-item__address-container {
+  position: absolute;
+  top: 0px;
+  background: $blue;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: $xs-size 0.1rem;
+  opacity: 0.8;
+}
+
+.post-list-item__address-icon{
+  font-size: 1.5rem;
+  color: white;
+}
+
+.post-list-item__address{
+  font-size: $s-size;
+  color: white;
+}

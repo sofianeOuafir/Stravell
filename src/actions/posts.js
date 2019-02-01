@@ -17,7 +17,10 @@ const startAddPost = (postData = {}) => {
       updatedAt,
       s3FolderName,
       providedURL,
-      provideURL
+      provideURL,
+      address, 
+      lat,
+      lng
     } = postData;
     const post = {
       uid,
@@ -31,7 +34,10 @@ const startAddPost = (postData = {}) => {
       updatedAt,
       s3FolderName,
       providedURL,
-      provideURL
+      provideURL,
+      address, 
+      lat,
+      lng
     };
     return database
       .ref("posts")

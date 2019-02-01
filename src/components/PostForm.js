@@ -156,7 +156,10 @@ class PostForm extends React.Component {
         updatedAt: this.state.updatedAt.valueOf(),
         s3FolderName: this.state.s3FolderName,
         providedURL: this.state.providedURL,
-        provideURL: this.state.provideURL
+        provideURL: this.state.provideURL,
+        address: this.state.address,
+        lng: this.state.lng,
+        lat: this.state.lat
       });
     } else {
       this.setState(() => ({

@@ -46,6 +46,10 @@ button:disabled {
   justify-content: center;
 }
 
+.justify-content--between {
+  justify-content: space-between;
+}
+
 .flex-direction--column {
   flex-direction: column;
 }
@@ -84,6 +88,10 @@ button:disabled {
 
 .m0 {
   margin: 0;
+}
+
+.ml1 {
+  margin-left: $xs-size;
 }
 
 .ml3 {
@@ -146,4 +154,12 @@ button:disabled {
 
 .dashed-border {
   border: 1px black dashed;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
 }
