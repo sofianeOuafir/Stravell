@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`with iconClassName or addressClassName props should render correctly 1`] = `
+<div
+  className="flex align-items--center"
+>
+  <MdMyLocation
+    className="my-css-class"
+  />
+  <span
+    className="my-css-class"
+  >
+    Monaco
+  </span>
+</div>
+`;
+
+exports[`without iconClassName or addressClassName props should render correctly 1`] = `
+<div
+  className="flex align-items--center"
+>
+  <MdMyLocation
+    className=""
+  />
+  <span
+    className=""
+  >
+    Monaco
+  </span>
+</div>
+`;

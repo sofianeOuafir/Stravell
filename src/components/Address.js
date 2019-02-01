@@ -1,10 +1,10 @@
 import React from "react";
 import { MdMyLocation } from "react-icons/md";
 
-const Address = (props) => (
+const Address = ({ iconClassName, addressClassName, address }) => (
   <div className="flex align-items--center">
-    <MdMyLocation className={`mr1 ml1 ${props.iconClassName}`} />
-    <span className={props.addressClassName}>{props.address}</span>
+    <MdMyLocation className={iconClassName ? iconClassName : ''} />
+    <span className={addressClassName ? addressClassName : ''}>{address}</span>
   </div>
 );
 
