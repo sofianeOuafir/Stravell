@@ -9,39 +9,67 @@ import {
   HOME_PAGE_DESCRIPTION
 } from "./../constants/constants";
 import { setPosts } from "./../actions/posts";
+import { setCountries } from "./../actions/countries";
 import database from "./../firebase/firebase";
 import Layout from "./Layout";
 
-export const HomePage = ({ userName, posts }) => (
-  <Layout title={HOME_PAGE_TITLE} description={HOME_PAGE_DESCRIPTION}>
-    <PageHeader title={`Welcome${userName ? `, ${userName}` : ""}`} />
-    <div className="content-container">
-      <FilterablePostList
-        SearchBarAutoFocus={true}
-        posts={posts}
-        noPostText={NO_ELEMENT_POST_LIST_HOME_PAGE_TEXT}
-      />
-    </div>
-  </Layout>
-);
+export class HomePage extends React.Component {
+  async componentDidMount() {
+    const countrySnapshot = await database
+      .ref("countries")
+      .once("value")
+      .then(snapshot => {
+        return snapshot;
+      });
+
+    let countries = [];
+    countrySnapshot.forEach(snapshotChild => {
+      countries.push({
+        id: snapshotChild.key,
+        ...snapshotChild.val()
+      });
+    });
+    this.props.dispatch(setCountries(countries));
+  }
+
+  render() {
+    const { userName, posts, countries } = this.props;
+    return (
+      <Layout title={HOME_PAGE_TITLE} description={HOME_PAGE_DESCRIPTION}>
+        <PageHeader title={`Welcome${userName ? `, ${userName}` : ""}`} />
+        <div className="content-container">
+          <FilterablePostList
+            countries={countries}
+            SearchBarAutoFocus={true}
+            posts={posts}
+            noPostText={NO_ELEMENT_POST_LIST_HOME_PAGE_TEXT}
+          />
+        </div>
+      </Layout>
+    );
+  }
+}
 
 HomePage.getInitialProps = async function({ req, reduxStore }) {
-  const posts = await new Promise((resolve, reject) => {
-    database
-      .ref("posts")
-      .orderByChild("createdAt")
-      .on("value", snapshot => {
-        let posts = [];
-        snapshot.forEach(snapshotChild => {
-          posts.push({
-            id: snapshotChild.key,
-            ...snapshotChild.val()
-          });
-        });
-        posts = posts.reverse();
-        resolve(posts);
-      });
+  const postSnapshot = await database
+    .ref("posts")
+    .orderByChild("createdAt")
+    .once("value")
+    .then(snapshot => {
+      return snapshot;
+    });
+
+  let posts = [];
+  postSnapshot.forEach(snapshotChild => {
+    posts.push({
+      id: snapshotChild.key,
+      ...snapshotChild.val()
+    });
   });
+  posts = posts.reverse();
+
+  reduxStore.dispatch(setPosts(posts));
+
   return { posts };
 };
 

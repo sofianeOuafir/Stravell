@@ -9,6 +9,11 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
         ...state,
         text: action.text
       };
+    case "SET_COUNTRY_FILTER":
+      return {
+        ...state,
+        country: action.country
+      }
     default:
       return state;
   }

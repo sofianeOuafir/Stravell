@@ -1,8 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
+
 import SearchBar from "./SearchBar";
 import PostList from "./PostList";
 import { getVisiblePosts } from "./../selectors/posts";
+import CountryFilter from './CountryFilter';
 
 export class FilterablePostList extends React.Component {
   constructor(props) {
@@ -10,17 +12,30 @@ export class FilterablePostList extends React.Component {
   }
 
   getNoPostText() {
+    const { text: textFilter, country: countryFilter } = this.props.filters;
     if(this.props.posts.length === 0) {
       return this.props.noPostText;
     } else if (this.props.filteredPosts.length === 0) {
-      return `No results were found for ${this.props.filters.text}.`;
+      let noResultFoundSentence = 'No results were found ';
+      if(textFilter && countryFilter) {
+        return `${noResultFoundSentence} for text: ${textFilter}, country: ${countryFilter}`;
+      } else if (textFilter) {
+        return `${noResultFoundSentence} for text: ${textFilter}`;
+      } else if (countryFilter) {
+        return `${noResultFoundSentence} for country: ${countryFilter}.`;
+      }
     }
   }
 
   render () {
     return (
       <div>
-        {this.props.posts.length > 0 && <SearchBar autoFocus={this.props.SearchBarAutoFocus} />}
+        {this.props.posts.length > 0 && (
+          <div className="flex justify-content--between align-items--center">
+            <SearchBar containerClassName="flex-grow" autoFocus={this.props.SearchBarAutoFocus} />
+            <CountryFilter />
+          </div>
+        )}
         <PostList
           editable={this.props.editable}
           className="post-list post-list--no-border-top"
@@ -35,7 +50,7 @@ export class FilterablePostList extends React.Component {
 
 const mapStateToProps = ({ filters }, { posts }) => {
   return {
-    posts: posts,
+    posts,
     filteredPosts: getVisiblePosts(
       posts,
       filters

@@ -43,10 +43,13 @@ const startAddPost = (postData = {}) => {
       country,
       countryCode
     };
-    return database
-      .ref("posts")
-      .push(post)
-      .catch(e => console.log(e));
+    const newPostKey = database.ref().child('posts').push().key;
+    let updates = {};
+    updates[`/posts/${newPostKey}`] = post;
+    if(country && countryCode) {
+      updates[`/countries/${countryCode}`] = { country };
+    }
+    return database.ref().update(updates).catch(e => console.log(e));
   };
 };
 

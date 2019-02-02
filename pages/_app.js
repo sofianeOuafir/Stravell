@@ -8,9 +8,10 @@ import NProgress from 'nprogress'
 import { startGetUser, startAddUser } from "../src/actions/users";
 import withReduxStore from "../src/hocs/withReduxStore";
 import { startSetPosts } from "../src/actions/posts";
-import { firebase } from "./../src/firebase/firebase";
+import database, { firebase } from "./../src/firebase/firebase";
 import { login, logout } from "./../src/actions/auth";
 import { setTextFilter } from "./../src/actions/filters";
+import { setCountries } from "./../src/actions/countries";
 import "./../src/styles/styles.scss";
 import "normalize.css/normalize.css";
 import "draft-js/dist/Draft.css";
@@ -22,7 +23,7 @@ import "draft-js-linkify-plugin/lib/plugin.css";
 import "draft-js-side-toolbar-plugin/lib/plugin.css";
 
 class MyApp extends App {
-  componentDidMount() {
+  async componentDidMount() {
     const searchQuery = Router.query.s;
     if (searchQuery) {
       this.props.reduxStore.dispatch(setTextFilter(searchQuery));

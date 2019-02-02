@@ -1,5 +1,3 @@
-import { FaAcquisitionsIncorporated } from "react-icons/fa";
-
 const postsReducer = (state = [], action) => {
   switch(action.type) {
     case 'ADD_POST':

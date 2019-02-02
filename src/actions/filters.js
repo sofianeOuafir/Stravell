@@ -3,4 +3,9 @@ const setTextFilter = (text = '') => ({
   text
 });
 
-export { setTextFilter };
+const setCountryFilter = (country = '') => ({
+  type: 'SET_COUNTRY_FILTER',
+  country
+});
+
+export { setTextFilter, setCountryFilter };
