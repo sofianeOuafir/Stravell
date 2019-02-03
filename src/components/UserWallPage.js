@@ -26,7 +26,6 @@ export class UserWallPage extends React.Component {
         ...snapshotChild.val()
       });
     });
-    console.log(countries);
     this.props.dispatch(setCountries(countries));
   }
 

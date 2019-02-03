@@ -14,10 +14,11 @@ export class EditPostPage extends React.Component {
     super(props);
   }
 
-  onSubmit = (post) => {
+  onSubmit = ({ post, postBeforeUpdate }) => {
     this.props.startEditPost({
       id: this.props.post.id, 
-      updates: post
+      updates: post,
+      postBeforeUpdate
     });
     this.props.router.push(`/dashboard?uid=${this.props.uid}`, `/dashboard/${slugify(this.props.userName)}/${this.props.uid}`)
   };
@@ -73,10 +74,11 @@ EditPostPage.getInitialProps = async function({ query, req, reduxStore, res }) {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  startEditPost: ({ id, updates }) => {
+  startEditPost: ({ id, updates, postBeforeUpdate }) => {
     dispatch(startEditPost({
       id, 
-      updates
+      updates,
+      postBeforeUpdate
     }));
   }
 });

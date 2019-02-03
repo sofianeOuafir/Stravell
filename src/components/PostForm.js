@@ -158,7 +158,7 @@ class PostForm extends React.Component {
       (this.state.provideURL || errors.body === "") &&
       (!this.state.provideURL || errors.providedURL === "")
     ) {
-      this.props.onSubmit({
+      const post = {
         title: formatTitle(this.state.title),
         description: formatDescription(this.state.description),
         image: this.state.image,
@@ -173,7 +173,13 @@ class PostForm extends React.Component {
         lat: this.state.lat,
         country: this.state.country,
         countryCode: this.state.countryCode
-      });
+      }
+      // if editing
+      if(this.props.post) {
+        this.props.onSubmit({ post, postBeforeUpdate: this.props.post });
+      } else {
+        this.props.onSubmit(post);
+      }
     } else {
       this.setState(() => ({
         titleError: errors.title,

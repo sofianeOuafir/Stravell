@@ -8,8 +8,16 @@ import posts from "./../fixtures/posts";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import database from "./../../firebase/firebase";
-import { generateTooShortString, generateTooLongString } from './../helpers/helpers';
-import { MIN_NUM_OF_CHARACTERS_FOR_TITLE, MAX_NUM_OF_CHARACTERS_FOR_TITLE, MIN_NUM_OF_CHARACTERS_FOR_DESCRIPTION, MAX_NUM_OF_CHARACTERS_FOR_DESCRIPTION } from './../../constants/constants';
+import {
+  generateTooShortString,
+  generateTooLongString
+} from "./../helpers/helpers";
+import {
+  MIN_NUM_OF_CHARACTERS_FOR_TITLE,
+  MAX_NUM_OF_CHARACTERS_FOR_TITLE,
+  MIN_NUM_OF_CHARACTERS_FOR_DESCRIPTION,
+  MAX_NUM_OF_CHARACTERS_FOR_DESCRIPTION
+} from "./../../constants/constants";
 
 const uid = "YYFEgQAdBuQIsox3ojncZtpSAmG3";
 const userName = "Jenna Jacquelyn";
@@ -88,305 +96,401 @@ describe("startAddPost", () => {
       .then(() => done());
   });
 
-  test("should persist a valid post", (done) => {
+  test("should persist a valid post", done => {
     let { id, ...post } = posts[0];
-    post.title = 'My amazing blog post';
-    store.dispatch(startAddPost(post)).then(() => {
-      return database.ref('posts').once('value');
-    }).then((snapshot) => {
-      let posts = [];
-      snapshot.forEach((post) => {
-        posts.push(post.val());
+    post.title = "My amazing blog post";
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref("posts").once("value");
       })
-      expect(posts.length).toEqual(2);
-      expect(posts[1]).toEqual(post);
-      done();
-    })
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(2);
+        expect(posts[1]).toEqual(post);
+        done();
+      });
   });
 
-  test('should not persist a post when the title is too short', (done) => {
+  test("should not persist a post when the title is too short", done => {
     let { id, ...post } = posts[0];
     post.title = generateTooShortString(MIN_NUM_OF_CHARACTERS_FOR_TITLE);
-    store.dispatch(startAddPost(post)).then(() => {
-      return database.ref('posts').once('value');
-    }).then((snapshot) => {
-      let posts = [];
-      snapshot.forEach((post) => {
-        posts.push(post.val());
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref("posts").once("value");
       })
-      expect(posts.length).toEqual(1);
-      done();
-    });
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(1);
+        done();
+      });
   });
 
-  test('should not persist a post when the title is too long', (done) => {
+  test("should not persist a post when the title is too long", done => {
     let { id, ...post } = posts[0];
     post.title = generateTooLongString(MAX_NUM_OF_CHARACTERS_FOR_TITLE);
-    store.dispatch(startAddPost(post)).then(() => {
-      return database.ref('posts').once('value');
-    }).then((snapshot) => {
-      let posts = [];
-      snapshot.forEach((post) => {
-        posts.push(post.val());
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref("posts").once("value");
       })
-      expect(posts.length).toEqual(1);
-      done();
-    });
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(1);
+        done();
+      });
   });
 
-  test('should not persist a post when the description is too short', (done) => {
+  test("should not persist a post when the description is too short", done => {
     let { id, ...post } = posts[0];
-    post.description = generateTooShortString(MIN_NUM_OF_CHARACTERS_FOR_DESCRIPTION);
-    store.dispatch(startAddPost(post)).then(() => {
-      return database.ref('posts').once('value');
-    }).then((snapshot) => {
-      let posts = [];
-      snapshot.forEach((post) => {
-        posts.push(post.val());
+    post.description = generateTooShortString(
+      MIN_NUM_OF_CHARACTERS_FOR_DESCRIPTION
+    );
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref("posts").once("value");
       })
-      expect(posts.length).toEqual(1);
-      done();
-    });
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(1);
+        done();
+      });
   });
 
-  test('should not persist a post when the description is too long', (done) => {
+  test("should not persist a post when the description is too long", done => {
     let { id, ...post } = posts[0];
-    post.description = generateTooLongString(MAX_NUM_OF_CHARACTERS_FOR_DESCRIPTION);
-    store.dispatch(startAddPost(post)).then(() => {
-      return database.ref('posts').once('value');
-    }).then((snapshot) => {
-      let posts = [];
-      snapshot.forEach((post) => {
-        posts.push(post.val());
+    post.description = generateTooLongString(
+      MAX_NUM_OF_CHARACTERS_FOR_DESCRIPTION
+    );
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref("posts").once("value");
       })
-      expect(posts.length).toEqual(1);
-      done();
-    });
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(1);
+        done();
+      });
   });
 
-  test('should not persist a post when createdat is not a number', (done) => {
+  test("should not persist a post when createdat is not a number", done => {
     let { id, ...post } = posts[0];
     post.createdAt = null;
-    store.dispatch(startAddPost(post)).then(() => {
-      return database.ref('posts').once('value');
-    }).then((snapshot) => {
-      let posts = [];
-      snapshot.forEach((post) => {
-        posts.push(post.val());
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref("posts").once("value");
       })
-      expect(posts.length).toEqual(1);
-      done();
-    });
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(1);
+        done();
+      });
   });
 
-  test('should not persist a post when updatedAt is not a number', (done) => {
+  test("should not persist a post when updatedAt is not a number", done => {
     let { id, ...post } = posts[0];
     post.updatedAt = null;
-    store.dispatch(startAddPost(post)).then(() => {
-      return database.ref('posts').once('value');
-    }).then((snapshot) => {
-      let posts = [];
-      snapshot.forEach((post) => {
-        posts.push(post.val());
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref("posts").once("value");
       })
-      expect(posts.length).toEqual(1);
-      done();
-    });
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(1);
+        done();
+      });
   });
 
-  test('should not persist a post when image is not a string', (done) => {
+  test("should not persist a post when image is not a string", done => {
     let { id, ...post } = posts[0];
     post.image = null;
-    store.dispatch(startAddPost(post)).then(() => {
-      return database.ref('posts').once('value');
-    }).then((snapshot) => {
-      let posts = [];
-      snapshot.forEach((post) => {
-        posts.push(post.val());
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref("posts").once("value");
       })
-      expect(posts.length).toEqual(1);
-      done();
-    });
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(1);
+        done();
+      });
   });
 
-  test('should not persist a post when s3FolderName is not a string', (done) => {
+  test("should not persist a post when s3FolderName is not a string", done => {
     let { id, ...post } = posts[0];
     post.s3FolderName = null;
-    store.dispatch(startAddPost(post)).then(() => {
-      return database.ref('posts').once('value');
-    }).then((snapshot) => {
-      let posts = [];
-      snapshot.forEach((post) => {
-        posts.push(post.val());
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref("posts").once("value");
       })
-      expect(posts.length).toEqual(1);
-      done();
-    });
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(1);
+        done();
+      });
   });
 
-  test('should not persist a post when s3FolderName is an empty string', (done) => {
+  test("should not persist a post when s3FolderName is an empty string", done => {
     let { id, ...post } = posts[0];
     post.s3FolderName = "";
-    store.dispatch(startAddPost(post)).then(() => {
-      return database.ref('posts').once('value');
-    }).then((snapshot) => {
-      let posts = [];
-      snapshot.forEach((post) => {
-        posts.push(post.val());
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref("posts").once("value");
       })
-      expect(posts.length).toEqual(1);
-      done();
-    });
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(1);
+        done();
+      });
   });
 
-  test('should not persist a post when provideURL is not a boolean', (done) => {
+  test("should not persist a post when provideURL is not a boolean", done => {
     let { id, ...post } = posts[0];
     post.provideURL = null;
-    store.dispatch(startAddPost(post)).then(() => {
-      return database.ref('posts').once('value');
-    }).then((snapshot) => {
-      let posts = [];
-      snapshot.forEach((post) => {
-        posts.push(post.val());
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref("posts").once("value");
       })
-      expect(posts.length).toEqual(1);
-      done();
-    });
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(1);
+        done();
+      });
   });
 
-  test('should not persist a post when providedURL is not a string', (done) => {
+  test("should not persist a post when providedURL is not a string", done => {
     let { id, ...post } = posts[0];
     post.providedURL = null;
-    store.dispatch(startAddPost(post)).then(() => {
-      return database.ref('posts').once('value');
-    }).then((snapshot) => {
-      let posts = [];
-      snapshot.forEach((post) => {
-        posts.push(post.val());
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref("posts").once("value");
       })
-      expect(posts.length).toEqual(1);
-      done();
-    });
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(1);
+        done();
+      });
   });
 
-  test('should not persist a post when provideURL is true and providedURL is not a valide URL', (done) => {
+  test("should not persist a post when provideURL is true and providedURL is not a valide URL", done => {
     let { id, ...post } = posts[0];
     post.provideURL = true;
-    post.providedURL = 'google.com';
-    store.dispatch(startAddPost(post)).then(() => {
-      return database.ref('posts').once('value');
-    }).then((snapshot) => {
-      let posts = [];
-      snapshot.forEach((post) => {
-        posts.push(post.val());
+    post.providedURL = "google.com";
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref("posts").once("value");
       })
-      expect(posts.length).toEqual(1);
-      done();
-    });
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(1);
+        done();
+      });
   });
 
-  test('should not persist a post when image is a string but not a URL format http(s).www.google.com', (done) => {
+  test("should not persist a post when image is a string but not a URL format http(s).www.google.com", done => {
     let { id, ...post } = posts[0];
     post.image = "google.com";
-    store.dispatch(startAddPost(post)).then(() => {
-      return database.ref('posts').once('value');
-    }).then((snapshot) => {
-      let posts = [];
-      snapshot.forEach((post) => {
-        posts.push(post.val());
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref("posts").once("value");
       })
-      expect(posts.length).toEqual(1);
-      done();
-    });
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(1);
+        done();
+      });
   });
 
-  test('should not persist a post when uid is not a string', (done) => {
+  test("should not persist a post when uid is not a string", done => {
     store = createMockStore({ auth: { uid: null, userName, userPhotoURL } });
     let { id, ...post } = posts[0];
-    store.dispatch(startAddPost(post)).then(() => {
-      return database.ref('posts').once('value');
-    }).then((snapshot) => {
-      let posts = [];
-      snapshot.forEach((post) => {
-        posts.push(post.val());
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref("posts").once("value");
       })
-      expect(posts.length).toEqual(1);
-      done();
-    });
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(1);
+        done();
+      });
   });
 
-  test('should not persist a post when uid is an empty string', (done) => {
+  test("should not persist a post when uid is an empty string", done => {
     store = createMockStore({ auth: { uid: "", userName, userPhotoURL } });
     let { id, ...post } = posts[0];
-    store.dispatch(startAddPost(post)).then(() => {
-      return database.ref('posts').once('value');
-    }).then((snapshot) => {
-      let posts = [];
-      snapshot.forEach((post) => {
-        posts.push(post.val());
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref("posts").once("value");
       })
-      expect(posts.length).toEqual(1);
-      done();
-    });
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(1);
+        done();
+      });
   });
 
-  test('should not persist a post when userName is not a string', (done) => {
+  test("should not persist a post when userName is not a string", done => {
     store = createMockStore({ auth: { uid, userName: null, userPhotoURL } });
     let { id, ...post } = posts[0];
-    store.dispatch(startAddPost(post)).then(() => {
-      return database.ref('posts').once('value');
-    }).then((snapshot) => {
-      let posts = [];
-      snapshot.forEach((post) => {
-        posts.push(post.val());
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref("posts").once("value");
       })
-      expect(posts.length).toEqual(1);
-      done();
-    });
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(1);
+        done();
+      });
   });
 
-  test('should not persist a post when userName is an empty string', (done) => {
-    store = createMockStore({ auth: { uid, userName: '', userPhotoURL } });
+  test("should not persist a post when userName is an empty string", done => {
+    store = createMockStore({ auth: { uid, userName: "", userPhotoURL } });
     let { id, ...post } = posts[0];
-    store.dispatch(startAddPost(post)).then(() => {
-      return database.ref('posts').once('value');
-    }).then((snapshot) => {
-      let posts = [];
-      snapshot.forEach((post) => {
-        posts.push(post.val());
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref("posts").once("value");
       })
-      expect(posts.length).toEqual(1);
-      done();
-    });
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(1);
+        done();
+      });
   });
 
-  test('should not persist a post when userPhotoURL is not a string', (done) => {
+  test("should not persist a post when userPhotoURL is not a string", done => {
     store = createMockStore({ auth: { uid, userName, userPhotoURL: null } });
     let { id, ...post } = posts[0];
-    store.dispatch(startAddPost(post)).then(() => {
-      return database.ref('posts').once('value');
-    }).then((snapshot) => {
-      let posts = [];
-      snapshot.forEach((post) => {
-        posts.push(post.val());
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref("posts").once("value");
       })
-      expect(posts.length).toEqual(1);
-      done();
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(1);
+        done();
+      });
+  });
+
+  test("should not persist a post when userPhotoURL is not in format http(s)://google.com", done => {
+    store = createMockStore({
+      auth: { uid, userName, userPhotoURL: "google.com" }
+    });
+    let { id, ...post } = posts[0];
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref("posts").once("value");
+      })
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(1);
+        done();
+      });
+  });
+});
+
+describe("startEditPost", () => {
+  test("should edit post at /posts/:id", () => {});
+  test("should edit post at /users/:uid/posts/:id", () => {});
+
+  describe('the country and countryCode was present before', () => {
+    describe("the country and countryCode has not changed", () => {
+      test("should edit post at /countries/:countryCode/posts/:id", () => {});
+    });
+
+    describe('the country and countryCode has changed', () => {
+      test("should remove the post under /countries/:formerCountryCode/posts", () => {});
+      test("should add the post under /country/:newCountryCode/posts");
+      test("should add countries/:newCountryCode collection if doesn't exist yet")
+      test("should add users/:uid/countries/:newCountryCode collection if doesn't exist yet")
+      test("should remove the collection countries/:formerCountryCode if not another article talk about this country", () => {});
+      test("should remove the collection users/:uid/countries/:formerCountryCode if not another article belonging to user talk about this country", () => {});
     });
   });
 
-  test('should not persist a post when userPhotoURL is not in format http(s)://google.com', (done) => {
-    store = createMockStore({ auth: { uid, userName, userPhotoURL: 'google.com' } });
-    let { id, ...post } = posts[0];
-    store.dispatch(startAddPost(post)).then(() => {
-      return database.ref('posts').once('value');
-    }).then((snapshot) => {
-      let posts = [];
-      snapshot.forEach((post) => {
-        posts.push(post.val());
-      })
-      expect(posts.length).toEqual(1);
-      done();
+  describe('the country and countryCode was not present before', () => {
+    describe("the country and countryCode has not changed", () => {
+      test("should do nothing", () => {});
+    });
+    describe("the country and countryCode has changed", () => {
+      test("should add the post under /country/:newCountryCode/posts");
+      test("should add countries/:newCountryCode collection if doesn't exist yet")
     });
   });
 });
