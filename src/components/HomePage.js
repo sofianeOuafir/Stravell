@@ -8,10 +8,10 @@ import {
   HOME_PAGE_TITLE,
   HOME_PAGE_DESCRIPTION
 } from "./../constants/constants";
-import { setPosts } from "./../actions/posts";
 import { setCountries } from "./../actions/countries";
 import database from "./../firebase/firebase";
 import Layout from "./Layout";
+import { setTextFilter, setCountryFilter } from "../actions/filters";
 
 export class HomePage extends React.Component {
   async componentDidMount() {
@@ -30,6 +30,8 @@ export class HomePage extends React.Component {
       });
     });
     this.props.dispatch(setCountries(countries));
+    this.props.dispatch(setTextFilter(''));
+    this.props.dispatch(setCountryFilter(''));
   }
 
   render() {
@@ -39,7 +41,6 @@ export class HomePage extends React.Component {
         <PageHeader title={`Welcome${userName ? `, ${userName}` : ""}`} />
         <div className="content-container">
           <FilterablePostList
-            countries={countries}
             SearchBarAutoFocus={true}
             posts={posts}
             noPostText={NO_ELEMENT_POST_LIST_HOME_PAGE_TEXT}
@@ -67,8 +68,6 @@ HomePage.getInitialProps = async function({ req, reduxStore }) {
     });
   });
   posts = posts.reverse();
-
-  reduxStore.dispatch(setPosts(posts));
 
   return { posts };
 };

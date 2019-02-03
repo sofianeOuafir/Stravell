@@ -6,7 +6,7 @@ const CountryFilter = ({ countries, setCountryFilter, filters }) => (
   <div>
     {countries && (
       <select name="countryFilter" id="countryFilter" value={filters.country} onChange={(e) => onCountryChange(e, setCountryFilter)}>
-      <option value="">Search By Country</option>  
+      <option value="">All Countries</option>  
       {countries.map(({ id, country }) => (
           <option key={id} value={country}>{country}</option>
         ))}

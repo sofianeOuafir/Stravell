@@ -46,9 +46,13 @@ const startAddPost = (postData = {}) => {
     const newPostKey = database.ref().child('posts').push().key;
     let updates = {};
     updates[`/posts/${newPostKey}`] = post;
+    updates[`/users/${uid}/posts/${newPostKey}`] = post;
     if(country && countryCode) {
-      updates[`/countries/${countryCode}`] = { country };
-    }
+      updates[`/countries/${countryCode}`] = { posts: {} }
+      updates[`/countries/${countryCode}`]["country"] = country;
+      updates[`/countries/${countryCode}`]["posts"][newPostKey] = post;
+      updates[`/users/${uid}/countries/${countryCode}`] = { country }
+    } 
     return database.ref().update(updates).catch(e => console.log(e));
   };
 };

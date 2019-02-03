@@ -1,5 +1,6 @@
 const filtersReducerDefaultState = {
-  text: ""
+  text: "",
+  country: ""
 };
 
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
