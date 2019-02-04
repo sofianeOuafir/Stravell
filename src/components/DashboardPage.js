@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Router from "next/router";
+import { connect } from 'react-redux';
 
 import FilterablePostList from "./FilterablePostList";
 import PageHeader from "./PageHeader";
@@ -10,29 +11,52 @@ import {
   DASHBOARD_PAGE_DESCRIPTION
 } from "./../constants/constants";
 import Layout from "./Layout";
+import { setCountries } from "./../actions/countries";
 import database from "./../firebase/firebase";
 
-export const DashboardPage = ({ posts }) => {
-  return (
-    <Layout
-      title={DASHBOARD_PAGE_TITLE}
-      description={DASHBOARD_PAGE_DESCRIPTION}
-    >
-      <PageHeader title="Dashboard" />
-      <div className="content-container">
-        <Link as="/p/create" href="/createPost">
-          <a className="button button--with-bottom-margin">Create Post</a>
-        </Link>
-        <FilterablePostList
-          editable={true}
-          SearchBarAutoFocus={true}
-          posts={posts}
-          noPostText={NO_ELEMENT_POST_LIST_DASHBOARD_TEXT}
-        />
-      </div>
-    </Layout>
-  );
-};
+export class DashboardPage extends React.Component {
+  async componentDidMount() {
+    // do on here for realtime 
+    const countrySnapshot = await database
+      .ref(`users/${this.props.uid}/countries`)
+      .once("value")
+      .then(snapshot => {
+        return snapshot;
+      });
+
+    let countries = [];
+    countrySnapshot.forEach(snapshotChild => {
+      countries.push({
+        id: snapshotChild.key,
+        ...snapshotChild.val()
+      });
+    });
+    this.props.dispatch(setCountries(countries));
+  }
+
+  render() {
+    const { posts } = this.props;
+    return (
+      <Layout
+        title={DASHBOARD_PAGE_TITLE}
+        description={DASHBOARD_PAGE_DESCRIPTION}
+      >
+        <PageHeader title="Dashboard" />
+        <div className="content-container">
+          <Link as="/p/create" href="/createPost">
+            <a className="button button--with-bottom-margin">Create Post</a>
+          </Link>
+          <FilterablePostList
+            editable={true}
+            SearchBarAutoFocus={true}
+            posts={posts}
+            noPostText={NO_ELEMENT_POST_LIST_DASHBOARD_TEXT}
+          />
+        </div>
+      </Layout>
+    );
+  }
+}
 
 DashboardPage.getInitialProps = async function({
   query,
@@ -67,7 +91,7 @@ DashboardPage.getInitialProps = async function({
     });
     posts = posts.reverse();
 
-    return { posts };
+    return { posts, uid };
   } else {
     if (res) {
       res.writeHead(302, {
@@ -80,4 +104,4 @@ DashboardPage.getInitialProps = async function({
   }
 };
 
-export default DashboardPage;
+export default connect()(DashboardPage);

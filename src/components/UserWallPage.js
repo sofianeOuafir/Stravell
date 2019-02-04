@@ -12,6 +12,7 @@ import { setPosts } from "./../actions/posts";
 export class UserWallPage extends React.Component {
   async componentDidMount() {
 
+    // do on here for realtime 
     const countrySnapshot = await database
       .ref(`users/${this.props.uid}/countries`)
       .once("value")

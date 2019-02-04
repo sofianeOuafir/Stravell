@@ -70,12 +70,82 @@ const editPost = ({ id, updates }) => ({
 });
 
 const startEditPost = ({ id, updates, postBeforeUpdate }) => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     const { uid, userName, userPhotoURL } = getState().auth;
     updates.uid = uid;
     updates.userName = userName;
     updates.userPhotoURL = userPhotoURL;
+    const data = await prepareDataObject({
+      updates,
+      postBeforeUpdate,
+      id,
+      uid
+    });
+    console.log(data);
+    database
+      .ref()
+      .update(data)
+      .then(() => {
+        return maintainUsersCountries({ postBeforeUpdate, uid });
+      }).then(() => {
+        return maintainCountries({ postBeforeUpdate, uid });
+      })
+      .catch(e => console.log(e));
+  };
+};
+
+const maintainUsersCountries = async ({ postBeforeUpdate, uid }) => {
+  return new Promise(async (resolve, reject) => {
+    const snapshot = await database
+    .ref(`/users/${uid}/posts`)
+    .orderByChild("countryCode")
+    .equalTo(postBeforeUpdate.countryCode)
+    .limitToFirst(1)
+    .once("value");
+
+    if (!snapshot.val()) {
+      let data = {};
+      data[`/users/${uid}/countries/${postBeforeUpdate.countryCode}`] = null;
+      database
+      .ref()
+      .update(data).then(() => {
+        resolve();
+      })
+    } else {
+      resolve();
+    }
+  })
+
+
+};
+
+const maintainCountries = async ({ postBeforeUpdate, uid }) => {
+  return new Promise(async (resolve, reject) => {
+    const snapshot = await database
+    .ref(`/posts`)
+    .orderByChild("countryCode")
+    .equalTo(postBeforeUpdate.countryCode)
+    .limitToFirst(1)
+    .once("value");
+
+    if (!snapshot.val()) {
+      let data = {};
+      data[`/countries/${postBeforeUpdate.countryCode}`] = null;
+      database
+      .ref()
+      .update(data).then(() => {
+        resolve();
+      })
+    } else {
+      resolve();
+    }
+  });
+};
+
+const prepareDataObject = ({ updates, postBeforeUpdate, id, uid }) => {
+  return new Promise(async (resolve, reject) => {
     let data = {};
+
     data[`/posts/${id}`] = updates;
     data[`/users/${uid}/posts/${id}`] = updates;
     if (
@@ -91,49 +161,19 @@ const startEditPost = ({ id, updates, postBeforeUpdate }) => {
       postBeforeUpdate.country !== updates.country &&
       postBeforeUpdate.countryCode !== updates.countryCode
     ) {
-      data[`/countries/${postBeforeUpdate.countryCode}`] = { posts: {}};
-      data[`/countries/${postBeforeUpdate.countryCode}`][`posts`][id] = null;
+      // if country has changed, remove post from former country - post list
+      data[`/countries/${postBeforeUpdate.countryCode}/posts/${id}`] = null;
+      // add new country and post in new country - post list
       data[`/countries/${updates.countryCode}`] = { posts: {} };
       data[`/countries/${updates.countryCode}`].country = updates.country;
-      data[`/countries/${updates.countryCode}`]["posts"][id] = updates;
+      data[`/countries/${updates.countryCode}`].posts[id] = updates;
+      // add country to user's country list
       data[`/users/${uid}/countries/${updates.countryCode}`] = {
-        country: updates.countryCode
+        country: updates.country
       };
-      database
-        .ref(`/posts`)
-        .orderByChild("countryCode")
-        .equalTo(postBeforeUpdate.countryCode)
-        .limitToFirst(1)
-        .once("value")
-        .then((snapshot) => {
-          if(!snapshot.val()){
-            console.log(`${postBeforeUpdate.countryCode} should be deleted in countries`);
-            data[`/countries/${postBeforeUpdate.countryCode}`] = null;
-          }
-        });
-      database
-        .ref(`/users/${uid}/posts`)
-        .orderByChild("countryCode")
-        .equalTo(postBeforeUpdate.countryCode)
-        .limitToFirst(1)
-        .once("value")
-        .then((snapshot) => {
-          if(!snapshot.val()){
-            console.log(`${postBeforeUpdate.countryCode} should be deleted in users/countries`);
-            data[`/users/${uid}/countries/${postBeforeUpdate.countryCode}`] = null;
-          }
-        });
-
-
     }
-    console.log(data);
-    database
-      .ref()
-      .update(data).then(() => {
-        console.log('update now');
-      })
-      .catch(e => console.log(e));
-  };
+    resolve(data);
+  });
 };
 
 const setPosts = posts => ({
