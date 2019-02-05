@@ -5,33 +5,23 @@ import { connect } from 'react-redux';
 import PageHeader from "./PageHeader";
 import FilterablePostList from "./FilterablePostList";
 import Layout from "./Layout";
-import database from "./../firebase/firebase";
 import { APP_NAME } from "./../constants/constants";
 import { setCountries } from "./../actions/countries";
-import { setPosts } from "./../actions/posts";
+import { setCountryFilter } from "./../actions/filters";
+import { getPosts } from "../queries/post";
+import { getCountries } from "../queries/countries";
+import { getUser } from "../queries/user";
 export class UserWallPage extends React.Component {
   async componentDidMount() {
-
-    // do on here for realtime 
-    const countrySnapshot = await database
-      .ref(`users/${this.props.uid}/countries`)
-      .once("value")
-      .then(snapshot => {
-        return snapshot;
-      });
-
-    let countries = [];
-    countrySnapshot.forEach(snapshotChild => {
-      countries.push({
-        id: snapshotChild.key,
-        ...snapshotChild.val()
-      });
-    });
+    const { uid } = this.props.user;
+    const countries = await getCountries({ uid });
     this.props.dispatch(setCountries(countries));
+    this.props.dispatch(setCountryFilter(''));
   }
 
   render() {
-    const { posts, userName } = this.props
+    const { posts } = this.props;
+    const { userName } = this.props.user;
     return (
       <Layout withTitleAndDescription={false}>
         <Head>
@@ -56,23 +46,11 @@ export class UserWallPage extends React.Component {
   }
 }
 
-UserWallPage.getInitialProps = async function({ query, reduxStore }) {
+UserWallPage.getInitialProps = async function({ query }) {
   const { uid } = query; 
-  const snapshot = await database
-    .ref(`users/${uid}/posts`)
-    .once("value");
-  let posts = [];
-  snapshot.forEach(snapshotChild => {
-    posts.push({
-      id: snapshotChild.key,
-      ...snapshotChild.val()
-    });
-  });
-  posts = posts.reverse();
-  const userSnapshot = await database.ref(`users/${uid}`).once("value");
-  const user = { uid: userSnapshot.key, ...userSnapshot.val() };
-  reduxStore.dispatch(setPosts(posts));
-  return { posts, userName: user.userName, uid: user.uid };
+  const posts = await getPosts({ uid });
+  const user = await getUser(uid);
+  return { posts, user };
 };
 
 export default connect()(UserWallPage);

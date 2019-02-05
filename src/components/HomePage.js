@@ -9,26 +9,14 @@ import {
   HOME_PAGE_DESCRIPTION
 } from "./../constants/constants";
 import { setCountries } from "./../actions/countries";
-import database from "./../firebase/firebase";
 import Layout from "./Layout";
 import { setTextFilter, setCountryFilter } from "../actions/filters";
+import { getPosts } from "../queries/post";
+import { getCountries } from "../queries/countries";
 
 export class HomePage extends React.Component {
   async componentDidMount() {
-    const countrySnapshot = await database
-      .ref("countries")
-      .once("value")
-      .then(snapshot => {
-        return snapshot;
-      });
-
-    let countries = [];
-    countrySnapshot.forEach(snapshotChild => {
-      countries.push({
-        id: snapshotChild.key,
-        ...snapshotChild.val()
-      });
-    });
+    const countries = await getCountries();
     this.props.dispatch(setCountries(countries));
     this.props.dispatch(setTextFilter(''));
     this.props.dispatch(setCountryFilter(''));
@@ -51,24 +39,8 @@ export class HomePage extends React.Component {
   }
 }
 
-HomePage.getInitialProps = async function({ req, reduxStore }) {
-  const postSnapshot = await database
-    .ref("posts")
-    .orderByChild("createdAt")
-    .once("value")
-    .then(snapshot => {
-      return snapshot;
-    });
-
-  let posts = [];
-  postSnapshot.forEach(snapshotChild => {
-    posts.push({
-      id: snapshotChild.key,
-      ...snapshotChild.val()
-    });
-  });
-  posts = posts.reverse();
-
+HomePage.getInitialProps = async function() {
+  const posts = await getPosts();
   return { posts };
 };
 

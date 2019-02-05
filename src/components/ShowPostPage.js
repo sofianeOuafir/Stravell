@@ -7,9 +7,9 @@ import MyEditor, { plugins } from "./MyEditor";
 import PageHeader from "./PageHeader";
 import { getDateFormat } from "./../lib/utils/date";
 import PostAuthor from "./PostAuthor";
-import database from "./../firebase/firebase";
 import Layout from "./Layout";
 import Address from "./Address";
+import { getPost } from "../queries/post";
 
 function getPluginDecorators() {
   let decorators = [];
@@ -58,14 +58,9 @@ export const ShowPostPage = ({ post }) => {
   );
 };
 
-ShowPostPage.getInitialProps = async function(context) {
-  const post = await new Promise((resolve, reject) => {
-    const { id } = context.query;
-    database.ref(`posts/${id}`).on("value", snapshot => {
-      let post = { id: snapshot.key, ...snapshot.val() };
-      resolve(post);
-    });
-  });
+ShowPostPage.getInitialProps = async function({ query }) {
+  const { id } = query;
+  const post = await getPost(id)
   return { post };
 };
 

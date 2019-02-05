@@ -1,7 +1,9 @@
 import React from "react";
+import Link from "next/link";
+
 import Layout from "./../src/components/Layout";
 import PageHeader from "./../src/components/PageHeader";
-import Link from "next/link";
+
 
 export default class Error extends React.Component {
   static getInitialProps({ res, err }) {

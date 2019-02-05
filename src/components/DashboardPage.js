@@ -12,26 +12,16 @@ import {
 } from "./../constants/constants";
 import Layout from "./Layout";
 import { setCountries } from "./../actions/countries";
-import database from "./../firebase/firebase";
+import { setCountryFilter } from "./../actions/filters";
+import { getPosts } from "../queries/post";
+import { getCountries } from "../queries/countries";
 
 export class DashboardPage extends React.Component {
   async componentDidMount() {
-    // do on here for realtime 
-    const countrySnapshot = await database
-      .ref(`users/${this.props.uid}/countries`)
-      .once("value")
-      .then(snapshot => {
-        return snapshot;
-      });
-
-    let countries = [];
-    countrySnapshot.forEach(snapshotChild => {
-      countries.push({
-        id: snapshotChild.key,
-        ...snapshotChild.val()
-      });
-    });
+    const { uid } = this.props;
+    const countries = await getCountries({ uid });
     this.props.dispatch(setCountries(countries));
+    this.props.dispatch(setCountryFilter(''));
   }
 
   render() {
@@ -66,7 +56,7 @@ DashboardPage.getInitialProps = async function({
 }) {
   const { uid } = query;
   let authorised = false;
-  if (req && req.session) {
+  if (req && req.session.decodedToken) {
     const user = req.session.decodedToken;
     if (user.user_id == query.uid) {
       authorised = true;
@@ -77,20 +67,7 @@ DashboardPage.getInitialProps = async function({
     }
   }
   if (authorised) {
-    const snapshot = await database
-      .ref("posts")
-      .orderByChild("uid")
-      .equalTo(uid)
-      .once("value");
-    let posts = [];
-    snapshot.forEach(snapshotChild => {
-      posts.push({
-        id: snapshotChild.key,
-        ...snapshotChild.val()
-      });
-    });
-    posts = posts.reverse();
-
+    const posts = await getPosts({ uid })
     return { posts, uid };
   } else {
     if (res) {
