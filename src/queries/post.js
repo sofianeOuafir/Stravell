@@ -6,8 +6,17 @@ export const getPost = async (id) => {
   return post;
 };
 
-export const getPosts = async ({uid} = {}) => {
-  const ref = uid ? `users/${uid}/posts` : 'posts';
+export const getPosts = async ({uid, countryCode} = {}) => {
+  let ref;
+  if(uid && countryCode) {
+    throw new Error("can't pass both arguments uid and countryCode");
+  } else if(uid) {
+    ref = `users/${uid}/posts`;
+  } else if (countryCode) {
+    ref = `countries/${countryCode}/posts`;
+  } else {
+    ref = 'posts';
+  }
   const postSnapshot = await database
     .ref(ref)
     .orderByChild("createdAt")

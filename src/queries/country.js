@@ -20,3 +20,15 @@ export const getCountries = async ({uid} = {}) => {
 
   return countries;
 };
+
+export const getCountry = async (countryCode) => {
+  const countrySnapshot = await database
+    .ref(`/countries/${countryCode}`)
+    .once("value")
+    .then(snapshot => {
+      return snapshot;
+    });
+
+  return { id: countrySnapshot.key, ...countrySnapshot.val() }
+};
+

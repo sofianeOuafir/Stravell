@@ -12,16 +12,14 @@ import {
 } from "./../constants/constants";
 import Layout from "./Layout";
 import { setCountries } from "./../actions/countries";
-import { setCountryFilter } from "./../actions/filters";
 import { getPosts } from "../queries/post";
-import { getCountries } from "../queries/countries";
+import { getCountries } from "../queries/country";
 
 export class DashboardPage extends React.Component {
   async componentDidMount() {
     const { uid } = this.props;
     const countries = await getCountries({ uid });
     this.props.dispatch(setCountries(countries));
-    this.props.dispatch(setCountryFilter(''));
   }
 
   render() {

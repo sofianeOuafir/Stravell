@@ -1,7 +1,6 @@
 import React from "react";
 import MultiDecorator from "draft-js-plugins-editor/lib/Editor/MultiDecorator";
 import { EditorState, convertFromRaw, CompositeDecorator } from "draft-js";
-import Head from "next/head";
 
 import MyEditor, { plugins } from "./MyEditor";
 import PageHeader from "./PageHeader";
@@ -29,11 +28,7 @@ export const ShowPostPage = ({ post }) => {
     getPluginDecorators()
   );
   return (
-    <Layout withTitleAndDescription={false}>
-      <Head>
-        <title>{`${post.title}`}</title>
-        <meta name="description" content={post.description} />
-      </Head>
+    <Layout title={`${post.title}`} description={post.description}>
       <PageHeader>
         <h1 className="favourite-font-weight m0">{post.title}</h1>
         <div className="my1 flex justify-content--between align-items--center">

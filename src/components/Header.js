@@ -4,26 +4,32 @@ import { connect } from "react-redux";
 import { IoIosHome, IoIosPower, IoMdCreate } from "react-icons/io";
 import Avatar from "react-avatar";
 import { slugify } from "underscore.string";
+import Router from 'next/router';
 
 import { startLogout } from "../actions/auth";
 import DropdownMenu from "./DropdownMenu";
 import { APP_NAME } from "./../constants/constants";
+import { setCountryFilter, setTextFilter } from "../actions/filters";
 
 export const Header = ({
   startLogout,
   isAuthenticated,
   userName,
   userPhotoURL,
+  clearFilters,
   uid
 }) => (
   <header className="header">
     <div className="content-container">
       <div className="header__content">
-        <Link prefetch href="/">
+        <div onClick={() => { 
+          Router.push('/');
+          clearFilters();
+        }}>
           <a className="header__title">
             <h1>{APP_NAME}</h1>
           </a>
-        </Link>
+        </div>
         <div className="header__right">
           {isAuthenticated ? (
             <div className="header__right">
@@ -73,7 +79,11 @@ export const Header = ({
 );
 
 const mapDispatchToProps = dispatch => ({
-  startLogout: () => dispatch(startLogout())
+  startLogout: () => dispatch(startLogout()),
+  clearFilters: () => {
+    dispatch(setCountryFilter(''))
+    dispatch(setTextFilter(''))
+  }
 });
 
 const mapStateToProps = ({ auth }) => {

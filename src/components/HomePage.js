@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import Router from "next/router";
 
 import FilterablePostList from "../components/FilterablePostList";
 import PageHeader from "./PageHeader";
@@ -10,16 +11,18 @@ import {
 } from "./../constants/constants";
 import { setCountries } from "./../actions/countries";
 import Layout from "./Layout";
-import { setTextFilter, setCountryFilter } from "../actions/filters";
 import { getPosts } from "../queries/post";
-import { getCountries } from "../queries/countries";
+import { getCountries } from "../queries/country";
+import { setTextFilter } from "./../actions/filters";
 
 export class HomePage extends React.Component {
   async componentDidMount() {
     const countries = await getCountries();
     this.props.dispatch(setCountries(countries));
-    this.props.dispatch(setTextFilter(''));
-    this.props.dispatch(setCountryFilter(''));
+    const searchQuery = Router.query.s;
+    if (searchQuery) {
+      this.props.dispatch(setTextFilter(searchQuery));
+    }
   }
 
   render() {

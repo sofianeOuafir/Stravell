@@ -7,16 +7,14 @@ import FilterablePostList from "./FilterablePostList";
 import Layout from "./Layout";
 import { APP_NAME } from "./../constants/constants";
 import { setCountries } from "./../actions/countries";
-import { setCountryFilter } from "./../actions/filters";
 import { getPosts } from "../queries/post";
-import { getCountries } from "../queries/countries";
+import { getCountries } from "../queries/country";
 import { getUser } from "../queries/user";
 export class UserWallPage extends React.Component {
   async componentDidMount() {
     const { uid } = this.props.user;
     const countries = await getCountries({ uid });
     this.props.dispatch(setCountries(countries));
-    this.props.dispatch(setCountryFilter(''));
   }
 
   render() {

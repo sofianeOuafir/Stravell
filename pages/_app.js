@@ -8,7 +8,6 @@ import NProgress from "nprogress";
 import withReduxStore from "../src/hocs/withReduxStore";
 import { firebase } from "./../src/firebase/firebase";
 import { login, logout } from "./../src/actions/auth";
-import { setTextFilter } from "./../src/actions/filters";
 import { getUser, addUser } from "../src/queries/user";
 import "./../src/styles/styles.scss";
 import "normalize.css/normalize.css";
@@ -23,11 +22,6 @@ import "draft-js-side-toolbar-plugin/lib/plugin.css";
 
 class MyApp extends App {
   async componentDidMount() {
-    const searchQuery = Router.query.s;
-    if (searchQuery) {
-      this.props.reduxStore.dispatch(setTextFilter(searchQuery));
-    }
-
     // initialize React Google Analytics and track page views
     ReactGA.initialize(process.env.GA_TRACKING_CODE);
     ReactGA.pageview(Router.route);
