@@ -195,3 +195,7 @@ button:disabled {
 .text-dark-grey {
   color: $dark-grey;
 }
+
+.border-light-grey {
+  border: 1px $light-grey solid;
+}

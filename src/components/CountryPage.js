@@ -5,17 +5,36 @@ import FilterablePostList from "./FilterablePostList";
 import PageHeader from "./PageHeader";
 import { getPosts } from "../queries/post";
 import { getCountry } from "../queries/country";
+import Country from "./Country";
+import { setCountryFilter } from "../actions/filters";
+import { connect } from "react-redux";
 
-const CountryPage = ({ posts, country }) => {
-  return (
-    <Layout title={`Stravell | ${country.country}`} description="to be written">
-      <PageHeader title={country.country} />
-      <div className="content-container">
-        <FilterablePostList posts={posts} />
-      </div>
-    </Layout>
-  );
-};
+class CountryPage extends React.Component {
+  componentDidMount() {
+    this.props.dispatch(setCountryFilter(""));
+  }
+  render() {
+    const { posts, country } = this.props;
+    return (
+      <Layout
+        title={`Stravell | ${country.country}`}
+        description="to be written"
+      >
+        <PageHeader>
+          <Country
+            countryName={country.country}
+            countryCode={country.id}
+            countryNameClassName="h2 favourite-font-weight"
+            flagSize="64"
+          />
+        </PageHeader>
+        <div className="content-container">
+          <FilterablePostList posts={posts} withCountryFilter={false} />
+        </div>
+      </Layout>
+    );
+  }
+}
 
 CountryPage.getInitialProps = async function({ query }) {
   const { countryCode } = query;
@@ -24,4 +43,4 @@ CountryPage.getInitialProps = async function({ query }) {
   return { posts, country };
 };
 
-export default CountryPage;
+export default connect()(CountryPage);

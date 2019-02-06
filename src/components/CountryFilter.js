@@ -8,7 +8,7 @@ const CountryFilter = ({ countries, setCountryFilter, filters }) => (
       <select name="countryFilter" id="countryFilter" value={filters.country} onChange={(e) => onCountryChange(e, setCountryFilter)}>
       <option value="">All Countries</option>  
       {countries.map(({ id, country }) => (
-          <option key={id} value={country}>{country}</option>
+          <option key={id} value={id}>{country}</option>
         ))}
       </select>
     )}
@@ -16,8 +16,8 @@ const CountryFilter = ({ countries, setCountryFilter, filters }) => (
 );
 
 const onCountryChange = (e, setCountryFilter) => {
-  const country = e.target.value;
-  setCountryFilter(country)
+  const countryCode = e.target.value;
+  setCountryFilter(countryCode)
 }
 
 const mapDispatchToProps = (dispatch) => ({

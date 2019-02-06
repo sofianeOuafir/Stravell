@@ -1,6 +1,6 @@
 const filtersReducerDefaultState = {
   text: "",
-  country: ""
+  countryCode: ""
 };
 
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
@@ -13,7 +13,7 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
     case "SET_COUNTRY_FILTER":
       return {
         ...state,
-        country: action.country
+        countryCode: action.countryCode
       }
     default:
       return state;
