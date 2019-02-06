@@ -18,7 +18,7 @@ class CountryPage extends React.Component {
     return (
       <Layout
         title={`Stravell | ${country.country}`}
-        description="to be written"
+        description={`Travel articles about ${country.country}`}
       >
         <PageHeader>
           <Country

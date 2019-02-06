@@ -41,7 +41,7 @@ export class FilterablePostList extends React.Component {
               containerClassName="flex-grow"
               autoFocus={this.props.SearchBarAutoFocus}
             />
-            {this.state.withCountryFilter && <CountryFilter />}
+            {this.state.withCountryFilter && <CountryFilter className="ml3" />}
           </div>
         )}
         <PostList
