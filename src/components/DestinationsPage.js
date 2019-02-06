@@ -1,12 +1,9 @@
 import React from "react";
-import Link from "next/link";
-import Flag from 'react-world-flags'
 
 import Layout from "./Layout";
 import PageHeader from "./PageHeader";
 import { getCountries } from "../queries/country";
-
-
+import CountryList from './CountryList';
 class DestinationsPage extends React.Component {
   render() {
     const { countries } = this.props;
@@ -14,14 +11,7 @@ class DestinationsPage extends React.Component {
       <Layout title="Stravell | Destinations" description="test">
         <PageHeader title="Destinations" />
         <div className="content-container">
-          {countries.map(({ country, id }) => (
-            <Link key={id} as={`/country/${id}`} href={`/country?countryCode=${id}`}>
-              <a>{country}
-              <Flag code={id} height="16" />
-              </a>
-              
-            </Link>
-          ))}
+          <CountryList countries={countries} />
         </div>
       </Layout>
     );

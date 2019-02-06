@@ -1,10 +1,15 @@
 import React from "react";
 import Link from "next/link";
 import { connect } from "react-redux";
-import { IoIosHome, IoIosPower, IoMdCreate } from "react-icons/io";
+import {
+  IoIosHome,
+  IoIosPower,
+  IoMdCreate,
+  IoIosAirplane
+} from "react-icons/io";
 import Avatar from "react-avatar";
 import { slugify } from "underscore.string";
-import Router from 'next/router';
+import Router from "next/router";
 
 import { startLogout } from "../actions/auth";
 import DropdownMenu from "./DropdownMenu";
@@ -22,10 +27,12 @@ export const Header = ({
   <header className="header">
     <div className="content-container">
       <div className="header__content">
-        <div onClick={() => { 
-          Router.push('/');
-          clearFilters();
-        }}>
+        <div
+          onClick={() => {
+            Router.push("/");
+            clearFilters();
+          }}
+        >
           <a className="header__title">
             <h1>{APP_NAME}</h1>
           </a>
@@ -58,8 +65,14 @@ export const Header = ({
                   href={`/dashboard?uid=${uid}`}
                 >
                   <button id="dashboardButton">
-                    <IoIosHome className="header__dropdown-menu-icon" />{" "}
+                    <IoIosHome className="header__dropdown-menu-icon" />
                     Dashboard
+                  </button>
+                </Link>
+                <Link href="/destinations">
+                  <button>
+                    <IoIosAirplane className="header__dropdown-menu-icon" />
+                    Destinations
                   </button>
                 </Link>
                 <button id="logOutButton" onClick={startLogout}>
@@ -81,8 +94,8 @@ export const Header = ({
 const mapDispatchToProps = dispatch => ({
   startLogout: () => dispatch(startLogout()),
   clearFilters: () => {
-    dispatch(setCountryFilter(''))
-    dispatch(setTextFilter(''))
+    dispatch(setCountryFilter(""));
+    dispatch(setTextFilter(""));
   }
 });
 

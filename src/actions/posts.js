@@ -51,9 +51,8 @@ const startAddPost = (postData = {}) => {
     updates[`/posts/${newPostKey}`] = post;
     updates[`/users/${uid}/posts/${newPostKey}`] = post;
     if (country && countryCode) {
-      updates[`/countries/${countryCode}`] = { posts: {} };
-      updates[`/countries/${countryCode}`]["country"] = country;
-      updates[`/countries/${countryCode}`]["posts"][newPostKey] = post;
+      updates[`/countries/${countryCode}/posts/${newPostKey}`] = post;
+      updates[`/countries/${countryCode}/country`] = country;
       updates[`/users/${uid}/countries/${countryCode}`] = { country };
     }
     return database

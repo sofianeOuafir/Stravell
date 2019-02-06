@@ -26,7 +26,7 @@ button:disabled {
   font-weight: bold;
 }
 
-.favourite-font-weight{
+.favourite-font-weight {
   font-weight: $favourite-font-weight;
 }
 
@@ -44,6 +44,10 @@ button:disabled {
 
 .justify-content--center {
   justify-content: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .flex-grow {
@@ -120,6 +124,15 @@ button:disabled {
   padding-bottom: $m-size;
 }
 
+.px1 {
+  padding-right: $s-size;
+  padding-left: $s-size;
+}
+.px2 {
+  padding-right: $m-size;
+  padding-left: $m-size;
+}
+
 .pb3 {
   padding-bottom: $l-size;
 }
@@ -144,6 +157,10 @@ button:disabled {
   width: 50%;
 }
 
+.thirdwidth {
+  width: 33%;
+}
+
 .quarterwidth {
   width: 25%;
 }
@@ -166,4 +183,15 @@ button:disabled {
 
 .relative {
   position: relative;
+}
+
+.h1 {
+  font-size: $xl-size;
+}
+.h2 {
+  font-size: $l-size;
+}
+
+.text-dark-grey {
+  color: $dark-grey;
 }
