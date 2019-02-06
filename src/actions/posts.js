@@ -80,96 +80,111 @@ const startEditPost = ({ id, updates, postBeforeUpdate }) => {
       id,
       uid
     });
-    console.log(data);
-    database
-      .ref()
-      .update(data)
-      .then(() => {
-        return maintainUsersCountries({ postBeforeUpdate, uid });
-      }).then(() => {
-        return maintainCountries({ postBeforeUpdate, uid });
-      })
-      .catch(e => console.log(e));
+    return database.ref().update(data)
+    // .then(() => {
+    //   return maintainUsersCountries({ postBeforeUpdate, updates, uid });
+    // })
+    // .then(() => {
+    //   return maintainCountries({ postBeforeUpdate, updates, uid });
+    // })
+    .catch(e => console.log(e));
   };
 };
 
-const maintainUsersCountries = async ({ postBeforeUpdate, uid }) => {
+const maintainUsersCountries = async ({ postBeforeUpdate, updates, uid }) => {
   return new Promise(async (resolve, reject) => {
-    const snapshot = await database
-    .ref(`/users/${uid}/posts`)
-    .orderByChild("countryCode")
-    .equalTo(postBeforeUpdate.countryCode)
-    .limitToFirst(1)
-    .once("value");
+    if (
+      countryHasChanged({ postBeforeUpdate, updates }) &&
+      countryWasPresent({ postBeforeUpdate })
+    ) {
+      const snapshot = await database
+        .ref(`/users/${uid}/posts`)
+        .orderByChild("countryCode")
+        .equalTo(postBeforeUpdate.countryCode)
+        .limitToFirst(1)
+        .once("value");
 
-    if (!snapshot.val()) {
-      let data = {};
-      data[`/users/${uid}/countries/${postBeforeUpdate.countryCode}`] = null;
-      database
-      .ref()
-      .update(data).then(() => {
+      if (!snapshot.val()) {
+        let data = {};
+        data[`/users/${uid}/countries/${postBeforeUpdate.countryCode}`] = null;
+        database
+          .ref()
+          .update(data)
+          .then(() => {
+            resolve();
+          });
+      } else {
         resolve();
-      })
-    } else {
-      resolve();
-    }
-  })
-
-
-};
-
-const maintainCountries = async ({ postBeforeUpdate, uid }) => {
-  return new Promise(async (resolve, reject) => {
-    const snapshot = await database
-    .ref(`/posts`)
-    .orderByChild("countryCode")
-    .equalTo(postBeforeUpdate.countryCode)
-    .limitToFirst(1)
-    .once("value");
-
-    if (!snapshot.val()) {
-      let data = {};
-      data[`/countries/${postBeforeUpdate.countryCode}`] = null;
-      database
-      .ref()
-      .update(data).then(() => {
-        resolve();
-      })
+      }
     } else {
       resolve();
     }
   });
 };
 
+const maintainCountries = async ({ postBeforeUpdate, updates, uid }) => {
+  return new Promise(async (resolve, reject) => {
+    if (
+      countryHasChanged({ postBeforeUpdate, updates }) &&
+      countryWasPresent({ postBeforeUpdate })
+    ) {
+      const snapshot = await database
+        .ref(`/posts`)
+        .orderByChild("countryCode")
+        .equalTo(postBeforeUpdate.countryCode)
+        .limitToFirst(1)
+        .once("value");
+
+      if (!snapshot.val()) {
+        let data = {};
+        data[`/countries/${postBeforeUpdate.countryCode}`] = null;
+        database
+          .ref()
+          .update(data)
+          .then(() => {
+            resolve();
+          });
+      } else {
+        resolve();
+      }
+    } else {
+      resolve();
+    }
+  });
+};
+
+const countryWasPresent = ({ postBeforeUpdate }) => postBeforeUpdate.country;
+
+const countryHasChanged = ({ postBeforeUpdate, updates }) =>
+  postBeforeUpdate.country !== updates.country;
+
 const prepareDataObject = ({ updates, postBeforeUpdate, id, uid }) => {
   return new Promise(async (resolve, reject) => {
     let data = {};
-
     data[`/posts/${id}`] = updates;
     data[`/users/${uid}/posts/${id}`] = updates;
     if (
-      postBeforeUpdate.country &&
-      postBeforeUpdate.countryCode &&
-      postBeforeUpdate.country === updates.country &&
-      postBeforeUpdate.countryCode === updates.countryCode
+      countryWasPresent({ postBeforeUpdate }) &&
+      !countryHasChanged({ postBeforeUpdate, updates })
     ) {
       data[`/countries/${updates.countryCode}/posts/${id}`] = updates;
     } else if (
-      postBeforeUpdate.country &&
-      postBeforeUpdate.countryCode &&
-      postBeforeUpdate.country !== updates.country &&
-      postBeforeUpdate.countryCode !== updates.countryCode
+      countryWasPresent({ postBeforeUpdate }) &&
+      countryHasChanged({ postBeforeUpdate, updates })
     ) {
       // if country has changed, remove post from former country - post list
       data[`/countries/${postBeforeUpdate.countryCode}/posts/${id}`] = null;
       // add new country and post in new country - post list
-      data[`/countries/${updates.countryCode}`] = { posts: {} };
-      data[`/countries/${updates.countryCode}`].country = updates.country;
-      data[`/countries/${updates.countryCode}`].posts[id] = updates;
+      data[`/countries/${updates.countryCode}/country`] = updates.country;
+      data[`/countries/${updates.countryCode}/posts/${id}`] = updates;
       // add country to user's country list
-      data[`/users/${uid}/countries/${updates.countryCode}`] = {
-        country: updates.country
-      };
+      data[`/users/${uid}/countries/${updates.countryCode}/country`] =
+        updates.country;
+    }
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        console.log(key);
+      }
     }
     resolve(data);
   });

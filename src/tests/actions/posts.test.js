@@ -2,7 +2,8 @@ import {
   addPost,
   editPost,
   setPosts,
-  startAddPost
+  startAddPost,
+  startEditPost
 } from "./../../actions/posts";
 import posts from "./../fixtures/posts";
 import configureMockStore from "redux-mock-store";
@@ -465,32 +466,194 @@ describe("startAddPost", () => {
   });
 });
 
-describe("startEditPost", () => {
-  test("should edit post at /posts/:id", () => {});
-  test("should edit post at /users/:uid/posts/:id", () => {});
+const fromSnapShotToObject = snapshot => {
+  if (snapshot.val() === null) {
+    return null;
+  }
+  return { id: snapshot.key, ...snapshot.val() };
+};
 
-  describe('the country and countryCode was present before', () => {
-    describe("the country and countryCode has not changed", () => {
-      test("should edit post at /countries/:countryCode/posts/:id", () => {});
+describe("startEditPost", () => {
+  let post = posts[0];
+  let store;
+  const postBeforeUpdate = Object.assign({}, post);
+  beforeEach(async () => {
+    store = createMockStore(defaultAuthState);
+    store.dispatch(startAddPost(post));
+  });
+
+  test("should edit post at /posts/:id", done => {
+    const updates = { ...post, country: "Brazil", title: "my updated title" };
+    store
+      .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
+      .then(() => {
+        return database.ref(`posts/${post.id}`).once("value");
+      })
+      .then(snapshot => {
+        const result = fromSnapShotToObject(snapshot);
+        expect(result).toMatchObject(updates);
+        done();
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  });
+
+  test("should edit post at /users/:uid/posts/:id", done => {
+    const updates = { ...post, country: "Brazil", title: "my updated title" };
+    store
+      .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
+      .then(() => {
+        return database.ref(`users/${uid}/posts/${post.id}`).once("value");
+      })
+      .then(snapshot => {
+        const result = fromSnapShotToObject(snapshot);
+        expect(result).toMatchObject(updates);
+        done();
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  });
+
+  describe("the country and countryCode was present before", () => {
+    // verify test setup
+    beforeEach(() => {
+      expect(postBeforeUpdate.country).toBeDefined();
+      expect(postBeforeUpdate.countryCode).toBeDefined();
     });
 
-    describe('the country and countryCode has changed', () => {
-      test("should remove the post under /countries/:formerCountryCode/posts", () => {});
-      test("should add the post under /country/:newCountryCode/posts");
-      test("should add countries/:newCountryCode collection if doesn't exist yet")
-      test("should add users/:uid/countries/:newCountryCode collection if doesn't exist yet")
-      test("should remove the collection countries/:formerCountryCode if not another article talk about this country", () => {});
+    describe("the country and countryCode has not changed", () => {
+      const updates = { ...post, title: "my updated title" };
+      // veryify setup
+      beforeEach(() => {
+        expect(updates.country).toEqual(postBeforeUpdate.country);
+        expect(updates.countryCode).toEqual(postBeforeUpdate.countryCode);
+      });
+      test("should edit post at /countries/:countryCode/posts/:id", done => {
+        store
+          .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
+          .then(() => {
+            return database
+              .ref(`countries/${postBeforeUpdate.countryCode}/posts/${post.id}`)
+              .once("value");
+          })
+          .then(snapshot => {
+            const result = fromSnapShotToObject(snapshot);
+            expect(result).toMatchObject(updates);
+            done();
+          })
+          .catch(e => {
+            console.log(e);
+          });
+      });
+    });
+
+    describe("the country and countryCode has changed", () => {
+      const updates = { ...post, country: "Brazil", countryCode: "BR" };
+      // veryify setup
+      beforeEach(() => {
+        expect(updates.country).not.toEqual(postBeforeUpdate.country);
+        expect(updates.countryCode).not.toEqual(postBeforeUpdate.countryCode);
+      });
+      test("should remove the post under /countries/:formerCountryCode/posts", done => {
+        store
+          .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
+          .then(() => {
+            return database
+              .ref(`countries/${postBeforeUpdate.countryCode}/posts/${post.id}`)
+              .once("value");
+          })
+          .then(snapshot => {
+            const result = fromSnapShotToObject(snapshot);
+            expect(result).toEqual(null);
+            done();
+          })
+          .catch(e => {
+            console.log(e);
+          });
+      });
+      test("should add the post under /country/:newCountryCode/posts", done => {
+        store
+          .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
+          .then(() => {
+            return database
+              .ref(`countries/${updates.countryCode}/posts/${post.id}`)
+              .once("value");
+          })
+          .then(snapshot => {
+            const result = fromSnapShotToObject(snapshot);
+            expect(result).toEqual(updates);
+            done();
+          })
+          .catch(e => {
+            console.log(e);
+          });
+      });
+      test("should add countries/:newCountryCode collection if doesn't exist yet", done => {
+        store
+          .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
+          .then(() => {
+            return database
+              .ref(`countries/${updates.countryCode}`)
+              .once("value");
+          })
+          .then(snapshot => {
+            const result = fromSnapShotToObject(snapshot);
+            expect(result.id).toEqual(updates.countryCode);
+            done();
+          })
+          .catch(e => {
+            console.log(e);
+          });
+      });
+      test("should add users/:uid/countries/:newCountryCode collection if doesn't exist yet", done => {
+        store
+          .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
+          .then(() => {
+            return database
+              .ref(`users/${uid}/countries/${updates.countryCode}`)
+              .once("value");
+          })
+          .then(snapshot => {
+            const result = fromSnapShotToObject(snapshot);
+            expect(result.id).toEqual(updates.countryCode);
+            done();
+          })
+          .catch(e => {
+            console.log(e);
+          });
+      });
+      test("should remove the collection countries/:formerCountryCode if not another article talk about this country", done => {
+        store
+          .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
+          .then(() => {
+            return database
+              .ref(`countries/${postBeforeUpdate.countryCode}`)
+              .once("value");
+          })
+          .then(snapshot => {
+            const result = fromSnapShotToObject(snapshot);
+            expect(result).toEqual(null);
+            done();
+          })
+          .catch(e => {
+            console.log(e);
+          });
+      });
       test("should remove the collection users/:uid/countries/:formerCountryCode if not another article belonging to user talk about this country", () => {});
     });
   });
 
-  describe('the country and countryCode was not present before', () => {
+  describe("the country and countryCode was not present before", () => {
     describe("the country and countryCode has not changed", () => {
       test("should do nothing", () => {});
     });
     describe("the country and countryCode has changed", () => {
       test("should add the post under /country/:newCountryCode/posts");
-      test("should add countries/:newCountryCode collection if doesn't exist yet")
+      test(
+        "should add countries/:newCountryCode collection if doesn't exist yet"
+      );
     });
   });
 });
