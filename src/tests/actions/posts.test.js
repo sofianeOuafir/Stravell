@@ -552,7 +552,7 @@ describe("startEditPost", () => {
         expect(updates.country).toEqual(postBeforeUpdate.country);
         expect(updates.countryCode).toEqual(postBeforeUpdate.countryCode);
       });
-      test("should edit post at /countries/:formerCountryCode/posts/:id", done => {
+      test("should edit post at /countries/:countryCode/posts/:id", done => {
         store
           .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
           .then(() => {
@@ -717,6 +717,61 @@ describe("startEditPost", () => {
           expect(updates.countryCode).not.toEqual(postBeforeUpdate.countryCode);
           expect(updates.country).toEqual("");
           expect(updates.countryCode).toEqual("");
+        });
+
+        test("should not add the post under /countries/:newCountryCode/posts", done => {
+          console.log("yaaaa: ", updates.countryCode);
+          store
+            .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
+            .then(() => {
+              return database
+                .ref(`countries/${updates.countryCode}/posts/${post.id}`)
+                .once("value");
+            })
+            .then(snapshot => {
+              const result = fromSnapShotToObject(snapshot);
+              expect(result).toEqual(null);
+              done();
+            })
+            .catch(e => {
+              console.log(e);
+            });
+        });
+
+        test("should remove the collection countries/:formerCountryCode if not another article talk about this country", done => {
+          return store
+            .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
+            .then(() => {
+              return database
+                .ref(`countries/${postBeforeUpdate.countryCode}`)
+                .once("value");
+            })
+            .then(snapshot => {
+              const result = fromSnapShotToObject(snapshot);
+              expect(result).toEqual(null);
+              done();
+            })
+            .catch(e => {
+              console.log(e);
+            });
+        });
+
+        test("should remove the former country under users/:uid/countries if not another article belonging to that same user talk about the former country", done => {
+          return store
+            .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
+            .then(() => {
+              return database
+                .ref(`users/${uid}/countries/${postBeforeUpdate.countryCode}`)
+                .once("value");
+            })
+            .then(snapshot => {
+              const result = fromSnapShotToObject(snapshot);
+              expect(result).toEqual(null);
+              done();
+            })
+            .catch(e => {
+              console.log(e);
+            });
         });
 
         test("should remove the post under /countries/:formerCountryCode/posts", done => {
