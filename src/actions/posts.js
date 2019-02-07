@@ -81,12 +81,12 @@ const startEditPost = ({ id, updates, postBeforeUpdate }) => {
       uid
     });
     return database.ref().update(data)
-    // .then(() => {
-    //   return maintainUsersCountries({ postBeforeUpdate, updates, uid });
-    // })
-    // .then(() => {
-    //   return maintainCountries({ postBeforeUpdate, updates, uid });
-    // })
+    .then(() => {
+      return maintainUsersCountries({ postBeforeUpdate, updates, uid });
+    })
+    .then(() => {
+      return maintainCountries({ postBeforeUpdate, updates, uid });
+    })
     .catch(e => console.log(e));
   };
 };
@@ -180,11 +180,12 @@ const prepareDataObject = ({ updates, postBeforeUpdate, id, uid }) => {
       // add country to user's country list
       data[`/users/${uid}/countries/${updates.countryCode}/country`] =
         updates.country;
-    }
-    for (const key in data) {
-      if (data.hasOwnProperty(key)) {
-        console.log(key);
-      }
+    } else if (
+      !countryWasPresent({ postBeforeUpdate }) &&
+      countryHasChanged({ postBeforeUpdate, updates })
+    ) {
+      data[`/countries/${updates.countryCode}/posts/${id}`] = updates;
+      data[`/countries/${updates.countryCode}/country`] = updates.country;
     }
     resolve(data);
   });
