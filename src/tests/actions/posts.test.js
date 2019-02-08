@@ -803,7 +803,6 @@ describe("startEditPost", () => {
         });
 
         test("should not add the post at /countries/:newCountryCode/posts", done => {
-          console.log("yaaaa: ", updates.countryCode);
           store
             .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
             .then(() => {

@@ -38,7 +38,6 @@ export class FilterablePostList extends React.Component {
         {this.props.posts.length > 0 && (
           <div className="flex justify-content--between align-items--center">
             <SearchBar
-              containerClassName="flex-grow"
               autoFocus={this.props.SearchBarAutoFocus}
             />
             {this.state.withCountryFilter && <CountryFilter className="ml3" />}

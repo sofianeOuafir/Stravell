@@ -11,6 +11,7 @@
   display: flex;
   align-items: center;
   border: 1px $grey solid;
+  flex-grow: 1;
 }
 
 .search-bar__icon {

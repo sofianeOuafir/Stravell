@@ -59,22 +59,36 @@ class PostForm extends React.Component {
 
   onAddressSelect = address => {
     this.setState(() => ({ address }));
-    geocodeByAddress(address).then(results => {
-      const countryAddressComponent = results[0].address_components.find((addressComponent) => {
-        return addressComponent.types.includes("country") === true
-      });
-      const country = countryAddressComponent.long_name;
-      const countryCode = countryAddressComponent.short_name;
-      this.setState(() => ({ country, countryCode }));
-      return results
-    }).then(results => {
-        return getLatLng(results[0])
-      })
-      .then(latLng => {
-        const { lat, lng } = latLng;
-        this.setState(() => ({ lat, lng }));
-      })
-      .catch(error => console.error("Error", error));
+  };
+
+  getLocationData = address => {
+    return new Promise((resolve, reject) => {
+      let locationData = {};
+      geocodeByAddress(address)
+        .then(results => {
+          const countryAddressComponent = results[0].address_components.find(
+            addressComponent => {
+              return addressComponent.types.includes("country") === true;
+            }
+          );
+          const country = countryAddressComponent.long_name;
+          const countryCode = countryAddressComponent.short_name;
+          locationData.country = country;
+          locationData.countryCode = countryCode;
+          // this.setState(() => ({ country, countryCode }));
+          return results;
+        })
+        .then(results => {
+          return getLatLng(results[0]);
+        })
+        .then(latLng => {
+          const { lat, lng } = latLng;
+          locationData.lat = lat;
+          locationData.lng = lng;
+          resolve(locationData);
+        })
+        .catch(error => reject(error));
+    });
   };
 
   onDescriptionChange = e => {
@@ -142,7 +156,7 @@ class PostForm extends React.Component {
     this.setState(() => ({ provideURL }));
   };
 
-  onSubmit = e => {
+  onSubmit = async e => {
     e.preventDefault();
     let errors = {
       title: getTitleError(this.state.title),
@@ -158,6 +172,20 @@ class PostForm extends React.Component {
       (this.state.provideURL || errors.body === "") &&
       (!this.state.provideURL || errors.providedURL === "")
     ) {
+      const address = this.state.address;
+      let lng = "";
+      let lat = "";
+      let country = "";
+      let countryCode = "";
+
+      if(address) {
+        const locationData = await this.getLocationData(address);
+        lng = locationData.lng;
+        lat = locationData.lat;
+        country = locationData.country;
+        countryCode = locationData.countryCode;
+      }
+      console.log(lng, lat, country, countryCode);
       const post = {
         title: formatTitle(this.state.title),
         description: formatDescription(this.state.description),
@@ -168,14 +196,14 @@ class PostForm extends React.Component {
         s3FolderName: this.state.s3FolderName,
         providedURL: this.state.providedURL,
         provideURL: this.state.provideURL,
-        address: this.state.address,
-        lng: this.state.lng,
-        lat: this.state.lat,
-        country: this.state.country,
-        countryCode: this.state.countryCode
-      }
+        address,
+        lng,
+        lat,
+        country,
+        countryCode
+      };
       // if editing
-      if(this.props.post) {
+      if (this.props.post) {
         this.props.onSubmit({ post, postBeforeUpdate: this.props.post });
       } else {
         this.props.onSubmit(post);

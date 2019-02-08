@@ -11,9 +11,9 @@ export class SearchBar extends React.Component {
   onTextChange = e => this.props.setTextFilter(e.target.value);
 
   render() {
-    const { containerClassName, placeholder, className,autoFocus, filters } = this.props;
+    const { placeholder, className,autoFocus, filters } = this.props;
     return (
-      <div className={`search-bar__container ${containerClassName ? containerClassName : ''}`}>
+      <div className={`search-bar__container`}>
         <IoIosSearch className="search-bar__icon" />
         <input
           id="searchBarInput"
