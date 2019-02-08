@@ -80,14 +80,16 @@ const startEditPost = ({ id, updates, postBeforeUpdate }) => {
       id,
       uid
     });
-    return database.ref().update(data)
-    .then(() => {
-      return maintainUsersCountries({ postBeforeUpdate, updates, uid });
-    })
-    .then(() => {
-      return maintainCountries({ postBeforeUpdate, updates, uid });
-    })
-    .catch(e => console.log(e));
+    return database
+      .ref()
+      .update(data)
+      .then(() => {
+        return maintainUsersCountries({ postBeforeUpdate, updates, uid });
+      })
+      .then(() => {
+        return maintainCountries({ postBeforeUpdate, updates, uid });
+      })
+      .catch(e => console.log(e));
   };
 };
 
@@ -154,6 +156,7 @@ const maintainCountries = async ({ postBeforeUpdate, updates, uid }) => {
 };
 
 const countryWasPresent = ({ postBeforeUpdate }) => postBeforeUpdate.country;
+const countryIsPresent = ({ updates }) => updates.country;
 
 const countryHasChanged = ({ postBeforeUpdate, updates }) =>
   postBeforeUpdate.country !== updates.country;
@@ -175,16 +178,20 @@ const prepareDataObject = ({ updates, postBeforeUpdate, id, uid }) => {
       // if country has changed, remove post from former country - post list
       data[`/countries/${postBeforeUpdate.countryCode}/posts/${id}`] = null;
       // add new country and post in new country - post list
-      data[`/countries/${updates.countryCode}/country`] = updates.country;
-      data[`/countries/${updates.countryCode}/posts/${id}`] = updates;
-      // add country to user's country list
-      data[`/users/${uid}/countries/${updates.countryCode}/country`] =
-        updates.country;
+      if (countryIsPresent({ updates })) {
+        data[`/countries/${updates.countryCode}/country`] = updates.country;
+        // add country to user's country list
+        data[`/users/${uid}/countries/${updates.countryCode}/country`] =
+          updates.country;
+        data[`/countries/${updates.countryCode}/posts/${id}`] = updates;
+      }
     } else if (
       !countryWasPresent({ postBeforeUpdate }) &&
       countryHasChanged({ postBeforeUpdate, updates })
     ) {
       data[`/countries/${updates.countryCode}/posts/${id}`] = updates;
+      data[`/users/${uid}/countries/${updates.countryCode}/country`] =
+        updates.country;
       data[`/countries/${updates.countryCode}/country`] = updates.country;
     }
     resolve(data);
