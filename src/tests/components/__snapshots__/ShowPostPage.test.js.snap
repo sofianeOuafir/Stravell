@@ -2,17 +2,9 @@
 
 exports[`should render correctly if post do not have an address 1`] = `
 <Layout
-  withTitleAndDescription={false}
+  description="Discovering the beauty of my country, my home."
+  title="Don't Forget Where You Come From."
 >
-  <SideEffect(Head)>
-    <title>
-      Don't Forget Where You Come From.
-    </title>
-    <meta
-      content="Discovering the beauty of my country, my home."
-      name="description"
-    />
-  </SideEffect(Head)>
   <PageHeader>
     <h1
       className="favourite-font-weight m0"
@@ -7530,17 +7522,9 @@ exports[`should render correctly if post do not have an address 1`] = `
 
 exports[`should render correctly if post have an address 1`] = `
 <Layout
-  withTitleAndDescription={false}
+  description="Discovering the beauty of my country, my home."
+  title="Don't Forget Where You Come From."
 >
-  <SideEffect(Head)>
-    <title>
-      Don't Forget Where You Come From.
-    </title>
-    <meta
-      content="Discovering the beauty of my country, my home."
-      name="description"
-    />
-  </SideEffect(Head)>
   <PageHeader>
     <h1
       className="favourite-font-weight m0"

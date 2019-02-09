@@ -29,7 +29,7 @@ export class HomePage extends React.Component {
     const { userName, posts, countries } = this.props;
     return (
       <Layout title={HOME_PAGE_TITLE} description={HOME_PAGE_DESCRIPTION}>
-        <PageHeader title={`Home`} />
+        <PageHeader title={`Welcome${userName ? `, ${userName}` : ''}`} />
         <div className="content-container">
           <FilterablePostList
             SearchBarAutoFocus={true}

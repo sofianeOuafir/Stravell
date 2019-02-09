@@ -4,7 +4,7 @@ import { UserWallPage } from "./../../components/UserWallPage";
 import posts from './../fixtures/posts';
 
 test('should render correctly', () => {
-  const userName = 'Sofiane';
-  const wrapper = shallow(<UserWallPage posts={posts} userName={userName} />);
+  const user = { userName: 'Sofiane' };
+  const wrapper = shallow(<UserWallPage posts={posts} user={user} />);
   expect(wrapper.update()).toMatchSnapshot();
 });

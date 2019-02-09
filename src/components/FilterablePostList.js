@@ -17,11 +17,11 @@ export class FilterablePostList extends React.Component {
   }
 
   getNoPostText() {
-    const { text: textFilter, countryCode: countryFilter } = this.props.filters;
     if (this.props.posts.length === 0) {
       return this.props.noPostText;
     } else if (this.props.filteredPosts.length === 0) {
-      let noResultFoundSentence = "No results were found ";
+      const { text: textFilter, countryCode: countryFilter } = this.props.filters;
+      let noResultFoundSentence = "No results were found";
       if (textFilter && countryFilter) {
         return `${noResultFoundSentence} for text: ${textFilter}, country: ${countryFilter}`;
       } else if (textFilter) {

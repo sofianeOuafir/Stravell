@@ -1,5 +1,4 @@
 import React from "react";
-import Head from "next/head";
 import { connect } from 'react-redux';
 
 import PageHeader from "./PageHeader";
@@ -21,14 +20,7 @@ export class UserWallPage extends React.Component {
     const { posts } = this.props;
     const { userName } = this.props.user;
     return (
-      <Layout withTitleAndDescription={false}>
-        <Head>
-          <title>{`${APP_NAME} | ${userName}`}</title>
-          <meta
-            name="description"
-            content={`This page describe ${userName}'s profile`}
-          />
-        </Head>
+      <Layout title={`${APP_NAME} | ${userName}`} description={`This page describe ${userName}'s profile`}>
         <div>
           <PageHeader title={userName} />
           <div className="content-container">
