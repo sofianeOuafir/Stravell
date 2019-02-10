@@ -19,6 +19,7 @@ import {
   MIN_NUM_OF_CHARACTERS_FOR_DESCRIPTION,
   MAX_NUM_OF_CHARACTERS_FOR_DESCRIPTION
 } from "./../../constants/constants";
+import { fromSnapShotToObject, fromSnapShotToArray } from './../../lib/utils/snapshot';
 
 const uid = "YYFEgQAdBuQIsox3ojncZtpSAmG3";
 const userName = "Jenna Jacquelyn";
@@ -58,46 +59,32 @@ describe("startAddPost", () => {
 
   beforeEach(done => {
     store = createMockStore(defaultAuthState);
-    const postsData = {};
-    posts.forEach(
-      ({
-        id,
-        body,
-        createdAt,
-        description,
-        image,
-        s3FolderName,
-        title,
-        uid,
-        updatedAt,
-        userName,
-        provideURL,
-        providedURL,
-        userPhotoURL
-      }) => {
-        postsData[id] = {
-          body,
-          createdAt,
-          description,
-          image,
-          s3FolderName,
-          title,
-          uid,
-          updatedAt,
-          userName,
-          provideURL,
-          providedURL,
-          userPhotoURL
-        };
-      }
-    );
+    const { id, ...post } = posts[0];
+    let data = {};
+
+    data[`posts/${id}`] = post;
+    data[`user-posts/${post.uid}/${id}`] = post;
+    data[`country-posts/${post.countryCode}/${id}`] = post;
+    data[`countries/${post.countryCode}`] = post.country;
+    data[`user-countries/${post.uid}/${post.countryCode}/country`] =
+      post.country;
+
     database
-      .ref(`posts`)
-      .set(postsData)
+      .ref()
+      .update(data)
       .then(() => done());
   });
 
-  test("should persist a valid post", done => {
+  afterEach(done => {
+    database
+    .ref()
+    .set({})
+    .then(() => {
+      done();
+    });
+  });
+
+  test("should persist a valid post at /posts", done => {
     let { id, ...post } = posts[0];
     post.title = "My amazing blog post";
     store
@@ -114,6 +101,88 @@ describe("startAddPost", () => {
         expect(posts[1]).toEqual(post);
         done();
       });
+  });
+
+  test("should persist a valid post at /country-posts/:newCountryCode/:id", done => {
+    let { id, ...post } = posts[0];
+    post.title = "My amazing blog post";
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref(`/country-posts/${post.countryCode}`).once("value");
+      })
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(2);
+        expect(posts[1]).toEqual(post);
+        done();
+      });
+  });
+
+  test("should persist a valid post at /user-posts/:uid/:id", done => {
+    let { id, ...post } = posts[0];
+    post.title = "My amazing blog post";
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref(`/user-posts/${post.uid}`).once("value");
+      })
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(2);
+        expect(posts[1]).toEqual(post);
+        done();
+      });
+  });
+
+  test("should persist a new country at /countries", done => {
+    let { id, ...post } = posts[0];
+    let country = { id: 'BR', country: 'Brazil' };
+    post.countryCode = country.id;
+    post.country = country.country;
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref(`/countries/${post.countryCode}`).once("value");
+      })
+      .then(snapshot => {
+        let result = fromSnapShotToObject(snapshot);
+        expect(result).toEqual(country);
+      }).then(() => {
+        return database.ref(`/countries`).once("value");
+      }).then((snapshot) => {
+        const result = fromSnapShotToArray(snapshot);
+        expect(result.length).toEqual(2);
+        done();
+      })
+  });
+
+  test("should persist a new country at /user-countries/:uid", done => {
+    let { id, ...post } = posts[0];
+    let country = { id: 'BR', country: 'Brazil' };
+    post.countryCode = country.id;
+    post.country = country.country;
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref(`/user-countries/${post.uid}/${post.countryCode}`).once("value");
+      })
+      .then(snapshot => {
+        let result = fromSnapShotToObject(snapshot);
+        expect(result).toEqual(country);
+      }).then(() => {
+        return database.ref(`/user-countries/${post.uid}`).once("value");
+      }).then((snapshot) => {
+        const result = fromSnapShotToArray(snapshot);
+        expect(result.length).toEqual(2);
+        done();
+      })
   });
 
   test("should not persist a post when the title is too short", done => {
@@ -466,28 +535,19 @@ describe("startAddPost", () => {
   });
 });
 
-const fromSnapShotToObject = snapshot => {
-  if (snapshot.val() === null) {
-    return null;
-  }
-  return { id: snapshot.key, ...snapshot.val() };
-};
-
 describe("startEditPost", () => {
-  let post = posts[0];
   let store;
-  const postBeforeUpdate = Object.assign({}, post);
+  const postBeforeUpdate = Object.assign({}, posts[0]);
+  let post = posts[0];
   beforeEach(done => {
     store = createMockStore(defaultAuthState);
-    const postData = {};
-    const { id, ...rest } = post;
-    postData[post.id] = { ...rest };
+    const { id, ...postWithoutId } = post;
     let data = {};
-    data[`/posts/${post.id}`] = postData[post.id];
-    data[`/users/${post.uid}/posts/${post.id}`] = postData[post.id];
-    data[`/countries/${post.countryCode}/posts/${post.id}`] = postData[post.id];
+    data[`/posts/${id}`] = postWithoutId;
+    data[`/user-posts/${post.uid}/${id}`] = postWithoutId;
+    data[`/country-posts/${post.countryCode}/${id}`] = postWithoutId;
     data[`/countries/${post.countryCode}/country`] = post.country;
-    data[`/users/${post.uid}/countries/${post.countryCode}`] = post.country;
+    data[`/user-countries/${post.uid}/${post.countryCode}`] = post.country;
 
     database
       .ref()
@@ -534,12 +594,12 @@ describe("startEditPost", () => {
             console.log(e);
           });
       });
-    
-      test("should edit post at /users/:uid/posts/:id", done => {
+
+      test("should edit post at /user-posts/:uid/:id", done => {
         store
           .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
           .then(() => {
-            return database.ref(`users/${uid}/posts/${post.id}`).once("value");
+            return database.ref(`user-posts/${uid}/${post.id}`).once("value");
           })
           .then(snapshot => {
             const result = fromSnapShotToObject(snapshot);
@@ -551,12 +611,12 @@ describe("startEditPost", () => {
           });
       });
 
-      test("should edit post at /countries/:countryCode/posts/:id", done => {
+      test("should edit post at /country-posts/:countryCode/:id", done => {
         store
           .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
           .then(() => {
             return database
-              .ref(`countries/${postBeforeUpdate.countryCode}/posts/${post.id}`)
+              .ref(`country-posts/${postBeforeUpdate.countryCode}/${post.id}`)
               .once("value");
           })
           .then(snapshot => {
@@ -570,7 +630,7 @@ describe("startEditPost", () => {
       });
     });
 
-    describe("the country and countryCode has changed", () => {      
+    describe("the country and countryCode has changed", () => {
       describe("and is still present", () => {
         const updates = { ...post, country: "Brazil", countryCode: "BR" };
         // veryify setup
@@ -596,12 +656,14 @@ describe("startEditPost", () => {
               console.log(e);
             });
         });
-      
-        test("should edit post at /users/:uid/posts/:id", done => {
+
+        test("should edit post at /user-posts/:uid/:id", done => {
           store
             .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
             .then(() => {
-              return database.ref(`users/${uid}/posts/${post.id}`).once("value");
+              return database
+                .ref(`user-posts/${uid}/${post.id}`)
+                .once("value");
             })
             .then(snapshot => {
               const result = fromSnapShotToObject(snapshot);
@@ -613,12 +675,12 @@ describe("startEditPost", () => {
             });
         });
 
-        test("should add the post at /countries/:newCountryCode/posts", done => {
+        test("should add the post at /country-posts/:newCountryCode/:id", done => {
           store
             .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
             .then(() => {
               return database
-                .ref(`countries/${updates.countryCode}/posts/${post.id}`)
+                .ref(`country-posts/${updates.countryCode}/${post.id}`)
                 .once("value");
             })
             .then(snapshot => {
@@ -631,13 +693,13 @@ describe("startEditPost", () => {
             });
         });
 
-        test("should remove the post at /countries/:formerCountryCode/posts", done => {
+        test("should remove the post at /country-posts/:formerCountryCode/:id", done => {
           store
             .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
             .then(() => {
               return database
                 .ref(
-                  `countries/${postBeforeUpdate.countryCode}/posts/${post.id}`
+                  `country-posts/${postBeforeUpdate.countryCode}/${post.id}`
                 )
                 .once("value");
             })
@@ -660,7 +722,10 @@ describe("startEditPost", () => {
             })
             .then(snapshot => {
               const result = fromSnapShotToObject(snapshot);
-              expect(result).toMatchObject({id: updates.countryCode, country: updates.country});
+              expect(result).toMatchObject({
+                id: updates.countryCode,
+                country: updates.country
+              });
               done();
             })
             .catch(e => {
@@ -685,12 +750,12 @@ describe("startEditPost", () => {
             });
         });
 
-        test("should add the new country at users/:uid/countries", done => {
+        test("should add the new country at user-countries/:uid/:newCountryCode", done => {
           store
             .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
             .then(() => {
               return database
-                .ref(`users/${uid}/countries/${updates.countryCode}`)
+                .ref(`user-countries/${uid}/${updates.countryCode}`)
                 .once("value");
             })
             .then(snapshot => {
@@ -705,12 +770,12 @@ describe("startEditPost", () => {
               console.log(e);
             });
         });
-        test("should remove the former country at users/:uid/countries if not another article belonging to that same user talk about the former country", done => {
+        test("should remove the former country at user-countries/:uid/:formerCountry if not another article belonging to that same user talk about the former country", done => {
           return store
             .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
             .then(() => {
               return database
-                .ref(`users/${uid}/countries/${postBeforeUpdate.countryCode}`)
+                .ref(`user-countries/${uid}/${postBeforeUpdate.countryCode}`)
                 .once("value");
             })
             .then(snapshot => {
@@ -749,12 +814,14 @@ describe("startEditPost", () => {
               console.log(e);
             });
         });
-      
-        test("should edit post at /users/:uid/posts/:id", done => {
+
+        test("should edit post at /user-posts/:uid/:id", done => {
           store
             .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
             .then(() => {
-              return database.ref(`users/${uid}/posts/${post.id}`).once("value");
+              return database
+                .ref(`user-posts/${uid}/${post.id}`)
+                .once("value");
             })
             .then(snapshot => {
               const result = fromSnapShotToObject(snapshot);
@@ -784,12 +851,12 @@ describe("startEditPost", () => {
             });
         });
 
-        test("should not add a new country at users/:uid/countries/:newCountryCode", done => {
+        test("should not add a new country at user-countries/:uid/:newCountryCode", done => {
           store
             .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
             .then(() => {
               return database
-                .ref(`users/${uid}/countries/${updates.countryCode}`)
+                .ref(`user-countries/${uid}/${updates.countryCode}`)
                 .once("value");
             })
             .then(snapshot => {
@@ -802,12 +869,12 @@ describe("startEditPost", () => {
             });
         });
 
-        test("should not add the post at /countries/:newCountryCode/posts", done => {
+        test("should not add the post at /country-posts/:newCountryCode/:id", done => {
           store
             .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
             .then(() => {
               return database
-                .ref(`countries/${updates.countryCode}/posts/${post.id}`)
+                .ref(`country-posts/${updates.countryCode}/${post.id}`)
                 .once("value");
             })
             .then(snapshot => {
@@ -838,12 +905,12 @@ describe("startEditPost", () => {
             });
         });
 
-        test("should remove the former country at users/:uid/countries if not another article belonging to that same user talk about the former country", done => {
+        test("should remove the former country at user-countries/:uid/:formerCountryCode if not another article belonging to that same user talk about the former country", done => {
           return store
             .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
             .then(() => {
               return database
-                .ref(`users/${uid}/countries/${postBeforeUpdate.countryCode}`)
+                .ref(`user-countries/${uid}/${postBeforeUpdate.countryCode}`)
                 .once("value");
             })
             .then(snapshot => {
@@ -856,31 +923,13 @@ describe("startEditPost", () => {
             });
         });
 
-        test("should remove the former country under users/:uid/countries if not another article belonging to that same user talk about the former country", done => {
-          return store
-            .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
-            .then(() => {
-              return database
-                .ref(`users/${uid}/countries/${postBeforeUpdate.countryCode}`)
-                .once("value");
-            })
-            .then(snapshot => {
-              const result = fromSnapShotToObject(snapshot);
-              expect(result).toEqual(null);
-              done();
-            })
-            .catch(e => {
-              console.log(e);
-            });
-        });
-
-        test("should remove the post at /countries/:formerCountryCode/posts", done => {
+        test("should remove the post at /country-posts/:formerCountryCode/:id", done => {
           store
             .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
             .then(() => {
               return database
                 .ref(
-                  `countries/${postBeforeUpdate.countryCode}/posts/${post.id}`
+                  `country-posts/${postBeforeUpdate.countryCode}/${post.id}`
                 )
                 .once("value");
             })
@@ -893,11 +942,9 @@ describe("startEditPost", () => {
               console.log(e);
             });
         });
-    
       });
     });
   });
-
 
   describe("the country and countryCode was not present before", () => {
     beforeEach(() => {
@@ -930,12 +977,12 @@ describe("startEditPost", () => {
             console.log(e);
           });
       });
-    
-      test("should edit post at /users/:uid/posts/:id", done => {
+
+      test("should edit post at /user-posts/:uid/:id", done => {
         store
           .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
           .then(() => {
-            return database.ref(`users/${uid}/posts/${post.id}`).once("value");
+            return database.ref(`user-posts/${uid}/${post.id}`).once("value");
           })
           .then(snapshot => {
             const result = fromSnapShotToObject(snapshot);
@@ -947,12 +994,12 @@ describe("startEditPost", () => {
           });
       });
 
-      test("should add the post at /countries/:newCountryCode/posts", done => {
+      test("should add the post at /country-posts/:newCountryCode/:id", done => {
         store
           .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
           .then(() => {
             return database
-              .ref(`countries/${updates.countryCode}/posts/${updates.id}`)
+              .ref(`country-posts/${updates.countryCode}/${updates.id}`)
               .once("value");
           })
           .then(snapshot => {
@@ -984,12 +1031,12 @@ describe("startEditPost", () => {
             console.log(e);
           });
       });
-      test("should add the new country at users/:id/countries/:newCountryCode", done => {
+      test("should add the new country at user-countries/:uid/:newCountryCode", done => {
         store
           .dispatch(startEditPost({ id: post.id, postBeforeUpdate, updates }))
           .then(() => {
             return database
-              .ref(`users/${uid}/countries/${updates.countryCode}`)
+              .ref(`user-countries/${uid}/${updates.countryCode}`)
               .once("value");
           })
           .then(snapshot => {

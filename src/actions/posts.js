@@ -49,11 +49,11 @@ const startAddPost = (postData = {}) => {
       .push().key;
     let updates = {};
     updates[`/posts/${newPostKey}`] = post;
-    updates[`/users/${uid}/posts/${newPostKey}`] = post;
+    updates[`/user-posts/${uid}/${newPostKey}`] = post;
     if (country && countryCode) {
-      updates[`/countries/${countryCode}/posts/${newPostKey}`] = post;
+      updates[`/country-posts/${countryCode}/${newPostKey}`] = post;
       updates[`/countries/${countryCode}/country`] = country;
-      updates[`/users/${uid}/countries/${countryCode}`] = { country };
+      updates[`/user-countries/${uid}/${countryCode}/country`] = country;
     }
     return database
       .ref()
@@ -84,7 +84,7 @@ const startEditPost = ({ id, updates, postBeforeUpdate }) => {
       .ref()
       .update(data)
       .then(() => {
-        return maintainUsersCountries({ postBeforeUpdate, updates, uid });
+        return maintainUserCountries({ postBeforeUpdate, updates, uid });
       })
       .then(() => {
         return maintainCountries({ postBeforeUpdate, updates, uid });
@@ -93,14 +93,14 @@ const startEditPost = ({ id, updates, postBeforeUpdate }) => {
   };
 };
 
-const maintainUsersCountries = async ({ postBeforeUpdate, updates, uid }) => {
+const maintainUserCountries = async ({ postBeforeUpdate, updates, uid }) => {
   return new Promise(async (resolve, reject) => {
     if (
       countryHasChanged({ postBeforeUpdate, updates }) &&
       countryWasPresent({ postBeforeUpdate })
     ) {
       const snapshot = await database
-        .ref(`/users/${uid}/posts`)
+        .ref(`/user-posts/${uid}/posts`)
         .orderByChild("countryCode")
         .equalTo(postBeforeUpdate.countryCode)
         .limitToFirst(1)
@@ -108,7 +108,7 @@ const maintainUsersCountries = async ({ postBeforeUpdate, updates, uid }) => {
 
       if (!snapshot.val()) {
         let data = {};
-        data[`/users/${uid}/countries/${postBeforeUpdate.countryCode}`] = null;
+        data[`/user-countries/${uid}/${postBeforeUpdate.countryCode}`] = null;
         database
           .ref()
           .update(data)
@@ -165,32 +165,32 @@ const prepareDataObject = ({ updates, postBeforeUpdate, id, uid }) => {
   return new Promise(async (resolve, reject) => {
     let data = {};
     data[`/posts/${id}`] = updates;
-    data[`/users/${uid}/posts/${id}`] = updates;
+    data[`/user-posts/${uid}/${id}`] = updates;
     if (
       countryWasPresent({ postBeforeUpdate }) &&
       !countryHasChanged({ postBeforeUpdate, updates })
     ) {
-      data[`/countries/${updates.countryCode}/posts/${id}`] = updates;
+      data[`/country-posts/${updates.countryCode}/${id}`] = updates;
     } else if (
       countryWasPresent({ postBeforeUpdate }) &&
       countryHasChanged({ postBeforeUpdate, updates })
     ) {
       // if country has changed, remove post from former country - post list
-      data[`/countries/${postBeforeUpdate.countryCode}/posts/${id}`] = null;
+      data[`/country-posts/${postBeforeUpdate.countryCode}/${id}`] = null;
       // add new country and post in new country - post list
       if (countryIsPresent({ updates })) {
         data[`/countries/${updates.countryCode}/country`] = updates.country;
         // add country to user's country list
-        data[`/users/${uid}/countries/${updates.countryCode}/country`] =
+        data[`/user-countries/${uid}/${updates.countryCode}/country`] =
           updates.country;
-        data[`/countries/${updates.countryCode}/posts/${id}`] = updates;
+        data[`/country-posts/${updates.countryCode}/${id}`] = updates;
       }
     } else if (
       !countryWasPresent({ postBeforeUpdate }) &&
       countryHasChanged({ postBeforeUpdate, updates })
     ) {
-      data[`/countries/${updates.countryCode}/posts/${id}`] = updates;
-      data[`/users/${uid}/countries/${updates.countryCode}/country`] =
+      data[`/country-posts/${updates.countryCode}/${id}`] = updates;
+      data[`/user-countries/${uid}/${updates.countryCode}/country`] =
         updates.country;
       data[`/countries/${updates.countryCode}/country`] = updates.country;
     }

@@ -3,12 +3,12 @@ import moment from "moment";
 import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import uuid from "uuid";
-import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 
 import MyEditor from "./MyEditor";
 import { uploadFile } from "./../aws/s3";
 import Loading from "./Loading";
 import SearchLocationInput from "./SearchLocationInput";
+import { getLocationData } from './../places/places';
 
 import {
   formatTitle,
@@ -59,36 +59,6 @@ class PostForm extends React.Component {
 
   onAddressSelect = address => {
     this.setState(() => ({ address }));
-  };
-
-  getLocationData = address => {
-    return new Promise((resolve, reject) => {
-      let locationData = {};
-      geocodeByAddress(address)
-        .then(results => {
-          const countryAddressComponent = results[0].address_components.find(
-            addressComponent => {
-              return addressComponent.types.includes("country") === true;
-            }
-          );
-          const country = countryAddressComponent.long_name;
-          const countryCode = countryAddressComponent.short_name;
-          locationData.country = country;
-          locationData.countryCode = countryCode;
-          // this.setState(() => ({ country, countryCode }));
-          return results;
-        })
-        .then(results => {
-          return getLatLng(results[0]);
-        })
-        .then(latLng => {
-          const { lat, lng } = latLng;
-          locationData.lat = lat;
-          locationData.lng = lng;
-          resolve(locationData);
-        })
-        .catch(error => reject(error));
-    });
   };
 
   onDescriptionChange = e => {
@@ -179,13 +149,12 @@ class PostForm extends React.Component {
       let countryCode = "";
 
       if(address) {
-        const locationData = await this.getLocationData(address);
+        const locationData = await getLocationData(address);
         lng = locationData.lng;
         lat = locationData.lat;
         country = locationData.country;
         countryCode = locationData.countryCode;
       }
-      console.log(lng, lat, country, countryCode);
       const post = {
         title: formatTitle(this.state.title),
         description: formatDescription(this.state.description),

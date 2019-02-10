@@ -40,6 +40,15 @@ exports[`post - body the body is changing should render correctly 1`] = `
   <div
     className="form__input-container"
   >
+    <SearchLocationInput
+      handleChange={[Function]}
+      onSelect={[Function]}
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
     <FaCheck
       className="icon c-limegreen"
     />
@@ -7594,6 +7603,15 @@ exports[`post - description the description is changing should render correctly 
   <div
     className="form__input-container"
   >
+    <SearchLocationInput
+      handleChange={[Function]}
+      onSelect={[Function]}
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
     <FaCheck
       className="icon c-limegreen"
     />
@@ -7687,6 +7705,15 @@ exports[`post - description the description is too long should render correctly 
     >
       Description should be maximum 180 characters long
     </p>
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <SearchLocationInput
+      handleChange={[Function]}
+      onSelect={[Function]}
+      value=""
+    />
   </div>
   <div
     className="form__input-container"
@@ -7788,6 +7815,15 @@ exports[`post - description the description is too short should render correctly
   <div
     className="form__input-container"
   >
+    <SearchLocationInput
+      handleChange={[Function]}
+      onSelect={[Function]}
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
     <FaCheck
       className="icon c-limegreen"
     />
@@ -7874,6 +7910,15 @@ exports[`post - image An error occured when the image got uploaded should render
       onChange={[Function]}
       placeholder="Write a small description here"
       type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <SearchLocationInput
+      handleChange={[Function]}
+      onSelect={[Function]}
       value=""
     />
   </div>
@@ -7977,6 +8022,15 @@ exports[`post - image the format of the file is not an accepted format should re
   <div
     className="form__input-container"
   >
+    <SearchLocationInput
+      handleChange={[Function]}
+      onSelect={[Function]}
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
     <FaTimes
       className="icon c-warm-peach"
     />
@@ -8068,6 +8122,15 @@ exports[`post - image the image got changed and uploaded successfully should ren
       onChange={[Function]}
       placeholder="Write a small description here"
       type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <SearchLocationInput
+      handleChange={[Function]}
+      onSelect={[Function]}
       value=""
     />
   </div>
@@ -8172,6 +8235,15 @@ exports[`post - provideURL provideURL has changed to be false should render corr
   <div
     className="form__input-container"
   >
+    <SearchLocationInput
+      handleChange={[Function]}
+      onSelect={[Function]}
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
     <FaCheck
       className="icon c-limegreen"
     />
@@ -8258,6 +8330,15 @@ exports[`post - provideURL provideURL has changed to be true should render corre
       onChange={[Function]}
       placeholder="Write a small description here"
       type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <SearchLocationInput
+      handleChange={[Function]}
+      onSelect={[Function]}
       value=""
     />
   </div>
@@ -8354,6 +8435,15 @@ exports[`post - provided URL the provided URL has changed and is NOT valid shoul
       onChange={[Function]}
       placeholder="Write a small description here"
       type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <SearchLocationInput
+      handleChange={[Function]}
+      onSelect={[Function]}
       value=""
     />
   </div>
@@ -8461,6 +8551,15 @@ exports[`post - provided URL the provided URL has changed and is valid should re
   <div
     className="form__input-container"
   >
+    <SearchLocationInput
+      handleChange={[Function]}
+      onSelect={[Function]}
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
     <FaCheck
       className="icon c-limegreen"
     />
@@ -8551,6 +8650,15 @@ exports[`post - title the title is changing should render correctly 1`] = `
       onChange={[Function]}
       placeholder="Write a small description here"
       type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <SearchLocationInput
+      handleChange={[Function]}
+      onSelect={[Function]}
       value=""
     />
   </div>
@@ -8654,6 +8762,15 @@ exports[`post - title the title is too long should render correctly 1`] = `
   <div
     className="form__input-container"
   >
+    <SearchLocationInput
+      handleChange={[Function]}
+      onSelect={[Function]}
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
     <FaCheck
       className="icon c-limegreen"
     />
@@ -8745,6 +8862,15 @@ exports[`post - title the title is too short should render correctly 1`] = `
       onChange={[Function]}
       placeholder="Write a small description here"
       type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form__input-container"
+  >
+    <SearchLocationInput
+      handleChange={[Function]}
+      onSelect={[Function]}
       value=""
     />
   </div>

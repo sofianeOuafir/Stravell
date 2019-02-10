@@ -1,6 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { convertFromRaw, EditorState } from "draft-js";
+
 import PostForm from "./../../components/PostForm";
 import {
   MIN_NUM_OF_CHARACTERS_FOR_DESCRIPTION,
@@ -14,11 +15,14 @@ import {
 } from "./../../constants/constants";
 import posts from "./../fixtures/posts";
 import { uploadFile } from "./../../aws/s3.js";
+import { getLocationData } from "./../../places/places";
 import { getTitleError } from './../../lib/utils/post.js';
 import { generateTooLongString, generateTooShortString } from './../helpers/helpers';
 jest.mock("./../../aws/s3.js", () => ({
   uploadFile: jest.fn()
 }));
+
+jest.mock("./../../places/places.js");
 
 let wrapper;
 
@@ -316,7 +320,7 @@ describe('post - provideURL', () => {
 
 describe('form submission', () => {
   describe('the form get submitted without error', () => {
-    test('should call submit prop', () => {
+    test('should call submit prop', (done) => {
       const onSubmit = jest.fn();
       const post = posts[0];
       const { body, ...rest } = post;
@@ -326,7 +330,10 @@ describe('form submission', () => {
       wrapper.setProps({ onSubmit });
       wrapper.setState({ body: parsedBody, ...rest });
       wrapper.find('#form').simulate('submit', { preventDefault: () => {}});
-      expect(onSubmit).toHaveBeenCalled();
+      Promise.resolve().then(() => {
+        expect(onSubmit).toHaveBeenCalled();
+        done();
+      });
     });
   });
 

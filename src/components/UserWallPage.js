@@ -11,8 +11,8 @@ import { getCountries } from "../queries/country";
 import { getUser } from "../queries/user";
 export class UserWallPage extends React.Component {
   async componentDidMount() {
-    const { uid } = this.props.user;
-    const countries = await getCountries({ uid });
+    const { id } = this.props.user;
+    const countries = await getCountries({ uid: id });
     this.props.dispatch(setCountries(countries));
   }
 

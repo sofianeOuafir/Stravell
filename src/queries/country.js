@@ -1,7 +1,8 @@
 import database from "./../firebase/firebase";
+import { fromSnapShotToObject, fromSnapShotToArray } from './../lib/utils/snapshot';
 
 export const getCountries = async ({uid} = {}) => {
-  const ref = uid ? `users/${uid}/countries` : 'countries';
+  const ref = uid ? `user-countries/${uid}` : 'countries';
   const countrySnapshot = await database
     .ref(ref)
     .orderByChild("country")
@@ -10,15 +11,7 @@ export const getCountries = async ({uid} = {}) => {
       return snapshot;
     });
 
-  let countries = [];
-  countrySnapshot.forEach(snapshotChild => {
-    countries.push({
-      id: snapshotChild.key,
-      ...snapshotChild.val()
-    });
-  });
-
-  return countries;
+  return fromSnapShotToArray(countrySnapshot)
 };
 
 export const getCountry = async (countryCode) => {
@@ -28,7 +21,7 @@ export const getCountry = async (countryCode) => {
     .then(snapshot => {
       return snapshot;
     });
-
-  return { id: countrySnapshot.key, ...countrySnapshot.val() }
+  
+  return fromSnapShotToObject(countrySnapshot)
 };
 
