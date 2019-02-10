@@ -155,8 +155,21 @@ const maintainCountries = async ({ postBeforeUpdate, updates, uid }) => {
   });
 };
 
-const countryWasPresent = ({ postBeforeUpdate }) => postBeforeUpdate.country;
-const countryIsPresent = ({ updates }) => updates.country;
+const countryWasPresent = ({ postBeforeUpdate }) => {
+  if(postBeforeUpdate.country) {
+    return true;
+  }
+
+  return false;
+};
+
+const countryIsPresent = ({ updates }) => {
+  if(updates.country) {
+    return true;
+  }
+
+  return false;
+};
 
 const countryHasChanged = ({ postBeforeUpdate, updates }) =>
   postBeforeUpdate.country !== updates.country;
