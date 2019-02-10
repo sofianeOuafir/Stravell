@@ -1,54 +1,46 @@
 import React from "react";
-import Head from "next/head";
+import { connect } from 'react-redux';
 
 import PageHeader from "./PageHeader";
 import FilterablePostList from "./FilterablePostList";
 import Layout from "./Layout";
-import database from "./../firebase/firebase";
 import { APP_NAME } from "./../constants/constants";
+import { setCountries } from "./../actions/countries";
+import { getPosts } from "../queries/post";
+import { getCountries } from "../queries/country";
+import { getUser } from "../queries/user";
+export class UserWallPage extends React.Component {
+  async componentDidMount() {
+    const { id } = this.props.user;
+    const countries = await getCountries({ uid: id });
+    this.props.dispatch(setCountries(countries));
+  }
 
-export const UserWallPage = ({ posts, userName }) => {
-  return (
-    <Layout withTitleAndDescription={false}>
-      <Head>
-        <title>{`${APP_NAME} | ${userName}`}</title>
-        <meta
-          name="description"
-          content={`This page describe ${userName}'s profile`}
-        />
-      </Head>
-      <div>
-        <PageHeader title={userName} />
-        <div className="content-container">
-          <FilterablePostList
-            SearchBarAutoFocus={true}
-            posts={posts}
-            noPostText={`${userName} has not published any post yet.`}
-          />
+  render() {
+    const { posts } = this.props;
+    const { userName } = this.props.user;
+    return (
+      <Layout title={`${APP_NAME} | ${userName}`} description={`This page describe ${userName}'s profile`}>
+        <div>
+          <PageHeader title={userName} />
+          <div className="content-container">
+            <FilterablePostList
+              SearchBarAutoFocus={true}
+              posts={posts}
+              noPostText={`${userName} has not published any post yet.`}
+            />
+          </div>
         </div>
-      </div>
-    </Layout>
-  );
+      </Layout>
+    );
+  }
+}
+
+UserWallPage.getInitialProps = async function({ query }) {
+  const { uid } = query; 
+  const posts = await getPosts({ uid });
+  const user = await getUser(uid);
+  return { posts, user };
 };
 
-UserWallPage.getInitialProps = async function(context) {
-  const { uid } = context.query;
-  const snapshot = await database
-    .ref("posts")
-    .orderByChild("uid")
-    .equalTo(uid)
-    .once("value");
-  let posts = [];
-  snapshot.forEach(snapshotChild => {
-    posts.push({
-      id: snapshotChild.key,
-      ...snapshotChild.val()
-    });
-  });
-  posts = posts.reverse();
-  const userSnapshot = await database.ref(`users/${uid}`).once("value");
-  const user = { uid: userSnapshot.key, ...userSnapshot.val() };
-  return { posts, userName: user.userName };
-};
-
-export default UserWallPage;
+export default connect()(UserWallPage);

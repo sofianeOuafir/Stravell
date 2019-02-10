@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Router from "next/router";
+import { connect } from 'react-redux';
 
 import FilterablePostList from "./FilterablePostList";
 import PageHeader from "./PageHeader";
@@ -10,29 +11,40 @@ import {
   DASHBOARD_PAGE_DESCRIPTION
 } from "./../constants/constants";
 import Layout from "./Layout";
-import database from "./../firebase/firebase";
+import { setCountries } from "./../actions/countries";
+import { getPosts } from "../queries/post";
+import { getCountries } from "../queries/country";
 
-export const DashboardPage = ({ posts }) => {
-  return (
-    <Layout
-      title={DASHBOARD_PAGE_TITLE}
-      description={DASHBOARD_PAGE_DESCRIPTION}
-    >
-      <PageHeader title="Dashboard" />
-      <div className="content-container">
-        <Link as="/p/create" href="/createPost">
-          <a className="button button--with-bottom-margin">Create Post</a>
-        </Link>
-        <FilterablePostList
-          editable={true}
-          SearchBarAutoFocus={true}
-          posts={posts}
-          noPostText={NO_ELEMENT_POST_LIST_DASHBOARD_TEXT}
-        />
-      </div>
-    </Layout>
-  );
-};
+export class DashboardPage extends React.Component {
+  async componentDidMount() {
+    const { uid } = this.props;
+    const countries = await getCountries({ uid });
+    this.props.dispatch(setCountries(countries));
+  }
+
+  render() {
+    const { posts } = this.props;
+    return (
+      <Layout
+        title={DASHBOARD_PAGE_TITLE}
+        description={DASHBOARD_PAGE_DESCRIPTION}
+      >
+        <PageHeader title="Dashboard" />
+        <div className="content-container">
+          <Link as="/p/create" href="/createPost">
+            <a className="button button--with-bottom-margin">Create Post</a>
+          </Link>
+          <FilterablePostList
+            editable={true}
+            SearchBarAutoFocus={true}
+            posts={posts}
+            noPostText={NO_ELEMENT_POST_LIST_DASHBOARD_TEXT}
+          />
+        </div>
+      </Layout>
+    );
+  }
+}
 
 DashboardPage.getInitialProps = async function({
   query,
@@ -42,7 +54,7 @@ DashboardPage.getInitialProps = async function({
 }) {
   const { uid } = query;
   let authorised = false;
-  if (req && req.session) {
+  if (req && req.session.decodedToken) {
     const user = req.session.decodedToken;
     if (user.user_id == query.uid) {
       authorised = true;
@@ -53,21 +65,8 @@ DashboardPage.getInitialProps = async function({
     }
   }
   if (authorised) {
-    const snapshot = await database
-      .ref("posts")
-      .orderByChild("uid")
-      .equalTo(uid)
-      .once("value");
-    let posts = [];
-    snapshot.forEach(snapshotChild => {
-      posts.push({
-        id: snapshotChild.key,
-        ...snapshotChild.val()
-      });
-    });
-    posts = posts.reverse();
-
-    return { posts };
+    const posts = await getPosts({ uid })
+    return { posts, uid };
   } else {
     if (res) {
       res.writeHead(302, {
@@ -80,4 +79,4 @@ DashboardPage.getInitialProps = async function({
   }
 };
 
-export default DashboardPage;
+export default connect()(DashboardPage);

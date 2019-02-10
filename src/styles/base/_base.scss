@@ -26,7 +26,7 @@ button:disabled {
   font-weight: bold;
 }
 
-.favourite-font-weight{
+.favourite-font-weight {
   font-weight: $favourite-font-weight;
 }
 
@@ -44,6 +44,18 @@ button:disabled {
 
 .justify-content--center {
   justify-content: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.justify-content--between {
+  justify-content: space-between;
 }
 
 .flex-direction--column {
@@ -86,6 +98,10 @@ button:disabled {
   margin: 0;
 }
 
+.ml1 {
+  margin-left: $xs-size;
+}
+
 .ml3 {
   margin-left: $l-size;
 }
@@ -106,6 +122,15 @@ button:disabled {
 .py2 {
   padding-top: $m-size;
   padding-bottom: $m-size;
+}
+
+.px1 {
+  padding-right: $s-size;
+  padding-left: $s-size;
+}
+.px2 {
+  padding-right: $m-size;
+  padding-left: $m-size;
 }
 
 .pb3 {
@@ -132,6 +157,10 @@ button:disabled {
   width: 50%;
 }
 
+.thirdwidth {
+  width: 33%;
+}
+
 .quarterwidth {
   width: 25%;
 }
@@ -146,4 +175,27 @@ button:disabled {
 
 .dashed-border {
   border: 1px black dashed;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.h1 {
+  font-size: $xl-size;
+}
+.h2 {
+  font-size: $l-size;
+}
+
+.text-dark-grey {
+  color: $dark-grey;
+}
+
+.border-light-grey {
+  border: 1px $light-grey solid;
 }

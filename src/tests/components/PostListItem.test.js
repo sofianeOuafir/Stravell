@@ -50,3 +50,14 @@ describe('the post belongs to the current user and props.editable is false', () 
   });
 });
 
+test('should display correctly when post has an address', () => {
+  const wrapper = shallow(<PostListItem post={post} />);
+  expect(wrapper).toMatchSnapshot();
+});
+
+test('should display correctly when post does not have address', () => {
+  post.address = "";
+  const wrapper = shallow(<PostListItem post={post} />);
+  expect(wrapper).toMatchSnapshot();
+});
+

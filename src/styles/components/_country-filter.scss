@@ -1,0 +1,13 @@
+.country-filter {
+  -webkit-appearance: none; 
+  -moz-appearance: none;
+  appearance: none;
+  padding: $xs-size $xl-size;
+  background-color: white;
+  border-radius: 0px;
+  border-color: $grey;
+  color: $dark-grey;
+  outline: none;
+  font-size: $font-size-large;
+  font-weight: $favourite-font-weight;
+}

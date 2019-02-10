@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import Router from "next/router";
 
 import FilterablePostList from "../components/FilterablePostList";
 import PageHeader from "./PageHeader";
@@ -8,40 +9,41 @@ import {
   HOME_PAGE_TITLE,
   HOME_PAGE_DESCRIPTION
 } from "./../constants/constants";
-import { setPosts } from "./../actions/posts";
-import database from "./../firebase/firebase";
+import { setCountries } from "./../actions/countries";
 import Layout from "./Layout";
+import { getPosts } from "../queries/post";
+import { getCountries } from "../queries/country";
+import { setTextFilter } from "./../actions/filters";
 
-export const HomePage = ({ userName, posts }) => (
-  <Layout title={HOME_PAGE_TITLE} description={HOME_PAGE_DESCRIPTION}>
-    <PageHeader title={`Welcome${userName ? `, ${userName}` : ""}`} />
-    <div className="content-container">
-      <FilterablePostList
-        SearchBarAutoFocus={true}
-        posts={posts}
-        noPostText={NO_ELEMENT_POST_LIST_HOME_PAGE_TEXT}
-      />
-    </div>
-  </Layout>
-);
+export class HomePage extends React.Component {
+  async componentDidMount() {
+    const countries = await getCountries();
+    this.props.dispatch(setCountries(countries));
+    const searchQuery = Router.query.s;
+    if (searchQuery) {
+      this.props.dispatch(setTextFilter(searchQuery));
+    }
+  }
 
-HomePage.getInitialProps = async function({ req, reduxStore }) {
-  const posts = await new Promise((resolve, reject) => {
-    database
-      .ref("posts")
-      .orderByChild("createdAt")
-      .on("value", snapshot => {
-        let posts = [];
-        snapshot.forEach(snapshotChild => {
-          posts.push({
-            id: snapshotChild.key,
-            ...snapshotChild.val()
-          });
-        });
-        posts = posts.reverse();
-        resolve(posts);
-      });
-  });
+  render() {
+    const { userName, posts, countries } = this.props;
+    return (
+      <Layout title={HOME_PAGE_TITLE} description={HOME_PAGE_DESCRIPTION}>
+        <PageHeader title={`Welcome${userName ? `, ${userName}` : ''}`} />
+        <div className="content-container">
+          <FilterablePostList
+            SearchBarAutoFocus={true}
+            posts={posts}
+            noPostText={NO_ELEMENT_POST_LIST_HOME_PAGE_TEXT}
+          />
+        </div>
+      </Layout>
+    );
+  }
+}
+
+HomePage.getInitialProps = async function() {
+  const posts = await getPosts();
   return { posts };
 };
 

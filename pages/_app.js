@@ -3,14 +3,12 @@ import React from "react";
 import { Provider } from "react-redux";
 import Router, { withRouter } from "next/router";
 import ReactGA from "react-ga";
-import NProgress from 'nprogress'
+import NProgress from "nprogress";
 
-import { startGetUser, startAddUser } from "../src/actions/users";
 import withReduxStore from "../src/hocs/withReduxStore";
-import { startSetPosts } from "../src/actions/posts";
 import { firebase } from "./../src/firebase/firebase";
 import { login, logout } from "./../src/actions/auth";
-import { setTextFilter } from "./../src/actions/filters";
+import { getUser, addUser } from "../src/queries/user";
 import "./../src/styles/styles.scss";
 import "normalize.css/normalize.css";
 import "draft-js/dist/Draft.css";
@@ -21,23 +19,19 @@ import "draft-js-alignment-plugin/lib/plugin.css";
 import "draft-js-linkify-plugin/lib/plugin.css";
 import "draft-js-side-toolbar-plugin/lib/plugin.css";
 
-class MyApp extends App {
-  componentDidMount() {
-    const searchQuery = Router.query.s;
-    if (searchQuery) {
-      this.props.reduxStore.dispatch(setTextFilter(searchQuery));
-    }
 
+class MyApp extends App {
+  async componentDidMount() {
     // initialize React Google Analytics and track page views
     ReactGA.initialize(process.env.GA_TRACKING_CODE);
     ReactGA.pageview(Router.route);
-    Router.events.on('routeChangeStart', (location) => {
+    Router.events.on("routeChangeStart", location => {
       ReactGA.pageview(location);
       NProgress.start();
     });
 
-    Router.events.on('routeChangeComplete', () => NProgress.done())
-    Router.events.on('routeChangeError', () => NProgress.done())
+    Router.events.on("routeChangeComplete", () => NProgress.done());
+    Router.events.on("routeChangeError", () => NProgress.done());
 
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
@@ -51,7 +45,7 @@ class MyApp extends App {
               body: JSON.stringify({ token })
             });
           })
-          .then(() => {
+          .then(async () => {
             const {
               uid,
               displayName: userName,
@@ -61,11 +55,10 @@ class MyApp extends App {
             this.props.reduxStore.dispatch(
               login({ uid, userName, userPhotoURL })
             );
-            this.props.reduxStore.dispatch(startGetUser(uid)).then(snapshot => {
-              if (snapshot.val() === null) {
-                this.props.reduxStore.dispatch(startAddUser({ userName, uid, userPhotoURL, email }));
-              }
-            });
+            const userResult = await getUser(uid);
+            if (userResult === null) {
+              addUser({ userName, uid, userPhotoURL, email });
+            }
 
             if (this.props.router.route === "/login")
               this.props.router.push("/");
