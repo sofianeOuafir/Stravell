@@ -10,9 +10,11 @@
 .search-bar__container {
   display: flex;
   align-items: center;
-  border-bottom: 1px $grey solid;
+  border: 1px $grey solid;
+  flex-grow: 1;
 }
 
 .search-bar__icon {
+  margin-left: $s-size;
   font-size: $font-size-extra-large;
 }

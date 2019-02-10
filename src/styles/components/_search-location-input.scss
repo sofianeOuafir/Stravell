@@ -1,0 +1,19 @@
+.search-location-input__dropdown-container {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+}
+
+
+.search-location-input__suggestion-item {
+  padding: $s-size;
+  border-bottom: 1px $grey solid;
+  border-left: 1px $grey solid;
+  border-right: 1px $grey solid;
+}
+
+.search-location-input__suggestion-item--active {
+  background-color: white;
+}
+

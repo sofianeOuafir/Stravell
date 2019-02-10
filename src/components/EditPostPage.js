@@ -6,18 +6,19 @@ import { slugify } from 'underscore.string';
 
 import { startEditPost } from '../actions/posts';
 import PageHeader from './PageHeader';
-import database from "./../firebase/firebase";
 import { EDIT_POST_PAGE_DESCRIPTION, EDIT_POST_PAGE_TITLE } from './../constants/constants';
 import Layout from "./Layout";
+import { getPost } from "../queries/post";
 export class EditPostPage extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  onSubmit = (post) => {
+  onSubmit = ({ post, postBeforeUpdate }) => {
     this.props.startEditPost({
       id: this.props.post.id, 
-      updates: post
+      updates: post,
+      postBeforeUpdate
     });
     this.props.router.push(`/dashboard?uid=${this.props.uid}`, `/dashboard/${slugify(this.props.userName)}/${this.props.uid}`)
   };
@@ -35,18 +36,11 @@ export class EditPostPage extends React.Component {
 }
 
 EditPostPage.getInitialProps = async function({ query, req, reduxStore, res }) {
-  const post = await new Promise((resolve, reject) => {
-    const { id } = query;
-    database
-    .ref(`posts/${id}`)
-    .on("value", snapshot => {
-      let post = { id: snapshot.key, ...snapshot.val() } ;
-      resolve(post);
-    });
-  });
+  const { id } = query;
+  const post = await getPost(id);
 
   let authorised = false;
-  if (req && req.session) {
+  if (req && req.session.decodedToken) {
     const user = req.session.decodedToken;
     if (user.user_id === post.uid) {
       authorised = true;
@@ -73,10 +67,11 @@ EditPostPage.getInitialProps = async function({ query, req, reduxStore, res }) {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  startEditPost: ({ id, updates }) => {
+  startEditPost: ({ id, updates, postBeforeUpdate }) => {
     dispatch(startEditPost({
       id, 
-      updates
+      updates,
+      postBeforeUpdate
     }));
   }
 });

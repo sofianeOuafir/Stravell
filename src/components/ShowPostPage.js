@@ -1,23 +1,22 @@
 import React from "react";
 import MultiDecorator from "draft-js-plugins-editor/lib/Editor/MultiDecorator";
 import { EditorState, convertFromRaw, CompositeDecorator } from "draft-js";
-import Head from 'next/head';
 
 import MyEditor, { plugins } from "./MyEditor";
 import PageHeader from "./PageHeader";
 import { getDateFormat } from "./../lib/utils/date";
-import PostAuthor from './PostAuthor';
-import database from "./../firebase/firebase";
+import PostAuthor from "./PostAuthor";
 import Layout from "./Layout";
-
+import Address from "./Address";
+import { getPost } from "../queries/post";
 
 function getPluginDecorators() {
   let decorators = [];
   let plugin;
   for (plugin of plugins) {
-      if (plugin.decorators !== null && plugin.decorators !== undefined) {
-          decorators = decorators.concat(plugin.decorators);
-      }
+    if (plugin.decorators !== null && plugin.decorators !== undefined) {
+      decorators = decorators.concat(plugin.decorators);
+    }
   }
 
   return new MultiDecorator([new CompositeDecorator(decorators)]);
@@ -29,24 +28,24 @@ export const ShowPostPage = ({ post }) => {
     getPluginDecorators()
   );
   return (
-    <Layout withTitleAndDescription={false}>
-      <Head>
-        <title>{`${post.title}`}</title>
-        <meta name="description" content={post.description} />
-      </Head>
+    <Layout title={`${post.title}`} description={post.description}>
       <PageHeader>
         <h1 className="favourite-font-weight m0">{post.title}</h1>
-        <div className="my1">
+        <div className="my1 flex justify-content--between align-items--center">
           <PostAuthor
             authorUid={post.uid}
             avatarSize={50}
             authorPhotoURL={post.userPhotoURL}
             authorName={post.userName}
           />
+
+          <span>{getDateFormat(post.createdAt)}</span>
         </div>
-        <span>{getDateFormat(post.createdAt)}</span>
+        {post.address && (
+          <Address address={post.address} iconClassName="ml1 mr1" />
+        )}
       </PageHeader>
-      <img src={`${post.image}`} alt="" className="fullwidth"/>
+      <img src={`${post.image}`} alt="" className="fullwidth" />
       <div className="content-container">
         <MyEditor readOnly={true} editorState={body} onChange={() => {}} />
       </div>
@@ -54,16 +53,9 @@ export const ShowPostPage = ({ post }) => {
   );
 };
 
-ShowPostPage.getInitialProps = async function(context) {
-  const post = await new Promise((resolve, reject) => {
-    const { id } = context.query;
-    database
-    .ref(`posts/${id}`)
-    .on("value", snapshot => {
-      let post = { id: snapshot.key, ...snapshot.val() } ;
-      resolve(post);
-    });
-  });
+ShowPostPage.getInitialProps = async function({ query }) {
+  const { id } = query;
+  const post = await getPost(id)
   return { post };
 };
 

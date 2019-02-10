@@ -10,9 +10,8 @@ exports[`A user is authenticated should render Header correctly 1`] = `
     <div
       className="header__content"
     >
-      <Link
-        href="/"
-        prefetch={true}
+      <div
+        onClick={[Function]}
       >
         <a
           className="header__title"
@@ -21,7 +20,7 @@ exports[`A user is authenticated should render Header correctly 1`] = `
             Stravell
           </h1>
         </a>
-      </Link>
+      </div>
       <div
         className="header__right"
       >
@@ -54,7 +53,8 @@ exports[`A user is authenticated should render Header correctly 1`] = `
                 <IoMdCreate
                   className="header__dropdown-menu-icon"
                 />
-                 Create Post
+                 
+                Create Post
               </button>
             </Link>
             <Link
@@ -65,11 +65,30 @@ exports[`A user is authenticated should render Header correctly 1`] = `
               <button
                 id="dashboardButton"
               >
+                <IoIosList
+                  className="header__dropdown-menu-icon"
+                />
+                Dashboard
+              </button>
+            </Link>
+            <Link
+              href="/"
+            >
+              <button>
                 <IoIosHome
                   className="header__dropdown-menu-icon"
                 />
-                 
-                Dashboard
+                Home
+              </button>
+            </Link>
+            <Link
+              href="/destinations"
+            >
+              <button>
+                <IoIosAirplane
+                  className="header__dropdown-menu-icon"
+                />
+                Destinations
               </button>
             </Link>
             <button
@@ -99,9 +118,8 @@ exports[`There is no user authenticated should render Header correctly 1`] = `
     <div
       className="header__content"
     >
-      <Link
-        href="/"
-        prefetch={true}
+      <div
+        onClick={[Function]}
       >
         <a
           className="header__title"
@@ -110,20 +128,45 @@ exports[`There is no user authenticated should render Header correctly 1`] = `
             Stravell
           </h1>
         </a>
-      </Link>
+      </div>
       <div
         className="header__right"
       >
-        <Link
-          href="/login"
-          prefetch={true}
+        <DropDownMenu
+          title="Sign in to Stravell"
         >
-          <a
-            className="button button--link"
+          <Link
+            href="/login"
+            prefetch={true}
           >
-            Log in
-          </a>
-        </Link>
+            <button>
+              <IoIosLogIn
+                className="header__dropdown-menu-icon"
+              />
+              Log in
+            </button>
+          </Link>
+          <Link
+            href="/"
+          >
+            <button>
+              <IoIosHome
+                className="header__dropdown-menu-icon"
+              />
+              Home
+            </button>
+          </Link>
+          <Link
+            href="/destinations"
+          >
+            <button>
+              <IoIosAirplane
+                className="header__dropdown-menu-icon"
+              />
+              Destinations
+            </button>
+          </Link>
+        </DropDownMenu>
       </div>
     </div>
   </div>
