@@ -4,3 +4,6 @@ public/dist/
 .env.development
 coverage/
 .next
+.dev-database-validation-rules
+.prod-database-validation-rules
+.test-database-validation-rules
