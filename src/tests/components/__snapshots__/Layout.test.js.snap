@@ -15,6 +15,7 @@ exports[`a title and description are provided should render correctly 1`] = `
   <p>
     hello
   </p>
+  <Footer />
 </div>
 `;
 
@@ -24,5 +25,6 @@ exports[`not title and description are provided should render correctly 1`] = `
   <p>
     hello
   </p>
+  <Footer />
 </div>
 `;
