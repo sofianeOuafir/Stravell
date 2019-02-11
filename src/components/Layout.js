@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 
+import Footer from './Footer';
 import Header from './Header';
 
 const Layout = ({ withTitleAndDescription = true, title, description, children }) => (
@@ -14,6 +15,7 @@ const Layout = ({ withTitleAndDescription = true, title, description, children }
 
     <Header />
     {children}
+    <Footer />
   </div>
 );
 
