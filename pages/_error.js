@@ -24,7 +24,7 @@ export default class Error extends React.Component {
     return (
       <Layout title={`${error}`} description={`${error}`}>
         <PageHeader title={`${error}`} />
-        <div class="flex align-items--center justify-content--center">
+        <div class="flex align-items--center justify-content--center my2 py2">
           <div className="funny-text-container dashed-border center my2 py2 flex justify-content--center flex-direction--column">
             <h1 class="favourite-font-weight">It looks like you were stravelling a bit too fast!</h1>
             <div>
