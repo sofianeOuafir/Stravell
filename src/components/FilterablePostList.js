@@ -10,9 +10,10 @@ export class FilterablePostList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      withCountryFilter: this.props.withCountryFilter === undefined
-        ? true
-        : this.props.withCountryFilter
+      withCountryFilter:
+        this.props.withCountryFilter === undefined
+          ? true
+          : this.props.withCountryFilter
     };
   }
 
@@ -20,7 +21,10 @@ export class FilterablePostList extends React.Component {
     if (this.props.posts.length === 0) {
       return this.props.noPostText;
     } else if (this.props.filteredPosts.length === 0) {
-      const { text: textFilter, countryCode: countryFilter } = this.props.filters;
+      const {
+        text: textFilter,
+        countryCode: countryFilter
+      } = this.props.filters;
       let noResultFoundSentence = "No results were found";
       if (textFilter && countryFilter) {
         return `${noResultFoundSentence} for text: ${textFilter}, country: ${countryFilter}`;
@@ -36,11 +40,16 @@ export class FilterablePostList extends React.Component {
     return (
       <div>
         {this.props.posts.length > 0 && (
-          <div className="flex justify-content--between align-items--center">
-            <SearchBar
-              autoFocus={this.props.SearchBarAutoFocus}
-            />
-            {this.state.withCountryFilter && <CountryFilter className="ml3" />}
+          <div className="filters content-container">
+            <div className={`filters__search-bar-container`}>
+              <SearchBar
+                className="filters__search-bar"
+                autoFocus={this.props.SearchBarAutoFocus}
+              />
+            </div>
+            {this.state.withCountryFilter && (
+              <CountryFilter className="filters__country" />
+            )}
           </div>
         )}
         <PostList

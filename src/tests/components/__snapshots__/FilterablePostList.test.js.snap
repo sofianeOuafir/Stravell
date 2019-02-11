@@ -3,9 +3,15 @@
 exports[`should render correctly when withCountryFilter props is false 1`] = `
 <div>
   <div
-    className="flex justify-content--between align-items--center"
+    className="filters content-container"
   >
-    <Connect(SearchBar) />
+    <div
+      className="filters__search-bar-container"
+    >
+      <Connect(SearchBar)
+        className="filters__search-bar"
+      />
+    </div>
   </div>
   <PostList
     className="post-list post-list--no-border-top"
@@ -40,11 +46,17 @@ exports[`should render correctly when withCountryFilter props is false 1`] = `
 exports[`should render correctly when withCountryFilter props is true 1`] = `
 <div>
   <div
-    className="flex justify-content--between align-items--center"
+    className="filters content-container"
   >
-    <Connect(SearchBar) />
+    <div
+      className="filters__search-bar-container"
+    >
+      <Connect(SearchBar)
+        className="filters__search-bar"
+      />
+    </div>
     <Connect(CountryFilter)
-      className="ml3"
+      className="filters__country"
     />
   </div>
   <PostList
@@ -80,11 +92,17 @@ exports[`should render correctly when withCountryFilter props is true 1`] = `
 exports[`the component get passed a non empty array of posts should render correctly 1`] = `
 <div>
   <div
-    className="flex justify-content--between align-items--center"
+    className="filters content-container"
   >
-    <Connect(SearchBar) />
+    <div
+      className="filters__search-bar-container"
+    >
+      <Connect(SearchBar)
+        className="filters__search-bar"
+      />
+    </div>
     <Connect(CountryFilter)
-      className="ml3"
+      className="filters__country"
     />
   </div>
   <PostList
@@ -120,11 +138,17 @@ exports[`the component get passed a non empty array of posts should render corre
 exports[`the component get passed a non empty array of posts the filtered posts array is empty should render correctly when only the country filter 1`] = `
 <div>
   <div
-    className="flex justify-content--between align-items--center"
+    className="filters content-container"
   >
-    <Connect(SearchBar) />
+    <div
+      className="filters__search-bar-container"
+    >
+      <Connect(SearchBar)
+        className="filters__search-bar"
+      />
+    </div>
     <Connect(CountryFilter)
-      className="ml3"
+      className="filters__country"
     />
   </div>
   <PostList
@@ -138,11 +162,17 @@ exports[`the component get passed a non empty array of posts the filtered posts 
 exports[`the component get passed a non empty array of posts the filtered posts array is empty should render correctly when only the text filter 1`] = `
 <div>
   <div
-    className="flex justify-content--between align-items--center"
+    className="filters content-container"
   >
-    <Connect(SearchBar) />
+    <div
+      className="filters__search-bar-container"
+    >
+      <Connect(SearchBar)
+        className="filters__search-bar"
+      />
+    </div>
     <Connect(CountryFilter)
-      className="ml3"
+      className="filters__country"
     />
   </div>
   <PostList
@@ -156,11 +186,17 @@ exports[`the component get passed a non empty array of posts the filtered posts 
 exports[`the component get passed a non empty array of posts the filtered posts array is empty should render correctly when the text filter and country filters are present 1`] = `
 <div>
   <div
-    className="flex justify-content--between align-items--center"
+    className="filters content-container"
   >
-    <Connect(SearchBar) />
+    <div
+      className="filters__search-bar-container"
+    >
+      <Connect(SearchBar)
+        className="filters__search-bar"
+      />
+    </div>
     <Connect(CountryFilter)
-      className="ml3"
+      className="filters__country"
     />
   </div>
   <PostList
