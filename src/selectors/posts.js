@@ -4,7 +4,7 @@ const getVisiblePosts = (posts, { text, countryCode }) => {
     const matchText =
       post.title.toLowerCase().includes(text) ||
       post.description.toLowerCase().includes(text) ||
-      post.address.toLowerCase().includes(text);
+      (post.address && post.address.toLowerCase().includes(text));
     const matchCountry = countryCode === '' || post.countryCode === countryCode
     return matchText && matchCountry;
   });
