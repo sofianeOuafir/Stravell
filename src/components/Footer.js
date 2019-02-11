@@ -11,13 +11,13 @@ import {
 
 const Footer = props => (
   <div className="footer">
-    <div class="fullwidth content-container align-items--center flex justify-content--between">
+    <div className="fullwidth content-container align-items--center flex justify-content--between">
       <Link href="/">
         <a className="footer__corporation favourite-font-weight no-text-decoration">
           {APP_NAME}, Inc.
         </a>
       </Link>
-      <div class="flex align-items--center">
+      <div className="flex align-items--center">
         <Link href="/destinations">
           <a>
             <IoMdAirplane className="footer__logo" />

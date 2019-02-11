@@ -1,19 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render correctly 1`] = `
-<div
-  className="search-bar__container"
->
+<Fragment>
   <IoIosSearch
     className="search-bar__icon"
   />
   <input
-    className="search-bar"
     id="searchBarInput"
     onChange={[Function]}
     placeholder="Search"
     type="text"
     value=""
   />
-</div>
+</Fragment>
 `;

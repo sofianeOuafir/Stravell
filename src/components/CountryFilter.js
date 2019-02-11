@@ -6,7 +6,7 @@ const CountryFilter = ({ countries, setCountryFilter, filters, className }) => (
   <Fragment>
     {countries && (
       <select
-        className={`country-filter ${className}`}
+        className={className}
         name="countryFilter"
         id="countryFilter"
         value={filters.countryCode}

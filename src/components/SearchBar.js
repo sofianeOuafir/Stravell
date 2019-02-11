@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { IoIosSearch } from "react-icons/io";
 import { setTextFilter } from "./../actions/filters";
@@ -11,22 +11,20 @@ export class SearchBar extends React.Component {
   onTextChange = e => this.props.setTextFilter(e.target.value);
 
   render() {
-    const { placeholder, className,autoFocus, filters } = this.props;
+    const { placeholder, className, autoFocus, filters } = this.props;
     return (
-      <div className={`search-bar__container`}>
+      <Fragment>
         <IoIosSearch className="search-bar__icon" />
         <input
           id="searchBarInput"
           type="text"
-          placeholder={
-            placeholder ? placeholder : "Search"
-          }
-          className={className ? className : "search-bar"}
+          placeholder={placeholder ? placeholder : "Search"}
+          className={className}
           autoFocus={autoFocus}
           value={filters.text}
           onChange={this.onTextChange}
         />
-      </div>
+      </Fragment>
     );
   }
 }
