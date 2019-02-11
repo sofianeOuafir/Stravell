@@ -112,6 +112,16 @@ app.prepare().then(() => {
     app.render(req, res, actualPage, queryParams)
   })
 
+  server.get('/sitemap.xml', (req, res) => {
+    const sitemapOptions = {
+      root: __dirname + '/../static/',
+      headers: {
+        'Content-Type': 'text/xml;charset=UTF-8',
+      }
+    };
+    res.status(200).sendFile('sitemap.xml', sitemapOptions)
+  });
+
   server.get('*', (req, res) => {
     return handle(req, res)
   })
