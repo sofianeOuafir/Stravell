@@ -496,7 +496,7 @@ describe("startAddPost", () => {
       });
   });
 
-  test("should not persist a post when userPhotoURL is not a string", done => {
+  test("should persist a post when userPhotoURL is not a string", done => {
     store = createMockStore({ auth: { uid, userName, userPhotoURL: null } });
     let { id, ...post } = posts[0];
     store
@@ -509,7 +509,7 @@ describe("startAddPost", () => {
         snapshot.forEach(post => {
           posts.push(post.val());
         });
-        expect(posts.length).toEqual(1);
+        expect(posts.length).toEqual(2);
         done();
       });
   });
@@ -530,6 +530,26 @@ describe("startAddPost", () => {
           posts.push(post.val());
         });
         expect(posts.length).toEqual(1);
+        done();
+      });
+  });
+
+  test("should persist a post when userPhotoURL is in format http(s)://google.com", done => {
+    store = createMockStore({
+      auth: { uid, userName, userPhotoURL: "https://google.com" }
+    });
+    let { id, ...post } = posts[0];
+    store
+      .dispatch(startAddPost(post))
+      .then(() => {
+        return database.ref("posts").once("value");
+      })
+      .then(snapshot => {
+        let posts = [];
+        snapshot.forEach(post => {
+          posts.push(post.val());
+        });
+        expect(posts.length).toEqual(2);
         done();
       });
   });

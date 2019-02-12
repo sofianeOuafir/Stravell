@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { firebase, auth } from './../firebase/firebase';
 
@@ -16,7 +15,6 @@ const uiConfig = {
   ]
 };
 
-import { startGoogleLogin, startFacebookLogin } from "../actions/auth";
 import {
   APP_NAME,
   SLOGAN,
@@ -41,12 +39,4 @@ export const LoginPage = props => {
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  startGoogleLogin: () => dispatch(startGoogleLogin()),
-  startFacebookLogin: () => dispatch(startFacebookLogin())
-});
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(LoginPage);
+export default LoginPage;

@@ -19,18 +19,27 @@ exports[`should correctly render LoginPage 1`] = `
       <p>
         Let's explore the world together.
       </p>
-      <button
-        className="button mb1 button--warm-peach"
-        id="googleLoginButton"
-      >
-        Log in with Google
-      </button>
-      <button
-        className="button button--warm-peach"
-        id="facebookLoginButton"
-      >
-        Log in with Facebook
-      </button>
+      <e
+        firebaseAuth={
+          Object {
+            "apiKey": "AIzaSyDBUdRiuUha2QWFCIqqNUPVzEm8e24w76I",
+            "appName": "[DEFAULT]",
+            "authDomain": "stravell-test.firebaseapp.com",
+            "currentUser": null,
+          }
+        }
+        uiConfig={
+          Object {
+            "signInFlow": "popup",
+            "signInOptions": Array [
+              "google.com",
+              "facebook.com",
+              "password",
+            ],
+            "signInSuccessUrl": "/",
+          }
+        }
+      />
     </div>
   </div>
 </Layout>
