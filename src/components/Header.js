@@ -26,6 +26,18 @@ export const Header = ({
   clearFilters,
   uid
 }) => {
+  let avatarProps = {
+    className: "header__user-photo show-for-desktop",
+    round: true,
+    size: "40"
+  }
+
+  if(userPhotoURL) {
+    avatarProps.src = userPhotoURL
+  } else {
+    avatarProps.name = userName
+  }
+
   const AuthIndependentMenuElements = (
     <Fragment>
       <Link href="/">
@@ -65,10 +77,7 @@ export const Header = ({
                   href={`/dashboard?uid=${uid}`}
                 >
                   <Avatar
-                    className="header__user-photo show-for-desktop"
-                    round={true}
-                    size="40"
-                    src={userPhotoURL}
+                    {...avatarProps}
                   />
                 </Link>
                 <DropdownMenu title={userName}>

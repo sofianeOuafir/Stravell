@@ -15,6 +15,5 @@ if (!firebase.apps.length) {
 
 const database = firebase.database();
 const auth = firebase.auth();
-const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-const facebookAuthProvider = new firebase.auth.FacebookAuthProvider();
-export { firebase, googleAuthProvider, facebookAuthProvider, auth, database as default };
+
+export { firebase, auth, database as default };
