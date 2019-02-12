@@ -1,5 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import { firebase, auth } from './../firebase/firebase';
+
+const uiConfig = {
+  // Popup signin flow rather than redirect flow.
+  signInFlow: 'popup',
+  // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
+  signInSuccessUrl: '/',
+  // We will display Google and Facebook as auth providers.
+  signInOptions: [
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+    firebase.auth.EmailAuthProvider.PROVIDER_ID
+  ]
+};
 
 import { startGoogleLogin, startFacebookLogin } from "../actions/auth";
 import {
@@ -19,20 +34,7 @@ export const LoginPage = props => {
             {APP_NAME}
           </h1>
           <p>{SLOGAN}</p>
-          <button
-            id="googleLoginButton"
-            className="button mb1 button--warm-peach"
-            onClick={props.startGoogleLogin}
-          >
-            Log in with Google
-          </button>
-          <button
-            id="facebookLoginButton"
-            className="button button--warm-peach"
-            onClick={props.startFacebookLogin}
-          >
-            Log in with Facebook
-          </button>
+          <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth}/>
         </div>
       </div>
     </Layout>
