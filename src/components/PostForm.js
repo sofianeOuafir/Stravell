@@ -37,6 +37,8 @@ class PostForm extends React.Component {
       address: (props.post && props.post.address) || "",
       lat: (props.post && props.post.lat) || "",
       lng: (props.post && props.post.lng) || "",
+      region: (props.post && props.post.region) || "",
+      regionCode: (props.post && props.post.regionCode) || "",
       country: (props.post && props.post.country) || "",
       countryCode: (props.post && props.post.countryCode) || "",
       createdAt: (props.post && moment(props.post.createdAt)) || moment(),
@@ -147,13 +149,18 @@ class PostForm extends React.Component {
       let lat = "";
       let country = "";
       let countryCode = "";
+      let region = ""
+      let regionCode = ""
 
       if(address) {
         const locationData = await getLocationData(address);
+        console.log(locationData);
         lng = locationData.lng;
         lat = locationData.lat;
         country = locationData.country;
         countryCode = locationData.countryCode;
+        region = locationData.region;
+        regionCode = locationData.regionCode;
       }
       const post = {
         title: formatTitle(this.state.title),
@@ -169,7 +176,9 @@ class PostForm extends React.Component {
         lng,
         lat,
         country,
-        countryCode
+        countryCode,
+        region,
+        regionCode
       };
       // if editing
       if (this.props.post) {

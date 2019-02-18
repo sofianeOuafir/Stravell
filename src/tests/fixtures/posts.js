@@ -19,6 +19,8 @@ export default [
     lat: 1.1223,
     lng: 1.3343,
     country: 'France',
-    countryCode: 'FR'
+    countryCode: 'FR',
+    regionCode: 'fr-provence-alpes-cote-d-azur',
+    region: "Provence-Alpes-Côte d'Azur"
   }
 ];

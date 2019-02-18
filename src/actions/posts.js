@@ -22,7 +22,9 @@ const startAddPost = (postData = {}) => {
       lat,
       lng,
       country,
-      countryCode
+      countryCode,
+      region, 
+      regionCode
     } = postData;
     const post = {
       uid,
@@ -41,7 +43,9 @@ const startAddPost = (postData = {}) => {
       lat,
       lng,
       country,
-      countryCode
+      countryCode,
+      region, 
+      regionCode
     };
     const newPostKey = database
       .ref()
