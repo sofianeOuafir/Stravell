@@ -18,7 +18,7 @@ export class AddPostPage extends React.Component {
   render() {
     return (
       <Layout title={ADD_POST_PAGE_TITLE} description={ADD_POST_PAGE_DESCRIPTION}>
-        <PageHeader title="Create Post" />
+        <PageHeader title="Create Post" withSocialShareButtons={false} />
         <div className="content-container">
           <PostForm onSubmit={this.onSubmit} /> 
         </div>

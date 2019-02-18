@@ -29,7 +29,7 @@ export class DashboardPage extends React.Component {
         title={DASHBOARD_PAGE_TITLE}
         description={DASHBOARD_PAGE_DESCRIPTION}
       >
-        <PageHeader title="Dashboard" />
+        <PageHeader title="Dashboard" withSocialShareButtons={false} />
         <div className="content-container">
           <Link as="/p/create" href="/createPost">
             <a className="button button--with-bottom-margin">Create Post</a>

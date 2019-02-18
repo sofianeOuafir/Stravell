@@ -1,20 +1,67 @@
 import React from "react";
+import { withRouter } from "next/router";
+import { PRODUCTION_WEBSITE_URL } from "./../constants/constants";
+
 import {
   FacebookShareButton,
   FacebookIcon,
   TwitterShareButton,
-  TwitterIcon
+  TwitterIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+  RedditIcon,
+  RedditShareButton,
+  TumblrIcon,
+  TumblrShareButton,
+  LinkedinIcon,
+  LinkedinShareButton
 } from "react-share";
 
-const SocialShareButtons = () => (
-  <div>
-    <FacebookShareButton url="https://stravell.com">
-      <FacebookIcon />
-    </FacebookShareButton>
-    <TwitterShareButton url="https://stravell.com">
-      <TwitterIcon />
-    </TwitterShareButton>
-  </div>
-);
+export const SocialShareButtons = ({ router }) => {
+  const url = `${PRODUCTION_WEBSITE_URL}${router.asPath}`;
+  const iconProps = {
+    round: true,
+    size: 35
+  };
+  const buttonProps = {
+    url,
+    className: "mr1"
+  };
+  const buttons = [
+    {
+      ButtonComponent: FacebookShareButton,
+      Icon: FacebookIcon
+    },
+    {
+      ButtonComponent: TwitterShareButton,
+      Icon: TwitterIcon
+    },
+    {
+      ButtonComponent: WhatsappShareButton,
+      Icon: WhatsappIcon
+    },
+    {
+      ButtonComponent: RedditShareButton,
+      Icon: RedditIcon
+    },
+    {
+      ButtonComponent: TumblrShareButton,
+      Icon: TumblrIcon
+    },
+    {
+      ButtonComponent: LinkedinShareButton,
+      Icon: LinkedinIcon
+    }
+  ];
+  return (
+    <div className="flex">
+      {buttons.map(({ ButtonComponent, Icon }, index) => (
+        <ButtonComponent key={index} {...buttonProps}>
+          <Icon {...iconProps} />
+        </ButtonComponent>
+      ))}
+    </div>
+  );
+};
 
-export default SocialShareButtons;
+export default withRouter(SocialShareButtons);

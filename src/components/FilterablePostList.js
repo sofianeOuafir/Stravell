@@ -40,7 +40,7 @@ export class FilterablePostList extends React.Component {
     return (
       <div>
         {this.props.posts.length > 0 && (
-          <div className="filters content-container">
+          <div className="filters">
             <div className={`filters__search-bar-container`}>
               <SearchBar
                 className="filters__search-bar"

@@ -7,6 +7,7 @@ exports[`should render correctly 1`] = `
 >
   <PageHeader
     title="Create Post"
+    withSocialShareButtons={false}
   />
   <div
     className="content-container"
