@@ -45,17 +45,32 @@ export const ShowPostPage = ({ post }) => {
           <Address address={post.address} iconClassName="ml1 mr1" />
         )}
       </PageHeader>
-      <img src={`${post.image}`} alt="" className="fullwidth" />
-      <div className="content-container">
-        <MyEditor readOnly={true} editorState={body} onChange={() => {}} />
-      </div>
+      {post.provideURL ? (
+        <div className="relative flex align-items--center justify-content--center">
+          <a
+            href={post.providedURL}
+            className="button absolute"
+            target="_blank"
+          >
+            Read this post on {post.userName}'s Website
+          </a>
+          <img src={`${post.image}`} alt="" className="fullwidth" />
+        </div>
+      ) : (
+        <img src={`${post.image}`} alt="" className="fullwidth" />
+      )}
+      {!post.provideURL && (
+        <div className="content-container">
+          <MyEditor readOnly={true} editorState={body} onChange={() => {}} />
+        </div>
+      )}
     </Layout>
   );
 };
 
 ShowPostPage.getInitialProps = async function({ query }) {
   const { id } = query;
-  const post = await getPost(id)
+  const post = await getPost(id);
   return { post };
 };
 
