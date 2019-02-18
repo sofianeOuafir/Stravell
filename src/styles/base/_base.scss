@@ -106,8 +106,16 @@ button:disabled {
   margin-left: $l-size;
 }
 
+.p1 {
+  padding: $s-size;
+}
+
 .pl1 {
   padding-left: $s-size;
+}
+
+.pt1 {
+  padding-top: $s-size;
 }
 
 .pt2 {
@@ -171,6 +179,22 @@ button:disabled {
 
 .border {
   border: 1px black solid;
+}
+
+.border-top {
+  border-top: 1px black solid;
+}
+
+.border--grey {
+  border-color: $grey;
+}
+
+.border--light-grey {
+  border-color: $light-grey;
+}
+
+.border--warm-peach {
+  border-color: $warm-peach;
 }
 
 .dashed-border {

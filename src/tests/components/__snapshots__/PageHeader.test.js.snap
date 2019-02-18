@@ -10,6 +10,27 @@ exports[`the component is rendered with a children prop should render correctly 
     <p>
       My amazing children
     </p>
+    <div
+      className="mt1 border-top pt1 border--light-grey"
+    >
+      <withRouter(SocialShareButtons) />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`the component is rendered with a prop withSocialShareButtons = false should render correctly 1`] = `
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <h1
+      className="page-header__title"
+    >
+      My amazing title
+    </h1>
   </div>
 </div>
 `;
@@ -26,6 +47,32 @@ exports[`the component is rendered with a title prop should render correctly 1`]
     >
       My amazing title
     </h1>
+    <div
+      className="mt1 border-top pt1 border--light-grey"
+    >
+      <withRouter(SocialShareButtons) />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`the component is rendering the social share buttons by default should render correctly 1`] = `
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <h1
+      className="page-header__title"
+    >
+      My amazing title
+    </h1>
+    <div
+      className="mt1 border-top pt1 border--light-grey"
+    >
+      <withRouter(SocialShareButtons) />
+    </div>
   </div>
 </div>
 `;

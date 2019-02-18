@@ -26,7 +26,7 @@ export class EditPostPage extends React.Component {
   render() {
     return (
       <Layout title={EDIT_POST_PAGE_TITLE} description={EDIT_POST_PAGE_DESCRIPTION}>
-        <PageHeader title="Edit Post" />
+        <PageHeader title="Edit Post" withSocialShareButtons={false} />
         <div className="content-container">
           <PostForm post={this.props.post} onSubmit={this.onSubmit}  />
         </div>

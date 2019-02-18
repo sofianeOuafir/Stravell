@@ -43,3 +43,4 @@ export const SLOGAN = "Let's explore the world together."
 export const NO_ELEMENT_POST_LIST_DASHBOARD_TEXT = 'The world is looking forward to hear about your stories!';
 export const NO_ELEMENT_POST_LIST_HOME_PAGE_TEXT = 'Become a legend by being the very first person to publish a post in here!';
 
+export const PRODUCTION_WEBSITE_URL = 'https://www.stravell.com';
