@@ -116,6 +116,8 @@ class PostForm extends React.Component {
     this.setState(() => ({ body: editorState, bodyError: getBodyError(body) }));
   };
 
+  editMode = () => this.props.post !== undefined;
+
   onProvidedURLChange = e => {
     const providedURL = e.target.value;
     this.setState(() => ({
@@ -145,24 +147,9 @@ class PostForm extends React.Component {
       (!this.state.provideURL || errors.providedURL === "")
     ) {
       const address = this.state.address;
-      let lng = "";
-      let lat = "";
-      let country = "";
-      let countryCode = "";
-      let region = ""
-      let regionCode = ""
-
-      if(address) {
-        const locationData = await getLocationData(address);
-        console.log(locationData);
-        lng = locationData.lng;
-        lat = locationData.lat;
-        country = locationData.country;
-        countryCode = locationData.countryCode;
-        region = locationData.region;
-        regionCode = locationData.regionCode;
-      }
-      const post = {
+      const locationData = await getLocationData(address);
+      console.log(locationData);
+      const postData = {
         title: formatTitle(this.state.title),
         description: formatDescription(this.state.description),
         image: this.state.image,
@@ -171,20 +158,12 @@ class PostForm extends React.Component {
         updatedAt: this.state.updatedAt.valueOf(),
         s3FolderName: this.state.s3FolderName,
         providedURL: this.state.providedURL,
-        provideURL: this.state.provideURL,
-        address,
-        lng,
-        lat,
-        country,
-        countryCode,
-        region,
-        regionCode
+        provideURL: this.state.provideURL
       };
-      // if editing
-      if (this.props.post) {
-        this.props.onSubmit({ post, postBeforeUpdate: this.props.post });
+      if (this.editMode) {
+        this.props.onSubmit({ postData, postBeforeUpdate: this.props.post });
       } else {
-        this.props.onSubmit(post);
+        this.props.onSubmit({ postData, locationData });
       }
     } else {
       this.setState(() => ({

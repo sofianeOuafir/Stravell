@@ -64,6 +64,7 @@ describe("startAddPost", () => {
 
     data[`posts/${id}`] = post;
     data[`user-posts/${post.uid}/${id}`] = post;
+    data[`region-posts/${post.regionCode}/${id}`] = post;
     data[`country-posts/${post.countryCode}/${id}`] = post;
     data[`countries/${post.countryCode}`] = post.country;
     data[`user-countries/${post.uid}/${post.countryCode}/country`] =
@@ -139,6 +140,77 @@ describe("startAddPost", () => {
         expect(posts[1]).toEqual(post);
         done();
       });
+  });
+
+  describe('region and regionCode data are present', () => {
+    test("should persist a valid post at /region-posts/:regionCode/:id", done => {
+      let { id, ...post } = posts[0];
+      store
+        .dispatch(startAddPost(post))
+        .then(() => {
+          return database.ref(`/region-posts/${post.regionCode}`).once("value");
+        })
+        .then(snapshot => {
+          let posts = fromSnapShotToArray(snapshot);
+          expect(posts.length).toEqual(2);
+          expect(posts[1]).toMatchObject(post);
+          done();
+        });
+    });
+    describe('the region of that post has not yet been persisted at /regions/:regionCode', () => {
+      // verify setup
+      beforeEach((done) => {
+        database.ref(`/regions/${posts[0].regionCode}`).once("value")
+        .then(snapshot => {
+          let region = fromSnapShotToObject(snapshot);
+          expect(region).toEqual(null);
+          done();
+        });
+      });
+
+      test('should add new region at /regions/:regionCode with right values', (done) => {
+        let { id, ...post } = posts[0];
+        store
+          .dispatch(startAddPost(post))
+          .then(() => {
+            return database.ref(`/regions/${post.regionCode}`).once("value");
+          })
+          .then(snapshot => {
+            let region = fromSnapShotToObject(snapshot);
+            expect(region).toMatchObject({
+              id: post.regionCode,
+              region: post.region,
+              country: post.country,
+              countryCode: post.countryCode,
+              northeastLat: expect.anything(),
+              northeastLng: expect.anything(),
+              southWestLat: expect.anything(),
+              southWestLng: expect.anything()
+            });
+            // expect(posts.length).toEqual(2);
+            // expect(posts[1]).toMatchObject(post);
+            done();
+          });
+      })
+    })
+  });
+
+  describe('region and regionCode data are NOT present', () => {
+    test("should NOT persist a valid post at /region-posts/:regionCode/:id", done => {
+      let { id, ...post } = posts[0];
+      post.regionCode = null;
+      post.region = null;
+      store
+        .dispatch(startAddPost(post))
+        .then(() => {
+          return database.ref(`/region-posts/${posts[0].regionCode}`).once("value");
+        })
+        .then(snapshot => {
+          let posts = fromSnapShotToArray(snapshot);
+          expect(posts.length).toEqual(1);
+          done();
+        });
+    });
   });
 
   test("should persist a new country at /countries", done => {

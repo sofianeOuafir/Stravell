@@ -59,6 +59,16 @@ const startAddPost = (postData = {}) => {
       updates[`/countries/${countryCode}/country`] = country;
       updates[`/user-countries/${uid}/${countryCode}/country`] = country;
     }
+
+    if (region && regionCode) {
+      updates[`/region-posts/${regionCode}/${newPostKey}`] = post;
+      updates[`/regions/${regionCode}`] = {
+        region,
+        country,
+        countryCode
+      };
+    }
+
     return database
       .ref()
       .update(updates)
