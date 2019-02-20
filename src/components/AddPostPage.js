@@ -10,8 +10,8 @@ import { ADD_POST_PAGE_TITLE, ADD_POST_PAGE_DESCRIPTION } from './../constants/c
 import Layout from "./Layout";
 
 export class AddPostPage extends React.Component {
-  onSubmit = post => {
-    this.props.startAddPost(post);
+  onSubmit = ({ postData, regionData, placeData, countryData }) => {
+    this.props.startAddPost({ postData, regionData, placeData, countryData });
     this.props.router.push(`/dashboard?uid=${this.props.uid}`, `/dashboard/${slugify(this.props.userName)}/${this.props.uid}`)
   };
 
@@ -58,8 +58,8 @@ AddPostPage.getInitialProps = async function({ req, reduxStore, res }) {
 };
 
 const mapDispatchToProps = dispatch => ({
-  startAddPost: post => {
-    dispatch(startAddPost(post));
+  startAddPost: ({ postData, regionData, placeData, countryData }) => {
+    dispatch(startAddPost({ postData, regionData, placeData, countryData }));
   }
 });
 

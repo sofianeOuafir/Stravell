@@ -115,9 +115,7 @@ class PostForm extends React.Component {
     const body = editorState.getCurrentContent().getPlainText();
     this.setState(() => ({ body: editorState, bodyError: getBodyError(body) }));
   };
-
-  editMode = () => this.props.post !== undefined;
-
+  
   onProvidedURLChange = e => {
     const providedURL = e.target.value;
     this.setState(() => ({
@@ -160,10 +158,13 @@ class PostForm extends React.Component {
         providedURL: this.state.providedURL,
         provideURL: this.state.provideURL
       };
-      if (this.editMode) {
+      const { place: placeData } = locationData;
+      const { region: regionData } = locationData;
+      const { country: countryData } = locationData;
+      if (this.props.post) {
         this.props.onSubmit({ postData, postBeforeUpdate: this.props.post });
       } else {
-        this.props.onSubmit({ postData, locationData });
+        this.props.onSubmit({ postData, placeData, regionData, countryData });
       }
     } else {
       this.setState(() => ({

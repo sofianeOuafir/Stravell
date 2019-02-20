@@ -5,7 +5,12 @@ const addPost = post => ({
   post
 });
 
-const startAddPost = (postData = {}) => {
+const startAddPost = ({
+  postData = {},
+  countryData,
+  regionData,
+  placeData
+}) => {
   return (dispatch, getState) => {
     const { uid, userName, userPhotoURL } = getState().auth;
     const {
@@ -17,15 +22,42 @@ const startAddPost = (postData = {}) => {
       updatedAt,
       s3FolderName,
       providedURL,
-      provideURL,
+      provideURL
+    } = postData;
+
+    const {
+      name: countryName,
+      code: countryCode,
+      bounds: {
+        northEastLat: countryNorthEastLat,
+        northEastLng: countryNorthEastLng,
+        southWestLat: countrySouthWestLat,
+        southWestLng: countrySouthWestLng
+      }
+    } = countryData;
+    const {
+      name: regionName,
+      code: regionCode,
+      bounds: {
+        northEastLat: regionNorthEastLat,
+        northEastLng: regionNorthEastLng,
+        southWestLat: regionSouthWestLat,
+        southWestLng: regionSouthWestLng
+      }
+    } = regionData;
+
+    const {
       address,
       lat,
       lng,
-      country,
-      countryCode,
-      region, 
-      regionCode
-    } = postData;
+      bounds: {
+        northEastLat: placeNorthEastLat,
+        northEastLng: placeNorthEastLng,
+        southWestLat: placeSouthWestLat,
+        southWestLng: placeSouthWestLng
+      }
+    } = placeData;
+
     const post = {
       uid,
       userName,
@@ -42,31 +74,67 @@ const startAddPost = (postData = {}) => {
       address,
       lat,
       lng,
-      country,
+      country: countryName,
       countryCode,
-      region, 
+      region: regionName,
       regionCode
     };
+    const country = {
+      country: countryName, 
+      countryNorthEastLat,
+      countryNorthEastLng,
+      countrySouthWestLat,
+      countrySouthWestLng
+    };
+    const region = {
+      region: regionName,
+      regionNorthEastLat,
+      regionNorthEastLng,
+      regionSouthWestLat,
+      regionSouthWestLng,
+      country: countryName,
+      countryCode
+    };
+    const place = {
+      address,
+      lat, 
+      lng, 
+      placeNorthEastLat,
+      placeNorthEastLng,
+      placeSouthWestLat,
+      placeSouthWestLng,
+      region: regionName,
+      regionCode,
+      country: countryName,
+      countryCode
+    }
     const newPostKey = database
       .ref()
       .child("posts")
       .push().key;
+    let placeKey = (lat.toString() + lng.toString()).replace(/\./g, "").replace(/-/g, "");
     let updates = {};
     updates[`/posts/${newPostKey}`] = post;
     updates[`/user-posts/${uid}/${newPostKey}`] = post;
-    if (country && countryCode) {
+        // rethink that condition
+    if (countryName && countryCode) {
       updates[`/country-posts/${countryCode}/${newPostKey}`] = post;
-      updates[`/countries/${countryCode}/country`] = country;
-      updates[`/user-countries/${uid}/${countryCode}/country`] = country;
+      updates[`/countries/${countryCode}`] = country;
+      updates[`/user-countries/${uid}/${countryCode}`] = country;
+      updates[`/country-places/${countryCode}/${placeKey}`] = place;
     }
 
-    if (region && regionCode) {
+    // rethink that condition
+    if (regionName && regionCode) {
       updates[`/region-posts/${regionCode}/${newPostKey}`] = post;
-      updates[`/regions/${regionCode}`] = {
-        region,
-        country,
-        countryCode
-      };
+      updates[`/regions/${regionCode}`] = region;
+      updates[`/country-regions/${countryCode}/${regionCode}`] = region;
+    }
+
+    // rethink that condition
+    if(address) {
+      updates[`/places/${placeKey}`] = place;
+      updates[`/user-places/${uid}/${placeKey}`] = place;
     }
 
     return database
@@ -170,7 +238,7 @@ const maintainCountries = async ({ postBeforeUpdate, updates, uid }) => {
 };
 
 const countryWasPresent = ({ postBeforeUpdate }) => {
-  if(postBeforeUpdate.country) {
+  if (postBeforeUpdate.country) {
     return true;
   }
 
@@ -178,7 +246,7 @@ const countryWasPresent = ({ postBeforeUpdate }) => {
 };
 
 const countryIsPresent = ({ updates }) => {
-  if(updates.country) {
+  if (updates.country) {
     return true;
   }
 
