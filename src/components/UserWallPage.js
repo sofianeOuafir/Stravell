@@ -6,7 +6,7 @@ import FilterablePostList from "./FilterablePostList";
 import Layout from "./Layout";
 import { APP_NAME } from "./../constants/constants";
 import { setCountries } from "./../actions/countries";
-import { getPosts } from "../queries/post";
+import { getUserPosts } from "../queries/post";
 import { getCountries } from "../queries/country";
 import { getUser } from "../queries/user";
 export class UserWallPage extends React.Component {
@@ -38,7 +38,7 @@ export class UserWallPage extends React.Component {
 
 UserWallPage.getInitialProps = async function({ query }) {
   const { uid } = query; 
-  const posts = await getPosts({ uid });
+  const posts = await getUserPosts(uid);
   const user = await getUser(uid);
   return { posts, user };
 };

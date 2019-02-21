@@ -1,13 +1,15 @@
 import React from "react";
+import { slugify } from "underscore.string";
 
 import Layout from "./Layout";
 import FilterablePostList from "./FilterablePostList";
 import PageHeader from "./PageHeader";
-import { getRegion } from '../queries/region';
+import { getRegion } from "../queries/region";
 import { getRegionPosts } from "../queries/post";
 import { getRegionPlaces } from "../queries/place";
 import Place from "./Place";
 import GoogleMaps from "./GoogleMaps";
+import BreadCrumb from "./Breadcrumb";
 
 class RegionPage extends React.Component {
   render() {
@@ -17,8 +19,23 @@ class RegionPage extends React.Component {
       regionNorthEastLng,
       regionSouthWestLat,
       regionSouthWestLng,
-      country
+      country,
+      countryCode,
+      id
     } = region;
+    const breadcrumbLinks = [
+      { href: "/destinations", text: "Destinations" },
+      {
+        href: `/country?countryCode=${countryCode}`,
+        as: `/country/${countryCode}`,
+        text: country
+      },
+      {
+        href: `/region?regionCode=${id}`,
+        as: `/region/${slugify(country)}/${id}`,
+        text: region.region
+      }
+    ];
     return (
       <Layout
         title={`Stravell | ${region.region}`}
@@ -33,6 +50,7 @@ class RegionPage extends React.Component {
           />
         </PageHeader>
         <div className="content-container">
+          <BreadCrumb links={breadcrumbLinks} />
           <GoogleMaps
             isMarkerShown
             places={places}
