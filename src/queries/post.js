@@ -6,17 +6,31 @@ export const getPost = async (id) => {
   return fromSnapShotToObject(snapshot);
 };
 
-export const getPosts = async ({uid, countryCode} = {}) => {
-  let ref;
-  if(uid && countryCode) {
-    throw new Error("can't pass both arguments uid and countryCode");
-  } else if(uid) {
-    ref = `user-posts/${uid}`;
-  } else if (countryCode) {
-    ref = `country-posts/${countryCode}`;
-  } else {
-    ref = 'posts';
-  }
+export const getCountryPosts = async (countryCode) => {
+  const ref = `country-posts/${countryCode}`;
+  const posts = await getPosts(ref);
+  return posts;
+};
+
+export const getUserPosts = async (uid) => {
+  const ref = `user-posts/${uid}`;
+  const posts = await getPosts(ref);
+  return posts;
+};
+
+export const getPlacePosts = async (id) => {
+  const ref = `place-posts/${id}`;
+  const posts = await getPosts(ref);
+  return posts;
+};
+
+export const getAllPosts = async () => {
+  const ref = `posts`;
+  const posts = await getPosts(ref);
+  return posts;
+}
+
+const getPosts = async (ref) => {
   const postSnapshot = await database
     .ref(ref)
     .orderByChild("createdAt")

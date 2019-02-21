@@ -1,4 +1,5 @@
 import database from "../firebase/firebase";
+import { getPlaceIdFromLatLng } from './../lib/utils/place';
 
 const addPost = post => ({
   type: "ADD_POST",
@@ -112,7 +113,7 @@ const startAddPost = ({
       .ref()
       .child("posts")
       .push().key;
-    let placeKey = (lat.toString() + lng.toString()).replace(/\./g, "").replace(/-/g, "");
+    let placeKey = getPlaceIdFromLatLng({ lat, lng });
     let updates = {};
     updates[`/posts/${newPostKey}`] = post;
     updates[`/user-posts/${uid}/${newPostKey}`] = post;
@@ -129,12 +130,14 @@ const startAddPost = ({
       updates[`/region-posts/${regionCode}/${newPostKey}`] = post;
       updates[`/regions/${regionCode}`] = region;
       updates[`/country-regions/${countryCode}/${regionCode}`] = region;
+      updates[`/region-places/${regionCode}/${placeKey}`] = place;
     }
 
     // rethink that condition
     if(address) {
       updates[`/places/${placeKey}`] = place;
       updates[`/user-places/${uid}/${placeKey}`] = place;
+      updates[`/place-posts/${placeKey}/${newPostKey}`] = post;
     }
 
     return database

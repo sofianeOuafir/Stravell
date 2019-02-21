@@ -12,7 +12,7 @@ import {
 } from "./../constants/constants";
 import Layout from "./Layout";
 import { setCountries } from "./../actions/countries";
-import { getPosts } from "../queries/post";
+import { getUserPosts } from "../queries/post";
 import { getCountries } from "../queries/country";
 
 export class DashboardPage extends React.Component {
@@ -65,7 +65,7 @@ DashboardPage.getInitialProps = async function({
     }
   }
   if (authorised) {
-    const posts = await getPosts({ uid })
+    const posts = await getUserPosts(uid)
     return { posts, uid };
   } else {
     if (res) {

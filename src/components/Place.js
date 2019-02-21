@@ -1,24 +1,24 @@
 import React from "react";
 import Flag from "react-world-flags";
 
-const Country = ({
-  countryName,
-  countryNameClassName,
+const Place = ({
+  placeName,
+  placeNameClassName,
   countryCode,
   flagSize,
   containerClassName
 }) => {
   containerClassName = containerClassName ? containerClassName : "";
   flagSize = flagSize ? flagSize : 12;
-  countryNameClassName = countryNameClassName ? countryNameClassName : "";
+  placeNameClassName = placeNameClassName ? placeNameClassName : "";
   return (
     <div
       className={`flex px1 py1 justify-content--between align-items--center ${containerClassName}`}
     >
-      <span className={countryNameClassName}>{countryName}</span>
+      <span className={placeNameClassName}>{placeName}</span>
       <Flag code={countryCode} height={flagSize} />
     </div>
   );
 };
 
-export default Country;
+export default Place;

@@ -42,7 +42,7 @@ export const ShowPostPage = ({ post }) => {
           <span>{getDateFormat(post.createdAt)}</span>
         </div>
         {post.address && (
-          <Address address={post.address} iconClassName="ml1 mr1" />
+          <Address address={post.address} lat={post.lat} lng={post.lng} iconClassName="ml1 mr1" />
         )}
       </PageHeader>
       {post.provideURL ? (

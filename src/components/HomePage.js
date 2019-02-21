@@ -11,7 +11,7 @@ import {
 } from "./../constants/constants";
 import { setCountries } from "./../actions/countries";
 import Layout from "./Layout";
-import { getPosts } from "../queries/post";
+import { getAllPosts } from "../queries/post";
 import { getCountries } from "../queries/country";
 import { setTextFilter } from "./../actions/filters";
 
@@ -43,7 +43,7 @@ export class HomePage extends React.Component {
 }
 
 HomePage.getInitialProps = async function() {
-  const posts = await getPosts();
+  const posts = await getAllPosts();
   return { posts };
 };
 

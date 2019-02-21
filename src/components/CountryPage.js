@@ -3,7 +3,7 @@ import React from "react";
 import Layout from "./Layout";
 import FilterablePostList from "./FilterablePostList";
 import PageHeader from "./PageHeader";
-import { getPosts } from "../queries/post";
+import { getCountryPosts } from "../queries/post";
 import { getCountry } from "../queries/country";
 import Country from "./Country";
 import { setCountryFilter } from "../actions/filters";
@@ -29,7 +29,7 @@ class CountryPage extends React.Component {
           />
         </PageHeader>
         <div className="content-container">
-          <FilterablePostList posts={posts} withCountryFilter={false} />
+          <FilterablePostList posts={posts} withCountryFilter={false} noPostText={`There is no post about ${country.country} yet.`} />
         </div>
       </Layout>
     );
@@ -39,7 +39,7 @@ class CountryPage extends React.Component {
 CountryPage.getInitialProps = async function({ query }) {
   const { countryCode } = query;
   const country = await getCountry(countryCode);
-  const posts = await getPosts({ countryCode });
+  const posts = await getCountryPosts(countryCode);
   return { posts, country };
 };
 
