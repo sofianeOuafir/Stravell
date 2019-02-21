@@ -7,10 +7,11 @@ import { getPlacePosts } from "../queries/post";
 import { getPlace } from "../queries/place";
 import Place from "./Place";
 import GoogleMaps from "./GoogleMaps";
+import { getRegionPlaces } from "../queries/place";
 
 class PlacePage extends React.Component {
   render() {
-    const { place, posts } = this.props;
+    const { place, posts, places } = this.props;
     const {
       address,
       countryCode,
@@ -38,6 +39,8 @@ class PlacePage extends React.Component {
             northEastLng={placeNorthEastLng}
             southWestLat={placeSouthWestLat}
             southWestLng={placeSouthWestLng}
+            places={places}
+            isMarkerShown
           />
           <FilterablePostList
             posts={posts}
@@ -54,7 +57,8 @@ PlacePage.getInitialProps = async function({ query }) {
   const { id } = query;
   const place = await getPlace(id);
   const posts = await getPlacePosts(id);
-  return { place, posts };
+  const places = await getRegionPlaces(place.regionCode);
+  return { place, posts, places };
 };
 
 export default PlacePage;

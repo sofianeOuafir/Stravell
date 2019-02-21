@@ -5,7 +5,7 @@ import Layout from "./Layout";
 import PageHeader from "./PageHeader";
 import { getCountries } from "../queries/country";
 import CountryList from "./CountryList";
-import { getPlaces } from "./../queries/place";
+import { getAllPlaces } from "./../queries/place";
 
 import {
   DESTINATIONS_PAGE_TITLE,
@@ -31,7 +31,7 @@ class DestinationsPage extends React.Component {
 
 DestinationsPage.getInitialProps = async function() {
   const countries = await getCountries();
-  const places = await getPlaces();
+  const places = await getAllPlaces();
   return { countries, places };
 };
 

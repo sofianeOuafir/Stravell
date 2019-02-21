@@ -13,7 +13,7 @@ const GoogleMaps = compose(
     googleMapURL:
       "https://maps.googleapis.com/maps/api/js?key=AIzaSyBpPoHt4fnlU2_GBpUBVRG-8Bcoh1HnD_E&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `450px` }} />,
+    containerElement: <div style={{ height: `450px`, width: '100%' }} />,
     mapElement: <div style={{ height: `100%` }} />
   }),
   withScriptjs,
@@ -31,7 +31,7 @@ const GoogleMaps = compose(
       new google.maps.LatLng(props.northEastLat, props.northEastLng)
     );
     defaultCenter = bounds.getCenter();
-    const pixelWidth = 1000;
+    const pixelWidth = 400;
     const GLOBE_WIDTH = 256; // a constant in Google's map projection
     const west = props.southWestLng;
     const east = props.northEastLng;

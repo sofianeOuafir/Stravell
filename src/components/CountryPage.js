@@ -1,35 +1,77 @@
 import React from "react";
+import Link from "next/link";
+import { slugify } from "underscore.string";
 
 import Layout from "./Layout";
 import FilterablePostList from "./FilterablePostList";
 import PageHeader from "./PageHeader";
 import { getCountryPosts } from "../queries/post";
+import { getCountryRegions } from "../queries/region";
+import { getCountryPlaces } from "../queries/place";
 import { getCountry } from "../queries/country";
-import Country from "./Country";
+import Place from "./Place";
 import { setCountryFilter } from "../actions/filters";
 import { connect } from "react-redux";
+import GoogleMaps from "./GoogleMaps";
+import BreadCrumb from "./Breadcrumb";
 
 class CountryPage extends React.Component {
   componentDidMount() {
     this.props.dispatch(setCountryFilter(""));
   }
   render() {
-    const { posts, country } = this.props;
+    const { posts, country, places, regions } = this.props;
+    const {
+      countryNorthEastLat,
+      countryNorthEastLng,
+      countrySouthWestLat,
+      countrySouthWestLng,
+      id
+    } = country;
+    const breadcrumbLinks = [
+      { href: "/destinations", text: "Destinations" },
+      {
+        href: `/country?countryCode=${id}`,
+        as: `/country/${id}`,
+        text: country.country
+      }
+    ];
     return (
       <Layout
         title={`Stravell | ${country.country}`}
         description={`Travel articles about ${country.country}`}
       >
         <PageHeader>
-          <Country
-            countryName={country.country}
-            countryCode={country.id}
-            countryNameClassName="h2 favourite-font-weight"
+          <Place
+            placeName={country.country}
+            countryCode={id}
+            placeNameClassName="h2 favourite-font-weight"
             flagSize="64"
           />
         </PageHeader>
         <div className="content-container">
-          <FilterablePostList posts={posts} withCountryFilter={false} noPostText={`There is no post about ${country.country} yet.`} />
+          <BreadCrumb links={breadcrumbLinks} />
+          <GoogleMaps
+            isMarkerShown
+            places={places}
+            northEastLat={countryNorthEastLat}
+            northEastLng={countryNorthEastLng}
+            southWestLat={countrySouthWestLat}
+            southWestLng={countrySouthWestLng}
+          />
+          {regions.map(({ id, region, country }) => (
+            <Link
+              href={`/region?regionCode=${id}`}
+              as={`/${slugify(country)}/${id}`}
+            >
+              <a>{region}</a>
+            </Link>
+          ))}
+          <FilterablePostList
+            posts={posts}
+            withCountryFilter={false}
+            noPostText={`There is no post about ${country.country} yet.`}
+          />
         </div>
       </Layout>
     );
@@ -40,7 +82,9 @@ CountryPage.getInitialProps = async function({ query }) {
   const { countryCode } = query;
   const country = await getCountry(countryCode);
   const posts = await getCountryPosts(countryCode);
-  return { posts, country };
+  const places = await getCountryPlaces(countryCode);
+  const regions = await getCountryRegions(countryCode);
+  return { posts, country, places, regions };
 };
 
 export default connect()(CountryPage);

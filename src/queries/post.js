@@ -12,6 +12,12 @@ export const getCountryPosts = async (countryCode) => {
   return posts;
 };
 
+export const getRegionPosts = async (regionCode) => {
+  const ref = `region-posts/${regionCode}`;
+  const posts = await getPosts(ref);
+  return posts;
+};
+
 export const getUserPosts = async (uid) => {
   const ref = `user-posts/${uid}`;
   const posts = await getPosts(ref);

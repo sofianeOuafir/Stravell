@@ -9,7 +9,7 @@ const CountryListItem = ({ country }) => {
     <Link as={`/country/${id}`} href={`/country?countryCode=${id}`}>
       <a className="country-list-item halfwidth py2 px2 no-text-decoration text-dark-grey">
         <Place
-          containerClassName="border-light-grey"
+          containerClassName="px1 border-light-grey"
           placeName={countryName}
           countryCode={id}
           placeNameClassName="h2 favourite-font-weight"
