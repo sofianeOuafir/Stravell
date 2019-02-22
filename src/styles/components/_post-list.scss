@@ -1,8 +1,9 @@
 .post-list {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   border-top: 1px $grey solid;
-  padding: $xl-size 0;
+  padding: $s-size 0;
 }
 
 .post-list--no-border-top {

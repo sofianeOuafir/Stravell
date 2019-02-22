@@ -12,7 +12,6 @@ import { getCountry } from "../queries/country";
 import Place from "./Place";
 import { setCountryFilter } from "../actions/filters";
 import { connect } from "react-redux";
-import GoogleMaps from "./GoogleMaps";
 import BreadCrumb from "./Breadcrumb";
 
 class CountryPage extends React.Component {
@@ -51,26 +50,18 @@ class CountryPage extends React.Component {
         </PageHeader>
         <div className="content-container">
           <BreadCrumb links={breadcrumbLinks} />
-          <GoogleMaps
-            isMarkerShown
-            places={places}
-            northEastLat={countryNorthEastLat}
-            northEastLng={countryNorthEastLng}
-            southWestLat={countrySouthWestLat}
-            southWestLng={countrySouthWestLng}
-          />
-          {regions.map(({ id, region, country }) => (
-            <Link
-              href={`/region?regionCode=${id}`}
-              as={`/${slugify(country)}/${id}`}
-            >
-              <a>{region}</a>
-            </Link>
-          ))}
           <FilterablePostList
             posts={posts}
             withCountryFilter={false}
             noPostText={`There is no post about ${country.country} yet.`}
+            googleMapsProps={{
+              isMarkerShown: true,
+              places,
+              northEastLat: countryNorthEastLat,
+              northEastLng: countryNorthEastLng,
+              southWestLat: countrySouthWestLat,
+              southWestLng: countrySouthWestLng
+            }}
           />
         </div>
       </Layout>

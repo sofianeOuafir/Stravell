@@ -1,4 +1,5 @@
 import React from "react";
+import { slugify } from "underscore.string";
 
 import Layout from "./Layout";
 import FilterablePostList from "./FilterablePostList";
@@ -6,20 +7,42 @@ import PageHeader from "./PageHeader";
 import { getPlacePosts } from "../queries/post";
 import { getPlace } from "../queries/place";
 import Place from "./Place";
-import GoogleMaps from "./GoogleMaps";
 import { getRegionPlaces } from "../queries/place";
+import BreadCrumb from "./Breadcrumb";
 
 class PlacePage extends React.Component {
   render() {
     const { place, posts, places } = this.props;
     const {
+      id,
       address,
+      country,
       countryCode,
       placeNorthEastLat,
       placeNorthEastLng,
       placeSouthWestLat,
-      placeSouthWestLng
+      placeSouthWestLng,
+      regionCode,
+      region
     } = place;
+    const breadcrumbLinks = [
+      { href: "/destinations", text: "Destinations" },
+      {
+        href: `/country?countryCode=${countryCode}`,
+        as: `/country/${countryCode}`,
+        text: country
+      },
+      {
+        href: `/region?regionCode=${regionCode}`,
+        as: `/region/${slugify(country)}/${regionCode}`,
+        text: region
+      },
+      {
+        href: `/place?id=${id}`,
+        as: `/place/${slugify(address)}/${id}`,
+        text: address
+      }
+    ];
     return (
       <Layout
         title={`Stravell | ${address}`}
@@ -34,18 +57,19 @@ class PlacePage extends React.Component {
           />
         </PageHeader>
         <div className="content-container">
-          <GoogleMaps
-            northEastLat={placeNorthEastLat}
-            northEastLng={placeNorthEastLng}
-            southWestLat={placeSouthWestLat}
-            southWestLng={placeSouthWestLng}
-            places={places}
-            isMarkerShown
-          />
+          <BreadCrumb links={breadcrumbLinks} />
           <FilterablePostList
             posts={posts}
             withCountryFilter={false}
             noPostText={`There is no post about ${address} yet.`}
+            googleMapsProps={{
+              isMarkerShown: true,
+              places,
+              northEastLat: placeNorthEastLat,
+              northEastLng: placeNorthEastLng,
+              southWestLat: placeSouthWestLat,
+              southWestLng: placeSouthWestLng
+            }}
           />
         </div>
       </Layout>

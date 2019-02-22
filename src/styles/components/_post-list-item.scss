@@ -1,8 +1,7 @@
 .post-list-item {
-  border-right: 1px $grey solid;
-  width: 50%;
+  width: 33%;
   margin-bottom: $xl-size;
-  padding: 0 $s-size;
+  padding: 0 $s-size 0 0;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -12,8 +11,8 @@
   }
 }
 
-.post-list-item--no-border {
-  border-right: none;
+.post-list-item--no-padding-right {
+  padding-right: 0;
 }
 
 .post-list-item__link{
@@ -30,10 +29,12 @@
 }
 
 .post-list-item__title {
+  margin: 0;
   font-size: $font-size-large;
 }
 
 .post-list-item__description {
+  margin: $s-size 0;
   font-size: $font-size-normal;
   font-weight: $favourite-font-weight;
 }

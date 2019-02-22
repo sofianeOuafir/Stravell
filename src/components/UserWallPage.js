@@ -28,6 +28,7 @@ export class UserWallPage extends React.Component {
               SearchBarAutoFocus={true}
               posts={posts}
               noPostText={`${userName} has not published any post yet.`}
+              withMap={false}
             />
           </div>
         </div>

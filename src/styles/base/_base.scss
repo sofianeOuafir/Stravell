@@ -114,6 +114,10 @@ button:disabled {
   padding-left: $s-size;
 }
 
+.pr1 {
+  padding-right: $s-size;
+}
+
 .pt1 {
   padding-top: $s-size;
 }
@@ -222,4 +226,8 @@ button:disabled {
 
 .border-light-grey {
   border: 1px $light-grey solid;
+}
+
+.block {
+  display: block;
 }

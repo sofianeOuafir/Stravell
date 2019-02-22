@@ -4,3 +4,7 @@ export const isOdd = (number) => {
   }
   return number % 2 === 1;
 }
+
+export const isMultipleOfThree = (index) => {
+  return index % 3 === 0;
+}

@@ -35,6 +35,7 @@ export class DashboardPage extends React.Component {
             <a className="button button--with-bottom-margin">Create Post</a>
           </Link>
           <FilterablePostList
+            withMap={false}
             editable={true}
             SearchBarAutoFocus={true}
             posts={posts}
