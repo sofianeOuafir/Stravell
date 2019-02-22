@@ -34,7 +34,8 @@ module.exports = withCSS(withSass({
       'process.env.FIREBASE_ADMIN_TOKEN_URI': JSON.stringify(process.env.FIREBASE_ADMIN_TOKEN_URI),
       'process.env.FIREBASE_ADMIN_AUTH_PROVIDER_X509_CERT_URL': JSON.stringify(process.env.FIREBASE_ADMIN_AUTH_PROVIDER_X509_CERT_URL),
       'process.env.FIREBASE_ADMIN_CLIENT_X509_CERT_URL': JSON.stringify(process.env.FIREBASE_ADMIN_CLIENT_X509_CERT_URL),
-      'process.env.GOOGLE_PLACES_API_KEY': JSON.stringify(process.env.GOOGLE_PLACES_API_KEY)
+      'process.env.GOOGLE_PLACES_API_KEY': JSON.stringify(process.env.GOOGLE_PLACES_API_KEY),
+      'process.env.HOTJAR_ID': JSON.stringify(process.env.HOTJAR_ID)
     }));
 
     return config
