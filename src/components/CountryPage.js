@@ -32,7 +32,8 @@ class CountryPage extends React.Component {
       {
         href: `/country?countryCode=${id}`,
         as: `/country/${id}`,
-        text: country.country
+        text: country.country,
+        active: true
       }
     ];
     return (

@@ -5,6 +5,7 @@ import authReducer from '../reducers/auth';
 import postsReducer from '../reducers/posts';
 import filtersReducer from '../reducers/filters';
 import countriesReducer from '../reducers/countries';
+import mapReducer from '../reducers/map';
 
 let composeEnhancers;
 try {
@@ -20,7 +21,8 @@ export default () => {
       auth: authReducer,
       posts: postsReducer,
       filters: filtersReducer,
-      countries: countriesReducer
+      countries: countriesReducer,
+      map: mapReducer
     }),
     composeEnhancers(applyMiddleware(thunk))
   );

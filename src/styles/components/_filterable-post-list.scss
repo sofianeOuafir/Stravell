@@ -1,0 +1,11 @@
+.filterable-post-list__list-container {
+  width: 70%;
+  flex-grow: 1;
+}
+
+.filterable-post-list__map-container {
+  width: 30%;
+  @media(max-width: $laptop-breakpoint) {
+    display:none;
+  }
+}

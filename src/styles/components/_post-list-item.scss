@@ -1,13 +1,15 @@
 .post-list-item {
-  width: 33%;
+  width: 33.33%;
   margin-bottom: $xl-size;
   padding: 0 $s-size 0 0;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  @media (max-width: $desktop-breakpoint) {
+  @media (max-width: $tablet-breakpoint) {
+    width: 50%;
+  }
+  @media (max-width: $mobile-breakpoint) {
     width: 100%;
-    border-right: none;
   }
 }
 

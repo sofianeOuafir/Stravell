@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Router from "next/router";
 import Link from "next/link";
+import { IoMdAirplane } from "react-icons/io";
 
 import FilterablePostList from "../components/FilterablePostList";
 import PageHeader from "./PageHeader";
@@ -33,7 +34,9 @@ export class HomePage extends React.Component {
         <PageHeader title={`Welcome${userName ? `, ${userName}` : ""}`} />
         <div className="content-container">
           <Link href="/destinations">
-            <a className="button mb1">Find Your Favourite Destinations</a>
+            <a className="button mb1 flex align-items--center">
+              <span>Destinations</span> <IoMdAirplane />
+            </a>
           </Link>
           <FilterablePostList
             SearchBarAutoFocus={true}

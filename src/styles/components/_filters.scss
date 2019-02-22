@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
 
-  @media (max-width: $desktop-breakpoint) {
+  @media (max-width: $tablet-breakpoint) {
     flex-direction: column;
   }
 }
@@ -13,7 +13,7 @@
   align-items: center;
   border: 1px $grey solid;
   flex-grow: 1;
-  @media (max-width: $desktop-breakpoint) {
+  @media (max-width: $tablet-breakpoint) {
     width: 100%;
   }
 }
@@ -41,7 +41,7 @@
   font-weight: $favourite-font-weight;
   margin-left: $m-size;
 
-  @media (max-width: $desktop-breakpoint) {
+  @media (max-width: $tablet-breakpoint) {
     margin-top: $s-size;
     margin-left: 0;
     width: 100%;

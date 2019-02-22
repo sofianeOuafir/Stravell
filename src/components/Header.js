@@ -27,7 +27,7 @@ export const Header = ({
   uid
 }) => {
   let avatarProps = {
-    className: "header__user-photo show-for-desktop",
+    className: "header__user-photo show-for-tablet",
     round: true,
     size: "40"
   }

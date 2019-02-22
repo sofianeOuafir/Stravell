@@ -8,7 +8,6 @@ import { getRegion } from "../queries/region";
 import { getRegionPosts } from "../queries/post";
 import { getRegionPlaces } from "../queries/place";
 import Place from "./Place";
-import BreadCrumb from "./Breadcrumb";
 
 class RegionPage extends React.Component {
   render() {
@@ -32,7 +31,8 @@ class RegionPage extends React.Component {
       {
         href: `/region?regionCode=${id}`,
         as: `/region/${slugify(country)}/${id}`,
-        text: region.region
+        text: region.region,
+        active: true
       }
     ];
     return (
@@ -49,7 +49,6 @@ class RegionPage extends React.Component {
           />
         </PageHeader>
         <div className="content-container">
-          <BreadCrumb links={breadcrumbLinks} />
           <FilterablePostList
             posts={posts}
             withCountryFilter={false}
@@ -61,6 +60,9 @@ class RegionPage extends React.Component {
               northEastLng: regionNorthEastLng,
               southWestLat: regionSouthWestLat,
               southWestLng: regionSouthWestLng
+            }}
+            breadCrumbProps={{
+              links: breadcrumbLinks
             }}
           />
         </div>

@@ -1,0 +1,16 @@
+.breadcrumb__link {
+  font-size: $m-size;
+  color: $warm-peach;
+  font-weight: $favourite-font-weight;
+  text-decoration: none;
+}
+
+.breadcrumb__link-text {
+  margin-right: $s-size; 
+  text-decoration: underline;
+}
+
+.breadcrumb__link-text--active {
+  color: $dark-grey;
+  text-decoration: none;
+}
