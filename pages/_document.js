@@ -1,14 +1,9 @@
 import Document, { Head, Main, NextScript } from "next/document";
-import { hotjar } from "react-hotjar";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
     return { ...initialProps };
-  }
-
-  componentDidMount(){
-    hotjar.initialize(process.env.HOTJAR_ID, 6);
   }
 
   render() {
