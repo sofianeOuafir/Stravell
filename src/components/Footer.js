@@ -12,11 +12,21 @@ import {
 const Footer = props => (
   <div className="footer">
     <div className="fullwidth content-container align-items--center flex justify-content--between">
-      <Link href="/">
-        <a className="footer__corporation favourite-font-weight no-text-decoration">
-          {APP_NAME}, Inc.
+      <div className="flex flex-direction--column">
+        <Link href="/">
+          <a className="footer__corporation favourite-font-weight no-text-decoration">
+            {APP_NAME}, Inc.
+          </a>
+        </Link>
+        <a
+          className="text-white no-text-decoration favourite-font-weight"
+          target="_blank"
+          href="https://www.linkedin.com/in/souphian-ouafir-0656388a/"
+        >
+          Founded and designed by Sofiane Ouafir.
         </a>
-      </Link>
+      </div>
+
       <div className="flex align-items--center">
         <Link href="/destinations">
           <a>

@@ -66,6 +66,10 @@ button:disabled {
   margin-right: $s-size;
 }
 
+.mr2 {
+  margin-right: $m-size;
+}
+
 .mb1 {
   margin-bottom: $s-size;
 }
@@ -222,6 +226,10 @@ button:disabled {
 
 .text-dark-grey {
   color: $dark-grey;
+}
+
+.text-white {
+  color: white;
 }
 
 .border-light-grey {

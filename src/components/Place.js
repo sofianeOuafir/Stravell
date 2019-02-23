@@ -17,9 +17,14 @@ const Place = ({
       className={`flex py1 justify-content--between align-items--center ${containerClassName}`}
     >
       <span className={placeNameClassName}>{placeName}</span>
-      <Link href={`/country?countryCode=${countryCode}`} as={`/country/${countryCode}`}>
-        <Flag code={countryCode} height={flagSize} />
-      </Link>
+      {countryCode && (
+        <Link
+          href={`/country?countryCode=${countryCode}`}
+          as={`/country/${countryCode}`}
+        >
+          <Flag code={countryCode} height={flagSize} />
+        </Link>
+      )}
     </div>
   );
 };

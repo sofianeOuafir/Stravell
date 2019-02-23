@@ -105,7 +105,7 @@ export const Header = ({
                 </DropdownMenu>
               </div>
             ) : (
-              <DropdownMenu title="Sign in to Stravell">
+              <DropdownMenu title="Main Menu">
                 <Link prefetch href="/login">
                   <button>
                     <IoIosLogIn className="header__dropdown-menu-icon" />

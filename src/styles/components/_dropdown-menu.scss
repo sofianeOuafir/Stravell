@@ -29,6 +29,8 @@
 }
 
 .dropdown-menu__title {
+  display: flex;
+  align-items: center;
   background: none;
   border-radius: 5px;
   color: white;
