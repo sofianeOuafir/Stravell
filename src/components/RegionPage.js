@@ -22,6 +22,7 @@ class RegionPage extends React.Component {
       id
     } = region;
     const breadcrumbLinks = [
+      { href: "/", text: "Home" },
       { href: "/destinations", text: "Destinations" },
       {
         href: `/country?countryCode=${countryCode}`,
@@ -51,7 +52,6 @@ class RegionPage extends React.Component {
         <div className="content-container">
           <FilterablePostList
             posts={posts}
-            withCountryFilter={false}
             noPostText={`There is no post about ${region.region} yet.`}
             googleMapsProps={{
               isMarkerShown: true,

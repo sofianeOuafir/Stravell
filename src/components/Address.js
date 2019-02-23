@@ -8,19 +8,17 @@ import { getPlaceIdFromLatLng } from "./../lib/utils/place";
 const Address = ({ iconClassName, addressClassName, address, lat, lng }) => {
   const placeId = getPlaceIdFromLatLng({ lat, lng });
   return (
-    <div className="flex align-items--center">
-      <Link
-        href={`/place?id=${placeId}`}
-        as={`/place/${slugify(address)}/${placeId}`}
-      >
-        <div>
-          <MdMyLocation className={iconClassName ? iconClassName : ""} />
-          <span className={addressClassName ? addressClassName : ""}>
-            {address}
-          </span>
-        </div>
-      </Link>
-    </div>
+    <Link
+      href={`/place?id=${placeId}`}
+      as={`/place/${slugify(address)}/${placeId}`}
+    >
+      <div className="flex align-items--center">
+        <MdMyLocation className={iconClassName ? iconClassName : ""} />
+        <span className={addressClassName ? addressClassName : ""}>
+          {address}
+        </span>
+      </div>
+    </Link>
   );
 };
 

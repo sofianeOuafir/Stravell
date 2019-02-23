@@ -11,7 +11,7 @@
 .filters__search-bar-container {
   display: flex;
   align-items: center;
-  border: 1px $grey solid;
+  border: 1px $light-grey solid;
   flex-grow: 1;
   @media (max-width: $tablet-breakpoint) {
     width: 100%;

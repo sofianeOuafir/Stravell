@@ -8,7 +8,6 @@ import { getPlacePosts } from "../queries/post";
 import { getPlace } from "../queries/place";
 import Place from "./Place";
 import { getRegionPlaces } from "../queries/place";
-import BreadCrumb from "./Breadcrumb";
 
 class PlacePage extends React.Component {
   render() {
@@ -26,6 +25,7 @@ class PlacePage extends React.Component {
       region
     } = place;
     const breadcrumbLinks = [
+      { href: "/", text: "Home" },
       { href: "/destinations", text: "Destinations" },
       {
         href: `/country?countryCode=${countryCode}`,
@@ -40,7 +40,8 @@ class PlacePage extends React.Component {
       {
         href: `/place?id=${id}`,
         as: `/place/${slugify(address)}/${id}`,
-        text: address
+        text: address,
+        active: true
       }
     ];
     return (
@@ -57,10 +58,8 @@ class PlacePage extends React.Component {
           />
         </PageHeader>
         <div className="content-container">
-          <BreadCrumb links={breadcrumbLinks} />
           <FilterablePostList
             posts={posts}
-            withCountryFilter={false}
             noPostText={`There is no post about ${address} yet.`}
             googleMapsProps={{
               isMarkerShown: true,
@@ -69,6 +68,9 @@ class PlacePage extends React.Component {
               northEastLng: placeNorthEastLng,
               southWestLat: placeSouthWestLat,
               southWestLng: placeSouthWestLng
+            }}
+            breadCrumbProps={{
+              links: breadcrumbLinks
             }}
           />
         </div>

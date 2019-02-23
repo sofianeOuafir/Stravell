@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 import PageHeader from "./PageHeader";
 import FilterablePostList from "./FilterablePostList";
@@ -9,6 +9,7 @@ import { setCountries } from "./../actions/countries";
 import { getUserPosts } from "../queries/post";
 import { getCountries } from "../queries/country";
 import { getUser } from "../queries/user";
+import { getUserPlaces } from "./../queries/place";
 export class UserWallPage extends React.Component {
   async componentDidMount() {
     const { id } = this.props.user;
@@ -17,10 +18,27 @@ export class UserWallPage extends React.Component {
   }
 
   render() {
-    const { posts } = this.props;
-    const { userName } = this.props.user;
+    const { posts, places } = this.props;
+    const { userName, id } = this.props.user;
+    const googleMapsProps = {
+      isMarkerShown: true,
+      places,
+      showWholeWorld: true
+    };
+    const breadcrumbLinks = [
+      { href: "/", text: "Home" },
+      {
+        href: `/user?uid=${id}`,
+        as: `/u/show/${userName}/${id}`,
+        text: userName,
+        active: true
+      }
+    ];
     return (
-      <Layout title={`${APP_NAME} | ${userName}`} description={`This page describe ${userName}'s profile`}>
+      <Layout
+        title={`${APP_NAME} | ${userName}`}
+        description={`This page describe ${userName}'s profile`}
+      >
         <div>
           <PageHeader title={userName} />
           <div className="content-container">
@@ -28,7 +46,10 @@ export class UserWallPage extends React.Component {
               SearchBarAutoFocus={true}
               posts={posts}
               noPostText={`${userName} has not published any post yet.`}
-              withMap={false}
+              googleMapsProps={googleMapsProps}
+              breadCrumbProps={{
+                links: breadcrumbLinks
+              }}
             />
           </div>
         </div>
@@ -38,10 +59,11 @@ export class UserWallPage extends React.Component {
 }
 
 UserWallPage.getInitialProps = async function({ query }) {
-  const { uid } = query; 
+  const { uid } = query;
   const posts = await getUserPosts(uid);
   const user = await getUser(uid);
-  return { posts, user };
+  const places = await getUserPlaces(uid);
+  return { posts, user, places };
 };
 
 export default connect()(UserWallPage);

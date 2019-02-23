@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import Router from "next/router";
 import Link from "next/link";
-import { IoMdAirplane } from "react-icons/io";
 
 import FilterablePostList from "../components/FilterablePostList";
 import PageHeader from "./PageHeader";
@@ -16,6 +15,7 @@ import Layout from "./Layout";
 import { getAllPosts } from "../queries/post";
 import { getCountries } from "../queries/country";
 import { setTextFilter } from "./../actions/filters";
+import { getAllPlaces } from "./../queries/place";
 
 export class HomePage extends React.Component {
   async componentDidMount() {
@@ -28,22 +28,31 @@ export class HomePage extends React.Component {
   }
 
   render() {
-    const { userName, posts, countries } = this.props;
+    const { userName, posts, countries, places } = this.props;
+    const breadcrumbLinks = [
+      { href: "/", text: "Home", active: true },
+      {
+        href: `/destinations`,
+        text: "Destinations"
+      }
+    ];
+    const googleMapsProps = {
+      isMarkerShown: true,
+      places,
+      showWholeWorld: true
+    };
     return (
       <Layout title={HOME_PAGE_TITLE} description={HOME_PAGE_DESCRIPTION}>
         <PageHeader title={`Welcome${userName ? `, ${userName}` : ""}`} />
         <div className="content-container">
-          <Link href="/destinations">
-            <a className="button mb1 flex align-items--center">
-              <span>Destinations</span> <IoMdAirplane />
-            </a>
-          </Link>
           <FilterablePostList
             SearchBarAutoFocus={true}
             posts={posts}
             noPostText={NO_ELEMENT_POST_LIST_HOME_PAGE_TEXT}
-            withMap={false}
-            withCountryFilter={false}
+            googleMapsProps={googleMapsProps}
+            breadCrumbProps={{
+              links: breadcrumbLinks
+            }}
           />
         </div>
       </Layout>
@@ -53,7 +62,8 @@ export class HomePage extends React.Component {
 
 HomePage.getInitialProps = async function() {
   const posts = await getAllPosts();
-  return { posts };
+  const places = await getAllPlaces();
+  return { posts, places };
 };
 
 const mapStateToProps = ({ auth }) => ({

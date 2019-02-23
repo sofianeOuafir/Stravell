@@ -5,21 +5,15 @@ import Toggle from "react-toggle";
 import SearchBar from "./SearchBar";
 import PostList from "./PostList";
 import { getVisiblePosts } from "./../selectors/posts";
-import CountryFilter from "./CountryFilter";
 import GoogleMaps from "./GoogleMaps";
 import BreadCrumb from "./Breadcrumb";
-import { setMapVisibility } from './../actions/map';
+import { setMapVisibility } from "./../actions/map";
 
 export class FilterablePostList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      withCountryFilter:
-        this.props.withCountryFilter === undefined
-          ? true
-          : this.props.withCountryFilter,
-      withMap:
-        this.props.withMap === undefined ? true : this.props.withCountryFilter
+      withMap: this.props.withMap === undefined ? true : this.props.withMap
     };
   }
 
@@ -43,24 +37,36 @@ export class FilterablePostList extends React.Component {
   }
 
   render() {
-    const { breadCrumbProps, googleMapsProps, map, setMapVisibility } = this.props;
+    const {
+      breadCrumbProps,
+      googleMapsProps,
+      map,
+      setMapVisibility
+    } = this.props;
     return (
       <div className="flex flex-direction--column">
         <div className="flex justify-content--between align-items--center mb1">
           <BreadCrumb {...breadCrumbProps} />
-          <div className="flex align-items--center show-for-laptop">
-            <label className="mr1 c-warm-peach favourite-font-weight" htmlFor="showMap">Show Map</label>
-            <Toggle
-              id="showMap"
-              defaultChecked={map.visible}
-              onChange={() => setMapVisibility(!this.props.map.visible)}
-            />
-          </div>
+          {this.state.withMap && (
+            <div className="flex align-items--center show-for-laptop">
+              <label
+                className="mr1 c-warm-peach favourite-font-weight"
+                htmlFor="showMap"
+              >
+                Show Map
+              </label>
+              <Toggle
+                id="showMap"
+                defaultChecked={map.visible}
+                onChange={() => setMapVisibility(!this.props.map.visible)}
+              />
+            </div>
+          )}
         </div>
         <div className="flex">
           <div
             className={`filterable-post-list__list-container ${
-              this.state.withMap ? "pr1" : ""
+              this.state.withMap && map.visible ? "pr1" : ""
             }`}
           >
             {this.props.posts.length > 0 && (
@@ -71,9 +77,6 @@ export class FilterablePostList extends React.Component {
                     autoFocus={this.props.SearchBarAutoFocus}
                   />
                 </div>
-                {this.state.withCountryFilter && (
-                  <CountryFilter className="filters__country" />
-                )}
               </div>
             )}
             <PostList
@@ -95,8 +98,8 @@ export class FilterablePostList extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  setMapVisibility: (visible) => dispatch(setMapVisibility(visible))
+const mapDispatchToProps = dispatch => ({
+  setMapVisibility: visible => dispatch(setMapVisibility(visible))
 });
 
 const mapStateToProps = ({ filters, map }, { posts }) => {
@@ -108,4 +111,7 @@ const mapStateToProps = ({ filters, map }, { posts }) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FilterablePostList);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FilterablePostList);

@@ -6,6 +6,7 @@ import PageHeader from "./PageHeader";
 import { getCountries } from "../queries/country";
 import CountryList from "./CountryList";
 import { getAllPlaces } from "./../queries/place";
+import BreadCrumb from "./Breadcrumb";
 
 import {
   DESTINATIONS_PAGE_TITLE,
@@ -14,6 +15,14 @@ import {
 class DestinationsPage extends React.Component {
   render() {
     const { countries, places } = this.props;
+    const breadcrumbLinks = [
+      { href: "/", text: "Home" },
+      {
+        href: `/destinations`,
+        text: "Destinations",
+        active: true
+      }
+    ];
     return (
       <Layout
         title={DESTINATIONS_PAGE_TITLE}
@@ -21,6 +30,10 @@ class DestinationsPage extends React.Component {
       >
         <PageHeader title="Destinations" />
         <div className="content-container">
+          <div className="mb1">
+            <BreadCrumb links={breadcrumbLinks} />
+          </div>
+
           <GoogleMaps showWholeWorld isMarkerShown places={places} />
           <CountryList countries={countries} />
         </div>

@@ -22,6 +22,12 @@ export const getRegionPlaces = async (regionCode) => {
   return places
 };
 
+export const getUserPlaces = async (uid) => {
+  const ref = `user-places/${uid}`;
+  const places = await getPlaces(ref);
+  return places
+};
+
 const getPlaces = async ref => {
   const placeSnapshot = await database
     .ref(ref)
