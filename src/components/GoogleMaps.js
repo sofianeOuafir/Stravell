@@ -46,7 +46,7 @@ const GoogleMaps = compose(
   }
 
   return (
-    <GoogleMap defaultZoom={defaultZoom} defaultCenter={defaultCenter}>
+    <GoogleMap defaultOptions={{streetViewControl: false, mapTypeControl: false}} defaultZoom={defaultZoom} defaultCenter={defaultCenter}>
       {props.isMarkerShown &&
         props.places.map((place, index) => {
           const { lat, lng } = place;

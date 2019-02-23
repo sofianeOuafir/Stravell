@@ -18,6 +18,7 @@ export class SearchBar extends React.Component {
         <input
           id="searchBarInput"
           type="text"
+          autoComplete="off"
           placeholder={placeholder ? placeholder : "Search"}
           className={className}
           autoFocus={autoFocus}

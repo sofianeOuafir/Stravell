@@ -146,7 +146,6 @@ class PostForm extends React.Component {
     ) {
       const address = this.state.address;
       const locationData = await getLocationData(address);
-      console.log(locationData);
       const postData = {
         title: formatTitle(this.state.title),
         description: formatDescription(this.state.description),

@@ -74,6 +74,7 @@ export class FilterableDataList extends React.Component {
 
           {withMap && map.visible && (
             <div className="filterable-post-list__map-container">
+              <p className="m0 favourite-font-weight">Click on a marker and start reading about your favourite place!</p>
               <GoogleMaps {...googleMapsProps} />
             </div>
           )}
