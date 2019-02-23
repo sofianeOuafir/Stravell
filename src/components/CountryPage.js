@@ -6,7 +6,6 @@ import Layout from "./Layout";
 import FilterableDataList from "./FilterableDataList";
 import PageHeader from "./PageHeader";
 import { getCountryPosts } from "../queries/post";
-import { getCountryRegions } from "../queries/region";
 import { getCountryPlaces } from "../queries/place";
 import { getCountry } from "../queries/country";
 import Place from "./Place";
@@ -16,6 +15,7 @@ class CountryPage extends React.Component {
   render() {
     const { posts, country, places, regions } = this.props;
     const {
+      country: countryName,
       countryNorthEastLat,
       countryNorthEastLng,
       countrySouthWestLat,
@@ -36,18 +36,18 @@ class CountryPage extends React.Component {
       {
         href: `/country?countryCode=${id}`,
         as: `/country/${id}`,
-        text: country.country,
+        text: countryName,
         active: true
       }
     ];
     return (
       <Layout
-        title={`Stravell | ${country.country}`}
-        description={`Travel articles about ${country.country}`}
+        title={`Stravell | ${countryName}`}
+        description={`Travel articles about ${countryName}`}
       >
         <PageHeader>
           <Place
-            placeName={country.country}
+            placeName={countryName}
             countryCode={id}
             placeNameClassName="h2 favourite-font-weight"
             flagSize="64"
@@ -57,7 +57,7 @@ class CountryPage extends React.Component {
           <FilterableDataList
             DataList={PostList}
             data={posts}
-            noDataText={`There is no post about ${country.country} yet.`}
+            noDataText={`There is no post about ${countryName} yet.`}
             googleMapsProps={googleMapsProps}
             breadCrumbProps={{
               links: breadcrumbLinks
@@ -74,8 +74,7 @@ CountryPage.getInitialProps = async function({ query }) {
   const country = await getCountry(countryCode);
   const posts = await getCountryPosts(countryCode);
   const places = await getCountryPlaces(countryCode);
-  const regions = await getCountryRegions(countryCode);
-  return { posts, country, places, regions };
+  return { posts, country, places };
 };
 
 export default CountryPage;

@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import Router from "next/router";
-import Link from "next/link";
 
 import FilterableDataList from "../components/FilterableDataList";
 import PageHeader from "./PageHeader";
@@ -10,18 +9,14 @@ import {
   HOME_PAGE_TITLE,
   HOME_PAGE_DESCRIPTION
 } from "./../constants/constants";
-import { setCountries } from "./../actions/countries";
 import Layout from "./Layout";
 import { getAllPosts } from "../queries/post";
-import { getCountries } from "../queries/country";
 import { setTextFilter } from "./../actions/filters";
 import { getAllPlaces } from "./../queries/place";
 import PostList from "./PostList";
 
 export class HomePage extends React.Component {
   async componentDidMount() {
-    const countries = await getCountries();
-    this.props.dispatch(setCountries(countries));
     const searchQuery = Router.query.s;
     if (searchQuery) {
       this.props.dispatch(setTextFilter(searchQuery));
@@ -29,7 +24,7 @@ export class HomePage extends React.Component {
   }
 
   render() {
-    const { userName, posts, countries, places } = this.props;
+    const { userName, posts, places } = this.props;
     const breadcrumbLinks = [
       { href: "/", text: "Home", active: true },
       {

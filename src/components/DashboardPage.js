@@ -1,7 +1,6 @@
 import React from "react";
 import Router from "next/router";
-import { connect } from 'react-redux';
-import { slugify } from 'underscore.string';
+import { slugify } from "underscore.string";
 
 import FilterableDataList from "./FilterableDataList";
 import PageHeader from "./PageHeader";
@@ -11,9 +10,9 @@ import {
   DASHBOARD_PAGE_DESCRIPTION
 } from "./../constants/constants";
 import Layout from "./Layout";
-import { setCountries } from "./../actions/countries";
 import { getUserPosts } from "../queries/post";
 import { getUser } from "../queries/user";
+import PostList from "./PostList";
 
 export class DashboardPage extends React.Component {
   render() {
@@ -21,8 +20,13 @@ export class DashboardPage extends React.Component {
     const { id, userName } = user;
     const breadcrumbLinks = [
       { href: "/", text: "Home" },
-      { href: "/dashboard", as: `/dashboard/${slugify(userName)}/${id}`, text: "Dashboard", active: true },
-      { href: "/create", as: '/p/create', text: 'Create Post' }
+      {
+        href: "/dashboard",
+        as: `/dashboard/${slugify(userName)}/${id}`,
+        text: "Dashboard",
+        active: true
+      },
+      { href: "/create", as: "/p/create", text: "Create Post" }
     ];
     return (
       <Layout
@@ -32,11 +36,12 @@ export class DashboardPage extends React.Component {
         <PageHeader title="Dashboard" withSocialShareButtons={false} />
         <div className="content-container">
           <FilterableDataList
+            DataList={PostList}
             withMap={false}
             editable={true}
             SearchBarAutoFocus={true}
-            posts={posts}
-            noPostText={NO_ELEMENT_POST_LIST_DASHBOARD_TEXT}
+            data={posts}
+            nodataText={NO_ELEMENT_POST_LIST_DASHBOARD_TEXT}
             breadCrumbProps={{
               links: breadcrumbLinks
             }}
@@ -66,8 +71,8 @@ DashboardPage.getInitialProps = async function({
     }
   }
   if (authorised) {
-    const posts = await getUserPosts(uid)
-    const user = await getUser(uid)
+    const posts = await getUserPosts(uid);
+    const user = await getUser(uid);
     return { posts, user };
   } else {
     if (res) {
@@ -81,4 +86,4 @@ DashboardPage.getInitialProps = async function({
   }
 };
 
-export default connect()(DashboardPage);
+export default DashboardPage;

@@ -31,10 +31,10 @@ export class AddPostPage extends React.Component {
       },
       {
         href: `/create`,
-        as: '/p/create',
+        as: "/p/create",
         text: "Create Post",
         active: true
-      },
+      }
     ];
     return (
       <Layout

@@ -8,11 +8,13 @@ import { getRegion } from "../queries/region";
 import { getRegionPosts } from "../queries/post";
 import { getRegionPlaces } from "../queries/place";
 import Place from "./Place";
+import PostList from "./PostList";
 
 class RegionPage extends React.Component {
   render() {
     const { posts, region, places } = this.props;
     const {
+      region: regionName,
       regionNorthEastLat,
       regionNorthEastLng,
       regionSouthWestLat,
@@ -32,18 +34,18 @@ class RegionPage extends React.Component {
       {
         href: `/region?regionCode=${id}`,
         as: `/region/${slugify(country)}/${id}`,
-        text: region.region,
+        text: regionName,
         active: true
       }
     ];
     return (
       <Layout
-        title={`Stravell | ${region.region}`}
-        description={`Travel articles about ${region.region}`}
+        title={`Stravell | ${regionName}`}
+        description={`Travel articles about ${regionName}`}
       >
         <PageHeader>
           <Place
-            placeName={region.region}
+            placeName={regionName}
             countryCode={countryCode}
             placeNameClassName="h2 favourite-font-weight"
             flagSize="64"
@@ -51,8 +53,9 @@ class RegionPage extends React.Component {
         </PageHeader>
         <div className="content-container">
           <FilterableDataList
-            posts={posts}
-            noPostText={`There is no post about ${region.region} yet.`}
+            DataList={PostList}
+            data={posts}
+            noDataText={`There is no post about ${regionName} yet.`}
             googleMapsProps={{
               isMarkerShown: true,
               places,
