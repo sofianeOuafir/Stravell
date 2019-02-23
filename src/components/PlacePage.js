@@ -8,6 +8,7 @@ import { getPlacePosts } from "../queries/post";
 import { getPlace } from "../queries/place";
 import Place from "./Place";
 import { getRegionPlaces } from "../queries/place";
+import PostList from "./PostList";
 
 class PlacePage extends React.Component {
   render() {
@@ -59,8 +60,9 @@ class PlacePage extends React.Component {
         </PageHeader>
         <div className="content-container">
           <FilterableDataList
-            posts={posts}
-            noPostText={`There is no post about ${address} yet.`}
+            DataList={PostList}
+            data={posts}
+            noDataText={`There is no post about ${address} yet.`}
             googleMapsProps={{
               isMarkerShown: true,
               places,

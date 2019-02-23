@@ -1,22 +1,14 @@
 import React from "react";
-import { connect } from "react-redux";
 
 import PageHeader from "./PageHeader";
 import FilterableDataList from "./FilterableDataList";
 import Layout from "./Layout";
 import { APP_NAME } from "./../constants/constants";
-import { setCountries } from "./../actions/countries";
 import { getUserPosts } from "../queries/post";
-import { getCountries } from "../queries/country";
 import { getUser } from "../queries/user";
 import { getUserPlaces } from "./../queries/place";
+import PostList from "./PostList";
 export class UserWallPage extends React.Component {
-  async componentDidMount() {
-    const { id } = this.props.user;
-    const countries = await getCountries({ uid: id });
-    this.props.dispatch(setCountries(countries));
-  }
-
   render() {
     const { posts, places } = this.props;
     const { userName, id } = this.props.user;
@@ -43,9 +35,9 @@ export class UserWallPage extends React.Component {
           <PageHeader title={userName} />
           <div className="content-container">
             <FilterableDataList
-              SearchBarAutoFocus={true}
-              posts={posts}
-              noPostText={`${userName} has not published any post yet.`}
+              DataList={PostList}
+              data={posts}
+              noDataText={`${userName} has not published any post yet.`}
               googleMapsProps={googleMapsProps}
               breadCrumbProps={{
                 links: breadcrumbLinks
@@ -66,4 +58,4 @@ UserWallPage.getInitialProps = async function({ query }) {
   return { posts, user, places };
 };
 
-export default connect()(UserWallPage);
+export default UserWallPage;

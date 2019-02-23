@@ -10,13 +10,9 @@ import { getCountryRegions } from "../queries/region";
 import { getCountryPlaces } from "../queries/place";
 import { getCountry } from "../queries/country";
 import Place from "./Place";
-import { setCountryFilter } from "../actions/filters";
-import { connect } from "react-redux";
+import PostList from "./PostList";
 
 class CountryPage extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(setCountryFilter(""));
-  }
   render() {
     const { posts, country, places, regions } = this.props;
     const {
@@ -59,8 +55,9 @@ class CountryPage extends React.Component {
         </PageHeader>
         <div className="content-container">
           <FilterableDataList
-            posts={posts}
-            noPostText={`There is no post about ${country.country} yet.`}
+            DataList={PostList}
+            data={posts}
+            noDataText={`There is no post about ${country.country} yet.`}
             googleMapsProps={googleMapsProps}
             breadCrumbProps={{
               links: breadcrumbLinks
@@ -81,4 +78,4 @@ CountryPage.getInitialProps = async function({ query }) {
   return { posts, country, places, regions };
 };
 
-export default connect()(CountryPage);
+export default CountryPage;
