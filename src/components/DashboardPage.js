@@ -22,7 +22,7 @@ export class DashboardPage extends React.Component {
     const breadcrumbLinks = [
       { href: "/", text: "Home" },
       { href: "/dashboard", as: `/dashboard/${slugify(userName)}/${id}`, text: "Dashboard", active: true },
-      { href: "/create", as: '/p/create', text: 'Create New Post' }
+      { href: "/create", as: '/p/create', text: 'Create Post' }
     ];
     return (
       <Layout
