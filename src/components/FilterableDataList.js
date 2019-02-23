@@ -4,35 +4,21 @@ import Toggle from "react-toggle";
 
 import SearchBar from "./SearchBar";
 import PostList from "./PostList";
-import { getVisiblePosts } from "./../selectors/posts";
 import GoogleMaps from "./GoogleMaps";
 import BreadCrumb from "./Breadcrumb";
 import { setMapVisibility } from "./../actions/map";
 
-export class FilterablePostList extends React.Component {
+export class FilterableDataList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      withMap: this.props.withMap === undefined ? true : this.props.withMap
-    };
   }
 
-  getNoPostText() {
-    if (this.props.posts.length === 0) {
-      return this.props.noPostText;
-    } else if (this.props.filteredPosts.length === 0) {
-      const {
-        text: textFilter,
-        countryCode: countryFilter
-      } = this.props.filters;
-      let noResultFoundSentence = "No results were found";
-      if (textFilter && countryFilter) {
-        return `${noResultFoundSentence} for text: ${textFilter}, country: ${countryFilter}`;
-      } else if (textFilter) {
-        return `${noResultFoundSentence} for text: ${textFilter}`;
-      } else if (countryFilter) {
-        return `${noResultFoundSentence} for country: ${countryFilter}.`;
-      }
+  noDataText() {
+    const { data, filteredData, noDataText, filters } = this.props;
+    if (data.length === 0) {
+      return noDataText;
+    } else if (filteredData.length === 0) {
+      return `No results were found for: ${filters.text}`;
     }
   }
 
@@ -41,13 +27,15 @@ export class FilterablePostList extends React.Component {
       breadCrumbProps,
       googleMapsProps,
       map,
-      setMapVisibility
+      setMapVisibility,
+      DataList,
+      withMap = true
     } = this.props;
     return (
       <div className="flex flex-direction--column">
         <div className="flex justify-content--between align-items--center mb1">
           <BreadCrumb {...breadCrumbProps} />
-          {this.state.withMap && (
+          {withMap && (
             <div className="flex align-items--center show-for-laptop">
               <label
                 className="mr1 c-warm-peach favourite-font-weight"
@@ -66,28 +54,25 @@ export class FilterablePostList extends React.Component {
         <div className="flex">
           <div
             className={`filterable-post-list__list-container ${
-              this.state.withMap && map.visible ? "pr1" : ""
+              withMap && map.visible ? "pr1" : ""
             }`}
           >
-            {this.props.posts.length > 0 && (
-              <div className="filters">
-                <div className={`filters__search-bar-container`}>
-                  <SearchBar
-                    className="filters__search-bar"
-                    autoFocus={this.props.SearchBarAutoFocus}
-                  />
-                </div>
+            {this.props.data.length > 0 && (
+              <div className={`search-bar-container`}>
+                <SearchBar
+                  className="search-bar"
+                  autoFocus={true}
+                />
               </div>
             )}
-            <PostList
+            <DataList
               editable={this.props.editable}
-              className="post-list post-list--no-border-top"
-              posts={this.props.filteredPosts}
-              noPostText={this.getNoPostText()}
+              data={this.props.filteredData}
+              noDataText={this.noDataText()}
             />
           </div>
 
-          {this.state.withMap && map.visible && (
+          {withMap && map.visible && (
             <div className="filterable-post-list__map-container">
               <GoogleMaps {...googleMapsProps} />
             </div>
@@ -102,10 +87,10 @@ const mapDispatchToProps = dispatch => ({
   setMapVisibility: visible => dispatch(setMapVisibility(visible))
 });
 
-const mapStateToProps = ({ filters, map }, { posts }) => {
+const mapStateToProps = ({ filters, map }, { data, DataList }) => {
   return {
-    posts,
-    filteredPosts: getVisiblePosts(posts, filters),
+    data,
+    filteredData: DataList.getVisibleData(data, filters),
     filters,
     map
   };
@@ -114,4 +99,4 @@ const mapStateToProps = ({ filters, map }, { posts }) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(FilterablePostList);
+)(FilterableDataList);

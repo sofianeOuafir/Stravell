@@ -2,3 +2,22 @@
   margin-left: $s-size;
   font-size: $font-size-extra-large;
 }
+
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  border: 1px $light-grey solid;
+  flex-grow: 1;
+  @media (max-width: $tablet-breakpoint) {
+    width: 100%;
+  }
+}
+
+.search-bar {
+  font-size: $font-size-large;
+  font-weight: $favourite-font-weight;
+  padding: $xs-size $s-size;
+  border: 1px white solid;
+  width: 100%;
+  outline: none;
+}

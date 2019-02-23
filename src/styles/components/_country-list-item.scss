@@ -1,5 +1,9 @@
 .country-list-item {
+  width: 33.33%;
   @media (max-width: $tablet-breakpoint) {
+    width: 50%;
+  }
+  @media (max-width: $mobile-breakpoint) {
     width: 100%;
   }
 }

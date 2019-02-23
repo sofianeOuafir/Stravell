@@ -2,7 +2,7 @@ import React from "react";
 import { slugify } from "underscore.string";
 
 import Layout from "./Layout";
-import FilterablePostList from "./FilterablePostList";
+import FilterableDataList from "./FilterableDataList";
 import PageHeader from "./PageHeader";
 import { getRegion } from "../queries/region";
 import { getRegionPosts } from "../queries/post";
@@ -50,7 +50,7 @@ class RegionPage extends React.Component {
           />
         </PageHeader>
         <div className="content-container">
-          <FilterablePostList
+          <FilterableDataList
             posts={posts}
             noPostText={`There is no post about ${region.region} yet.`}
             googleMapsProps={{

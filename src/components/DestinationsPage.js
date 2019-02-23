@@ -1,12 +1,11 @@
 import React from "react";
 
-import GoogleMaps from "./GoogleMaps";
 import Layout from "./Layout";
 import PageHeader from "./PageHeader";
 import { getCountries } from "../queries/country";
 import CountryList from "./CountryList";
 import { getAllPlaces } from "./../queries/place";
-import BreadCrumb from "./Breadcrumb";
+import FilterableDataList from "./FilterableDataList";
 
 import {
   DESTINATIONS_PAGE_TITLE,
@@ -23,7 +22,7 @@ class DestinationsPage extends React.Component {
         active: true
       }
     ];
-    const googleMapsProps={
+    const googleMapsProps = {
       showWholeWorld: true,
       isMarkerShown: true,
       places
@@ -35,12 +34,15 @@ class DestinationsPage extends React.Component {
       >
         <PageHeader title="Destinations" />
         <div className="content-container">
-          <div className="mb1">
-            <BreadCrumb links={breadcrumbLinks} />
-          </div>
-
-          <GoogleMaps {...googleMapsProps} />
-          <CountryList countries={countries} />
+          <FilterableDataList
+            DataList={CountryList}
+            googleMapsProps={googleMapsProps}
+            noDataText={"There is no country yet."}
+            data={countries}
+            breadCrumbProps={{
+              links: breadcrumbLinks
+            }}
+          />
         </div>
       </Layout>
     );

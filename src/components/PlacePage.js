@@ -2,7 +2,7 @@ import React from "react";
 import { slugify } from "underscore.string";
 
 import Layout from "./Layout";
-import FilterablePostList from "./FilterablePostList";
+import FilterableDataList from "./FilterableDataList";
 import PageHeader from "./PageHeader";
 import { getPlacePosts } from "../queries/post";
 import { getPlace } from "../queries/place";
@@ -58,7 +58,7 @@ class PlacePage extends React.Component {
           />
         </PageHeader>
         <div className="content-container">
-          <FilterablePostList
+          <FilterableDataList
             posts={posts}
             noPostText={`There is no post about ${address} yet.`}
             googleMapsProps={{

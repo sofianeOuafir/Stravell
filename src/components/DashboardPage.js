@@ -3,7 +3,7 @@ import Router from "next/router";
 import { connect } from 'react-redux';
 import { slugify } from 'underscore.string';
 
-import FilterablePostList from "./FilterablePostList";
+import FilterableDataList from "./FilterableDataList";
 import PageHeader from "./PageHeader";
 import {
   NO_ELEMENT_POST_LIST_DASHBOARD_TEXT,
@@ -31,7 +31,7 @@ export class DashboardPage extends React.Component {
       >
         <PageHeader title="Dashboard" withSocialShareButtons={false} />
         <div className="content-container">
-          <FilterablePostList
+          <FilterableDataList
             withMap={false}
             editable={true}
             SearchBarAutoFocus={true}

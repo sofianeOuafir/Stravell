@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import PageHeader from "./PageHeader";
-import FilterablePostList from "./FilterablePostList";
+import FilterableDataList from "./FilterableDataList";
 import Layout from "./Layout";
 import { APP_NAME } from "./../constants/constants";
 import { setCountries } from "./../actions/countries";
@@ -42,7 +42,7 @@ export class UserWallPage extends React.Component {
         <div>
           <PageHeader title={userName} />
           <div className="content-container">
-            <FilterablePostList
+            <FilterableDataList
               SearchBarAutoFocus={true}
               posts={posts}
               noPostText={`${userName} has not published any post yet.`}

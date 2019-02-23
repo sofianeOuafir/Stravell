@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Router from "next/router";
 import Link from "next/link";
 
-import FilterablePostList from "../components/FilterablePostList";
+import FilterableDataList from "../components/FilterableDataList";
 import PageHeader from "./PageHeader";
 import {
   NO_ELEMENT_POST_LIST_HOME_PAGE_TEXT,
@@ -16,6 +16,7 @@ import { getAllPosts } from "../queries/post";
 import { getCountries } from "../queries/country";
 import { setTextFilter } from "./../actions/filters";
 import { getAllPlaces } from "./../queries/place";
+import PostList from "./PostList";
 
 export class HomePage extends React.Component {
   async componentDidMount() {
@@ -45,10 +46,10 @@ export class HomePage extends React.Component {
       <Layout title={HOME_PAGE_TITLE} description={HOME_PAGE_DESCRIPTION}>
         <PageHeader title={`Welcome${userName ? `, ${userName}` : ""}`} />
         <div className="content-container">
-          <FilterablePostList
-            SearchBarAutoFocus={true}
-            posts={posts}
-            noPostText={NO_ELEMENT_POST_LIST_HOME_PAGE_TEXT}
+          <FilterableDataList
+            DataList={PostList}
+            data={posts}
+            noDataText={NO_ELEMENT_POST_LIST_HOME_PAGE_TEXT}
             googleMapsProps={googleMapsProps}
             breadCrumbProps={{
               links: breadcrumbLinks
