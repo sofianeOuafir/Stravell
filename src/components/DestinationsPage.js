@@ -23,6 +23,11 @@ class DestinationsPage extends React.Component {
         active: true
       }
     ];
+    const googleMapsProps={
+      showWholeWorld: true,
+      isMarkerShown: true,
+      places
+    };
     return (
       <Layout
         title={DESTINATIONS_PAGE_TITLE}
@@ -34,7 +39,7 @@ class DestinationsPage extends React.Component {
             <BreadCrumb links={breadcrumbLinks} />
           </div>
 
-          <GoogleMaps showWholeWorld isMarkerShown places={places} />
+          <GoogleMaps {...googleMapsProps} />
           <CountryList countries={countries} />
         </div>
       </Layout>

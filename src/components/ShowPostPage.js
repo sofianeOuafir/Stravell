@@ -1,6 +1,7 @@
 import React from "react";
 import MultiDecorator from "draft-js-plugins-editor/lib/Editor/MultiDecorator";
 import { EditorState, convertFromRaw, CompositeDecorator } from "draft-js";
+import { slugify } from 'underscore.string';
 
 import MyEditor, { plugins } from "./MyEditor";
 import PageHeader from "./PageHeader";
@@ -9,6 +10,7 @@ import PostAuthor from "./PostAuthor";
 import Layout from "./Layout";
 import Address from "./Address";
 import { getPost } from "../queries/post";
+import BreadCrumb from "./Breadcrumb";
 
 function getPluginDecorators() {
   let decorators = [];
@@ -27,6 +29,16 @@ export const ShowPostPage = ({ post }) => {
     convertFromRaw(JSON.parse(post.body)),
     getPluginDecorators()
   );
+  const breadcrumbLinks = [
+    { href: "/", text: "Home" },
+    {
+      href: `/post?id=${post.id}`,
+      as: `/p/show/${slugify(post.title)}/${post.id}`,
+      text: `${post.title}`,
+      active: true
+    }
+  ];
+  const postImage = <img src={`${post.image}`} alt="" className="fullwidth" />;
   return (
     <Layout title={`${post.title}`} description={post.description}>
       <PageHeader>
@@ -42,9 +54,19 @@ export const ShowPostPage = ({ post }) => {
           <span>{getDateFormat(post.createdAt)}</span>
         </div>
         {post.address && (
-          <Address address={post.address} lat={post.lat} lng={post.lng} iconClassName="ml1 mr1" />
+          <Address
+            address={post.address}
+            lat={post.lat}
+            lng={post.lng}
+            iconClassName="ml1 mr1"
+          />
         )}
       </PageHeader>
+      <div className="content-container">
+        <div className="mb1">
+          <BreadCrumb links={breadcrumbLinks} />
+        </div>
+      </div>
       {post.provideURL ? (
         <div className="relative flex align-items--center justify-content--center">
           <a
@@ -54,10 +76,10 @@ export const ShowPostPage = ({ post }) => {
           >
             Read this post on {post.userName}'s Website
           </a>
-          <img src={`${post.image}`} alt="" className="fullwidth" />
+          {postImage}
         </div>
       ) : (
-        <img src={`${post.image}`} alt="" className="fullwidth" />
+        { postImage }
       )}
       {!post.provideURL && (
         <div className="content-container">
