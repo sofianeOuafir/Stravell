@@ -38,7 +38,7 @@ export const ShowPostPage = ({ post }) => {
     },
     {
       href: `/region?regionCode=${post.regionCode}`,
-      as: `/region/${post.regionCode}`,
+      as: `/region/${slugify(post.country)}/${post.regionCode}`,
       text: post.region
     },
     {

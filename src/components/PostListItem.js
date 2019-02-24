@@ -81,6 +81,9 @@ export const PostListItem = ({
           )}
         </div>
         <p>{getDateFormat(post.createdAt)}</p>
+        <Link href={`/post?id=${post.id}`} as={`/p/show/${slugify(post.title)}/${post.id}`}>
+          <a className="hide"></a>
+        </Link>
       </div>
     </div>
   );
