@@ -3,12 +3,14 @@ import moment from "moment";
 import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import uuid from "uuid";
+import { connect } from "react-redux";
 
 import MyEditor from "./MyEditor";
 import { uploadFile } from "./../aws/s3";
 import Loading from "./Loading";
 import SearchLocationInput from "./SearchLocationInput";
-import { getLocationData } from './../places/places';
+import { getLocationData } from "./../places/places";
+import { getPlaceIdFromLatLng } from "./../lib/utils/place";
 
 import {
   formatTitle,
@@ -115,7 +117,7 @@ class PostForm extends React.Component {
     const body = editorState.getCurrentContent().getPlainText();
     this.setState(() => ({ body: editorState, bodyError: getBodyError(body) }));
   };
-  
+
   onProvidedURLChange = e => {
     const providedURL = e.target.value;
     this.setState(() => ({
@@ -146,6 +148,42 @@ class PostForm extends React.Component {
     ) {
       const address = this.state.address;
       const locationData = await getLocationData(address);
+      const { country } = locationData;
+      const { region } = locationData;
+      const { place } = locationData;
+      const { lat, lng } = place;
+      const { user } = this.props;
+      // const {
+      //   name: countryName,
+      //   code: countryCode,
+      //   bounds: {
+      //     northEastLat: countryNorthEastLat,
+      //     northEastLng: countryNorthEastLng,
+      //     southWestLat: countrySouthWestLat,
+      //     southWestLng: countrySouthWestLng
+      //   }
+      // } = countryData;
+      // const {
+      //   name: regionName,
+      //   code: regionCode,
+      //   bounds: {
+      //     northEastLat: regionNorthEastLat,
+      //     northEastLng: regionNorthEastLng,
+      //     southWestLat: regionSouthWestLat,
+      //     southWestLng: regionSouthWestLng
+      //   }
+      // } = regionData;
+      // const {
+      //   address,
+      //   lat,
+      //   lng,
+      //   bounds: {
+      //     northEastLat: placeNorthEastLat,
+      //     northEastLng: placeNorthEastLng,
+      //     southWestLat: placeSouthWestLat,
+      //     southWestLng: placeSouthWestLng
+      //   }
+      // } = placeData;
       const postData = {
         title: formatTitle(this.state.title),
         description: formatDescription(this.state.description),
@@ -155,15 +193,27 @@ class PostForm extends React.Component {
         updatedAt: this.state.updatedAt.valueOf(),
         s3FolderName: this.state.s3FolderName,
         providedURL: this.state.providedURL,
-        provideURL: this.state.provideURL
+        provideURL: this.state.provideURL,
+        country: country.name,
+        countryCode: country.code,
+        region: region.name,
+        regionCode: region.code,
+        address: place.address,
+        lat: lat,
+        lng: lng,
+        uid: user.uid,
+        userName: user.userName,
+        userPhotoURL: user.userPhotoURL,
+        placeId: getPlaceIdFromLatLng({ lat, lng })
       };
-      const { place: placeData } = locationData;
-      const { region: regionData } = locationData;
-      const { country: countryData } = locationData;
+      // const { place: placeData } = locationData;
+      // const { region: regionData } = locationData;
+
+      // const { userData } = this.props;
       if (this.props.post) {
         this.props.onSubmit({ postData, postBeforeUpdate: this.props.post });
       } else {
-        this.props.onSubmit({ postData, placeData, regionData, countryData });
+        this.props.onSubmit(postData);
       }
     } else {
       this.setState(() => ({
@@ -309,5 +359,13 @@ class PostForm extends React.Component {
   }
 }
 
+const mapStateToProps = ({ auth }) => ({
+  user: {
+    uid: auth.uid,
+    userName: auth.userName,
+    userPhotoURL: auth.userPhotoURL
+  }
+});
+
 export { PostForm };
-export default PostForm;
+export default connect(mapStateToProps)(PostForm);

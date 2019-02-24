@@ -4,7 +4,6 @@ import { withRouter } from "next/router";
 import { slugify } from "underscore.string";
 
 import PostForm from "./PostForm";
-import { startAddPost } from "../actions/posts";
 import PageHeader from "./PageHeader";
 import {
   ADD_POST_PAGE_TITLE,
@@ -12,10 +11,11 @@ import {
 } from "./../constants/constants";
 import Layout from "./Layout";
 import BreadCrumb from "./Breadcrumb";
+import { addPost } from "./../queries/post";
 
 export class AddPostPage extends React.Component {
-  onSubmit = ({ postData, regionData, placeData, countryData }) => {
-    this.props.startAddPost({ postData, regionData, placeData, countryData });
+  onSubmit = postData => {
+    addPost(postData);
     this.props.router.push(
       `/dashboard?uid=${this.props.uid}`,
       `/dashboard/${slugify(this.props.userName)}/${this.props.uid}`
@@ -81,18 +81,9 @@ AddPostPage.getInitialProps = async function({ req, reduxStore, res }) {
   }
 };
 
-const mapDispatchToProps = dispatch => ({
-  startAddPost: ({ postData, regionData, placeData, countryData }) => {
-    dispatch(startAddPost({ postData, regionData, placeData, countryData }));
-  }
-});
-
 const mapStateToProps = state => ({
   uid: state.auth.uid,
   userName: state.auth.userName
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRouter(AddPostPage));
+export default connect(mapStateToProps)(withRouter(AddPostPage));

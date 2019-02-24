@@ -13,7 +13,7 @@ const CountryListItem = ({ country, index }) => {
           containerClassName="px1 border-light-grey"
           placeName={countryName}
           countryCode={id}
-          placeNameClassName="h2 favourite-font-weight"
+          placeNameClassName="h3 favourite-font-weight"
           flagSize="45"
         />
       </a>

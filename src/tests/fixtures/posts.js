@@ -21,6 +21,7 @@ export default [
     country: 'France',
     countryCode: 'FR',
     regionCode: 'fr-provence-alpes-cote-d-azur',
-    region: "Provence-Alpes-Côte d'Azur"
+    region: "Provence-Alpes-Côte d'Azur",
+    placeId: 1122313343
   }
 ];

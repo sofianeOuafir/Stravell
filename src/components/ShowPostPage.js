@@ -32,9 +32,19 @@ export const ShowPostPage = ({ post }) => {
   const breadcrumbLinks = [
     { href: "/", text: "Home" },
     {
+      href: `/country?countryCode=${post.countryCode}`,
+      as: `/country/${post.countryCode}`,
+      text: post.country
+    },
+    {
+      href: `/region?regionCode=${post.regionCode}`,
+      as: `/region/${post.regionCode}`,
+      text: post.region
+    },
+    {
       href: `/post?id=${post.id}`,
       as: `/p/show/${slugify(post.title)}/${post.id}`,
-      text: `${post.title}`,
+      text: post.title,
       active: true
     }
   ];
