@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import Router from "next/router";
 import Link from "next/link";
 import { slugify } from "underscore.string";
 
@@ -14,45 +15,53 @@ export const PostListItem = ({
   index,
   editable
 }) => {
+  let linkProps = {
+    onClick: () => {
+      Router.push(
+        `/post?id=${post.id}`,
+        `/p/show/${slugify(post.title)}/${post.id}`
+      );
+    },
+    className: "post-list-item__link"
+  };
+
+  if (post.provideURL) {
+    linkProps.href = post.providedURL;
+    linkProps.target = "_blank";
+  }
+
   return (
     <div
       className={`post-list-item ${
         isMultipleOfThree(index + 1) ? "post-list-item--no-padding-right" : ""
       }`}
     >
-      <Link
-        as={`/p/show/${slugify(post.title)}/${post.id}`}
-        prefetch
-        href={`/post?id=${post.id}`}
-      >
-        <a className="post-list-item__link">
-          <div className="post-list-item__content-container">
-            <img
-              className="post-list-item__image"
-              src={`${post.image}`}
-              alt={`${post.image}`}
-            />
-            {post.address && (
-              <div className="post-list-item__address-container">
-                <Address
-                  address={post.address}
-                  lat={post.lat}
-                  lng={post.lng}
-                  iconClassName="post-list-item__address-icon"
-                  addressClassName="post-list-item__address"
-                />
-              </div>
-            )}
-
-            <div className="post-list-item__title-description-container">
-              <h1 className="post-list-item__title">{post.title}</h1>
-              <h2 className="post-list-item__description">
-                {post.description}
-              </h2>
+      <a {...linkProps}>
+        <div className="post-list-item__content-container">
+          <img
+            className="post-list-item__image"
+            src={`${post.image}`}
+            alt={`${post.image}`}
+          />
+          {post.address && (
+            <div className="post-list-item__address-container">
+              <Address
+                address={post.address}
+                lat={post.lat}
+                lng={post.lng}
+                iconClassName="post-list-item__address-icon"
+                addressClassName="post-list-item__address"
+              />
             </div>
+          )}
+
+          <div className="post-list-item__title-description-container">
+            <h1 className="post-list-item__title">{post.title}</h1>
+            <h2 className="post-list-item__description">{post.description}</h2>
           </div>
-        </a>
-      </Link>
+        </div>
+      </a>
+
       <div>
         <div className="post-list-item__author-edit-container">
           <PostAuthor

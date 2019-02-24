@@ -13,13 +13,14 @@ const GoogleMaps = compose(
     googleMapURL:
       "https://maps.googleapis.com/maps/api/js?key=AIzaSyBpPoHt4fnlU2_GBpUBVRG-8Bcoh1HnD_E&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `450px`, width: '100%' }} />,
+    containerElement: <div style={{ height: `450px`, width: "100%" }} />,
     mapElement: <div style={{ height: `100%` }} />
   }),
   withScriptjs,
   withGoogleMap
 )(props => {
-  const showWholeWorld = props.showWholeWorld === undefined ? false : props.showWholeWorld;
+  const showWholeWorld =
+    props.showWholeWorld === undefined ? false : props.showWholeWorld;
   let defaultZoom;
   let defaultCenter;
   if (showWholeWorld) {
@@ -46,7 +47,11 @@ const GoogleMaps = compose(
   }
 
   return (
-    <GoogleMap defaultOptions={{streetViewControl: false, mapTypeControl: false}} defaultZoom={defaultZoom} defaultCenter={defaultCenter}>
+    <GoogleMap
+      defaultOptions={{ streetViewControl: false, mapTypeControl: false }}
+      defaultZoom={defaultZoom}
+      defaultCenter={defaultCenter}
+    >
       {props.isMarkerShown &&
         props.places.map((place, index) => {
           const { lat, lng } = place;
@@ -64,12 +69,7 @@ const GoogleMaps = compose(
 
 const redirectToPlacePage = place => {
   const { id, country, regionCode, address } = place;
-  Router.push(
-    `/place?id=${id}`,
-    `/place/${slugify(
-      address
-    )}/${id}`
-  );
+  Router.push(`/place?id=${id}`, `/place/${slugify(address)}/${id}`);
 };
 
 export default GoogleMaps;

@@ -1,7 +1,7 @@
 import React from "react";
 import MultiDecorator from "draft-js-plugins-editor/lib/Editor/MultiDecorator";
 import { EditorState, convertFromRaw, CompositeDecorator } from "draft-js";
-import { slugify } from 'underscore.string';
+import { slugify } from "underscore.string";
 
 import MyEditor, { plugins } from "./MyEditor";
 import PageHeader from "./PageHeader";
@@ -79,7 +79,7 @@ export const ShowPostPage = ({ post }) => {
           {postImage}
         </div>
       ) : (
-        { postImage }
+        <div>{postImage}</div>
       )}
       {!post.provideURL && (
         <div className="content-container">
