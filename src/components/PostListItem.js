@@ -6,7 +6,6 @@ import { slugify } from "underscore.string";
 
 import { getDateFormat } from "./../lib/utils/date";
 import PostAuthor from "./PostAuthor";
-import { isMultipleOfThree } from "./../lib/utils/math";
 import Address from "./Address";
 
 export const PostListItem = ({
@@ -32,9 +31,7 @@ export const PostListItem = ({
 
   return (
     <div
-      className={`post-list-item ${
-        isMultipleOfThree(index + 1) ? "post-list-item--no-padding-right" : ""
-      }`}
+      className={`post-list-item`}
     >
       <a {...linkProps}>
         <div className="post-list-item__content-container">

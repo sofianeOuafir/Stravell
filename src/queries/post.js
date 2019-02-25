@@ -84,7 +84,6 @@ export const addPost = (postData = {}) => {
   //   }
   // } = placeData;
 
-
   // const country = {
   //   country: countryName,
   //   countryNorthEastLat,
@@ -121,25 +120,26 @@ export const addPost = (postData = {}) => {
   // let placeKey = getPlaceIdFromLatLng({ lat, lng });
   let updates = {};
   updates[`/posts/${newPostKey}`] = post;
-  updates[`/user-posts/${uid}/${newPostKey}`] = post;
-  // rethink that condition
-  if (country && countryCode) {
+
+  if (uid) {
+    updates[`/user-posts/${uid}/${newPostKey}`] = post;
+  }
+
+  if (countryCode) {
     updates[`/country-posts/${countryCode}/${newPostKey}`] = post;
     // updates[`/countries/${countryCode}`] = country;
     // updates[`/user-countries/${uid}/${countryCode}`] = country;
     // updates[`/country-places/${countryCode}/${placeKey}`] = place;
   }
 
-  // rethink that condition
-  if (region && regionCode) {
+  if (regionCode) {
     updates[`/region-posts/${regionCode}/${newPostKey}`] = post;
     // updates[`/regions/${regionCode}`] = region;
     // updates[`/country-regions/${countryCode}/${regionCode}`] = region;
     // updates[`/region-places/${regionCode}/${placeKey}`] = place;
   }
 
-  // rethink that condition
-  if (address) {
+  if (placeId) {
     // updates[`/places/${placeKey}`] = place;
     // updates[`/user-places/${uid}/${placeKey}`] = place;
     updates[`/place-posts/${placeId}/${newPostKey}`] = post;

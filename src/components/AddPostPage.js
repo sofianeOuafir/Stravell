@@ -14,8 +14,10 @@ import BreadCrumb from "./Breadcrumb";
 import { addPost } from "./../queries/post";
 
 export class AddPostPage extends React.Component {
-  onSubmit = postData => {
-    addPost(postData);
+  onSubmit = ({ postData, countryData }) => {
+    addPost(postData).then(() => {
+      return addCountry(countryData);
+    });
     this.props.router.push(
       `/dashboard?uid=${this.props.uid}`,
       `/dashboard/${slugify(this.props.userName)}/${this.props.uid}`

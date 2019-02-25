@@ -76,10 +76,7 @@ const getRegionData = ({ data, countryCode }) => {
   });
 };
 
-const getPlaceData = ({
-  data,
-  address
-}) => {
+const getPlaceData = ({ data, address }) => {
   return new Promise(async (resolve, reject) => {
     let placeData = {
       address,
@@ -108,18 +105,53 @@ const getPlaceData = ({
 };
 export const getLocationData = address => {
   return new Promise(async (resolve, reject) => {
-    let locationData = {};
-    const results = await geocodeByAddress(address);
-    const data = results[0];
-    locationData.country = await getCountryData(data);
-    locationData.region = await getRegionData({
-      data,
-      countryCode: locationData.country.code
-    });
-    locationData.place = await getPlaceData({
-      data,
-      address
-    });
+    let locationData = {
+      country: {
+        name: null,
+        code: null,
+        bounds: {
+          northEastLat: null,
+          northEastLng: null,
+          southWestLat: null,
+          southWestLng: null
+        }
+      },
+      region: {
+        name: null,
+        code: null,
+        bounds: {
+          northEastLat: null,
+          northEastLng: null,
+          southWestLat: null,
+          southWestLng: null
+        }
+      },
+      place: {
+        address,
+        lat: null,
+        lng: null,
+        bounds: {
+          northEastLat: null,
+          northEastLng: null,
+          southWestLat: null,
+          southWestLng: null
+        }
+      }
+    };
+    if (address) {
+      const results = await geocodeByAddress(address);
+      const data = results[0];
+      locationData.country = await getCountryData(data);
+      locationData.region = await getRegionData({
+        data,
+        countryCode: locationData.country.code
+      });
+      locationData.place = await getPlaceData({
+        data,
+        address
+      });
+    }
+
     resolve(locationData);
   });
 };

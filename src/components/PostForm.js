@@ -149,10 +149,26 @@ class PostForm extends React.Component {
       const address = this.state.address;
       const locationData = await getLocationData(address);
       const { country } = locationData;
+      const {
+        name: countryName,
+        code: countryCode,
+        countryNorthEastLat,
+        countryNorthEastLng,
+        countrySouthWestLat,
+        countrySouthWestLng
+      } = country;
       const { region } = locationData;
+      const { name: regionName, code: regionCode } = region;
       const { place } = locationData;
       const { lat, lng } = place;
       const { user } = this.props;
+      const { uid = null, userName = null, userPhotoURL = null } = user;
+
+      const countryData = {
+        countryCode,
+        country,
+        
+      }
       // const {
       //   name: countryName,
       //   code: countryCode,
@@ -194,16 +210,16 @@ class PostForm extends React.Component {
         s3FolderName: this.state.s3FolderName,
         providedURL: this.state.providedURL,
         provideURL: this.state.provideURL,
-        country: country.name,
-        countryCode: country.code,
-        region: region.name,
-        regionCode: region.code,
-        address: place.address,
-        lat: lat,
-        lng: lng,
-        uid: user.uid,
-        userName: user.userName,
-        userPhotoURL: user.userPhotoURL,
+        country: countryName,
+        countryCode,
+        region: regionName,
+        regionCode: regionCode,
+        address,
+        lat,
+        lng,
+        uid,
+        userName,
+        userPhotoURL,
         placeId: getPlaceIdFromLatLng({ lat, lng })
       };
       // const { place: placeData } = locationData;
