@@ -22,6 +22,7 @@ import {
   getProvidedURLError
 } from "./../lib/utils/post";
 import Checkbox from "./Checkbox";
+import { RSA_SSLV23_PADDING } from "constants";
 
 class PostForm extends React.Component {
   constructor(props) {
@@ -53,7 +54,8 @@ class PostForm extends React.Component {
       imageError: "",
       bodyError: "",
       providedURLError: "",
-      imageUploading: false
+      imageUploading: false,
+      submitting: false
     };
   }
 
@@ -130,116 +132,151 @@ class PostForm extends React.Component {
     this.setState(() => ({ provideURL }));
   };
 
-  onSubmit = async e => {
+  onSubmit = e => {
     e.preventDefault();
-    let errors = {
-      title: getTitleError(this.state.title),
-      description: getDescriptionError(this.state.description),
-      image: getImageError(this.state.image),
-      body: getBodyError(this.state.body.getCurrentContent().getPlainText()),
-      providedURL: getProvidedURLError(this.state.providedURL)
-    };
-    if (
-      errors.title === "" &&
-      errors.description === "" &&
-      errors.image === "" &&
-      (this.state.provideURL || errors.body === "") &&
-      (!this.state.provideURL || errors.providedURL === "")
-    ) {
-      const address = this.state.address;
-      const locationData = await getLocationData(address);
-      const { country } = locationData;
-      const {
-        name: countryName,
-        code: countryCode,
-        countryNorthEastLat,
-        countryNorthEastLng,
-        countrySouthWestLat,
-        countrySouthWestLng
-      } = country;
-      const { region } = locationData;
-      const { name: regionName, code: regionCode } = region;
-      const { place } = locationData;
-      const { lat, lng } = place;
-      const { user } = this.props;
-      const { uid = null, userName = null, userPhotoURL = null } = user;
+    this.setState(
+      () => ({ submitting: true }),
+      async () => {
+        let errors = {
+          title: getTitleError(this.state.title),
+          description: getDescriptionError(this.state.description),
+          image: getImageError(this.state.image),
+          body: getBodyError(
+            this.state.body.getCurrentContent().getPlainText()
+          ),
+          providedURL: getProvidedURLError(this.state.providedURL)
+        };
+        if (
+          errors.title === "" &&
+          errors.description === "" &&
+          errors.image === "" &&
+          (this.state.provideURL || errors.body === "") &&
+          (!this.state.provideURL || errors.providedURL === "")
+        ) {
+          const address = this.state.address;
+          const locationData = await getLocationData(address);
+          const { country } = locationData;
+          const {
+            name: countryName,
+            code: countryCode,
+            bounds: {
+              northEastLat: countryNorthEastLat,
+              northEastLng: countryNorthEastLng,
+              southWestLat: countrySouthWestLat,
+              southWestLng: countrySouthWestLng
+            }
+          } = country;
+          const { region } = locationData;
+          const {
+            name: regionName,
+            code: regionCode,
+            bounds: {
+              northEastLat: regionNorthEastLat,
+              northEastLng: regionNorthEastLng,
+              southWestLat: regionSouthWestLat,
+              southWestLng: regionSouthWestLng
+            }
+          } = region;
+          const { place } = locationData;
+          const {
+            lat,
+            lng,
+            bounds: {
+              northEastLat: placeNorthEastLat,
+              northEastLng: placeNorthEastLng,
+              southWestLat: placeSouthWestLat,
+              southWestLng: placeSouthWestLng
+            }
+          } = place;
+          const placeId = getPlaceIdFromLatLng({ lat, lng });
+          const { user } = this.props;
+          const { uid = null, userName = null, userPhotoURL = null } = user;
 
-      const countryData = {
-        countryCode,
-        country,
-        
-      }
-      // const {
-      //   name: countryName,
-      //   code: countryCode,
-      //   bounds: {
-      //     northEastLat: countryNorthEastLat,
-      //     northEastLng: countryNorthEastLng,
-      //     southWestLat: countrySouthWestLat,
-      //     southWestLng: countrySouthWestLng
-      //   }
-      // } = countryData;
-      // const {
-      //   name: regionName,
-      //   code: regionCode,
-      //   bounds: {
-      //     northEastLat: regionNorthEastLat,
-      //     northEastLng: regionNorthEastLng,
-      //     southWestLat: regionSouthWestLat,
-      //     southWestLng: regionSouthWestLng
-      //   }
-      // } = regionData;
-      // const {
-      //   address,
-      //   lat,
-      //   lng,
-      //   bounds: {
-      //     northEastLat: placeNorthEastLat,
-      //     northEastLng: placeNorthEastLng,
-      //     southWestLat: placeSouthWestLat,
-      //     southWestLng: placeSouthWestLng
-      //   }
-      // } = placeData;
-      const postData = {
-        title: formatTitle(this.state.title),
-        description: formatDescription(this.state.description),
-        image: this.state.image,
-        body: JSON.stringify(convertToRaw(this.state.body.getCurrentContent())),
-        createdAt: this.state.createdAt.valueOf(),
-        updatedAt: this.state.updatedAt.valueOf(),
-        s3FolderName: this.state.s3FolderName,
-        providedURL: this.state.providedURL,
-        provideURL: this.state.provideURL,
-        country: countryName,
-        countryCode,
-        region: regionName,
-        regionCode: regionCode,
-        address,
-        lat,
-        lng,
-        uid,
-        userName,
-        userPhotoURL,
-        placeId: getPlaceIdFromLatLng({ lat, lng })
-      };
-      // const { place: placeData } = locationData;
-      // const { region: regionData } = locationData;
+          const countryData = {
+            countryCode,
+            country: countryName,
+            countryNorthEastLat,
+            countryNorthEastLng,
+            countrySouthWestLat,
+            countrySouthWestLng
+          };
 
-      // const { userData } = this.props;
-      if (this.props.post) {
-        this.props.onSubmit({ postData, postBeforeUpdate: this.props.post });
-      } else {
-        this.props.onSubmit(postData);
+          const regionData = {
+            regionCode,
+            region: regionName,
+            regionNorthEastLat,
+            regionNorthEastLng,
+            regionSouthWestLat,
+            regionSouthWestLng
+          };
+
+          const placeData = {
+            placeId,
+            address,
+            lat,
+            lng,
+            placeNorthEastLat,
+            placeNorthEastLng,
+            placeSouthWestLat,
+            placeSouthWestLng
+          };
+
+          const userData = {
+            uid,
+            userName,
+            userPhotoURL
+          };
+
+          const postData = {
+            title: formatTitle(this.state.title),
+            description: formatDescription(this.state.description),
+            image: this.state.image,
+            body: JSON.stringify(
+              convertToRaw(this.state.body.getCurrentContent())
+            ),
+            createdAt: this.state.createdAt.valueOf(),
+            updatedAt: this.state.updatedAt.valueOf(),
+            s3FolderName: this.state.s3FolderName,
+            providedURL: this.state.providedURL,
+            provideURL: this.state.provideURL,
+            country: countryName,
+            countryCode,
+            region: regionName,
+            regionCode: regionCode,
+            address,
+            lat,
+            lng,
+            uid,
+            userName,
+            userPhotoURL,
+            placeId
+          };
+          if (this.props.post) {
+            this.props.onSubmit({
+              postData,
+              postBeforeUpdate: this.props.post
+            });
+          } else {
+            this.props.onSubmit({
+              postData,
+              countryData,
+              userData,
+              placeData,
+              regionData
+            });
+          }
+        } else {
+          this.setState(() => ({
+            submitting: false,
+            titleError: errors.title,
+            descriptionError: errors.description,
+            imageError: errors.image,
+            bodyError: errors.body,
+            providedURLError: errors.providedURL
+          }));
+        }
       }
-    } else {
-      this.setState(() => ({
-        titleError: errors.title,
-        descriptionError: errors.description,
-        imageError: errors.image,
-        bodyError: errors.body,
-        providedURLError: errors.providedURL
-      }));
-    }
+    );
   };
 
   getValidationIcon = error => {
@@ -368,7 +405,13 @@ class PostForm extends React.Component {
         )}
 
         <div>
-          <button className="button">Save Post</button>
+          <button disabled={this.state.submitting} className="button">
+            {this.state.submitting ? (
+              <span>...Saving Post</span>
+            ) : (
+              <span> Save Post</span>
+            )}
+          </button>
         </div>
       </form>
     );

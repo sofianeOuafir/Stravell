@@ -7,7 +7,7 @@ const CountryListItem = ({ country, index }) => {
   const { id, country: countryName } = country;
   return (
     <Link as={`/country/${id}`} href={`/country?countryCode=${id}`}>
-      <a className={`country-list-item py2 no-text-decoration text-dark-grey`}>
+      <a className={`country-list-item py2 no-text-decoration text-dark-grey pr1`}>
         <Place
           containerClassName="px1 border-light-grey"
           placeName={countryName}

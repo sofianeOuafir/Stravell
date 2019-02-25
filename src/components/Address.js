@@ -12,12 +12,12 @@ const Address = ({ iconClassName, addressClassName, address, lat, lng }) => {
       href={`/place?id=${placeId}`}
       as={`/place/${slugify(address)}/${placeId}`}
     >
-      <div className="flex align-items--center">
+      <a className="flex align-items--center">
         <MdMyLocation className={iconClassName ? iconClassName : ""} />
         <span className={addressClassName ? addressClassName : ""}>
           {address}
         </span>
-      </div>
+      </a>
     </Link>
   );
 };

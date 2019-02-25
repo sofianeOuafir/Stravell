@@ -51,73 +51,10 @@ export const addPost = (postData = {}) => {
     userPhotoURL,
     placeId
   };
-  // const {
-  //   name: countryName,
-  //   code: countryCode,
-  //   bounds: {
-  //     northEastLat: countryNorthEastLat,
-  //     northEastLng: countryNorthEastLng,
-  //     southWestLat: countrySouthWestLat,
-  //     southWestLng: countrySouthWestLng
-  //   }
-  // } = countryData;
-  // const {
-  //   name: regionName,
-  //   code: regionCode,
-  //   bounds: {
-  //     northEastLat: regionNorthEastLat,
-  //     northEastLng: regionNorthEastLng,
-  //     southWestLat: regionSouthWestLat,
-  //     southWestLng: regionSouthWestLng
-  //   }
-  // } = regionData;
-
-  // const {
-  //   address,
-  //   lat,
-  //   lng,
-  //   bounds: {
-  //     northEastLat: placeNorthEastLat,
-  //     northEastLng: placeNorthEastLng,
-  //     southWestLat: placeSouthWestLat,
-  //     southWestLng: placeSouthWestLng
-  //   }
-  // } = placeData;
-
-  // const country = {
-  //   country: countryName,
-  //   countryNorthEastLat,
-  //   countryNorthEastLng,
-  //   countrySouthWestLat,
-  //   countrySouthWestLng
-  // };
-  // const region = {
-  //   region: regionName,
-  //   regionNorthEastLat,
-  //   regionNorthEastLng,
-  //   regionSouthWestLat,
-  //   regionSouthWestLng,
-  //   country: countryName,
-  //   countryCode
-  // };
-  // const place = {
-  //   address,
-  //   lat,
-  //   lng,
-  //   placeNorthEastLat,
-  //   placeNorthEastLng,
-  //   placeSouthWestLat,
-  //   placeSouthWestLng,
-  //   region: regionName,
-  //   regionCode,
-  //   country: countryName,
-  //   countryCode
-  // };
   const newPostKey = database
     .ref()
     .child("posts")
     .push().key;
-  // let placeKey = getPlaceIdFromLatLng({ lat, lng });
   let updates = {};
   updates[`/posts/${newPostKey}`] = post;
 
@@ -127,21 +64,13 @@ export const addPost = (postData = {}) => {
 
   if (countryCode) {
     updates[`/country-posts/${countryCode}/${newPostKey}`] = post;
-    // updates[`/countries/${countryCode}`] = country;
-    // updates[`/user-countries/${uid}/${countryCode}`] = country;
-    // updates[`/country-places/${countryCode}/${placeKey}`] = place;
   }
 
   if (regionCode) {
     updates[`/region-posts/${regionCode}/${newPostKey}`] = post;
-    // updates[`/regions/${regionCode}`] = region;
-    // updates[`/country-regions/${countryCode}/${regionCode}`] = region;
-    // updates[`/region-places/${regionCode}/${placeKey}`] = place;
   }
 
   if (placeId) {
-    // updates[`/places/${placeKey}`] = place;
-    // updates[`/user-places/${uid}/${placeKey}`] = place;
     updates[`/place-posts/${placeId}/${newPostKey}`] = post;
   }
 

@@ -30,34 +30,32 @@ export const PostListItem = ({
   }
 
   return (
-    <div
-      className={`post-list-item`}
-    >
-      <a {...linkProps}>
-        <div className="post-list-item__content-container">
+    <div className={`post-list-item`}>
+      <div className="post-list-item__content-container">
+        <a {...linkProps}>
           <img
             className="post-list-item__image"
             src={`${post.image}`}
             alt={`${post.image}`}
           />
-          {post.address && (
-            <div className="post-list-item__address-container">
-              <Address
-                address={post.address}
-                lat={post.lat}
-                lng={post.lng}
-                iconClassName="post-list-item__address-icon"
-                addressClassName="post-list-item__address"
-              />
-            </div>
-          )}
 
           <div className="post-list-item__title-description-container">
             <h1 className="post-list-item__title">{post.title}</h1>
             <h2 className="post-list-item__description">{post.description}</h2>
           </div>
-        </div>
-      </a>
+        </a>
+        {post.address && (
+          <div className="post-list-item__address-container">
+            <Address
+              address={post.address}
+              lat={post.lat}
+              lng={post.lng}
+              iconClassName="post-list-item__address-icon"
+              addressClassName="post-list-item__address"
+            />
+          </div>
+        )}
+      </div>
 
       <div>
         <div className="post-list-item__author-edit-container">
@@ -78,8 +76,11 @@ export const PostListItem = ({
           )}
         </div>
         <p>{getDateFormat(post.createdAt)}</p>
-        <Link href={`/post?id=${post.id}`} as={`/p/show/${slugify(post.title)}/${post.id}`}>
-          <a className="hide"></a>
+        <Link
+          href={`/post?id=${post.id}`}
+          as={`/p/show/${slugify(post.title)}/${post.id}`}
+        >
+          <a className="hide" />
         </Link>
       </div>
     </div>

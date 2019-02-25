@@ -68,7 +68,8 @@ export const ShowPostPage = ({ post }) => {
             address={post.address}
             lat={post.lat}
             lng={post.lng}
-            iconClassName="ml1 mr1"
+            iconClassName="ml1 mr1 text-dark-grey"
+            addressClassName="text-dark-grey"
           />
         )}
       </PageHeader>
