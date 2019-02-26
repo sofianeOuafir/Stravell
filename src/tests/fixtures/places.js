@@ -1,6 +1,6 @@
 export default [
   {
-    id: "435528477017369000000031",
+    placeId: "435528477017369000000031",
     address: "Cannes, France",
     country: "France",
     countryCode: "FR",

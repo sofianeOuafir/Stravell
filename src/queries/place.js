@@ -16,7 +16,7 @@ export const addPlace = ({ countryData, placeData, regionData, userData }) => {
     placeSouthWestLng
   } = placeData;
 
-  const { countryCode, country  } = countryData;
+  const { countryCode, country } = countryData;
   const { regionCode, region } = regionData;
   const { uid } = userData;
 
@@ -30,43 +30,52 @@ export const addPlace = ({ countryData, placeData, regionData, userData }) => {
     placeSouthWestLng,
     region,
     regionCode,
-    country, 
+    country,
     countryCode
   };
 
   let updates = {};
-  updates[`/country-places/${countryCode}/${placeId}`] = place;
-  updates[`/region-places/${regionCode}/${placeId}`] = place;
-  updates[`/places/${placeId}`] = place;
-  updates[`/user-places/${uid}/${placeId}`] = place;
+  if (placeId) {
+    updates[`/places/${placeId}`] = place;
+    if (countryCode) {
+      updates[`/country-places/${countryCode}/${placeId}`] = place;
+    }
+    if (regionCode) {
+      updates[`/region-places/${regionCode}/${placeId}`] = place;
+    }
+    if (uid) {
+      updates[`/user-places/${uid}/${placeId}`] = place;
+    }
+  }
+
   return database
-  .ref()
-  .update(updates)
-  .catch(e => console.log(e));
-}
+    .ref()
+    .update(updates)
+    .catch(e => console.log(e));
+};
 
 export const getAllPlaces = async () => {
-  const ref = 'places';
+  const ref = "places";
   const places = await getPlaces(ref);
-  return places
+  return places;
 };
 
-export const getCountryPlaces = async (countryCode) => {
+export const getCountryPlaces = async countryCode => {
   const ref = `country-places/${countryCode}`;
   const places = await getPlaces(ref);
-  return places
+  return places;
 };
 
-export const getRegionPlaces = async (regionCode) => {
+export const getRegionPlaces = async regionCode => {
   const ref = `region-places/${regionCode}`;
   const places = await getPlaces(ref);
-  return places
+  return places;
 };
 
-export const getUserPlaces = async (uid) => {
+export const getUserPlaces = async uid => {
   const ref = `user-places/${uid}`;
   const places = await getPlaces(ref);
-  return places
+  return places;
 };
 
 const getPlaces = async ref => {

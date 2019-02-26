@@ -27,8 +27,12 @@ export const addRegion = ({ regionData, countryData }) => {
 
   let updates = {};
 
-  updates[`/regions/${regionCode}`] = region;
-  updates[`/country-regions/${countryCode}/${regionCode}`] = region;
+  if (regionCode) {
+    updates[`/regions/${regionCode}`] = region;
+    if (countryCode) {
+      updates[`/country-regions/${countryCode}/${regionCode}`] = region;
+    }
+  }
 
   return database
     .ref()

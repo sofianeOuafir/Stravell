@@ -253,8 +253,7 @@ class PostForm extends React.Component {
           };
           if (this.props.post) {
             this.props.onSubmit({
-              postData,
-              postBeforeUpdate: this.props.post
+              postData
             });
           } else {
             this.props.onSubmit({

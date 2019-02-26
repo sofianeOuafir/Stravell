@@ -18,7 +18,22 @@ export class EditPostPage extends React.Component {
     super(props);
   }
 
-  onSubmit = ({ post, postBeforeUpdate }) => {
+  onSubmit = ({ postData }) => {
+    const postBeforeUpdate = this.props.post;
+    if(postData.countryCode !== postBeforeUpdate.countryCode){
+      // addOrUpdatePost({ postId, postData })
+      data[`posts/${postBeforeUpdate.id}/countryCode`] = postData.countryCode;
+      if(postBeforeUpdate.countryCode){
+        // removeCountryPost({ countryCode, postId })
+        data[`country-posts/${postBeforeUpdate.countryCode}/${postBeforeUpdate.id}`] = null;
+      }
+
+      if(postData.countryCode) {
+        // addOrUpdate countryPost({ countryCode, postId, postData })
+        data[`country-posts/${postData.countryCode}/${postBeforeUpdate.id}`] = postData;
+      }
+    }
+
     this.props.startEditPost({
       id: this.props.post.id,
       updates: post,
