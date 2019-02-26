@@ -1,21 +1,18 @@
 import React from "react";
-import Link from "next/link";
 import { slugify } from "underscore.string";
 
 import Layout from "./Layout";
 import FilterableDataList from "./FilterableDataList";
 import PageHeader from "./PageHeader";
-import { getCountryPosts } from "../queries/post";
-import { getCountryPlaces } from "../queries/place";
 import { getCountry } from "../queries/country";
 import { getCountryRegions } from "../queries/region";
+import { getCountryPlaces } from "../queries/place";
 import Place from "./Place";
-import PostList from "./PostList";
+import RegionList from "./RegionList";
 
-class CountryPage extends React.Component {
+class RegionsPage extends React.Component {
   render() {
-    const { posts, country, places, regions } = this.props;
-    let regionsLink = {};
+    const { country, regions, places } = this.props;
     const {
       country: countryName,
       countryNorthEastLat,
@@ -24,36 +21,25 @@ class CountryPage extends React.Component {
       countrySouthWestLng,
       id
     } = country;
-    const googleMapsProps = {
-      isMarkerShown: true,
-      places,
-      northEastLat: countryNorthEastLat,
-      northEastLng: countryNorthEastLng,
-      southWestLat: countrySouthWestLat,
-      southWestLng: countrySouthWestLng
-    };
-    if (regions.length > 0) {
-      regionsLink = {
-        href: `/regions?countryCode=${id}`,
-        as: `/${slugify(countryName)}/${id}/regions`,
-        text: "Search By State/Region"
-      };
-    }
     const breadcrumbLinks = [
       { href: "/", text: "Home" },
       { href: "/destinations", text: "Destinations" },
       {
         href: `/country?countryCode=${id}`,
         as: `/country/${id}`,
-        text: countryName,
+        text: countryName
+      },
+      {
+        href: `/regions?countryCode=${id}`,
+        as: `/${slugify(countryName)}/${id}/regions`,
+        text: 'Search By State/Region',
         active: true
       },
-      regionsLink
     ];
     return (
       <Layout
-        title={`Stravell | ${countryName}`}
-        description={`Travel articles about ${countryName}`}
+        title={`Stravell | Regions of ${countryName}`}
+        description={`Regions of ${countryName}`}
       >
         <PageHeader>
           <Place
@@ -65,10 +51,17 @@ class CountryPage extends React.Component {
         </PageHeader>
         <div className="content-container">
           <FilterableDataList
-            DataList={PostList}
-            data={posts}
-            noDataText={`There is no post about ${countryName} yet.`}
-            googleMapsProps={googleMapsProps}
+            DataList={RegionList}
+            data={regions}
+            noDataText={`There is no region for ${countryName} yet.`}
+            googleMapsProps={{
+              isMarkerShown: true,
+              places,
+              northEastLat: countryNorthEastLat,
+              northEastLng: countryNorthEastLng,
+              southWestLat: countrySouthWestLat,
+              southWestLng: countrySouthWestLng
+            }}
             breadCrumbProps={{
               links: breadcrumbLinks
             }}
@@ -79,13 +72,12 @@ class CountryPage extends React.Component {
   }
 }
 
-CountryPage.getInitialProps = async function({ query }) {
+RegionsPage.getInitialProps = async function({ query }) {
   const { countryCode } = query;
   const country = await getCountry(countryCode);
-  const posts = await getCountryPosts(countryCode);
-  const places = await getCountryPlaces(countryCode);
   const regions = await getCountryRegions(countryCode);
-  return { posts, country, places, regions };
+  const places = await getCountryPlaces(countryCode);
+  return { country, regions, places };
 };
 
-export default CountryPage;
+export default RegionsPage;

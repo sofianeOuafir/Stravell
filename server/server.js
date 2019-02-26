@@ -124,6 +124,12 @@ app.prepare().then(() => {
     app.render(req, res, actualPage, queryParams)
   })
 
+  server.get('/:country/:countryCode/regions', (req, res) => {
+    const actualPage = '/regions'
+    const queryParams = { countryCode: req.params.countryCode } 
+    app.render(req, res, actualPage, queryParams)
+  })
+
   server.get('/country/:countryCode', (req, res) => {
     const actualPage = '/country'
     const queryParams = { countryCode: req.params.countryCode } 
