@@ -7,7 +7,7 @@ import PageHeader from "./PageHeader";
 import { getPlacePosts } from "../queries/post";
 import { getPlace } from "../queries/place";
 import Place from "./Place";
-import { getRegionPlaces } from "../queries/place";
+import { getRegionPlaces, getCountryPlaces } from "../queries/place";
 import PostList from "./PostList";
 
 class PlacePage extends React.Component {
@@ -85,7 +85,14 @@ PlacePage.getInitialProps = async function({ query }) {
   const { id } = query;
   const place = await getPlace(id);
   const posts = await getPlacePosts(id);
-  const places = await getRegionPlaces(place.regionCode);
+  let places;
+  if(place.regionCode){
+    places = await getRegionPlaces(place.regionCode);
+  } else {
+    places = await getCountryPlaces(place.countryCode);
+  }
+  
+
   return { place, posts, places };
 };
 
