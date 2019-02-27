@@ -4,42 +4,6 @@ import {
   fromSnapShotToArray
 } from "./../lib/utils/snapshot";
 
-export const addRegion = ({ regionData, countryData }) => {
-  const { countryCode, country: countryName } = countryData;
-  const {
-    regionCode,
-    region: regionName,
-    regionNorthEastLat,
-    regionNorthEastLng,
-    regionSouthWestLat,
-    regionSouthWestLng
-  } = regionData;
-
-  const region = {
-    region: regionName,
-    regionNorthEastLat,
-    regionNorthEastLng,
-    regionSouthWestLat,
-    regionSouthWestLng,
-    countryCode,
-    country: countryName
-  };
-
-  let updates = {};
-
-  if (regionCode) {
-    updates[`/regions/${regionCode}`] = region;
-    if (countryCode) {
-      updates[`/country-regions/${countryCode}/${regionCode}`] = region;
-    }
-  }
-
-  return database
-    .ref()
-    .update(updates)
-    .catch(e => console.log(e));
-};
-
 export const getRegion = async regionCode => {
   const regionSnapshot = await database
     .ref(`/regions/${regionCode}`)

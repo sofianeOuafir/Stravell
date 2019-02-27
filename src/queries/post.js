@@ -179,69 +179,6 @@ export const addPost = ({ post, country, user, place, region }) => {
     .catch(e => console.log(e));
 };
 
-export const editPost = ({
-  postBeforeUpdate,
-  post,
-  country,
-  user,
-  place,
-  region
-}) => {
-  const { uid } = user;
-  const { countryCode, ...countryData } = country;
-  const { regionCode, ...regionData } = region;
-  const { placeId, ...placeData } = place;
-
-  console.log(postBeforeUpdate, post, country, user, place, region);
-
-  // const newPostKey = database
-  //   .ref()
-  //   .child("posts")
-  //   .push().key;
-  // let updates = {};
-  // updates[`/posts/${newPostKey}`] = post;
-
-  // if (uid) {
-  //   updates[`/user-posts/${uid}/${newPostKey}`] = post;
-  // }
-
-  // if (countryCode) {
-  //   updates[`/countries/${countryCode}`] = countryData;
-  //   updates[`/country-posts/${countryCode}/${newPostKey}`] = post;
-  //   if (uid) {
-  //     updates[`/user-countries/${uid}/${countryCode}`] = countryData;
-  //   }
-  // }
-
-  // if (regionCode) {
-  //   updates[`/region-posts/${regionCode}/${newPostKey}`] = post;
-  // }
-
-  // if (placeId) {
-  //   updates[`/places/${placeId}`] = placeData;
-  //   updates[`/place-posts/${placeId}/${newPostKey}`] = post;
-  //   if (countryCode) {
-  //     updates[`/country-places/${countryCode}/${placeId}`] = placeData;
-  //   }
-
-  //   if (regionCode) {
-  //     updates[`/region-places/${regionCode}/${placeId}`] = placeData;
-  //     updates[`/regions/${regionCode}`] = regionData;
-  //     if (countryCode) {
-  //       updates[`/country-regions/${countryCode}/${regionCode}`] = regionData;
-  //     }
-  //   }
-  //   if (uid) {
-  //     updates[`/user-places/${uid}/${placeId}`] = placeData;
-  //   }
-  // }
-
-  return database
-    .ref()
-    .update(updates)
-    .catch(e => console.log(e));
-};
-
 export const getPost = async id => {
   const snapshot = await database.ref(`posts/${id}`).once("value");
   return fromSnapShotToObject(snapshot);

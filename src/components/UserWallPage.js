@@ -10,8 +10,8 @@ import { getUserPlaces } from "./../queries/place";
 import PostList from "./PostList";
 export class UserWallPage extends React.Component {
   render() {
-    const { posts, places } = this.props;
-    const { userName, id } = this.props.user;
+    const { posts, places, user } = this.props;
+    const { userName, id } = user;
     const googleMapsProps = {
       isMarkerShown: true,
       places,
