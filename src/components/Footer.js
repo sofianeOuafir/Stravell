@@ -18,13 +18,6 @@ const Footer = props => (
             {APP_NAME}, Inc.
           </a>
         </Link>
-        <a
-          className="text-white no-text-decoration favourite-font-weight"
-          target="_blank"
-          href="https://www.linkedin.com/in/souphian-ouafir-0656388a/"
-        >
-          Founded and designed by Sofiane Ouafir.
-        </a>
       </div>
 
       <div className="flex align-items--center">
