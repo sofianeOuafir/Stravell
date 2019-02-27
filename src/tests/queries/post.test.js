@@ -214,7 +214,9 @@ describe("addPost", () => {
       test("should NOT persist a post at /place-posts/:placeId/:postId", done => {
         addPost(post)
           .then(() => {
-            return database.ref(`/place-posts/${posts[0].placeId}`).once("value");
+            return database
+              .ref(`/place-posts/${posts[0].placeId}`)
+              .once("value");
           })
           .then(snapshot => {
             let posts = fromSnapShotToArray(snapshot);
@@ -526,4 +528,134 @@ describe("addPost", () => {
         done();
       });
   });
+});
+
+describe("editPost", () => {
+  describe("countryCode", () => {
+    describe("was not null before update", () => {
+      describe("has not changed", () => {
+        test("should edit post at /post/:id", () => {});
+        test("should edit post at /country-posts/:countryCode/:id", () => {});
+        test("should edit post at /user-posts/:id when uid is not null", () => {});
+        test("should not edit post at /user-posts/:id when uid is null", () => {});
+        test("should edit post at /region-posts/:id when regionCode is not null", () => {});
+        test("should not edit post at /region-posts/:id when regionCode is null", () => {});
+        test("should edit post at /place-posts/:id when placeId is not null", () => {});
+        test("should not edit post at /place-posts/:id when placeId is null", () => {});
+      });
+      describe("has changed", () => {
+        describe("and is not null", () => {
+          test("should edit post at /post/:id", () => {});
+          test("should edit post at /country-posts/:countryCode/:id", () => {});
+          test("should edit post at /user-posts/:id when uid is not null", () => {});
+          test("should not edit post at /user-posts/:id when uid is null", () => {});
+          test("should edit post at /region-posts/:id when regionCode is not null", () => {});
+          test("should not edit post at /region-posts/:id when regionCode is null", () => {});
+          test("should edit post at /place-posts/:id when placeId is not null", () => {});
+          test("should not edit post at /place-posts/:id when placeId is null", () => {});
+          test("should add post at /country-posts/:newCountryCode/:id", () => {});
+          test("should remove post at /country-posts/:formerCountryCode/:id", () => {});
+          test("should add new country at countries/:newCountryCode", () => {});
+          test("should remove the former country at countries/:formerCountryCode if not another article talk about this country", () => {});
+          test("should add the new country at user-countries/:uid/:newCountryCode", () => {});
+          test("should remove the former country at user-countries/:uid/:formerCountry if not another article belonging to that same user talk about the former country", () => {});
+        });
+        describe("and is null", () => {
+          test("should edit post at /post/:id", () => {});
+          test("should edit post at /user-posts/:id when uid is not null", () => {});
+          test("should not edit post at /user-posts/:id when uid is null", () => {});
+          test("should edit post at /region-posts/:id when regionCode is not null", () => {});
+          test("should not edit post at /region-posts/:id when regionCode is null", () => {});
+          test("should edit post at /place-posts/:id when placeId is not null", () => {});
+          test("should not edit post at /place-posts/:id when placeId is null", () => {});
+          test("should not add new country at countries/:newCountryCode", () => {});
+          test("should not add new country at user-countries/:uid/:newCountryCode", () => {});
+          test("should not add post at /country-posts/:newCountryCode/:id", () => {});
+          test("should remove the former country at countries/:formerCountryCode if not another article talk about this country", () => {});
+          test("should remove the former country at user-countries/:uid/:formerCountryCode if not another article belonging to that same user talk about the former country", () => {});
+          test("should remove the post at /country-posts/:formerCountryCode/:id", () => {});
+        });
+      });
+    });
+
+    describe("was null before update", () => {
+      describe("countryCode has changed", () => {
+        test("should edit post at /post/:id", () => {});
+        test("should edit post at /country-posts/:countryCode/:id", () => {});
+        test("should edit post at /user-posts/:id when uid is not null", () => {});
+        test("should not edit post at /user-posts/:id when uid is null", () => {});
+        test("should edit post at /region-posts/:id when regionCode is not null", () => {});
+        test("should not edit post at /region-posts/:id when regionCode is null", () => {});
+        test("should edit post at /place-posts/:id when placeId is not null", () => {});
+        test("should not edit post at /place-posts/:id when placeId is null", () => {});
+        test("should add the post at /country-posts/:newCountryCode/:id", () => {});
+        test("should add the new country at countries/:newCountryCode", () => {});
+        test("should add the new country at user-countries/:uid/:newCountryCode", () => {});
+      });
+    });
+  });
+  describe("regionCode", () => {
+    describe("was not null before update", () => {
+      describe("has not changed", () => {
+        test("should edit post at /post/:id", () => {});
+        test("should edit post at /country-posts/:countryCode/:id", () => {});
+        test("should edit post at /user-posts/:id when uid is not null", () => {});
+        test("should not edit post at /user-posts/:id when uid is null", () => {});
+        test("should edit post at /region-posts/:id when regionCode is not null", () => {});
+        test("should not edit post at /region-posts/:id when regionCode is null", () => {});
+        test("should edit post at /place-posts/:id when placeId is not null", () => {});
+        test("should not edit post at /place-posts/:id when placeId is null", () => {});
+      });
+      describe("has changed", () => {
+        describe("and is not null", () => {
+          test("should edit post at /post/:id", () => {});
+          test("should edit post at /country-posts/:countryCode/:id when countryCode is not null", () => {});
+          test("should not edit post at /country-posts/:countryCode/:id when countryCode is null", () => {});
+          test("should edit post at /user-posts/:id when uid is not null", () => {});
+          test("should not edit post at /user-posts/:id when uid is null", () => {});
+          test("should edit post at /region-posts/:id when regionCode", () => {});
+          test("should edit post at /place-posts/:id when placeId is not null", () => {});
+          test("should not edit post at /place-posts/:id when placeId is null", () => {});
+          test("should add post at /country-posts/:newCountryCode/:id", () => {});
+          test("should remove post at /country-posts/:formerCountryCode/:id", () => {});
+          test("should add new country at countries/:newCountryCode", () => {});
+          test("should remove the former country at countries/:formerCountryCode if not another article talk about this country", () => {});
+          test("should add the new country at user-countries/:uid/:newCountryCode", () => {});
+          test("should remove the former country at user-countries/:uid/:formerCountry if not another article belonging to that same user talk about the former country", () => {});
+        });
+        describe("and is null", () => {
+          test("should edit post at /post/:id", () => {});
+          test("should edit post at /user-posts/:id when uid is not null", () => {});
+          test("should not edit post at /user-posts/:id when uid is null", () => {});
+          test("should edit post at /region-posts/:id when regionCode is not null", () => {});
+          test("should not edit post at /region-posts/:id when regionCode is null", () => {});
+          test("should edit post at /place-posts/:id when placeId is not null", () => {});
+          test("should not edit post at /place-posts/:id when placeId is null", () => {});
+          test("should not add new country at countries/:newCountryCode", () => {});
+          test("should not add new country at user-countries/:uid/:newCountryCode", () => {});
+          test("should not add post at /country-posts/:newCountryCode/:id", () => {});
+          test("should remove the former country at countries/:formerCountryCode if not another article talk about this country", () => {});
+          test("should remove the former country at user-countries/:uid/:formerCountryCode if not another article belonging to that same user talk about the former country", () => {});
+          test("should remove the post at /country-posts/:formerCountryCode/:id", () => {});
+        });
+      });
+    });
+
+    describe("was null before update", () => {
+      describe("countryCode has changed", () => {
+        test("should edit post at /post/:id", () => {});
+        test("should edit post at /country-posts/:countryCode/:id", () => {});
+        test("should edit post at /user-posts/:id when uid is not null", () => {});
+        test("should not edit post at /user-posts/:id when uid is null", () => {});
+        test("should edit post at /region-posts/:id when regionCode is not null", () => {});
+        test("should not edit post at /region-posts/:id when regionCode is null", () => {});
+        test("should edit post at /place-posts/:id when placeId is not null", () => {});
+        test("should not edit post at /place-posts/:id when placeId is null", () => {});
+        test("should add the post at /country-posts/:newCountryCode/:id", () => {});
+        test("should add the new country at countries/:newCountryCode", () => {});
+        test("should add the new country at user-countries/:uid/:newCountryCode", () => {});
+      });
+    });
+  });
+  
 });

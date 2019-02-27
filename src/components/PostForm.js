@@ -155,7 +155,7 @@ class PostForm extends React.Component {
         ) {
           const address = this.state.address;
           const locationData = await getLocationData(address);
-          const { country } = locationData;
+          const { countryData } = locationData;
           const {
             name: countryName,
             code: countryCode,
@@ -165,8 +165,8 @@ class PostForm extends React.Component {
               southWestLat: countrySouthWestLat,
               southWestLng: countrySouthWestLng
             }
-          } = country;
-          const { region } = locationData;
+          } = countryData;
+          const { regionData } = locationData;
           const {
             name: regionName,
             code: regionCode,
@@ -176,8 +176,8 @@ class PostForm extends React.Component {
               southWestLat: regionSouthWestLat,
               southWestLng: regionSouthWestLng
             }
-          } = region;
-          const { place } = locationData;
+          } = regionData;
+          const { placeData } = locationData;
           const {
             lat,
             lng,
@@ -187,12 +187,15 @@ class PostForm extends React.Component {
               southWestLat: placeSouthWestLat,
               southWestLng: placeSouthWestLng
             }
-          } = place;
+          } = placeData;
           const placeId = getPlaceIdFromLatLng({ lat, lng });
-          const { user } = this.props;
-          const { uid = null, userName = null, userPhotoURL = null } = user;
+          const {
+            uid = null,
+            userName = null,
+            userPhotoURL = null
+          } = this.props;
 
-          const countryData = {
+          const country = {
             countryCode,
             country: countryName,
             countryNorthEastLat,
@@ -201,16 +204,18 @@ class PostForm extends React.Component {
             countrySouthWestLng
           };
 
-          const regionData = {
+          const region = {
             regionCode,
             region: regionName,
             regionNorthEastLat,
             regionNorthEastLng,
             regionSouthWestLat,
-            regionSouthWestLng
+            regionSouthWestLng,
+            countryCode,
+            country: countryName
           };
 
-          const placeData = {
+          const place = {
             placeId,
             address,
             lat,
@@ -218,16 +223,20 @@ class PostForm extends React.Component {
             placeNorthEastLat,
             placeNorthEastLng,
             placeSouthWestLat,
-            placeSouthWestLng
+            placeSouthWestLng,
+            countryCode,
+            country: countryName,
+            region: regionName,
+            regionCode
           };
 
-          const userData = {
+          const user = {
             uid,
             userName,
             userPhotoURL
           };
 
-          const postData = {
+          const post = {
             title: formatTitle(this.state.title),
             description: formatDescription(this.state.description),
             image: this.state.image,
@@ -251,19 +260,14 @@ class PostForm extends React.Component {
             userPhotoURL,
             placeId
           };
-          if (this.props.post) {
-            this.props.onSubmit({
-              postData
-            });
-          } else {
-            this.props.onSubmit({
-              postData,
-              countryData,
-              userData,
-              placeData,
-              regionData
-            });
-          }
+
+          this.props.onSubmit({
+            post,
+            country,
+            user,
+            place,
+            region
+          });
         } else {
           this.setState(() => ({
             submitting: false,
@@ -418,11 +422,9 @@ class PostForm extends React.Component {
 }
 
 const mapStateToProps = ({ auth }) => ({
-  user: {
-    uid: auth.uid,
-    userName: auth.userName,
-    userPhotoURL: auth.userPhotoURL
-  }
+  uid: auth.uid,
+  userName: auth.userName,
+  userPhotoURL: auth.userPhotoURL
 });
 
 export { PostForm };

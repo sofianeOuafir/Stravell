@@ -12,27 +12,15 @@ import {
 import Layout from "./Layout";
 import BreadCrumb from "./Breadcrumb";
 import { addPost } from "./../queries/post";
-import { addCountry } from "./../queries/country";
-import { addPlace } from "./../queries/place";
-import { addRegion } from "../queries/region";
 
 export class AddPostPage extends React.Component {
-  onSubmit = ({ postData, countryData, userData, placeData, regionData }) => {
-    addPost(postData)
-      .then(() => {
-        return addCountry({ countryData, userData });
-      })
-      .then(() => {
-        return addPlace({ countryData, placeData, regionData, userData });
-      }).then(() => {
-        return addRegion({ countryData, regionData });
-      })
-      .then(() => {
-        this.props.router.push(
-          `/dashboard?uid=${this.props.uid}`,
-          `/dashboard/${slugify(this.props.userName)}/${this.props.uid}`
-        );
-      });
+  onSubmit = ({ post, country, user, place, region }) => {
+    addPost({ post, country, user, place, region }).then(() => {
+      this.props.router.push(
+        `/dashboard?uid=${this.props.uid}`,
+        `/dashboard/${slugify(this.props.userName)}/${this.props.uid}`
+      );
+    });
   };
 
   render() {

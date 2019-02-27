@@ -13,23 +13,26 @@ import {
 import Layout from "./Layout";
 import { getPost } from "../queries/post";
 import BreadCrumb from "./Breadcrumb";
+import { addPost, removePost } from "./../queries/post";
+
 export class EditPostPage extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  onSubmit = ({ postData }) => {
+  onSubmit = ({ post, country, user, place, region }) => {
     const { post: postBeforeUpdate } = this.props;
-    const { id } = postBeforeUpdate;
-    this.props.startEditPost({
-      id,
-      updates: postData,
-      postBeforeUpdate
-    });
-    this.props.router.push(
-      `/dashboard?uid=${this.props.uid}`,
-      `/dashboard/${slugify(this.props.userName)}/${this.props.uid}`
-    );
+
+    removePost(postBeforeUpdate)
+      .then(() => {
+        return addPost({ post, country, user, place, region });
+      })
+      .then(() => {
+        this.props.router.push(
+          `/dashboard?uid=${this.props.uid}`,
+          `/dashboard/${slugify(this.props.userName)}/${this.props.uid}`
+        );
+      });
   };
 
   render() {
@@ -95,24 +98,9 @@ EditPostPage.getInitialProps = async function({ query, req, reduxStore, res }) {
   }
 };
 
-const mapDispatchToProps = dispatch => ({
-  startEditPost: ({ id, updates, postBeforeUpdate }) => {
-    dispatch(
-      startEditPost({
-        id,
-        updates,
-        postBeforeUpdate
-      })
-    );
-  }
-});
-
 const mapStateToProps = state => ({
   uid: state.auth.uid,
   userName: state.auth.userName
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRouter(EditPostPage));
+export default connect(mapStateToProps)(withRouter(EditPostPage));

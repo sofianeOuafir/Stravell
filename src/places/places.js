@@ -106,7 +106,7 @@ const getPlaceData = ({ data, address }) => {
 export const getLocationData = address => {
   return new Promise(async (resolve, reject) => {
     let locationData = {
-      country: {
+      countryData: {
         name: null,
         code: null,
         bounds: {
@@ -116,7 +116,7 @@ export const getLocationData = address => {
           southWestLng: null
         }
       },
-      region: {
+      regionData: {
         name: null,
         code: null,
         bounds: {
@@ -126,7 +126,7 @@ export const getLocationData = address => {
           southWestLng: null
         }
       },
-      place: {
+      placeData: {
         address,
         lat: null,
         lng: null,
@@ -141,12 +141,12 @@ export const getLocationData = address => {
     if (address) {
       const results = await geocodeByAddress(address);
       const data = results[0];
-      locationData.country = await getCountryData(data);
-      locationData.region = await getRegionData({
+      locationData.countryData = await getCountryData(data);
+      locationData.regionData = await getRegionData({
         data,
-        countryCode: locationData.country.code
+        countryCode: locationData.countryData.code
       });
-      locationData.place = await getPlaceData({
+      locationData.placeData = await getPlaceData({
         data,
         address
       });

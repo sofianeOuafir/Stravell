@@ -16,8 +16,7 @@ import PostList from "./PostList";
 
 export class DashboardPage extends React.Component {
   render() {
-    const { posts, user } = this.props;
-    const { id, userName } = user;
+    const { posts, id, userName } = this.props;
     const breadcrumbLinks = [
       { href: "/", text: "Home" },
       {
