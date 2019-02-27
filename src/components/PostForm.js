@@ -10,7 +10,6 @@ import { uploadFile } from "./../aws/s3";
 import Loading from "./Loading";
 import SearchLocationInput from "./SearchLocationInput";
 import { getLocationData } from "./../places/places";
-import { getPlaceIdFromLatLng } from "./../lib/utils/place";
 
 import {
   formatTitle,
@@ -22,7 +21,6 @@ import {
   getProvidedURLError
 } from "./../lib/utils/post";
 import Checkbox from "./Checkbox";
-import { RSA_SSLV23_PADDING } from "constants";
 
 class PostForm extends React.Component {
   constructor(props) {
@@ -155,7 +153,7 @@ class PostForm extends React.Component {
         ) {
           const address = this.state.address;
           const locationData = await getLocationData(address);
-          const { countryData } = locationData;
+          const { countryData, regionData, placeData } = locationData;
           const {
             name: countryName,
             code: countryCode,
@@ -166,7 +164,6 @@ class PostForm extends React.Component {
               southWestLng: countrySouthWestLng
             }
           } = countryData;
-          const { regionData } = locationData;
           const {
             name: regionName,
             code: regionCode,
@@ -177,8 +174,8 @@ class PostForm extends React.Component {
               southWestLng: regionSouthWestLng
             }
           } = regionData;
-          const { placeData } = locationData;
           const {
+            placeId,
             lat,
             lng,
             bounds: {
@@ -188,7 +185,6 @@ class PostForm extends React.Component {
               southWestLng: placeSouthWestLng
             }
           } = placeData;
-          const placeId = getPlaceIdFromLatLng({ lat, lng });
           const {
             uid = null,
             userName = null,

@@ -4,14 +4,11 @@ import Link from "next/link";
 
 const Place = ({
   placeName,
-  placeNameClassName,
+  placeNameClassName = "",
   countryCode,
-  flagSize,
-  containerClassName
+  flagSize = 12,
+  containerClassName = ""
 }) => {
-  containerClassName = containerClassName ? containerClassName : "";
-  flagSize = flagSize ? flagSize : 12;
-  placeNameClassName = placeNameClassName ? placeNameClassName : "";
   return (
     <div
       className={`flex py1 justify-content--between align-items--center ${containerClassName}`}

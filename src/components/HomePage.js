@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import Router from "next/router";
 
 import FilterableDataList from "../components/FilterableDataList";
 import PageHeader from "./PageHeader";
@@ -11,18 +10,10 @@ import {
 } from "./../constants/constants";
 import Layout from "./Layout";
 import { getAllPosts } from "../queries/post";
-import { setTextFilter } from "./../actions/filters";
 import { getAllPlaces } from "./../queries/place";
 import PostList from "./PostList";
 
 export class HomePage extends React.Component {
-  async componentDidMount() {
-    const searchQuery = Router.query.s;
-    if (searchQuery) {
-      this.props.dispatch(setTextFilter(searchQuery));
-    }
-  }
-
   render() {
     const { userName, posts, places } = this.props;
     const breadcrumbLinks = [

@@ -48,8 +48,7 @@ export const PostListItem = ({
           <div className="post-list-item__address-container">
             <Address
               address={post.address}
-              lat={post.lat}
-              lng={post.lng}
+              placeId={post.placeId}
               iconClassName="post-list-item__address-icon"
               addressClassName="post-list-item__address"
             />

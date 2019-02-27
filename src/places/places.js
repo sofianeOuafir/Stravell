@@ -1,6 +1,8 @@
 import { geocodeByAddress } from "react-places-autocomplete";
 import { slugify } from "underscore.string";
 
+import { getPlaceIdFromLatLng } from "./../lib/utils/place";
+
 const getCountryData = data => {
   return new Promise(async (resolve, reject) => {
     let countryData = {
@@ -79,6 +81,7 @@ const getRegionData = ({ data, countryCode }) => {
 const getPlaceData = ({ data, address }) => {
   return new Promise(async (resolve, reject) => {
     let placeData = {
+      placeId: null,
       address,
       lat: null,
       lng: null,
@@ -92,6 +95,7 @@ const getPlaceData = ({ data, address }) => {
 
     placeData.lat = data.geometry.location.lat();
     placeData.lng = data.geometry.location.lng();
+    placeData.placeId = getPlaceIdFromLatLng({ lat: placeData.lat, lng: placeData.lng });
 
     placeData.bounds = {
       northEastLat: data.geometry.viewport.getNorthEast().lat(),

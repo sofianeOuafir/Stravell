@@ -76,12 +76,6 @@ app.prepare().then(() => {
     app.render(req, res, actualPage, queryParams)
   })
 
-  server.get('/s/:text', (req, res) => {
-    const actualPage = '/'
-    const queryParams = { s: req.params.text } 
-    app.render(req, res, actualPage, queryParams)
-  })
-
   server.get('/p/show/:title/:id', (req, res) => {
     const actualPage = '/post'
     const queryParams = { id: req.params.id } 

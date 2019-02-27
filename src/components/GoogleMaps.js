@@ -18,9 +18,7 @@ const GoogleMaps = compose(
   }),
   withScriptjs,
   withGoogleMap
-)(props => {
-  const showWholeWorld =
-    props.showWholeWorld === undefined ? false : props.showWholeWorld;
+)(({ showWholeWorld = false, southWestLat, southWestLng, northEastLat, northEastLng, isMarkerShown, places }) => {
   let defaultZoom;
   let defaultCenter;
   if (showWholeWorld) {
@@ -28,14 +26,14 @@ const GoogleMaps = compose(
     defaultCenter = { lat: 30, lng: 0 };
   } else {
     const bounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(props.southWestLat, props.southWestLng),
-      new google.maps.LatLng(props.northEastLat, props.northEastLng)
+      new google.maps.LatLng(southWestLat, southWestLng),
+      new google.maps.LatLng(northEastLat, northEastLng)
     );
     defaultCenter = bounds.getCenter();
     const pixelWidth = 400;
     const GLOBE_WIDTH = 256; // a constant in Google's map projection
-    const west = props.southWestLng;
-    const east = props.northEastLng;
+    const west = southWestLng;
+    const east = northEastLng;
     const angle = east - west;
     if (angle < 0) {
       angle += 360;
@@ -52,8 +50,8 @@ const GoogleMaps = compose(
       defaultZoom={defaultZoom}
       defaultCenter={defaultCenter}
     >
-      {props.isMarkerShown &&
-        props.places.map((place, index) => {
+      {isMarkerShown &&
+        places.map((place, index) => {
           const { lat, lng } = place;
           return (
             <Marker

@@ -66,8 +66,7 @@ export const ShowPostPage = ({ post }) => {
         {post.address && (
           <Address
             address={post.address}
-            lat={post.lat}
-            lng={post.lng}
+            placeId={post.placeId}
             iconClassName="ml1 mr1 text-dark-grey"
             addressClassName="text-dark-grey"
           />

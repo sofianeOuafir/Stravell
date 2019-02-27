@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import Router, { withRouter } from "next/router";
 import { slugify } from "underscore.string";
 
-import { startEditPost } from "../actions/posts";
 import PageHeader from "./PageHeader";
 import {
   EDIT_POST_PAGE_DESCRIPTION,
@@ -21,7 +20,7 @@ export class EditPostPage extends React.Component {
   }
 
   onSubmit = ({ post, country, user, place, region }) => {
-    const { post: postBeforeUpdate } = this.props;
+    const { post: postBeforeUpdate, uid, userName } = this.props;
 
     removePost(postBeforeUpdate)
       .then(() => {
@@ -29,8 +28,8 @@ export class EditPostPage extends React.Component {
       })
       .then(() => {
         this.props.router.push(
-          `/dashboard?uid=${this.props.uid}`,
-          `/dashboard/${slugify(this.props.userName)}/${this.props.uid}`
+          `/dashboard?uid=${uid}`,
+          `/dashboard/${slugify(userName)}/${uid}`
         );
       });
   };

@@ -3,10 +3,7 @@ import { MdMyLocation } from "react-icons/md";
 import Link from "next/link";
 import { slugify } from "underscore.string";
 
-import { getPlaceIdFromLatLng } from "./../lib/utils/place";
-
-const Address = ({ iconClassName, addressClassName, address, lat, lng }) => {
-  const placeId = getPlaceIdFromLatLng({ lat, lng });
+const Address = ({ iconClassName, addressClassName, address, placeId }) => {
   return (
     <Link
       href={`/place?id=${placeId}`}
