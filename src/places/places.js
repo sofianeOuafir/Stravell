@@ -65,7 +65,7 @@ const getRegionData = ({ data, countryCode }) => {
         `${countryCode} - ${regionAddressComponent.short_name}`
       );
       regionData.name = regionAddressComponent.long_name;
-      const results = await geocodeByAddress(regionData.name);
+      const results = await geocodeByAddress(`${countryCode} ${regionData.name}`);
       regionData.bounds = {
         northEastLat: results[0].geometry.viewport.getNorthEast().lat(),
         northEastLng: results[0].geometry.viewport.getNorthEast().lng(),
