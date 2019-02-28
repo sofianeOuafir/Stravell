@@ -69,6 +69,9 @@ export const Header = ({
             </a>
           </div>
           <div className="header__right">
+            <Link href="/destination">
+              <a className="text-white favourite-font-weight show-for-tablet mr1">Destinations</a>
+            </Link>
             {isAuthenticated ? (
               <div className="header__right">
                 <Link
