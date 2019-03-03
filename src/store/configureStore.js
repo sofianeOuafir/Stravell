@@ -22,7 +22,7 @@ export default () => {
       posts: postsReducer,
       filters: filtersReducer,
       countries: countriesReducer,
-      map: mapReducer
+      mapConfig: mapReducer
     }),
     composeEnhancers(applyMiddleware(thunk))
   );

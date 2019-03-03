@@ -1,218 +1,400 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render correctly when withCountryFilter props is false 1`] = `
-<div>
+exports[`should render correctly when it get passed breadCrumbProps 1`] = `
+<div
+  className="flex flex-direction--column"
+>
   <div
-    className="filters"
+    className="flex justify-content--between align-items--center mb1"
   >
-    <div
-      className="filters__search-bar-container"
-    >
-      <Connect(SearchBar)
-        className="filters__search-bar"
-      />
-    </div>
-  </div>
-  <PostList
-    className="post-list post-list--no-border-top"
-    posts={
-      Array [
-        Object {
-          "address": "Cannes",
-          "body": "{\\"blocks\\":[{\\"key\\":\\"f6q0s\\",\\"text\\":\\"It's amazing how many people, when they think of travel, automatically assume that you must travel across lands in order to expierence a rich beauty or space that you have not yet seen. I am originally from Ontario, Canada and when meeting other travellers from around the world, they would always express how lucky I was to be from such a beautiful country. I always could agree, as I knew that many places all over Canada, some even I haven't been have beautfiul landscapes. What I always seem to forget, is how beautiful my home province of Ontario, truly is. Recently, a friend from another country had come to visit Canada and I choose to take him around Ontario where I could, to allow him to have a good expierence in Canada.  He arrived in October, so the weather was a bit cold, but the colours were gorgeous. We decided to take a trip to Niagara Falls, where we spent the weekend. I went to school in Niagara Falls, so I have been there many times before, not expecting much from the trip. \\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"728k6\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"79oud\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"3k8rc\\",\\"text\\":\\" \\",\\"type\\":\\"atomic\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[{\\"offset\\":0,\\"length\\":1,\\"key\\":0}],\\"data\\":{}},{\\"key\\":\\"a3mbg\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"7u5rt\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"eu0ae\\",\\"text\\":\\"It turned out, I was in for a treat. Even though I had seen this place many times before, my travelling partner had really allowed me to see the beauty that I never took in before. As I watched him expierence everything for the first time, making comments on things he was observing, I realised I was observing these things through brand new eyes. The colours of Autum, the bright atmosphere of the attractions, the 'wow' factor of the falls and environment of the city itself. This trip made me come to the conclusion that even though you may have been to a place many times before, or even this may be a place that you call home, there will always be new things to discover. That you should always keep your eyes and mind open to observe the world around you and all that it has to offer. \\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"df8pe\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"11lei\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"6ddvh\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"1jps5\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}}],\\"entityMap\\":{\\"0\\":{\\"type\\":\\"IMAGE\\",\\"mutability\\":\\"IMMUTABLE\\",\\"data\\":{\\"src\\":\\"https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/49014533_290589528468380_8550961320021721088_n.jpg\\",\\"alignment\\":\\"center\\",\\"width\\":65}}}}",
-          "country": "France",
-          "countryCode": "FR",
-          "createdAt": 1546199820574,
-          "description": "Discovering the beauty of my country, my home.",
-          "id": "-LV-kv5VGQDljYtMPt9v",
-          "image": "https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main",
-          "lat": 1.1223,
-          "lng": 1.3343,
-          "provideURL": false,
-          "providedURL": "",
-          "s3FolderName": "ea5f10a1-10c3-4cfd-a607-982678db7159",
-          "title": "Don't Forget Where You Come From.",
-          "uid": "YYFEgQAdBuQIsox3ojncZtpSAmG3",
-          "updatedAt": 1546221085951,
-          "userName": "Jenna Jacquelyn",
-          "userPhotoURL": "https://graph.facebook.com/10161147754845459/picture",
-        },
-      ]
-    }
-  />
-</div>
-`;
-
-exports[`should render correctly when withCountryFilter props is true 1`] = `
-<div>
-  <div
-    className="filters"
-  >
-    <div
-      className="filters__search-bar-container"
-    >
-      <Connect(SearchBar)
-        className="filters__search-bar"
-      />
-    </div>
-    <Connect(CountryFilter)
-      className="filters__country"
+    <Breadcrumb
+      links={
+        Array [
+          Object {
+            "as": "google.com",
+            "href": "www.google.com",
+          },
+          Object {
+            "active": true,
+            "as": "youtube.com",
+            "href": "www.youtube.com",
+          },
+        ]
+      }
     />
-  </div>
-  <PostList
-    className="post-list post-list--no-border-top"
-    posts={
-      Array [
-        Object {
-          "address": "Cannes",
-          "body": "{\\"blocks\\":[{\\"key\\":\\"f6q0s\\",\\"text\\":\\"It's amazing how many people, when they think of travel, automatically assume that you must travel across lands in order to expierence a rich beauty or space that you have not yet seen. I am originally from Ontario, Canada and when meeting other travellers from around the world, they would always express how lucky I was to be from such a beautiful country. I always could agree, as I knew that many places all over Canada, some even I haven't been have beautfiul landscapes. What I always seem to forget, is how beautiful my home province of Ontario, truly is. Recently, a friend from another country had come to visit Canada and I choose to take him around Ontario where I could, to allow him to have a good expierence in Canada.  He arrived in October, so the weather was a bit cold, but the colours were gorgeous. We decided to take a trip to Niagara Falls, where we spent the weekend. I went to school in Niagara Falls, so I have been there many times before, not expecting much from the trip. \\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"728k6\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"79oud\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"3k8rc\\",\\"text\\":\\" \\",\\"type\\":\\"atomic\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[{\\"offset\\":0,\\"length\\":1,\\"key\\":0}],\\"data\\":{}},{\\"key\\":\\"a3mbg\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"7u5rt\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"eu0ae\\",\\"text\\":\\"It turned out, I was in for a treat. Even though I had seen this place many times before, my travelling partner had really allowed me to see the beauty that I never took in before. As I watched him expierence everything for the first time, making comments on things he was observing, I realised I was observing these things through brand new eyes. The colours of Autum, the bright atmosphere of the attractions, the 'wow' factor of the falls and environment of the city itself. This trip made me come to the conclusion that even though you may have been to a place many times before, or even this may be a place that you call home, there will always be new things to discover. That you should always keep your eyes and mind open to observe the world around you and all that it has to offer. \\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"df8pe\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"11lei\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"6ddvh\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"1jps5\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}}],\\"entityMap\\":{\\"0\\":{\\"type\\":\\"IMAGE\\",\\"mutability\\":\\"IMMUTABLE\\",\\"data\\":{\\"src\\":\\"https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/49014533_290589528468380_8550961320021721088_n.jpg\\",\\"alignment\\":\\"center\\",\\"width\\":65}}}}",
-          "country": "France",
-          "countryCode": "FR",
-          "createdAt": 1546199820574,
-          "description": "Discovering the beauty of my country, my home.",
-          "id": "-LV-kv5VGQDljYtMPt9v",
-          "image": "https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main",
-          "lat": 1.1223,
-          "lng": 1.3343,
-          "provideURL": false,
-          "providedURL": "",
-          "s3FolderName": "ea5f10a1-10c3-4cfd-a607-982678db7159",
-          "title": "Don't Forget Where You Come From.",
-          "uid": "YYFEgQAdBuQIsox3ojncZtpSAmG3",
-          "updatedAt": 1546221085951,
-          "userName": "Jenna Jacquelyn",
-          "userPhotoURL": "https://graph.facebook.com/10161147754845459/picture",
-        },
-      ]
-    }
-  />
-</div>
-`;
-
-exports[`the component get passed a non empty array of posts should render correctly 1`] = `
-<div>
-  <div
-    className="filters"
-  >
     <div
-      className="filters__search-bar-container"
+      className="flex align-items--center show-for-laptop"
     >
-      <Connect(SearchBar)
-        className="filters__search-bar"
+      <label
+        className="mr1 c-warm-peach favourite-font-weight"
+        htmlFor="showMap"
+      >
+        Show Map
+      </label>
+      <Toggle
+        defaultChecked={true}
+        icons={
+          Object {
+            "checked": <Unknown />,
+            "unchecked": <Unknown />,
+          }
+        }
+        id="showMap"
+        onChange={[Function]}
       />
     </div>
-    <Connect(CountryFilter)
-      className="filters__country"
-    />
   </div>
-  <PostList
-    className="post-list post-list--no-border-top"
-    posts={
-      Array [
-        Object {
-          "address": "Cannes",
-          "body": "{\\"blocks\\":[{\\"key\\":\\"f6q0s\\",\\"text\\":\\"It's amazing how many people, when they think of travel, automatically assume that you must travel across lands in order to expierence a rich beauty or space that you have not yet seen. I am originally from Ontario, Canada and when meeting other travellers from around the world, they would always express how lucky I was to be from such a beautiful country. I always could agree, as I knew that many places all over Canada, some even I haven't been have beautfiul landscapes. What I always seem to forget, is how beautiful my home province of Ontario, truly is. Recently, a friend from another country had come to visit Canada and I choose to take him around Ontario where I could, to allow him to have a good expierence in Canada.  He arrived in October, so the weather was a bit cold, but the colours were gorgeous. We decided to take a trip to Niagara Falls, where we spent the weekend. I went to school in Niagara Falls, so I have been there many times before, not expecting much from the trip. \\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"728k6\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"79oud\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"3k8rc\\",\\"text\\":\\" \\",\\"type\\":\\"atomic\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[{\\"offset\\":0,\\"length\\":1,\\"key\\":0}],\\"data\\":{}},{\\"key\\":\\"a3mbg\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"7u5rt\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"eu0ae\\",\\"text\\":\\"It turned out, I was in for a treat. Even though I had seen this place many times before, my travelling partner had really allowed me to see the beauty that I never took in before. As I watched him expierence everything for the first time, making comments on things he was observing, I realised I was observing these things through brand new eyes. The colours of Autum, the bright atmosphere of the attractions, the 'wow' factor of the falls and environment of the city itself. This trip made me come to the conclusion that even though you may have been to a place many times before, or even this may be a place that you call home, there will always be new things to discover. That you should always keep your eyes and mind open to observe the world around you and all that it has to offer. \\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"df8pe\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"11lei\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"6ddvh\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"1jps5\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}}],\\"entityMap\\":{\\"0\\":{\\"type\\":\\"IMAGE\\",\\"mutability\\":\\"IMMUTABLE\\",\\"data\\":{\\"src\\":\\"https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/49014533_290589528468380_8550961320021721088_n.jpg\\",\\"alignment\\":\\"center\\",\\"width\\":65}}}}",
-          "country": "France",
-          "countryCode": "FR",
-          "createdAt": 1546199820574,
-          "description": "Discovering the beauty of my country, my home.",
-          "id": "-LV-kv5VGQDljYtMPt9v",
-          "image": "https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main",
-          "lat": 1.1223,
-          "lng": 1.3343,
-          "provideURL": false,
-          "providedURL": "",
-          "s3FolderName": "ea5f10a1-10c3-4cfd-a607-982678db7159",
-          "title": "Don't Forget Where You Come From.",
-          "uid": "YYFEgQAdBuQIsox3ojncZtpSAmG3",
-          "updatedAt": 1546221085951,
-          "userName": "Jenna Jacquelyn",
-          "userPhotoURL": "https://graph.facebook.com/10161147754845459/picture",
-        },
-      ]
-    }
-  />
-</div>
-`;
-
-exports[`the component get passed a non empty array of posts the filtered posts array is empty should render correctly when only the country filter 1`] = `
-<div>
   <div
-    className="filters"
+    className="flex"
   >
     <div
-      className="filters__search-bar-container"
+      className="filterable-post-list__list-container pr1"
     >
-      <Connect(SearchBar)
-        className="filters__search-bar"
+      <PostList
+        data={Array []}
+        noDataText="They are currently no post written yet."
       />
     </div>
-    <Connect(CountryFilter)
-      className="filters__country"
-    />
+    <div
+      className="filterable-post-list__map-container"
+    >
+      <p
+        className="m0 favourite-font-weight"
+      >
+        Click on a marker and start reading about your favourite place!
+      </p>
+      <withProps(withScriptjs(withGoogleMap(Component))) />
+    </div>
   </div>
-  <PostList
-    className="post-list post-list--no-border-top"
-    noPostText="No results were found for country: BR."
-    posts={Array []}
-  />
 </div>
 `;
 
-exports[`the component get passed a non empty array of posts the filtered posts array is empty should render correctly when only the text filter 1`] = `
-<div>
+exports[`should render correctly when withMap is false 1`] = `
+<div
+  className="flex flex-direction--column"
+>
   <div
-    className="filters"
+    className="flex justify-content--between align-items--center mb1"
+  >
+    <Breadcrumb />
+  </div>
+  <div
+    className="flex"
   >
     <div
-      className="filters__search-bar-container"
+      className="filterable-post-list__list-container "
     >
-      <Connect(SearchBar)
-        className="filters__search-bar"
+      <PostList
+        data={Array []}
+        noDataText="They are currently no post written yet."
       />
     </div>
-    <Connect(CountryFilter)
-      className="filters__country"
-    />
   </div>
-  <PostList
-    className="post-list post-list--no-border-top"
-    noPostText="No results were found for text: 10 things to do"
-    posts={Array []}
-  />
 </div>
 `;
 
-exports[`the component get passed a non empty array of posts the filtered posts array is empty should render correctly when the text filter and country filters are present 1`] = `
-<div>
+exports[`should render correctly when withMap is true 1`] = `
+<div
+  className="flex flex-direction--column"
+>
   <div
-    className="filters"
+    className="flex justify-content--between align-items--center mb1"
+  >
+    <Breadcrumb />
+    <div
+      className="flex align-items--center show-for-laptop"
+    >
+      <label
+        className="mr1 c-warm-peach favourite-font-weight"
+        htmlFor="showMap"
+      >
+        Show Map
+      </label>
+      <Toggle
+        defaultChecked={true}
+        icons={
+          Object {
+            "checked": <Unknown />,
+            "unchecked": <Unknown />,
+          }
+        }
+        id="showMap"
+        onChange={[Function]}
+      />
+    </div>
+  </div>
+  <div
+    className="flex"
   >
     <div
-      className="filters__search-bar-container"
+      className="filterable-post-list__list-container pr1"
     >
-      <Connect(SearchBar)
-        className="filters__search-bar"
+      <PostList
+        data={Array []}
+        noDataText="They are currently no post written yet."
       />
     </div>
-    <Connect(CountryFilter)
-      className="filters__country"
-    />
+    <div
+      className="filterable-post-list__map-container"
+    >
+      <p
+        className="m0 favourite-font-weight"
+      >
+        Click on a marker and start reading about your favourite place!
+      </p>
+      <withProps(withScriptjs(withGoogleMap(Component))) />
+    </div>
   </div>
-  <PostList
-    className="post-list post-list--no-border-top"
-    noPostText="No results were found for text: 10 things to do, country: BR"
-    posts={Array []}
-  />
 </div>
 `;
 
-exports[`the component get passed an empty array of posts should render correctly and not display the filters component 1`] = `
-<div>
-  <PostList
-    className="post-list post-list--no-border-top"
-    noPostText="They are currently no posts written yet"
-    posts={Array []}
-  />
+exports[`should render correctly when withMap is true and mapConfig.visible is false 1`] = `
+<div
+  className="flex flex-direction--column"
+>
+  <div
+    className="flex justify-content--between align-items--center mb1"
+  >
+    <Breadcrumb />
+    <div
+      className="flex align-items--center show-for-laptop"
+    >
+      <label
+        className="mr1 c-warm-peach favourite-font-weight"
+        htmlFor="showMap"
+      >
+        Show Map
+      </label>
+      <Toggle
+        defaultChecked={false}
+        icons={
+          Object {
+            "checked": <Unknown />,
+            "unchecked": <Unknown />,
+          }
+        }
+        id="showMap"
+        onChange={[Function]}
+      />
+    </div>
+  </div>
+  <div
+    className="flex"
+  >
+    <div
+      className="filterable-post-list__list-container "
+    >
+      <PostList
+        data={Array []}
+        noDataText="They are currently no post written yet."
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`the component get passed a non empty array of data should render correctly 1`] = `
+<div
+  className="flex flex-direction--column"
+>
+  <div
+    className="flex justify-content--between align-items--center mb1"
+  >
+    <Breadcrumb />
+    <div
+      className="flex align-items--center show-for-laptop"
+    >
+      <label
+        className="mr1 c-warm-peach favourite-font-weight"
+        htmlFor="showMap"
+      >
+        Show Map
+      </label>
+      <Toggle
+        defaultChecked={true}
+        icons={
+          Object {
+            "checked": <Unknown />,
+            "unchecked": <Unknown />,
+          }
+        }
+        id="showMap"
+        onChange={[Function]}
+      />
+    </div>
+  </div>
+  <div
+    className="flex"
+  >
+    <div
+      className="filterable-post-list__list-container pr1"
+    >
+      <div
+        className="search-bar-container"
+      >
+        <Connect(SearchBar)
+          autoFocus={true}
+          className="search-bar"
+        />
+      </div>
+      <PostList
+        data={
+          Array [
+            Object {
+              "address": "Cannes",
+              "body": "{\\"blocks\\":[{\\"key\\":\\"f6q0s\\",\\"text\\":\\"It's amazing how many people, when they think of travel, automatically assume that you must travel across lands in order to expierence a rich beauty or space that you have not yet seen. I am originally from Ontario, Canada and when meeting other travellers from around the world, they would always express how lucky I was to be from such a beautiful country. I always could agree, as I knew that many places all over Canada, some even I haven't been have beautfiul landscapes. What I always seem to forget, is how beautiful my home province of Ontario, truly is. Recently, a friend from another country had come to visit Canada and I choose to take him around Ontario where I could, to allow him to have a good expierence in Canada.  He arrived in October, so the weather was a bit cold, but the colours were gorgeous. We decided to take a trip to Niagara Falls, where we spent the weekend. I went to school in Niagara Falls, so I have been there many times before, not expecting much from the trip. \\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"728k6\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"79oud\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"3k8rc\\",\\"text\\":\\" \\",\\"type\\":\\"atomic\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[{\\"offset\\":0,\\"length\\":1,\\"key\\":0}],\\"data\\":{}},{\\"key\\":\\"a3mbg\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"7u5rt\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"eu0ae\\",\\"text\\":\\"It turned out, I was in for a treat. Even though I had seen this place many times before, my travelling partner had really allowed me to see the beauty that I never took in before. As I watched him expierence everything for the first time, making comments on things he was observing, I realised I was observing these things through brand new eyes. The colours of Autum, the bright atmosphere of the attractions, the 'wow' factor of the falls and environment of the city itself. This trip made me come to the conclusion that even though you may have been to a place many times before, or even this may be a place that you call home, there will always be new things to discover. That you should always keep your eyes and mind open to observe the world around you and all that it has to offer. \\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"df8pe\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"11lei\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"6ddvh\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}},{\\"key\\":\\"1jps5\\",\\"text\\":\\"\\",\\"type\\":\\"unstyled\\",\\"depth\\":0,\\"inlineStyleRanges\\":[],\\"entityRanges\\":[],\\"data\\":{}}],\\"entityMap\\":{\\"0\\":{\\"type\\":\\"IMAGE\\",\\"mutability\\":\\"IMMUTABLE\\",\\"data\\":{\\"src\\":\\"https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/49014533_290589528468380_8550961320021721088_n.jpg\\",\\"alignment\\":\\"center\\",\\"width\\":65}}}}",
+              "country": "France",
+              "countryCode": "FR",
+              "createdAt": 1546199820574,
+              "description": "Discovering the beauty of my country, my home.",
+              "id": "-LV-kv5VGQDljYtMPt9v",
+              "image": "https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main",
+              "lat": 1.1223,
+              "lng": 1.3343,
+              "placeId": 1122313343,
+              "provideURL": false,
+              "providedURL": "",
+              "region": "Provence-Alpes-Côte d'Azur",
+              "regionCode": "fr-provence-alpes-cote-d-azur",
+              "s3FolderName": "ea5f10a1-10c3-4cfd-a607-982678db7159",
+              "title": "Don't Forget Where You Come From.",
+              "uid": "YYFEgQAdBuQIsox3ojncZtpSAmG3",
+              "updatedAt": 1546221085951,
+              "userName": "Jenna Jacquelyn",
+              "userPhotoURL": "https://graph.facebook.com/10161147754845459/picture",
+            },
+          ]
+        }
+      />
+    </div>
+    <div
+      className="filterable-post-list__map-container"
+    >
+      <p
+        className="m0 favourite-font-weight"
+      >
+        Click on a marker and start reading about your favourite place!
+      </p>
+      <withProps(withScriptjs(withGoogleMap(Component))) />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`the component get passed a non empty array of data the filtered data array is empty should render correctly 1`] = `
+<div
+  className="flex flex-direction--column"
+>
+  <div
+    className="flex justify-content--between align-items--center mb1"
+  >
+    <Breadcrumb />
+    <div
+      className="flex align-items--center show-for-laptop"
+    >
+      <label
+        className="mr1 c-warm-peach favourite-font-weight"
+        htmlFor="showMap"
+      >
+        Show Map
+      </label>
+      <Toggle
+        defaultChecked={true}
+        icons={
+          Object {
+            "checked": <Unknown />,
+            "unchecked": <Unknown />,
+          }
+        }
+        id="showMap"
+        onChange={[Function]}
+      />
+    </div>
+  </div>
+  <div
+    className="flex"
+  >
+    <div
+      className="filterable-post-list__list-container pr1"
+    >
+      <div
+        className="search-bar-container"
+      >
+        <Connect(SearchBar)
+          autoFocus={true}
+          className="search-bar"
+        />
+      </div>
+      <PostList
+        data={Array []}
+        noDataText="No results were found for: 10 things to do"
+      />
+    </div>
+    <div
+      className="filterable-post-list__map-container"
+    >
+      <p
+        className="m0 favourite-font-weight"
+      >
+        Click on a marker and start reading about your favourite place!
+      </p>
+      <withProps(withScriptjs(withGoogleMap(Component))) />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`the component get passed an empty array of data should render correctly and not display the search bar 1`] = `
+<div
+  className="flex flex-direction--column"
+>
+  <div
+    className="flex justify-content--between align-items--center mb1"
+  >
+    <Breadcrumb />
+    <div
+      className="flex align-items--center show-for-laptop"
+    >
+      <label
+        className="mr1 c-warm-peach favourite-font-weight"
+        htmlFor="showMap"
+      >
+        Show Map
+      </label>
+      <Toggle
+        defaultChecked={true}
+        icons={
+          Object {
+            "checked": <Unknown />,
+            "unchecked": <Unknown />,
+          }
+        }
+        id="showMap"
+        onChange={[Function]}
+      />
+    </div>
+  </div>
+  <div
+    className="flex"
+  >
+    <div
+      className="filterable-post-list__list-container pr1"
+    >
+      <PostList
+        data={Array []}
+        noDataText="They are currently no post written yet."
+      />
+    </div>
+    <div
+      className="filterable-post-list__map-container"
+    >
+      <p
+        className="m0 favourite-font-weight"
+      >
+        Click on a marker and start reading about your favourite place!
+      </p>
+      <withProps(withScriptjs(withGoogleMap(Component))) />
+    </div>
+  </div>
 </div>
 `;

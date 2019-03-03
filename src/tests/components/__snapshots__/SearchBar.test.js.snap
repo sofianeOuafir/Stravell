@@ -6,6 +6,7 @@ exports[`should render correctly 1`] = `
     className="search-bar__icon"
   />
   <input
+    autoComplete="off"
     id="searchBarInput"
     onChange={[Function]}
     placeholder="Search"

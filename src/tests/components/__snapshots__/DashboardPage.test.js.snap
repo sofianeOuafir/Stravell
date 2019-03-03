@@ -12,20 +12,32 @@ exports[`should render DashboardPage correctly 1`] = `
   <div
     className="content-container"
   >
-    <Link
-      as="/p/create"
-      href="/createPost"
-    >
-      <a
-        className="button button--with-bottom-margin"
-      >
-        Create Post
-      </a>
-    </Link>
-    <Connect(FilterablePostList)
-      SearchBarAutoFocus={true}
+    <Connect(FilterableDataList)
+      DataList={[Function]}
+      breadCrumbProps={
+        Object {
+          "links": Array [
+            Object {
+              "href": "/",
+              "text": "Home",
+            },
+            Object {
+              "active": true,
+              "as": "/dashboard/samia-ouafir/1pUNibuDtBPmdsBPpAqlNEZYc9r2",
+              "href": "/dashboard?uid=1pUNibuDtBPmdsBPpAqlNEZYc9r2",
+              "text": "Dashboard",
+            },
+            Object {
+              "as": "/p/create",
+              "href": "/create",
+              "text": "Create Post",
+            },
+          ],
+        }
+      }
       editable={true}
-      noPostText="The world is looking forward to hear about your stories!"
+      nodataText="The world is looking forward to hear about your stories!"
+      withMap={false}
     />
   </div>
 </Layout>

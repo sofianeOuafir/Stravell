@@ -15,6 +15,7 @@ import { addPost } from "./../queries/post";
 
 export class AddPostPage extends React.Component {
   onSubmit = ({ post, country, user, place, region }) => {
+    const { addPost } = this.props;
     addPost({ post, country, user, place, region }).then(() => {
       this.props.router.push(
         `/dashboard?uid=${this.props.uid}`,
@@ -24,10 +25,12 @@ export class AddPostPage extends React.Component {
   };
 
   render() {
+    const { userName, uid } = this.props;
     const breadcrumbLinks = [
       { href: "/", text: "Home" },
       {
-        href: `/dashboard/${slugify(this.props.userName)}/${this.props.uid}`,
+        href: `/dashboard?uid=${uid}`,
+        as: `/dashboard/${slugify(userName)}/${uid}`,
         text: "Dashboard"
       },
       {
@@ -57,7 +60,7 @@ export class AddPostPage extends React.Component {
 
 AddPostPage.getInitialProps = async function({ req, reduxStore, res }) {
   let authorised = false;
-  if (req && req.session) {
+  if (req && req.session.decodedToken) {
     const user = req.session.decodedToken;
     if (user) {
       authorised = true;
@@ -82,9 +85,18 @@ AddPostPage.getInitialProps = async function({ req, reduxStore, res }) {
   }
 };
 
+const mapDispatchToProps = () => ({
+  addPost: ({ post, country, user, place, region }) => {
+    return addPost({ post, country, user, place, region });
+  }
+});
+
 const mapStateToProps = state => ({
   uid: state.auth.uid,
   userName: state.auth.userName
 });
 
-export default connect(mapStateToProps)(withRouter(AddPostPage));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(AddPostPage));

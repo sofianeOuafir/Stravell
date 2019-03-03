@@ -2,20 +2,35 @@
 
 exports[`should render correctly 1`] = `
 <Layout
-  description="This page describe Sofiane's profile"
-  title="Stravell | Sofiane"
+  description="This page describe Samia Ouafir's profile"
+  title="Stravell | Samia Ouafir"
 >
   <div>
     <PageHeader
-      title="Sofiane"
+      title="Samia Ouafir"
     />
     <div
       className="content-container"
     >
-      <Connect(FilterablePostList)
-        SearchBarAutoFocus={true}
-        noPostText="Sofiane has not published any post yet."
-        posts={
+      <Connect(FilterableDataList)
+        DataList={[Function]}
+        breadCrumbProps={
+          Object {
+            "links": Array [
+              Object {
+                "href": "/",
+                "text": "Home",
+              },
+              Object {
+                "active": true,
+                "as": "/u/show/samia-ouafir/1pUNibuDtBPmdsBPpAqlNEZYc9r2",
+                "href": "/user?uid=1pUNibuDtBPmdsBPpAqlNEZYc9r2",
+                "text": "Samia Ouafir",
+              },
+            ],
+          }
+        }
+        data={
           Array [
             Object {
               "address": "Cannes",
@@ -28,8 +43,11 @@ exports[`should render correctly 1`] = `
               "image": "https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main",
               "lat": 1.1223,
               "lng": 1.3343,
+              "placeId": 1122313343,
               "provideURL": false,
               "providedURL": "",
+              "region": "Provence-Alpes-Côte d'Azur",
+              "regionCode": "fr-provence-alpes-cote-d-azur",
               "s3FolderName": "ea5f10a1-10c3-4cfd-a607-982678db7159",
               "title": "Don't Forget Where You Come From.",
               "uid": "YYFEgQAdBuQIsox3ojncZtpSAmG3",
@@ -39,6 +57,14 @@ exports[`should render correctly 1`] = `
             },
           ]
         }
+        googleMapsProps={
+          Object {
+            "isMarkerShown": true,
+            "places": undefined,
+            "showWholeWorld": true,
+          }
+        }
+        noDataText="Samia Ouafir has not published any post yet."
       />
     </div>
   </div>

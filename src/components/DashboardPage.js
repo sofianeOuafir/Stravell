@@ -11,16 +11,17 @@ import {
 } from "./../constants/constants";
 import Layout from "./Layout";
 import { getUserPosts } from "../queries/post";
-import { getUser } from "../queries/user";
 import PostList from "./PostList";
+import { getUser } from './../queries/user';
 
 export class DashboardPage extends React.Component {
   render() {
-    const { posts, id, userName } = this.props;
+    const { posts, user } = this.props;
+    const { id, userName } = user;
     const breadcrumbLinks = [
       { href: "/", text: "Home" },
       {
-        href: "/dashboard",
+        href: `/dashboard?uid=${id}`,
         as: `/dashboard/${slugify(userName)}/${id}`,
         text: "Dashboard",
         active: true
@@ -38,7 +39,6 @@ export class DashboardPage extends React.Component {
             DataList={PostList}
             withMap={false}
             editable={true}
-            SearchBarAutoFocus={true}
             data={posts}
             nodataText={NO_ELEMENT_POST_LIST_DASHBOARD_TEXT}
             breadCrumbProps={{
@@ -82,6 +82,8 @@ DashboardPage.getInitialProps = async function({
     } else {
       Router.push("/");
     }
+
+    return {}
   }
 };
 

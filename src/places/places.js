@@ -131,6 +131,7 @@ export const getLocationData = address => {
         }
       },
       placeData: {
+        placeId: null,
         address,
         lat: null,
         lng: null,

@@ -26,7 +26,7 @@ export class FilterableDataList extends React.Component {
     const {
       breadCrumbProps,
       googleMapsProps,
-      map,
+      mapConfig,
       setMapVisibility,
       DataList,
       withMap = true
@@ -45,8 +45,8 @@ export class FilterableDataList extends React.Component {
               </label>
               <Toggle
                 id="showMap"
-                defaultChecked={map.visible}
-                onChange={() => setMapVisibility(!this.props.map.visible)}
+                defaultChecked={mapConfig.visible}
+                onChange={() => setMapVisibility(!mapConfig.visible)}
               />
             </div>
           )}
@@ -54,7 +54,7 @@ export class FilterableDataList extends React.Component {
         <div className="flex">
           <div
             className={`filterable-post-list__list-container ${
-              withMap && map.visible ? "pr1" : ""
+              withMap && mapConfig.visible ? "pr1" : ""
             }`}
           >
             {this.props.data.length > 0 && (
@@ -72,7 +72,7 @@ export class FilterableDataList extends React.Component {
             />
           </div>
 
-          {withMap && map.visible && (
+          {withMap && mapConfig.visible && (
             <div className="filterable-post-list__map-container">
               <p className="m0 favourite-font-weight">Click on a marker and start reading about your favourite place!</p>
               <GoogleMaps {...googleMapsProps} />
@@ -88,12 +88,12 @@ const mapDispatchToProps = dispatch => ({
   setMapVisibility: visible => dispatch(setMapVisibility(visible))
 });
 
-const mapStateToProps = ({ filters, map }, { data, DataList }) => {
+const mapStateToProps = ({ filters, mapConfig }, { data, DataList }) => {
   return {
     data,
     filteredData: DataList.getVisibleData(data, filters),
     filters,
-    map
+    mapConfig
   };
 };
 

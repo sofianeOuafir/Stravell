@@ -11,10 +11,32 @@ exports[`A userName prop is provided should render correctly 1`] = `
   <div
     className="content-container"
   >
-    <Connect(FilterablePostList)
-      SearchBarAutoFocus={true}
-      noPostText="Become a legend by being the very first person to publish a post in here!"
-      posts={Array []}
+    <Connect(FilterableDataList)
+      DataList={[Function]}
+      breadCrumbProps={
+        Object {
+          "links": Array [
+            Object {
+              "active": true,
+              "href": "/",
+              "text": "Home",
+            },
+            Object {
+              "href": "/destinations",
+              "text": "Destinations",
+            },
+          ],
+        }
+      }
+      data={Array []}
+      googleMapsProps={
+        Object {
+          "isMarkerShown": true,
+          "places": undefined,
+          "showWholeWorld": true,
+        }
+      }
+      noDataText="Become a legend by being the very first person to publish a post in here!"
     />
   </div>
 </Layout>
@@ -31,10 +53,32 @@ exports[`no username prop is provided should render correctly 1`] = `
   <div
     className="content-container"
   >
-    <Connect(FilterablePostList)
-      SearchBarAutoFocus={true}
-      noPostText="Become a legend by being the very first person to publish a post in here!"
-      posts={Array []}
+    <Connect(FilterableDataList)
+      DataList={[Function]}
+      breadCrumbProps={
+        Object {
+          "links": Array [
+            Object {
+              "active": true,
+              "href": "/",
+              "text": "Home",
+            },
+            Object {
+              "href": "/destinations",
+              "text": "Destinations",
+            },
+          ],
+        }
+      }
+      data={Array []}
+      googleMapsProps={
+        Object {
+          "isMarkerShown": true,
+          "places": undefined,
+          "showWholeWorld": true,
+        }
+      }
+      noDataText="Become a legend by being the very first person to publish a post in here!"
     />
   </div>
 </Layout>

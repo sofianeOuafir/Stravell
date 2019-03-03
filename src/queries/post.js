@@ -126,7 +126,13 @@ export const removePost = async post => {
     .catch(e => console.log(e));
 };
 
-export const addPost = ({ post, country, user, place, region }) => {
+export const addPost = ({
+  post,
+  country = {},
+  user,
+  place = {},
+  region = {}
+}) => {
   const { uid } = user;
   const { countryCode, ...countryData } = country;
   const { regionCode, ...regionData } = region;

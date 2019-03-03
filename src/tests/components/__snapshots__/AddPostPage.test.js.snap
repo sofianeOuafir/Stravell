@@ -12,7 +12,32 @@ exports[`should render correctly 1`] = `
   <div
     className="content-container"
   >
-    <PostForm
+    <div
+      className="mb1"
+    >
+      <Breadcrumb
+        links={
+          Array [
+            Object {
+              "href": "/",
+              "text": "Home",
+            },
+            Object {
+              "as": "/dashboard/sofiane/1",
+              "href": "/dashboard?uid=1",
+              "text": "Dashboard",
+            },
+            Object {
+              "active": true,
+              "as": "/p/create",
+              "href": "/create",
+              "text": "Create Post",
+            },
+          ]
+        }
+      />
+    </div>
+    <Connect(PostForm)
       onSubmit={[Function]}
     />
   </div>

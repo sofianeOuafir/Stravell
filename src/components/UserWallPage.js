@@ -1,4 +1,5 @@
 import React from "react";
+import { slugify } from 'underscore.string';
 
 import PageHeader from "./PageHeader";
 import FilterableDataList from "./FilterableDataList";
@@ -21,7 +22,7 @@ export class UserWallPage extends React.Component {
       { href: "/", text: "Home" },
       {
         href: `/user?uid=${id}`,
-        as: `/u/show/${userName}/${id}`,
+        as: `/u/show/${slugify(userName)}/${id}`,
         text: userName,
         active: true
       }

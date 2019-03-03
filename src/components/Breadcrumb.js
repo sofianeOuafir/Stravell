@@ -8,7 +8,7 @@ const Breadcrumb = ({ links }) => (
       links.map(({ text, active, ...linkProps }, index) => {
         if (linkProps.href && text) {
           return (
-            <Link key={index} {...linkProps}>
+            <Link prefetch key={index} {...linkProps}>
               <a className="breadcrumb__link">
                 <span
                   className={`breadcrumb__link-text ${
