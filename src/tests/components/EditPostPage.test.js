@@ -32,5 +32,6 @@ test("should edit the post and redirect the user to the dashboard when the form 
     resolve();
   }).then(() => {
     expect(addPost).toHaveBeenCalled();
+    done()
   })
 });
