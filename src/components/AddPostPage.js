@@ -1,37 +1,66 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter } from 'next/router';
-import { slugify } from 'underscore.string';
+import { withRouter } from "next/router";
+import { slugify } from "underscore.string";
 
 import PostForm from "./PostForm";
-import { startAddPost } from "../actions/posts";
-import PageHeader from './PageHeader';
-import { ADD_POST_PAGE_TITLE, ADD_POST_PAGE_DESCRIPTION } from './../constants/constants';
+import PageHeader from "./PageHeader";
+import {
+  ADD_POST_PAGE_TITLE,
+  ADD_POST_PAGE_DESCRIPTION
+} from "./../constants/constants";
 import Layout from "./Layout";
+import BreadCrumb from "./Breadcrumb";
+import { addPost } from "./../queries/post";
 
-export class AddPostPage extends React.Component {
-  onSubmit = post => {
-    this.props.startAddPost(post);
-    this.props.router.push(`/dashboard?uid=${this.props.uid}`, `/dashboard/${slugify(this.props.userName)}/${this.props.uid}`)
+class AddPostPage extends React.Component {
+  onSubmit = ({ post, country, user, place, region }) => {
+    const { addPost } = this.props;
+    addPost({ post, country, user, place, region }).then(() => {
+      this.props.router.push(
+        `/dashboard?uid=${this.props.uid}`,
+        `/dashboard/${slugify(this.props.userName)}/${this.props.uid}`
+      );
+    });
   };
 
   render() {
+    const { userName, uid } = this.props;
+    const breadcrumbLinks = [
+      { href: "/", text: "Home" },
+      {
+        href: `/dashboard?uid=${uid}`,
+        as: `/dashboard/${slugify(userName)}/${uid}`,
+        text: "Dashboard"
+      },
+      {
+        href: `/create`,
+        as: "/p/create",
+        text: "Create Post",
+        active: true
+      }
+    ];
     return (
-      <Layout title={ADD_POST_PAGE_TITLE} description={ADD_POST_PAGE_DESCRIPTION}>
+      <Layout
+        title={ADD_POST_PAGE_TITLE}
+        description={ADD_POST_PAGE_DESCRIPTION}
+      >
         <PageHeader title="Create Post" withSocialShareButtons={false} />
         <div className="content-container">
-          <PostForm onSubmit={this.onSubmit} /> 
+          <div className="mb1">
+            <BreadCrumb links={breadcrumbLinks} />
+          </div>
+
+          <PostForm onSubmit={this.onSubmit} />
         </div>
       </Layout>
     );
   }
 }
 
-
-
 AddPostPage.getInitialProps = async function({ req, reduxStore, res }) {
   let authorised = false;
-  if (req && req.session) {
+  if (req && req.session.decodedToken) {
     const user = req.session.decodedToken;
     if (user) {
       authorised = true;
@@ -43,31 +72,31 @@ AddPostPage.getInitialProps = async function({ req, reduxStore, res }) {
   }
 
   if (authorised) {
-    return { };
+    return {};
   } else {
-    if( res ) {
+    if (res) {
       res.writeHead(302, {
-        Location: '/'
+        Location: "/"
       });
-      res.end()
-    }
-    else {
-      Router.push('/')
+      res.end();
+    } else {
+      Router.push("/");
     }
   }
 };
 
-const mapDispatchToProps = dispatch => ({
-  startAddPost: post => {
-    dispatch(startAddPost(post));
+const mapDispatchToProps = () => ({
+  addPost: ({ post, country, user, place, region }) => {
+    return addPost({ post, country, user, place, region });
   }
 });
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   uid: state.auth.uid,
   userName: state.auth.userName
 });
 
+export { AddPostPage };
 export default connect(
   mapStateToProps,
   mapDispatchToProps

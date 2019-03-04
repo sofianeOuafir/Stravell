@@ -2,41 +2,36 @@
 
 exports[`should display correctly when post does not have address 1`] = `
 <div
-  className="post-list-item "
+  className="post-list-item"
 >
-  <Link
-    as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
-    href="/post?id=-LV-kv5VGQDljYtMPt9v"
-    prefetch={true}
+  <div
+    className="post-list-item__content-container"
   >
     <a
       className="post-list-item__link"
+      onClick={[Function]}
     >
+      <img
+        alt="Travel Image"
+        className="post-list-item__image"
+        src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
+      />
       <div
-        className="post-list-item__content-container"
+        className="post-list-item__title-description-container"
       >
-        <img
-          alt="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-          className="post-list-item__image"
-          src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-        />
-        <div
-          className="post-list-item__title-description-container"
+        <h1
+          className="post-list-item__title"
         >
-          <h1
-            className="post-list-item__title"
-          >
-            Don't Forget Where You Come From.
-          </h1>
-          <h2
-            className="post-list-item__description"
-          >
-            Discovering the beauty of my country, my home.
-          </h2>
-        </div>
+          Don't Forget Where You Come From.
+        </h1>
+        <h2
+          className="post-list-item__description"
+        >
+          Discovering the beauty of my country, my home.
+        </h2>
       </div>
     </a>
-  </Link>
+  </div>
   <div>
     <div
       className="post-list-item__author-edit-container"
@@ -51,56 +46,60 @@ exports[`should display correctly when post does not have address 1`] = `
     <p>
       December 30th, 2018
     </p>
+    <Link
+      as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
+      href="/post?id=-LV-kv5VGQDljYtMPt9v"
+    >
+      <a
+        className="hide"
+      />
+    </Link>
   </div>
 </div>
 `;
 
 exports[`should display correctly when post has an address 1`] = `
 <div
-  className="post-list-item "
+  className="post-list-item"
 >
-  <Link
-    as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
-    href="/post?id=-LV-kv5VGQDljYtMPt9v"
-    prefetch={true}
+  <div
+    className="post-list-item__content-container"
   >
     <a
       className="post-list-item__link"
+      onClick={[Function]}
     >
+      <img
+        alt="Travel Image"
+        className="post-list-item__image"
+        src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
+      />
       <div
-        className="post-list-item__content-container"
+        className="post-list-item__title-description-container"
       >
-        <img
-          alt="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-          className="post-list-item__image"
-          src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-        />
-        <div
-          className="post-list-item__address-container"
+        <h1
+          className="post-list-item__title"
         >
-          <Address
-            address="Cannes"
-            addressClassName="post-list-item__address"
-            iconClassName="post-list-item__address-icon"
-          />
-        </div>
-        <div
-          className="post-list-item__title-description-container"
+          Don't Forget Where You Come From.
+        </h1>
+        <h2
+          className="post-list-item__description"
         >
-          <h1
-            className="post-list-item__title"
-          >
-            Don't Forget Where You Come From.
-          </h1>
-          <h2
-            className="post-list-item__description"
-          >
-            Discovering the beauty of my country, my home.
-          </h2>
-        </div>
+          Discovering the beauty of my country, my home.
+        </h2>
       </div>
     </a>
-  </Link>
+    <div
+      className="post-list-item__address-container"
+    >
+      <Address
+        address="Cannes"
+        addressClassName="post-list-item__address"
+        iconClassName="post-list-item__address-icon"
+        placeId={1122313343}
+      />
+    </div>
+  </div>
   <div>
     <div
       className="post-list-item__author-edit-container"
@@ -115,56 +114,60 @@ exports[`should display correctly when post has an address 1`] = `
     <p>
       December 30th, 2018
     </p>
+    <Link
+      as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
+      href="/post?id=-LV-kv5VGQDljYtMPt9v"
+    >
+      <a
+        className="hide"
+      />
+    </Link>
   </div>
 </div>
 `;
 
 exports[`the post belongs DO NOT belongs to the current user and props.editable is true should NOT be possible to edit the post 1`] = `
 <div
-  className="post-list-item "
+  className="post-list-item"
 >
-  <Link
-    as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
-    href="/post?id=-LV-kv5VGQDljYtMPt9v"
-    prefetch={true}
+  <div
+    className="post-list-item__content-container"
   >
     <a
       className="post-list-item__link"
+      onClick={[Function]}
     >
+      <img
+        alt="Travel Image"
+        className="post-list-item__image"
+        src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
+      />
       <div
-        className="post-list-item__content-container"
+        className="post-list-item__title-description-container"
       >
-        <img
-          alt="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-          className="post-list-item__image"
-          src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-        />
-        <div
-          className="post-list-item__address-container"
+        <h1
+          className="post-list-item__title"
         >
-          <Address
-            address="Cannes"
-            addressClassName="post-list-item__address"
-            iconClassName="post-list-item__address-icon"
-          />
-        </div>
-        <div
-          className="post-list-item__title-description-container"
+          Don't Forget Where You Come From.
+        </h1>
+        <h2
+          className="post-list-item__description"
         >
-          <h1
-            className="post-list-item__title"
-          >
-            Don't Forget Where You Come From.
-          </h1>
-          <h2
-            className="post-list-item__description"
-          >
-            Discovering the beauty of my country, my home.
-          </h2>
-        </div>
+          Discovering the beauty of my country, my home.
+        </h2>
       </div>
     </a>
-  </Link>
+    <div
+      className="post-list-item__address-container"
+    >
+      <Address
+        address="Cannes"
+        addressClassName="post-list-item__address"
+        iconClassName="post-list-item__address-icon"
+        placeId={1122313343}
+      />
+    </div>
+  </div>
   <div>
     <div
       className="post-list-item__author-edit-container"
@@ -179,56 +182,60 @@ exports[`the post belongs DO NOT belongs to the current user and props.editable 
     <p>
       December 30th, 2018
     </p>
+    <Link
+      as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
+      href="/post?id=-LV-kv5VGQDljYtMPt9v"
+    >
+      <a
+        className="hide"
+      />
+    </Link>
   </div>
 </div>
 `;
 
 exports[`the post belongs to the current user and props.editable is false should NOT be possible to edit the post 1`] = `
 <div
-  className="post-list-item "
+  className="post-list-item"
 >
-  <Link
-    as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
-    href="/post?id=-LV-kv5VGQDljYtMPt9v"
-    prefetch={true}
+  <div
+    className="post-list-item__content-container"
   >
     <a
       className="post-list-item__link"
+      onClick={[Function]}
     >
+      <img
+        alt="Travel Image"
+        className="post-list-item__image"
+        src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
+      />
       <div
-        className="post-list-item__content-container"
+        className="post-list-item__title-description-container"
       >
-        <img
-          alt="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-          className="post-list-item__image"
-          src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-        />
-        <div
-          className="post-list-item__address-container"
+        <h1
+          className="post-list-item__title"
         >
-          <Address
-            address="Cannes"
-            addressClassName="post-list-item__address"
-            iconClassName="post-list-item__address-icon"
-          />
-        </div>
-        <div
-          className="post-list-item__title-description-container"
+          Don't Forget Where You Come From.
+        </h1>
+        <h2
+          className="post-list-item__description"
         >
-          <h1
-            className="post-list-item__title"
-          >
-            Don't Forget Where You Come From.
-          </h1>
-          <h2
-            className="post-list-item__description"
-          >
-            Discovering the beauty of my country, my home.
-          </h2>
-        </div>
+          Discovering the beauty of my country, my home.
+        </h2>
       </div>
     </a>
-  </Link>
+    <div
+      className="post-list-item__address-container"
+    >
+      <Address
+        address="Cannes"
+        addressClassName="post-list-item__address"
+        iconClassName="post-list-item__address-icon"
+        placeId={1122313343}
+      />
+    </div>
+  </div>
   <div>
     <div
       className="post-list-item__author-edit-container"
@@ -243,56 +250,60 @@ exports[`the post belongs to the current user and props.editable is false should
     <p>
       December 30th, 2018
     </p>
+    <Link
+      as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
+      href="/post?id=-LV-kv5VGQDljYtMPt9v"
+    >
+      <a
+        className="hide"
+      />
+    </Link>
   </div>
 </div>
 `;
 
 exports[`the post belongs to the current user and props.editable is true should be possible to edit the post 1`] = `
 <div
-  className="post-list-item "
+  className="post-list-item"
 >
-  <Link
-    as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
-    href="/post?id=-LV-kv5VGQDljYtMPt9v"
-    prefetch={true}
+  <div
+    className="post-list-item__content-container"
   >
     <a
       className="post-list-item__link"
+      onClick={[Function]}
     >
+      <img
+        alt="Travel Image"
+        className="post-list-item__image"
+        src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
+      />
       <div
-        className="post-list-item__content-container"
+        className="post-list-item__title-description-container"
       >
-        <img
-          alt="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-          className="post-list-item__image"
-          src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-        />
-        <div
-          className="post-list-item__address-container"
+        <h1
+          className="post-list-item__title"
         >
-          <Address
-            address="Cannes"
-            addressClassName="post-list-item__address"
-            iconClassName="post-list-item__address-icon"
-          />
-        </div>
-        <div
-          className="post-list-item__title-description-container"
+          Don't Forget Where You Come From.
+        </h1>
+        <h2
+          className="post-list-item__description"
         >
-          <h1
-            className="post-list-item__title"
-          >
-            Don't Forget Where You Come From.
-          </h1>
-          <h2
-            className="post-list-item__description"
-          >
-            Discovering the beauty of my country, my home.
-          </h2>
-        </div>
+          Discovering the beauty of my country, my home.
+        </h2>
       </div>
     </a>
-  </Link>
+    <div
+      className="post-list-item__address-container"
+    >
+      <Address
+        address="Cannes"
+        addressClassName="post-list-item__address"
+        iconClassName="post-list-item__address-icon"
+        placeId={1122313343}
+      />
+    </div>
+  </div>
   <div>
     <div
       className="post-list-item__author-edit-container"
@@ -318,56 +329,60 @@ exports[`the post belongs to the current user and props.editable is true should 
     <p>
       December 30th, 2018
     </p>
+    <Link
+      as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
+      href="/post?id=-LV-kv5VGQDljYtMPt9v"
+    >
+      <a
+        className="hide"
+      />
+    </Link>
   </div>
 </div>
 `;
 
 exports[`the post contains a body and no URL has been provided should render correctly 1`] = `
 <div
-  className="post-list-item "
+  className="post-list-item"
 >
-  <Link
-    as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
-    href="/post?id=-LV-kv5VGQDljYtMPt9v"
-    prefetch={true}
+  <div
+    className="post-list-item__content-container"
   >
     <a
       className="post-list-item__link"
+      onClick={[Function]}
     >
+      <img
+        alt="Travel Image"
+        className="post-list-item__image"
+        src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
+      />
       <div
-        className="post-list-item__content-container"
+        className="post-list-item__title-description-container"
       >
-        <img
-          alt="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-          className="post-list-item__image"
-          src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-        />
-        <div
-          className="post-list-item__address-container"
+        <h1
+          className="post-list-item__title"
         >
-          <Address
-            address="Cannes"
-            addressClassName="post-list-item__address"
-            iconClassName="post-list-item__address-icon"
-          />
-        </div>
-        <div
-          className="post-list-item__title-description-container"
+          Don't Forget Where You Come From.
+        </h1>
+        <h2
+          className="post-list-item__description"
         >
-          <h1
-            className="post-list-item__title"
-          >
-            Don't Forget Where You Come From.
-          </h1>
-          <h2
-            className="post-list-item__description"
-          >
-            Discovering the beauty of my country, my home.
-          </h2>
-        </div>
+          Discovering the beauty of my country, my home.
+        </h2>
       </div>
     </a>
-  </Link>
+    <div
+      className="post-list-item__address-container"
+    >
+      <Address
+        address="Cannes"
+        addressClassName="post-list-item__address"
+        iconClassName="post-list-item__address-icon"
+        placeId={1122313343}
+      />
+    </div>
+  </div>
   <div>
     <div
       className="post-list-item__author-edit-container"
@@ -382,6 +397,14 @@ exports[`the post contains a body and no URL has been provided should render cor
     <p>
       December 30th, 2018
     </p>
+    <Link
+      as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
+      href="/post?id=-LV-kv5VGQDljYtMPt9v"
+    >
+      <a
+        className="hide"
+      />
+    </Link>
   </div>
 </div>
 `;

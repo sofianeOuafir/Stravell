@@ -24,6 +24,15 @@ exports[`A user is authenticated should render Header correctly 1`] = `
       <div
         className="header__right"
       >
+        <Link
+          href="/destinations"
+        >
+          <a
+            className="text-white favourite-font-weight show-for-tablet mr1"
+          >
+            Destinations
+          </a>
+        </Link>
         <div
           className="header__right"
         >
@@ -33,7 +42,7 @@ exports[`A user is authenticated should render Header correctly 1`] = `
             prefetch={true}
           >
             <withAvatarConfig
-              className="header__user-photo show-for-desktop"
+              className="header__user-photo show-for-tablet"
               round={true}
               size="40"
               src="myPhotoURL"
@@ -132,8 +141,17 @@ exports[`There is no user authenticated should render Header correctly 1`] = `
       <div
         className="header__right"
       >
+        <Link
+          href="/destinations"
+        >
+          <a
+            className="text-white favourite-font-weight show-for-tablet mr1"
+          >
+            Destinations
+          </a>
+        </Link>
         <DropDownMenu
-          title="Sign in to Stravell"
+          title="Main Menu"
         >
           <Link
             href="/login"

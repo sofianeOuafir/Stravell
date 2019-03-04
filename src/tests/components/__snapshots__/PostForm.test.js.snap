@@ -7556,8 +7556,11 @@ exports[`post - body the body is changing should render correctly 1`] = `
   <div>
     <button
       className="button"
+      disabled={false}
     >
-      Save Post
+      <span>
+         Save Post
+      </span>
     </button>
   </div>
 </form>
@@ -7657,8 +7660,11 @@ exports[`post - description the description is changing should render correctly 
   <div>
     <button
       className="button"
+      disabled={false}
     >
-      Save Post
+      <span>
+         Save Post
+      </span>
     </button>
   </div>
 </form>
@@ -7763,8 +7769,11 @@ exports[`post - description the description is too long should render correctly 
   <div>
     <button
       className="button"
+      disabled={false}
     >
-      Save Post
+      <span>
+         Save Post
+      </span>
     </button>
   </div>
 </form>
@@ -7869,8 +7878,11 @@ exports[`post - description the description is too short should render correctly
   <div>
     <button
       className="button"
+      disabled={false}
     >
-      Save Post
+      <span>
+         Save Post
+      </span>
     </button>
   </div>
 </form>
@@ -7975,8 +7987,11 @@ exports[`post - image An error occured when the image got uploaded should render
   <div>
     <button
       className="button"
+      disabled={false}
     >
-      Save Post
+      <span>
+         Save Post
+      </span>
     </button>
   </div>
 </form>
@@ -8081,8 +8096,11 @@ exports[`post - image the format of the file is not an accepted format should re
   <div>
     <button
       className="button"
+      disabled={false}
     >
-      Save Post
+      <span>
+         Save Post
+      </span>
     </button>
   </div>
 </form>
@@ -8188,8 +8206,11 @@ exports[`post - image the image got changed and uploaded successfully should ren
   <div>
     <button
       className="button"
+      disabled={false}
     >
-      Save Post
+      <span>
+         Save Post
+      </span>
     </button>
   </div>
 </form>
@@ -8289,8 +8310,11 @@ exports[`post - provideURL provideURL has changed to be false should render corr
   <div>
     <button
       className="button"
+      disabled={false}
     >
-      Save Post
+      <span>
+         Save Post
+      </span>
     </button>
   </div>
 </form>
@@ -8394,8 +8418,11 @@ exports[`post - provideURL provideURL has changed to be true should render corre
   <div>
     <button
       className="button"
+      disabled={false}
     >
-      Save Post
+      <span>
+         Save Post
+      </span>
     </button>
   </div>
 </form>
@@ -8504,8 +8531,11 @@ exports[`post - provided URL the provided URL has changed and is NOT valid shoul
   <div>
     <button
       className="button"
+      disabled={false}
     >
-      Save Post
+      <span>
+         Save Post
+      </span>
     </button>
   </div>
 </form>
@@ -8609,8 +8639,11 @@ exports[`post - provided URL the provided URL has changed and is valid should re
   <div>
     <button
       className="button"
+      disabled={false}
     >
-      Save Post
+      <span>
+         Save Post
+      </span>
     </button>
   </div>
 </form>
@@ -8710,8 +8743,11 @@ exports[`post - title the title is changing should render correctly 1`] = `
   <div>
     <button
       className="button"
+      disabled={false}
     >
-      Save Post
+      <span>
+         Save Post
+      </span>
     </button>
   </div>
 </form>
@@ -8816,8 +8852,11 @@ exports[`post - title the title is too long should render correctly 1`] = `
   <div>
     <button
       className="button"
+      disabled={false}
     >
-      Save Post
+      <span>
+         Save Post
+      </span>
     </button>
   </div>
 </form>
@@ -8922,8 +8961,11 @@ exports[`post - title the title is too short should render correctly 1`] = `
   <div>
     <button
       className="button"
+      disabled={false}
     >
-      Save Post
+      <span>
+         Save Post
+      </span>
     </button>
   </div>
 </form>

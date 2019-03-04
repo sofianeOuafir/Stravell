@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly when passing links props with link containing no text 1`] = `<div />`;
+
+exports[`should render correctly when passing links props with valid link 1`] = `
+<div>
+  <Link
+    href="/home"
+    key="0"
+    prefetch={true}
+  >
+    <a
+      className="breadcrumb__link"
+    >
+      <span
+        className="breadcrumb__link-text breadcrumb__link-text--active"
+      >
+        Home
+      </span>
+      <span
+        className="mr1"
+      >
+        /
+      </span>
+    </a>
+  </Link>
+  <Link
+    href="/destinations"
+    key="1"
+    prefetch={true}
+  >
+    <a
+      className="breadcrumb__link"
+    >
+      <span
+        className="breadcrumb__link-text "
+      >
+        Destinations
+      </span>
+    </a>
+  </Link>
+</div>
+`;

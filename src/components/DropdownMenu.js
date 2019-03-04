@@ -1,5 +1,7 @@
 import React from "react";
-
+import {
+  IoMdMenu
+} from "react-icons/io";
 class DropDownMenu extends React.Component {
   constructor(props) {
     super(props);
@@ -31,7 +33,7 @@ class DropDownMenu extends React.Component {
   render() {
     return (
       <div className="dropdown-menu">
-        <button className={this.state.titleClassName} onClick={this.showMenu}>{ this.props.title }</button>
+        <button className={this.state.titleClassName} onClick={this.showMenu}><IoMdMenu className="mr2"/>{ this.props.title }</button>
         {this.state.showMenu && (
           <div className={this.state.contentClassName}>
             {this.props.children}

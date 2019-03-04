@@ -27,7 +27,7 @@ export const Header = ({
   uid
 }) => {
   let avatarProps = {
-    className: "header__user-photo show-for-desktop",
+    className: "header__user-photo show-for-tablet",
     round: true,
     size: "40"
   }
@@ -69,6 +69,9 @@ export const Header = ({
             </a>
           </div>
           <div className="header__right">
+            <Link href="/destinations">
+              <a className="text-white favourite-font-weight show-for-tablet mr1">Destinations</a>
+            </Link>
             {isAuthenticated ? (
               <div className="header__right">
                 <Link
@@ -105,7 +108,7 @@ export const Header = ({
                 </DropdownMenu>
               </div>
             ) : (
-              <DropdownMenu title="Sign in to Stravell">
+              <DropdownMenu title="Main Menu">
                 <Link prefetch href="/login">
                   <button>
                     <IoIosLogIn className="header__dropdown-menu-icon" />

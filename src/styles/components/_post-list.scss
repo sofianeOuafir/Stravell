@@ -1,10 +1,5 @@
 .post-list {
   display: flex;
   flex-wrap: wrap;
-  border-top: 1px $grey solid;
-  padding: $xl-size 0;
-}
-
-.post-list--no-border-top {
-  border-top: none;
+  padding: $s-size 0;
 }

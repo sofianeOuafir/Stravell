@@ -1,19 +1,16 @@
 .post-list-item {
-  border-right: 1px $grey solid;
-  width: 50%;
+  width: 33.33%;
   margin-bottom: $xl-size;
-  padding: 0 $s-size;
+  padding: 0 $s-size 0 0;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  @media (max-width: $desktop-breakpoint) {
-    width: 100%;
-    border-right: none;
+  @media (max-width: $tablet-breakpoint) {
+    width: 50%;
   }
-}
-
-.post-list-item--no-border {
-  border-right: none;
+  @media (max-width: $mobile-breakpoint) {
+    width: 100%;
+  }
 }
 
 .post-list-item__link{
@@ -30,10 +27,12 @@
 }
 
 .post-list-item__title {
+  margin: 0;
   font-size: $font-size-large;
 }
 
 .post-list-item__description {
+  margin: $s-size 0;
   font-size: $font-size-normal;
   font-weight: $favourite-font-weight;
 }
@@ -71,6 +70,7 @@
 }
 
 .post-list-item__address{
+  text-decoration: underline;
   font-size: $s-size;
   color: white;
 }

@@ -9,14 +9,17 @@ import {
   IoMdAirplane
 } from "react-icons/io";
 
-const Footer = props => (
+const Footer = () => (
   <div className="footer">
     <div className="fullwidth content-container align-items--center flex justify-content--between">
-      <Link href="/">
-        <a className="footer__corporation favourite-font-weight no-text-decoration">
-          {APP_NAME}, Inc.
-        </a>
-      </Link>
+      <div className="flex flex-direction--column">
+        <Link href="/">
+          <a className="footer__corporation favourite-font-weight no-text-decoration">
+            {APP_NAME}, Inc.
+          </a>
+        </Link>
+      </div>
+
       <div className="flex align-items--center">
         <Link href="/destinations">
           <a>

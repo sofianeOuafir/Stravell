@@ -1,4 +1,36 @@
 export const getLocationData = () => {
-  console.log('salut toi')
-  return Promise.resolve({ lat: 1.2342, lng: 1.1123, country: 'Brazil', countryCode: 'BR' })
-}
+  return Promise.resolve({
+    countryData: {
+      name: null,
+      code: null,
+      bounds: {
+        northEastLat: null,
+        northEastLng: null,
+        southWestLat: null,
+        southWestLng: null
+      }
+    },
+    regionData: {
+      name: null,
+      code: null,
+      bounds: {
+        northEastLat: null,
+        northEastLng: null,
+        southWestLat: null,
+        southWestLng: null
+      }
+    },
+    placeData: {
+      placeId: null,
+      address: null,
+      lat: null,
+      lng: null,
+      bounds: {
+        northEastLat: null,
+        northEastLng: null,
+        southWestLat: null,
+        southWestLng: null
+      }
+    }
+  });
+};

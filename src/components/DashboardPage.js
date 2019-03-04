@@ -1,9 +1,8 @@
 import React from "react";
-import Link from "next/link";
 import Router from "next/router";
-import { connect } from 'react-redux';
+import { slugify } from "underscore.string";
 
-import FilterablePostList from "./FilterablePostList";
+import FilterableDataList from "./FilterableDataList";
 import PageHeader from "./PageHeader";
 import {
   NO_ELEMENT_POST_LIST_DASHBOARD_TEXT,
@@ -11,19 +10,24 @@ import {
   DASHBOARD_PAGE_DESCRIPTION
 } from "./../constants/constants";
 import Layout from "./Layout";
-import { setCountries } from "./../actions/countries";
-import { getPosts } from "../queries/post";
-import { getCountries } from "../queries/country";
+import { getUserPosts } from "../queries/post";
+import PostList from "./PostList";
+import { getUser } from './../queries/user';
 
 export class DashboardPage extends React.Component {
-  async componentDidMount() {
-    const { uid } = this.props;
-    const countries = await getCountries({ uid });
-    this.props.dispatch(setCountries(countries));
-  }
-
   render() {
-    const { posts } = this.props;
+    const { posts, user } = this.props;
+    const { id, userName } = user;
+    const breadcrumbLinks = [
+      { href: "/", text: "Home" },
+      {
+        href: `/dashboard?uid=${id}`,
+        as: `/dashboard/${slugify(userName)}/${id}`,
+        text: "Dashboard",
+        active: true
+      },
+      { href: "/create", as: "/p/create", text: "Create Post" }
+    ];
     return (
       <Layout
         title={DASHBOARD_PAGE_TITLE}
@@ -31,14 +35,15 @@ export class DashboardPage extends React.Component {
       >
         <PageHeader title="Dashboard" withSocialShareButtons={false} />
         <div className="content-container">
-          <Link as="/p/create" href="/createPost">
-            <a className="button button--with-bottom-margin">Create Post</a>
-          </Link>
-          <FilterablePostList
+          <FilterableDataList
+            DataList={PostList}
+            withMap={false}
             editable={true}
-            SearchBarAutoFocus={true}
-            posts={posts}
-            noPostText={NO_ELEMENT_POST_LIST_DASHBOARD_TEXT}
+            data={posts}
+            nodataText={NO_ELEMENT_POST_LIST_DASHBOARD_TEXT}
+            breadCrumbProps={{
+              links: breadcrumbLinks
+            }}
           />
         </div>
       </Layout>
@@ -65,8 +70,9 @@ DashboardPage.getInitialProps = async function({
     }
   }
   if (authorised) {
-    const posts = await getPosts({ uid })
-    return { posts, uid };
+    const posts = await getUserPosts(uid);
+    const user = await getUser(uid);
+    return { posts, user };
   } else {
     if (res) {
       res.writeHead(302, {
@@ -76,7 +82,9 @@ DashboardPage.getInitialProps = async function({
     } else {
       Router.push("/");
     }
+
+    return {}
   }
 };
 
-export default connect()(DashboardPage);
+export default DashboardPage;

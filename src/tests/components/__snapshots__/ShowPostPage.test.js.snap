@@ -25,11 +25,47 @@ exports[`should render correctly if post do not have an address 1`] = `
       </span>
     </div>
   </PageHeader>
-  <img
-    alt=""
-    className="fullwidth"
-    src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-  />
+  <div
+    className="content-container"
+  >
+    <div
+      className="mb1"
+    >
+      <Breadcrumb
+        links={
+          Array [
+            Object {
+              "href": "/",
+              "text": "Home",
+            },
+            Object {
+              "as": "/country/FR",
+              "href": "/country?countryCode=FR",
+              "text": "France",
+            },
+            Object {
+              "as": "/region/france/fr-provence-alpes-cote-d-azur",
+              "href": "/region?regionCode=fr-provence-alpes-cote-d-azur",
+              "text": "Provence-Alpes-Côte d'Azur",
+            },
+            Object {
+              "active": true,
+              "as": "/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v",
+              "href": "/post?id=-LV-kv5VGQDljYtMPt9v",
+              "text": "Don't Forget Where You Come From.",
+            },
+          ]
+        }
+      />
+    </div>
+  </div>
+  <div>
+    <img
+      alt=""
+      className="fullwidth"
+      src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
+    />
+  </div>
   <div
     className="content-container"
   >
@@ -7544,12 +7580,54 @@ exports[`should render correctly if post have an address 1`] = `
         December 30th, 2018
       </span>
     </div>
+    <Address
+      address="Cannes"
+      addressClassName="text-dark-grey"
+      iconClassName="ml1 mr1 text-dark-grey"
+      placeId={1122313343}
+    />
   </PageHeader>
-  <img
-    alt=""
-    className="fullwidth"
-    src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-  />
+  <div
+    className="content-container"
+  >
+    <div
+      className="mb1"
+    >
+      <Breadcrumb
+        links={
+          Array [
+            Object {
+              "href": "/",
+              "text": "Home",
+            },
+            Object {
+              "as": "/country/FR",
+              "href": "/country?countryCode=FR",
+              "text": "France",
+            },
+            Object {
+              "as": "/region/france/fr-provence-alpes-cote-d-azur",
+              "href": "/region?regionCode=fr-provence-alpes-cote-d-azur",
+              "text": "Provence-Alpes-Côte d'Azur",
+            },
+            Object {
+              "active": true,
+              "as": "/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v",
+              "href": "/post?id=-LV-kv5VGQDljYtMPt9v",
+              "text": "Don't Forget Where You Come From.",
+            },
+          ]
+        }
+      />
+    </div>
+  </div>
+  <div>
+    <img
+      alt=""
+      className="fullwidth"
+      src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
+    />
+  </div>
   <div
     className="content-container"
   >
@@ -15064,7 +15142,47 @@ exports[`should render correctly if post have been provided a link 1`] = `
         December 30th, 2018
       </span>
     </div>
+    <Address
+      address="Cannes"
+      addressClassName="text-dark-grey"
+      iconClassName="ml1 mr1 text-dark-grey"
+      placeId={1122313343}
+    />
   </PageHeader>
+  <div
+    className="content-container"
+  >
+    <div
+      className="mb1"
+    >
+      <Breadcrumb
+        links={
+          Array [
+            Object {
+              "href": "/",
+              "text": "Home",
+            },
+            Object {
+              "as": "/country/FR",
+              "href": "/country?countryCode=FR",
+              "text": "France",
+            },
+            Object {
+              "as": "/region/france/fr-provence-alpes-cote-d-azur",
+              "href": "/region?regionCode=fr-provence-alpes-cote-d-azur",
+              "text": "Provence-Alpes-Côte d'Azur",
+            },
+            Object {
+              "active": true,
+              "as": "/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v",
+              "href": "/post?id=-LV-kv5VGQDljYtMPt9v",
+              "text": "Don't Forget Where You Come From.",
+            },
+          ]
+        }
+      />
+    </div>
+  </div>
   <div
     className="relative flex align-items--center justify-content--center"
   >

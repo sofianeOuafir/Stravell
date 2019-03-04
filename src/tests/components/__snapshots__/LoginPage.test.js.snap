@@ -22,9 +22,9 @@ exports[`should correctly render LoginPage 1`] = `
       <e
         firebaseAuth={
           Object {
-            "apiKey": "AIzaSyDBUdRiuUha2QWFCIqqNUPVzEm8e24w76I",
+            "apiKey": "AIzaSyDRh9EFPv2_aUjOfi7Zw7z-eC6ZCWFNsaw",
             "appName": "[DEFAULT]",
-            "authDomain": "stravell-test.firebaseapp.com",
+            "authDomain": "stravell-production.firebaseapp.com",
             "currentUser": null,
           }
         }

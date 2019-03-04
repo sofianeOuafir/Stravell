@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`posts props array contains some posts should render correctly 1`] = `
+exports[`data props array contains some posts should render correctly 1`] = `
 <div
   className="post-list"
 >
@@ -20,8 +20,11 @@ exports[`posts props array contains some posts should render correctly 1`] = `
         "image": "https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main",
         "lat": 1.1223,
         "lng": 1.3343,
+        "placeId": 1122313343,
         "provideURL": false,
         "providedURL": "",
+        "region": "Provence-Alpes-Côte d'Azur",
+        "regionCode": "fr-provence-alpes-cote-d-azur",
         "s3FolderName": "ea5f10a1-10c3-4cfd-a607-982678db7159",
         "title": "Don't Forget Where You Come From.",
         "uid": "YYFEgQAdBuQIsox3ojncZtpSAmG3",
@@ -34,7 +37,7 @@ exports[`posts props array contains some posts should render correctly 1`] = `
 </div>
 `;
 
-exports[`posts props array do NOT contain any post should render correctly 1`] = `
+exports[`data props array do NOT contain any post should render correctly 1`] = `
 <h2
   className="favourite-font-weight"
 >

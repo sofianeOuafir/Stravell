@@ -66,6 +66,10 @@ button:disabled {
   margin-right: $s-size;
 }
 
+.mr2 {
+  margin-right: $m-size;
+}
+
 .mb1 {
   margin-bottom: $s-size;
 }
@@ -112,6 +116,10 @@ button:disabled {
 
 .pl1 {
   padding-left: $s-size;
+}
+
+.pr1 {
+  padding-right: $s-size;
 }
 
 .pt1 {
@@ -215,11 +223,22 @@ button:disabled {
 .h2 {
   font-size: $l-size;
 }
+.h3 {
+  font-size: $ml-size;
+}
 
 .text-dark-grey {
   color: $dark-grey;
 }
 
+.text-white {
+  color: white;
+}
+
 .border-light-grey {
   border: 1px $light-grey solid;
+}
+
+.block {
+  display: block;
 }

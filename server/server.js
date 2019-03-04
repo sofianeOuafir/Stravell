@@ -76,12 +76,6 @@ app.prepare().then(() => {
     app.render(req, res, actualPage, queryParams)
   })
 
-  server.get('/s/:text', (req, res) => {
-    const actualPage = '/'
-    const queryParams = { s: req.params.text } 
-    app.render(req, res, actualPage, queryParams)
-  })
-
   server.get('/p/show/:title/:id', (req, res) => {
     const actualPage = '/post'
     const queryParams = { id: req.params.id } 
@@ -103,6 +97,30 @@ app.prepare().then(() => {
   server.get('/u/show/:username/:uid', (req, res) => {
     const actualPage = '/user'
     const queryParams = { uid: req.params.uid } 
+    app.render(req, res, actualPage, queryParams)
+  })
+
+  server.get('/country/:countryCode', (req, res) => {
+    const actualPage = '/country'
+    const queryParams = { countryCode: req.params.countryCode } 
+    app.render(req, res, actualPage, queryParams)
+  })
+
+  server.get('/place/:address/:id', (req, res) => {
+    const actualPage = '/place'
+    const queryParams = { id: req.params.id } 
+    app.render(req, res, actualPage, queryParams)
+  })
+
+  server.get('/region/:country/:regionCode', (req, res) => {
+    const actualPage = '/region'
+    const queryParams = { regionCode: req.params.regionCode } 
+    app.render(req, res, actualPage, queryParams)
+  })
+
+  server.get('/:country/:countryCode/regions', (req, res) => {
+    const actualPage = '/regions'
+    const queryParams = { countryCode: req.params.countryCode } 
     app.render(req, res, actualPage, queryParams)
   })
 
