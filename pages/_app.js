@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import Router, { withRouter } from "next/router";
 import ReactGA from "react-ga";
 import NProgress from "nprogress";
+import { hotjar } from "react-hotjar";
 
 import withReduxStore from "../src/hocs/withReduxStore";
 import { firebase } from "./../src/firebase/firebase";
@@ -29,6 +30,8 @@ class MyApp extends App {
       ReactGA.pageview(location);
       NProgress.start();
     });
+
+    hotjar.initialize(process.env.HOTJAR_ID, 6);
 
     Router.events.on("routeChangeComplete", () => NProgress.done());
     Router.events.on("routeChangeError", () => NProgress.done());
