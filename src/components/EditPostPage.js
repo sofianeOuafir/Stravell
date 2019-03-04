@@ -20,14 +20,21 @@ export class EditPostPage extends React.Component {
   }
 
   onSubmit = ({ post, country, user, place, region }) => {
-    const { post: postBeforeUpdate, uid, userName } = this.props;
+    const {
+      post: postBeforeUpdate,
+      uid,
+      userName,
+      removePost,
+      addPost,
+      router
+    } = this.props;
 
     removePost(postBeforeUpdate)
       .then(() => {
         return addPost({ post, country, user, place, region });
       })
       .then(() => {
-        this.props.router.push(
+        router.push(
           `/dashboard?uid=${uid}`,
           `/dashboard/${slugify(userName)}/${uid}`
         );
@@ -39,7 +46,7 @@ export class EditPostPage extends React.Component {
     const breadcrumbLinks = [
       { href: "/", text: "Home" },
       {
-        href: `/dashboard=uid${uid}`,
+        href: `/dashboard?uid=${uid}`,
         as: `/dashboard/${slugify(userName)}/${uid}`,
         text: "Dashboard"
       },
@@ -98,9 +105,21 @@ EditPostPage.getInitialProps = async function({ query, req, reduxStore, res }) {
   }
 };
 
+const mapDispatchToProps = () => ({
+  removePost: postBeforeUpdate => {
+    return removePost(postBeforeUpdate);
+  },
+  addPost: ({ post, country, user, place, region }) => {
+    return addPost({ post, country, user, place, region });
+  }
+});
+
 const mapStateToProps = state => ({
   uid: state.auth.uid,
   userName: state.auth.userName
 });
 
-export default connect(mapStateToProps)(withRouter(EditPostPage));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(EditPostPage));

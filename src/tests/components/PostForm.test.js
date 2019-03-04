@@ -2,7 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import { convertFromRaw, EditorState } from "draft-js";
 
-import PostForm from "./../../components/PostForm";
+import { PostForm } from "./../../components/PostForm";
 import {
   MIN_NUM_OF_CHARACTERS_FOR_DESCRIPTION,
   MAX_NUM_OF_CHARACTERS_FOR_DESCRIPTION,

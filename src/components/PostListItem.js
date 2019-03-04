@@ -36,7 +36,7 @@ export const PostListItem = ({
           <img
             className="post-list-item__image"
             src={`${post.image}`}
-            alt={`${post.image}`}
+            alt={`Travel Image`}
           />
 
           <div className="post-list-item__title-description-container">

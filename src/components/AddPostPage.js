@@ -13,7 +13,7 @@ import Layout from "./Layout";
 import BreadCrumb from "./Breadcrumb";
 import { addPost } from "./../queries/post";
 
-export class AddPostPage extends React.Component {
+class AddPostPage extends React.Component {
   onSubmit = ({ post, country, user, place, region }) => {
     const { addPost } = this.props;
     addPost({ post, country, user, place, region }).then(() => {
@@ -96,6 +96,7 @@ const mapStateToProps = state => ({
   userName: state.auth.userName
 });
 
+export { AddPostPage };
 export default connect(
   mapStateToProps,
   mapDispatchToProps

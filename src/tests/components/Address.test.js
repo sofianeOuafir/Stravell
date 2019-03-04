@@ -4,7 +4,7 @@ import Address from "../../components/Address";
 
 describe("without iconClassName or addressClassName props", () => {
   test("should render correctly", () => {
-    const wrapper = shallow(<Address address="Monaco" />);
+    const wrapper = shallow(<Address address="Monaco" placeId="abc123" />);
     expect(wrapper).toMatchSnapshot();
   });
 });
@@ -16,6 +16,7 @@ describe("with iconClassName or addressClassName props", () => {
         iconClassName="my-css-class"
         addressClassName="my-css-class"
         address="Monaco"
+        placeId="abc123"
       />
     );
     expect(wrapper).toMatchSnapshot();
