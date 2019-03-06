@@ -28,10 +28,17 @@ export class EditPostPage extends React.Component {
       addPost,
       router
     } = this.props;
-
+    const { id: postId } = postBeforeUpdate;
     removePost(postBeforeUpdate)
       .then(() => {
-        return addPost({ post, country, user, place, region });
+        return addPost({
+          post,
+          country,
+          user,
+          place,
+          region,
+          postId
+        });
       })
       .then(() => {
         router.push(
@@ -109,8 +116,8 @@ const mapDispatchToProps = () => ({
   removePost: postBeforeUpdate => {
     return removePost(postBeforeUpdate);
   },
-  addPost: ({ post, country, user, place, region }) => {
-    return addPost({ post, country, user, place, region });
+  addPost: ({ post, country, user, place, region, postId }) => {
+    return addPost({ post, country, user, place, region, postId });
   }
 });
 

@@ -7,7 +7,6 @@ import { getPlaceIdFromLatLng } from "./../lib/utils/place";
 
 export const removePost = async post => {
   const { id, uid, countryCode, regionCode, placeId } = post;
-
   let updates = {};
   updates[`/posts/${id}`] = null;
 
@@ -131,27 +130,30 @@ export const addPost = ({
   country = {},
   user,
   place = {},
-  region = {}
+  region = {},
+  postId
 }) => {
   const { uid } = user;
   const { countryCode, ...countryData } = country;
   const { regionCode, ...regionData } = region;
   const { placeId, ...placeData } = place;
 
-  const newPostKey = database
-    .ref()
-    .child("posts")
-    .push().key;
+  postId = postId
+    ? postId
+    : database
+        .ref()
+        .child("posts")
+        .push().key;
   let updates = {};
-  updates[`/posts/${newPostKey}`] = post;
+  updates[`/posts/${postId}`] = post;
 
   if (uid) {
-    updates[`/user-posts/${uid}/${newPostKey}`] = post;
+    updates[`/user-posts/${uid}/${postId}`] = post;
   }
 
   if (countryCode) {
     updates[`/countries/${countryCode}`] = countryData;
-    updates[`/country-posts/${countryCode}/${newPostKey}`] = post;
+    updates[`/country-posts/${countryCode}/${postId}`] = post;
     if (uid) {
       updates[`/user-countries/${uid}/${countryCode}`] = countryData;
     }
@@ -159,7 +161,7 @@ export const addPost = ({
 
   if (regionCode) {
     updates[`/regions/${regionCode}`] = regionData;
-    updates[`/region-posts/${regionCode}/${newPostKey}`] = post;
+    updates[`/region-posts/${regionCode}/${postId}`] = post;
     if (countryCode) {
       updates[`/country-regions/${countryCode}/${regionCode}`] = regionData;
     }
@@ -167,7 +169,7 @@ export const addPost = ({
 
   if (placeId) {
     updates[`/places/${placeId}`] = placeData;
-    updates[`/place-posts/${placeId}/${newPostKey}`] = post;
+    updates[`/place-posts/${placeId}/${postId}`] = post;
     if (countryCode) {
       updates[`/country-places/${countryCode}/${placeId}`] = placeData;
     }
