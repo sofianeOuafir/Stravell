@@ -5,8 +5,7 @@ import {
   IoIosMail,
   IoLogoTwitter,
   IoLogoInstagram,
-  IoLogoFacebook,
-  IoMdAirplane
+  IoLogoFacebook
 } from "react-icons/io";
 
 const Footer = () => (
@@ -21,11 +20,6 @@ const Footer = () => (
       </div>
 
       <div className="flex align-items--center">
-        <Link href="/destinations">
-          <a>
-            <IoMdAirplane className="footer__logo" />
-          </a>
-        </Link>
         <Link href="mailto:stravell.com@gmail.com">
           <a>
             <IoIosMail className="footer__logo" />

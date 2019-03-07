@@ -25,7 +25,6 @@ class RegionPage extends React.Component {
     } = region;
     const breadcrumbLinks = [
       { href: "/", text: "Home" },
-      { href: "/destinations", text: "Destinations" },
       {
         href: `/country?countryCode=${countryCode}`,
         as: `/country/${countryCode}`,

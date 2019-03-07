@@ -36,12 +36,11 @@ class CountryPage extends React.Component {
       regionsLink = {
         href: `/regions?countryCode=${id}`,
         as: `/${slugify(countryName)}/${id}/regions`,
-        text: "Search By State/Region"
+        text: "Search By State / Region"
       };
     }
     const breadcrumbLinks = [
       { href: "/", text: "Home" },
-      { href: "/destinations", text: "Destinations" },
       {
         href: `/country?countryCode=${id}`,
         as: `/country/${id}`,
