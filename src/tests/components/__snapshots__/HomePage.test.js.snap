@@ -3,7 +3,7 @@
 exports[`A userName prop is provided should render correctly 1`] = `
 <Layout
   description="Stravell | A search engine for travel articles. It makes it easy for you to find travel articles about thousands of places around the world written by some of the best travel bloggers worldwide."
-  title="Stravell | Stravell - Read, Write and Find Travel Articles From Travelers worldwide."
+  title="Stravell | Find and Read Travel Articles From Travelers worldwide."
 >
   <div
     className="homepage__image-container"
@@ -104,7 +104,7 @@ exports[`A userName prop is provided should render correctly 1`] = `
 exports[`no username prop is provided should render correctly 1`] = `
 <Layout
   description="Stravell | A search engine for travel articles. It makes it easy for you to find travel articles about thousands of places around the world written by some of the best travel bloggers worldwide."
-  title="Stravell | Stravell - Read, Write and Find Travel Articles From Travelers worldwide."
+  title="Stravell | Find and Read Travel Articles From Travelers worldwide."
 >
   <div
     className="homepage__image-container"
