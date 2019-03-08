@@ -8,6 +8,8 @@ import { getAllPlaces } from "./../queries/place";
 import FilterableDataList from "./FilterableDataList";
 import { getAllPosts } from "../queries/post";
 import SocialShareButtons from "./SocialShareButtons";
+import { IoIosSearch } from "react-icons/io";
+import Typed from 'react-typed';
 
 import { HOME_PAGE_TITLE, HOME_PAGE_DESCRIPTION } from "../constants/constants";
 import PostList from "./PostList";
@@ -22,18 +24,39 @@ class HomePage extends React.Component {
     };
     return (
       <Layout title={HOME_PAGE_TITLE} description={HOME_PAGE_DESCRIPTION}>
-        <div style={{ marginTop: 60 }} className="relative">
-          <p
-            className="absolute content-container favourite-font-weight"
-            style={{ top: 60, color: "white", fontSize: 30 }}
-          >
-            Stravell is a search engine for travel articles. We make it easy for
-            you to find travel articles about thousands of places around the
-            world written by the best travel bloggers.
-          </p>
-          <div className="absolute content-container bg-white" style={{ bottom: 20}}>
-            <SocialShareButtons />
+        <div className="homepage__image-container">
+          <div className="content-container">
+            <div className="homepage__image-container__text-container" />
+            <div className="homepage__image-container__text">
+              <h1 className="homepage__image-container__text--website-name">
+                Stravell
+              </h1>
+              A search engine for travel articles. <br /> It makes it easy for
+              you to find travel articles about thousands of places
+              <br />
+              around the world written by some of the best travel bloggers
+              worldwide.
+            </div>
+            <div className="homepage__image-container__typing-container" />
+            <div className="homepage__image-container__typing flex align-items--center">
+              <IoIosSearch className="mr1" />
+              <Typed 
+              strings={[
+                  'Australia',
+                  'Canada',
+                  'Japan',
+                  'Brazil']}
+                  typeSpeed={100}
+                  backSpeed={100} 
+                  loop >
+              </Typed>
+            </div>
+
+            <div className="absolute bg-white" style={{ bottom: 20 }}>
+              <SocialShareButtons />
+            </div>
           </div>
+
           <img src="/static/images/home.svg" alt="" className="fullwidth" />
         </div>
         <div className="content-container">
