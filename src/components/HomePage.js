@@ -1,46 +1,76 @@
 import React from "react";
-import { connect } from "react-redux";
 
-import FilterableDataList from "../components/FilterableDataList";
-import PageHeader from "./PageHeader";
-import {
-  NO_ELEMENT_POST_LIST_HOME_PAGE_TEXT,
-  HOME_PAGE_TITLE,
-  HOME_PAGE_DESCRIPTION
-} from "./../constants/constants";
 import Layout from "./Layout";
-import { getAllPosts } from "../queries/post";
+import PageHeader from "./PageHeader";
+import { getCountries } from "../queries/country";
+import CountryList from "./CountryList";
 import { getAllPlaces } from "./../queries/place";
-import PostList from "./PostList";
+import FilterableDataList from "./FilterableDataList";
+import { getAllPosts } from "../queries/post";
+import SocialShareButtons from "./SocialShareButtons";
+import { IoIosSearch } from "react-icons/io";
+import Typed from 'react-typed';
 
-export class HomePage extends React.Component {
+import { HOME_PAGE_TITLE, HOME_PAGE_DESCRIPTION } from "../constants/constants";
+import PostList from "./PostList";
+class HomePage extends React.Component {
   render() {
-    const { userName, posts, places } = this.props;
-    const breadcrumbLinks = [
-      { href: "/", text: "Home", active: true },
-      {
-        href: `/destinations`,
-        text: "Destinations"
-      }
-    ];
+    const { countries, places, posts } = this.props;
+    const breadcrumbLinks = [{ href: "/", text: "Home", active: true }];
     const googleMapsProps = {
+      showWholeWorld: true,
       isMarkerShown: true,
-      places,
-      showWholeWorld: true
+      places
     };
     return (
       <Layout title={HOME_PAGE_TITLE} description={HOME_PAGE_DESCRIPTION}>
-        <PageHeader title={`Welcome${userName ? `, ${userName}` : ""}`} />
+        <div className="homepage__image-container">
+          <div className="content-container">
+            <div className="homepage__image-container__text-container" />
+            <div className="homepage__image-container__text">
+              <h1 className="homepage__image-container__text--website-name">
+                Stravell
+              </h1>
+              A search engine for travel articles. <br /> It makes it easy for
+              you to find travel articles about thousands of places
+              <br />
+              around the world written by some of the best travel bloggers
+              worldwide.
+            </div>
+            <div className="homepage__image-container__typing-container" />
+            <div className="homepage__image-container__typing flex align-items--center">
+              <IoIosSearch className="mr1" />
+              <Typed 
+              strings={[
+                  'Australia',
+                  'Canada',
+                  'Japan',
+                  'Brazil']}
+                  typeSpeed={100}
+                  backSpeed={100} 
+                  loop >
+              </Typed>
+            </div>
+
+            <div className="homepage__image-container__social_buttons">
+              <SocialShareButtons />
+            </div>
+          </div>
+
+          <img src="/static/images/home.svg" alt="" className="fullwidth" />
+        </div>
         <div className="content-container">
           <FilterableDataList
-            DataList={PostList}
-            data={posts}
-            noDataText={NO_ELEMENT_POST_LIST_HOME_PAGE_TEXT}
+            DataList={CountryList}
             googleMapsProps={googleMapsProps}
+            noDataText={"There is no country yet."}
+            data={countries}
             breadCrumbProps={{
               links: breadcrumbLinks
             }}
           />
+          <h2 className="favourite-font-weight">Latest Posts</h2>
+          <PostList noDataText={"There is no post yet."} data={posts} />
         </div>
       </Layout>
     );
@@ -48,13 +78,10 @@ export class HomePage extends React.Component {
 }
 
 HomePage.getInitialProps = async function() {
-  const posts = await getAllPosts();
+  const countries = await getCountries();
   const places = await getAllPlaces();
-  return { posts, places };
+  const posts = await getAllPosts(15);
+  return { countries, places, posts };
 };
 
-const mapStateToProps = ({ auth }) => ({
-  userName: auth.userName
-});
-
-export default connect(mapStateToProps)(HomePage);
+export default HomePage;

@@ -27,7 +27,6 @@ class PlacePage extends React.Component {
     } = place;
     const breadcrumbLinks = [
       { href: "/", text: "Home" },
-      { href: "/destinations", text: "Destinations" },
       {
         href: `/country?countryCode=${countryCode}`,
         as: `/country/${countryCode}`,

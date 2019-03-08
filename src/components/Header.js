@@ -5,7 +5,6 @@ import {
   IoIosHome,
   IoIosPower,
   IoMdCreate,
-  IoIosAirplane,
   IoIosLogIn,
   IoIosList
 } from "react-icons/io";
@@ -46,12 +45,6 @@ export const Header = ({
           Home
         </button>
       </Link>
-      <Link href="/destinations">
-        <button>
-          <IoIosAirplane className="header__dropdown-menu-icon" />
-          Destinations
-        </button>
-      </Link>
     </Fragment>
   );
   return (
@@ -69,9 +62,6 @@ export const Header = ({
             </a>
           </div>
           <div className="header__right">
-            <Link href="/destinations">
-              <a className="text-white favourite-font-weight show-for-tablet mr1">Destinations</a>
-            </Link>
             {isAuthenticated ? (
               <div className="header__right">
                 <Link

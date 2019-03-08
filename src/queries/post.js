@@ -216,20 +216,32 @@ export const getPlacePosts = async id => {
   return posts;
 };
 
-export const getAllPosts = async () => {
+export const getAllPosts = async (limit = null) => {
   const ref = `posts`;
-  const posts = await getPosts(ref);
+  const posts = await getPosts(ref, limit);
   return posts;
 };
 
-const getPosts = async ref => {
-  const postSnapshot = await database
+const getPosts = async (ref, limit = null) => {
+  let postSnapshot;
+  if (limit) {
+    postSnapshot = await database
+      .ref(ref)
+      .orderByChild("createdAt")
+      .limitToLast(limit)
+      .once("value")
+      .then(snapshot => {
+        return snapshot;
+      });
+  } else {
+    postSnapshot = await database
     .ref(ref)
     .orderByChild("createdAt")
     .once("value")
     .then(snapshot => {
       return snapshot;
     });
+  }
 
   let posts = fromSnapShotToArray(postSnapshot);
   return posts.reverse();
