@@ -2,6 +2,7 @@
   margin-top: 60px;
   position: relative;
   opacity: 0.95;
+  overflow: hidden;
 }
 
 .homepage__image-container__text-container {
@@ -10,18 +11,35 @@
   top: 3rem;
   position: absolute;
   background: $dark-blue;
-  opacity: 0.5;
+  opacity: 0.3;
 
   @media (max-width: $small-laptop-breakpoint) {
-    height: 13rem;
+    top: 1rem;
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    height: 12rem;
+    top: 1rem;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    height: 12rem;
     top: 1rem;
   }
 }
 
 .homepage__image-container__text--website-name {
   font-size: $l-size;
-  margin: 0;  
+  margin: 0;
   font-weight: $favourite-font-weight;
+
+  @media (max-width: $tablet-breakpoint) {
+    font-size: $ml-size;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    display: none;
+  }
 }
 
 .homepage__image-container__text {
@@ -31,26 +49,41 @@
   color: white;
   padding: $s-size;
   top: 3rem;
+
   @media (max-width: $small-laptop-breakpoint) {
     top: 1rem;
   }
-  @media (max-width: $mobile-breakpoint) {
+
+  @media (max-width: $tablet-breakpoint) {
+    top: 1rem;
     font-size: $s-size;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
     top: 1rem;
   }
 }
 
 .homepage__image-container__typing-container {
-  height: 6rem;
+  height: 5rem;
   width: 28rem;
   top: 28rem;
   position: absolute;
   background: $dark-blue;
-  opacity: 0.5;
+  opacity: 0.3;
+
   @media (max-width: $small-laptop-breakpoint) {
     height: 3rem;
     width: 28rem;
     top: 20rem;
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    top: 14rem;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    display: none;
   }
 }
 
@@ -59,14 +92,27 @@
   position: absolute;
   top: 28rem;
   color: white;
-  font-size: $l-size; 
+  font-size: $l-size;
+
   @media (max-width: $small-laptop-breakpoint) {
-    font-size: $ml-size; 
+    font-size: $ml-size;
     top: 20rem;
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    top: 14rem;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    display: none;
   }
 }
 
+.homepage__image-container__social_buttons {
+  position: absolute;
+  bottom: 20px;
 
-
-
-
+  @media (max-width: $mobile-breakpoint) {
+    display: none;
+  }
+}

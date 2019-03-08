@@ -24,15 +24,6 @@ exports[`A user is authenticated should render Header correctly 1`] = `
       <div
         className="header__right"
       >
-        <Link
-          href="/destinations"
-        >
-          <a
-            className="text-white favourite-font-weight show-for-tablet mr1"
-          >
-            Destinations
-          </a>
-        </Link>
         <div
           className="header__right"
         >
@@ -90,16 +81,6 @@ exports[`A user is authenticated should render Header correctly 1`] = `
                 Home
               </button>
             </Link>
-            <Link
-              href="/destinations"
-            >
-              <button>
-                <IoIosAirplane
-                  className="header__dropdown-menu-icon"
-                />
-                Destinations
-              </button>
-            </Link>
             <button
               id="logOutButton"
               onClick={[MockFunction]}
@@ -141,15 +122,6 @@ exports[`There is no user authenticated should render Header correctly 1`] = `
       <div
         className="header__right"
       >
-        <Link
-          href="/destinations"
-        >
-          <a
-            className="text-white favourite-font-weight show-for-tablet mr1"
-          >
-            Destinations
-          </a>
-        </Link>
         <DropDownMenu
           title="Main Menu"
         >
@@ -172,16 +144,6 @@ exports[`There is no user authenticated should render Header correctly 1`] = `
                 className="header__dropdown-menu-icon"
               />
               Home
-            </button>
-          </Link>
-          <Link
-            href="/destinations"
-          >
-            <button>
-              <IoIosAirplane
-                className="header__dropdown-menu-icon"
-              />
-              Destinations
             </button>
           </Link>
         </DropDownMenu>

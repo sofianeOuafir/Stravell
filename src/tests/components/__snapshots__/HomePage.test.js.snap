@@ -2,12 +2,67 @@
 
 exports[`A userName prop is provided should render correctly 1`] = `
 <Layout
-  description="Stravell | Travel social blog containing lot of articles about travels and activities. Travellers of the whole world share their experiences about the trip they've made. You can read, write or find articles about the best wanderlust!"
-  title="Stravell | Stravell - Read, Write and Find Travel Articles From Travellers."
+  description="Stravell | A search engine for travel articles. It makes it easy for you to find travel articles about thousands of places around the world written by some of the best travel bloggers worldwide."
+  title="Stravell | Stravell - Read, Write and Find Travel Articles From Travelers worldwide."
 >
-  <PageHeader
-    title="Welcome, Sofiane"
-  />
+  <div
+    className="homepage__image-container"
+  >
+    <div
+      className="content-container"
+    >
+      <div
+        className="homepage__image-container__text-container"
+      />
+      <div
+        className="homepage__image-container__text"
+      >
+        <h1
+          className="homepage__image-container__text--website-name"
+        >
+          Stravell
+        </h1>
+        A search engine for travel articles. 
+        <br />
+         It makes it easy for you to find travel articles about thousands of places
+        <br />
+        around the world written by some of the best travel bloggers worldwide.
+      </div>
+      <div
+        className="homepage__image-container__typing-container"
+      />
+      <div
+        className="homepage__image-container__typing flex align-items--center"
+      >
+        <IoIosSearch
+          className="mr1"
+        />
+        <ReactTyped
+          backSpeed={100}
+          loop={true}
+          strings={
+            Array [
+              "Australia",
+              "Canada",
+              "Japan",
+              "Brazil",
+            ]
+          }
+          typeSpeed={100}
+        />
+      </div>
+      <div
+        className="homepage__image-container__social_buttons"
+      >
+        <withRouter(SocialShareButtons) />
+      </div>
+    </div>
+    <img
+      alt=""
+      className="fullwidth"
+      src="/static/images/home.svg"
+    />
+  </div>
   <div
     className="content-container"
   >
@@ -21,14 +76,9 @@ exports[`A userName prop is provided should render correctly 1`] = `
               "href": "/",
               "text": "Home",
             },
-            Object {
-              "href": "/destinations",
-              "text": "Destinations",
-            },
           ],
         }
       }
-      data={Array []}
       googleMapsProps={
         Object {
           "isMarkerShown": true,
@@ -36,7 +86,16 @@ exports[`A userName prop is provided should render correctly 1`] = `
           "showWholeWorld": true,
         }
       }
-      noDataText="Become a legend by being the very first person to publish a post in here!"
+      noDataText="There is no country yet."
+    />
+    <h2
+      className="favourite-font-weight"
+    >
+      Latest Posts
+    </h2>
+    <PostList
+      data={Array []}
+      noDataText="There is no post yet."
     />
   </div>
 </Layout>
@@ -44,12 +103,67 @@ exports[`A userName prop is provided should render correctly 1`] = `
 
 exports[`no username prop is provided should render correctly 1`] = `
 <Layout
-  description="Stravell | Travel social blog containing lot of articles about travels and activities. Travellers of the whole world share their experiences about the trip they've made. You can read, write or find articles about the best wanderlust!"
-  title="Stravell | Stravell - Read, Write and Find Travel Articles From Travellers."
+  description="Stravell | A search engine for travel articles. It makes it easy for you to find travel articles about thousands of places around the world written by some of the best travel bloggers worldwide."
+  title="Stravell | Stravell - Read, Write and Find Travel Articles From Travelers worldwide."
 >
-  <PageHeader
-    title="Welcome"
-  />
+  <div
+    className="homepage__image-container"
+  >
+    <div
+      className="content-container"
+    >
+      <div
+        className="homepage__image-container__text-container"
+      />
+      <div
+        className="homepage__image-container__text"
+      >
+        <h1
+          className="homepage__image-container__text--website-name"
+        >
+          Stravell
+        </h1>
+        A search engine for travel articles. 
+        <br />
+         It makes it easy for you to find travel articles about thousands of places
+        <br />
+        around the world written by some of the best travel bloggers worldwide.
+      </div>
+      <div
+        className="homepage__image-container__typing-container"
+      />
+      <div
+        className="homepage__image-container__typing flex align-items--center"
+      >
+        <IoIosSearch
+          className="mr1"
+        />
+        <ReactTyped
+          backSpeed={100}
+          loop={true}
+          strings={
+            Array [
+              "Australia",
+              "Canada",
+              "Japan",
+              "Brazil",
+            ]
+          }
+          typeSpeed={100}
+        />
+      </div>
+      <div
+        className="homepage__image-container__social_buttons"
+      >
+        <withRouter(SocialShareButtons) />
+      </div>
+    </div>
+    <img
+      alt=""
+      className="fullwidth"
+      src="/static/images/home.svg"
+    />
+  </div>
   <div
     className="content-container"
   >
@@ -63,14 +177,9 @@ exports[`no username prop is provided should render correctly 1`] = `
               "href": "/",
               "text": "Home",
             },
-            Object {
-              "href": "/destinations",
-              "text": "Destinations",
-            },
           ],
         }
       }
-      data={Array []}
       googleMapsProps={
         Object {
           "isMarkerShown": true,
@@ -78,7 +187,16 @@ exports[`no username prop is provided should render correctly 1`] = `
           "showWholeWorld": true,
         }
       }
-      noDataText="Become a legend by being the very first person to publish a post in here!"
+      noDataText="There is no country yet."
+    />
+    <h2
+      className="favourite-font-weight"
+    >
+      Latest Posts
+    </h2>
+    <PostList
+      data={Array []}
+      noDataText="There is no post yet."
     />
   </div>
 </Layout>

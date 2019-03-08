@@ -25,15 +25,6 @@ exports[`should render correctly 1`] = `
       className="flex align-items--center"
     >
       <Link
-        href="/destinations"
-      >
-        <a>
-          <IoMdAirplane
-            className="footer__logo"
-          />
-        </a>
-      </Link>
-      <Link
         href="mailto:stravell.com@gmail.com"
       >
         <a>

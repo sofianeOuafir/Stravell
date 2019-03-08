@@ -52,7 +52,7 @@ class HomePage extends React.Component {
               </Typed>
             </div>
 
-            <div className="absolute bg-white" style={{ bottom: 20 }}>
+            <div className="homepage__image-container__social_buttons">
               <SocialShareButtons />
             </div>
           </div>

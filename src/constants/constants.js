@@ -1,5 +1,5 @@
 export const APP_NAME = 'Stravell';
-export const HOME_PAGE_TITLE = `${APP_NAME} | Stravell - Read, Write and Find Travel Articles From Travellers.`;
+export const HOME_PAGE_TITLE = `${APP_NAME} | Stravell - Read, Write and Find Travel Articles From Travelers worldwide.`;
 export const LOG_IN_PAGE_TITLE = `${APP_NAME} | Log In`;
 export const DASHBOARD_PAGE_TITLE = `${APP_NAME} | Dashboard`;
 export const ADD_POST_PAGE_TITLE = `${APP_NAME} | Add Post`;
@@ -7,7 +7,7 @@ export const EDIT_POST_PAGE_TITLE = `${APP_NAME} | Edit Post`;
 export const NOT_FOUND_PAGE_TITLE = `${APP_NAME} | 404 Not Found`;
 export const USER_WALL_PAGE_TITLE = `${APP_NAME}`;
 
-export const HOME_PAGE_DESCRIPTION = `${APP_NAME} | Travel social blog containing lot of articles about travels and activities. Travellers of the whole world share their experiences about the trip they've made. You can read, write or find articles about the best wanderlust!`;
+export const HOME_PAGE_DESCRIPTION = `${APP_NAME} | A search engine for travel articles. It makes it easy for you to find travel articles about thousands of places around the world written by some of the best travel bloggers worldwide.`;
 export const LOG_IN_PAGE_DESCRIPTION = `${APP_NAME} | Log in page.`;
 export const DASHBOARD_PAGE_DESCRIPTION = `${APP_NAME} | Dashboard page`;
 export const ADD_POST_PAGE_DESCRIPTION = `${APP_NAME} | This page allow you to write, blog an article and share your experience about your travels, trip and best wanderlust.`;
