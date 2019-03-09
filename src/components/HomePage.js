@@ -62,7 +62,7 @@ class HomePage extends React.Component {
         </div>
         <div className="content-container">
           <FilterableDataList
-            searchBarPlaceHolder="Search a country. Click on it. Start reading :)"
+            searchBarPlaceHolder="Search a country. Click on it. Start discovering!"
             DataList={CountryList}
             googleMapsProps={googleMapsProps}
             noDataText={"There is no country yet."}
