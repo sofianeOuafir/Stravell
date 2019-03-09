@@ -42,6 +42,7 @@ class HomePage extends React.Component {
               <IoIosSearch className="mr1" />
               <Typed 
               strings={[
+                  'Thailand',
                   'Australia',
                   'Canada',
                   'Japan',
@@ -61,6 +62,7 @@ class HomePage extends React.Component {
         </div>
         <div className="content-container">
           <FilterableDataList
+            searchBarPlaceHolder="Search a country. Click on it. Start reading :)"
             DataList={CountryList}
             googleMapsProps={googleMapsProps}
             noDataText={"There is no country yet."}

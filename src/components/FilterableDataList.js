@@ -29,7 +29,8 @@ export class FilterableDataList extends React.Component {
       mapConfig,
       setMapVisibility,
       DataList,
-      withMap = true
+      withMap = true,
+      searchBarPlaceHolder = "Search"
     } = this.props;
     return (
       <div className="flex flex-direction--column">
@@ -60,6 +61,7 @@ export class FilterableDataList extends React.Component {
             {this.props.data.length > 0 && (
               <div className={`search-bar-container`}>
                 <SearchBar
+                  placeholder={searchBarPlaceHolder}
                   className="search-bar"
                   autoFocus={true}
                 />
