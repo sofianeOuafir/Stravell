@@ -42,6 +42,12 @@ exports[`should display correctly when post does not have address 1`] = `
         authorUid="YYFEgQAdBuQIsox3ojncZtpSAmG3"
         avatarSize={40}
       />
+      <a
+        className="button"
+        onClick={[Function]}
+      >
+        Read
+      </a>
     </div>
     <p>
       December 30th, 2018
@@ -110,6 +116,12 @@ exports[`should display correctly when post has an address 1`] = `
         authorUid="YYFEgQAdBuQIsox3ojncZtpSAmG3"
         avatarSize={40}
       />
+      <a
+        className="button"
+        onClick={[Function]}
+      >
+        Read
+      </a>
     </div>
     <p>
       December 30th, 2018
@@ -178,6 +190,12 @@ exports[`the post belongs DO NOT belongs to the current user and props.editable 
         authorUid="YYFEgQAdBuQIsox3ojncZtpSAmG3"
         avatarSize={40}
       />
+      <a
+        className="button"
+        onClick={[Function]}
+      >
+        Read
+      </a>
     </div>
     <p>
       December 30th, 2018
@@ -393,6 +411,12 @@ exports[`the post contains a body and no URL has been provided should render cor
         authorUid="YYFEgQAdBuQIsox3ojncZtpSAmG3"
         avatarSize={40}
       />
+      <a
+        className="button"
+        onClick={[Function]}
+      >
+        Read
+      </a>
     </div>
     <p>
       December 30th, 2018

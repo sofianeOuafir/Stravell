@@ -235,6 +235,7 @@ exports[`the component get passed a non empty array of data should render correc
         <Connect(SearchBar)
           autoFocus={true}
           className="search-bar"
+          placeholder="Search"
         />
       </div>
       <PostList
@@ -323,6 +324,7 @@ exports[`the component get passed a non empty array of data the filtered data ar
         <Connect(SearchBar)
           autoFocus={true}
           className="search-bar"
+          placeholder="Search"
         />
       </div>
       <PostList

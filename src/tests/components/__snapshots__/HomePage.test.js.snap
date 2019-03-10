@@ -42,6 +42,7 @@ exports[`A userName prop is provided should render correctly 1`] = `
           loop={true}
           strings={
             Array [
+              "Thailand",
               "Australia",
               "Canada",
               "Japan",
@@ -87,6 +88,7 @@ exports[`A userName prop is provided should render correctly 1`] = `
         }
       }
       noDataText="There is no country yet."
+      searchBarPlaceHolder="Search a country. Click on it. Start discovering!"
     />
     <h2
       className="favourite-font-weight"
@@ -143,6 +145,7 @@ exports[`no username prop is provided should render correctly 1`] = `
           loop={true}
           strings={
             Array [
+              "Thailand",
               "Australia",
               "Canada",
               "Japan",
@@ -188,6 +191,7 @@ exports[`no username prop is provided should render correctly 1`] = `
         }
       }
       noDataText="There is no country yet."
+      searchBarPlaceHolder="Search a country. Click on it. Start discovering!"
     />
     <h2
       className="favourite-font-weight"

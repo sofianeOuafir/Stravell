@@ -64,6 +64,11 @@ export const PostListItem = ({
             authorPhotoURL={post.userPhotoURL}
             authorName={post.userName}
           />
+          {!isOwnedByCurrentUser && (
+            <a {...linkProps} className="button">
+              Read
+            </a>
+          )}
           {isOwnedByCurrentUser && editable && (
             <Link
               prefetch
