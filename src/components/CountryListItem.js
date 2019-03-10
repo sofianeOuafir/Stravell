@@ -10,7 +10,7 @@ const CountryListItem = ({ country, index }) => {
       <a className={`country-list-item py2 no-text-decoration text-dark-grey pr1`}>
         <Place
           containerClassName="px1 border-light-grey"
-          placeName={`Read about ${countryName}`}
+          placeName={`${countryName}`}
           countryCode={id}
           placeNameClassName="h3 favourite-font-weight mr1"
           flagSize="40"
