@@ -10,6 +10,10 @@
   font-weight: $favourite-font-weight;
 }
 
+.button--large {
+  padding: $m-size;
+}
+
 .button--link {
   background: none;
 }
@@ -21,7 +25,10 @@
 .button--warm-peach {
   background: $warm-peach;
 }
+.button--dark-blue {
+  background: $dark-blue;
+}
 
 .button--with-bottom-margin {
-  margin-bottom: $m-size
+  margin-bottom: $m-size;
 }

@@ -1,4 +1,7 @@
 import React from "react";
+import Typed from "react-typed";
+import { IoIosSearch, IoIosAirplane } from "react-icons/io";
+import { Link as ScrollLink } from "react-scroll";
 
 import Layout from "./Layout";
 import PageHeader from "./PageHeader";
@@ -8,8 +11,6 @@ import { getAllPlaces } from "./../queries/place";
 import FilterableDataList from "./FilterableDataList";
 import { getAllPosts } from "../queries/post";
 import SocialShareButtons from "./SocialShareButtons";
-import { IoIosSearch } from "react-icons/io";
-import Typed from 'react-typed';
 
 import { HOME_PAGE_TITLE, HOME_PAGE_DESCRIPTION } from "../constants/constants";
 import PostList from "./PostList";
@@ -40,17 +41,26 @@ class HomePage extends React.Component {
             <div className="homepage__image-container__typing-container" />
             <div className="homepage__image-container__typing flex align-items--center">
               <IoIosSearch className="mr1" />
-              <Typed 
-              strings={[
-                  'Thailand',
-                  'Australia',
-                  'Canada',
-                  'Japan',
-                  'Brazil']}
-                  typeSpeed={100}
-                  backSpeed={100} 
-                  loop >
-              </Typed>
+              <Typed
+                strings={["Thailand", "Australia", "Canada", "Japan", "Brazil"]}
+                typeSpeed={100}
+                backSpeed={100}
+                loop
+              />
+            </div>
+            <div className="absolute homepage__image-container__get_started-container">
+              <ScrollLink
+                href="#"
+                className="button button--large button--warm-peach"
+                to="searchBarContainer"
+                smooth="true"
+                duration={600}
+                offset={-28}
+              >
+                <div className="flex align-items--center">
+                  <IoIosAirplane className="mr1" /> <span>Get Started</span>
+                </div>
+              </ScrollLink>
             </div>
 
             <div className="homepage__image-container__social_buttons">
@@ -60,9 +70,9 @@ class HomePage extends React.Component {
 
           <img src="/static/images/home.svg" alt="" className="fullwidth" />
         </div>
-        <div className="content-container">
+        <div className="content-container" id="searchBarContainer">
           <FilterableDataList
-            searchBarPlaceHolder="Search a country. Click on it. Start discovering!"
+            searchBarPlaceHolder="Search a destination. (E.g. Australia, Thailand...)"
             DataList={CountryList}
             googleMapsProps={googleMapsProps}
             noDataText={"There is no country yet."}

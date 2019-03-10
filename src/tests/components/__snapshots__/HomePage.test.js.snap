@@ -53,6 +53,30 @@ exports[`A userName prop is provided should render correctly 1`] = `
         />
       </div>
       <div
+        className="absolute homepage__image-container__get_started-container"
+      >
+        <Link
+          className="button button--large button--warm-peach"
+          duration={600}
+          href="#"
+          offset={-28}
+          smooth="true"
+          to="searchBarContainer"
+        >
+          <div
+            className="flex align-items--center"
+          >
+            <IoIosAirplane
+              className="mr1"
+            />
+             
+            <span>
+              Get Started
+            </span>
+          </div>
+        </Link>
+      </div>
+      <div
         className="homepage__image-container__social_buttons"
       >
         <withRouter(SocialShareButtons) />
@@ -66,6 +90,7 @@ exports[`A userName prop is provided should render correctly 1`] = `
   </div>
   <div
     className="content-container"
+    id="searchBarContainer"
   >
     <Connect(FilterableDataList)
       DataList={[Function]}
@@ -88,7 +113,7 @@ exports[`A userName prop is provided should render correctly 1`] = `
         }
       }
       noDataText="There is no country yet."
-      searchBarPlaceHolder="Search a country. Click on it. Start discovering!"
+      searchBarPlaceHolder="Search a destination. (E.g. Australia, Thailand...)"
     />
     <h2
       className="favourite-font-weight"
@@ -156,6 +181,30 @@ exports[`no username prop is provided should render correctly 1`] = `
         />
       </div>
       <div
+        className="absolute homepage__image-container__get_started-container"
+      >
+        <Link
+          className="button button--large button--warm-peach"
+          duration={600}
+          href="#"
+          offset={-28}
+          smooth="true"
+          to="searchBarContainer"
+        >
+          <div
+            className="flex align-items--center"
+          >
+            <IoIosAirplane
+              className="mr1"
+            />
+             
+            <span>
+              Get Started
+            </span>
+          </div>
+        </Link>
+      </div>
+      <div
         className="homepage__image-container__social_buttons"
       >
         <withRouter(SocialShareButtons) />
@@ -169,6 +218,7 @@ exports[`no username prop is provided should render correctly 1`] = `
   </div>
   <div
     className="content-container"
+    id="searchBarContainer"
   >
     <Connect(FilterableDataList)
       DataList={[Function]}
@@ -191,7 +241,7 @@ exports[`no username prop is provided should render correctly 1`] = `
         }
       }
       noDataText="There is no country yet."
-      searchBarPlaceHolder="Search a country. Click on it. Start discovering!"
+      searchBarPlaceHolder="Search a destination. (E.g. Australia, Thailand...)"
     />
     <h2
       className="favourite-font-weight"
