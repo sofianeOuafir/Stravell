@@ -68,6 +68,12 @@
   top: 28rem;
   left: 30rem;
   @media (max-width: $small-laptop-breakpoint) {
+    top: 20rem;
+  }
+  @media (max-width: $tablet-breakpoint) {
+    top: 14rem;
+  }
+  @media (max-width: $mobile-breakpoint) {
     display: none;
   }
 }
