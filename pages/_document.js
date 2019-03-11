@@ -23,11 +23,11 @@ export default class MyDocument extends Document {
               process.env.GOOGLE_PLACES_API_KEY
             }&libraries=places`}
           />
-          <script type="text/javascript" src="/static/magnify.js"/>
         </Head>
         <body className="custom_class">
           <Main />
           <NextScript />
+          <script type="text/javascript" src="/static/magnify.js" />
         </body>
       </html>
     );
