@@ -34,7 +34,7 @@ const GoogleMaps = compose(
     const GLOBE_WIDTH = 256; // a constant in Google's map projection
     const west = southWestLng;
     const east = northEastLng;
-    const angle = east - west;
+    let angle = east - west;
     if (angle < 0) {
       angle += 360;
     }
