@@ -131,7 +131,8 @@ export const addPost = ({
   user,
   place = {},
   region = {},
-  postId
+  postId,
+  addToTweetQueue = false
 }) => {
   const { uid } = user;
   const { countryCode, ...countryData } = country;
@@ -146,6 +147,9 @@ export const addPost = ({
         .push().key;
   let updates = {};
   updates[`/posts/${postId}`] = post;
+  if (addToTweetQueue) {
+    updates[`/tweetQueue-posts/${postId}`] = post;
+  }
 
   if (uid) {
     updates[`/user-posts/${uid}/${postId}`] = post;
@@ -235,12 +239,12 @@ const getPosts = async (ref, limit = null) => {
       });
   } else {
     postSnapshot = await database
-    .ref(ref)
-    .orderByChild("createdAt")
-    .once("value")
-    .then(snapshot => {
-      return snapshot;
-    });
+      .ref(ref)
+      .orderByChild("createdAt")
+      .once("value")
+      .then(snapshot => {
+        return snapshot;
+      });
   }
 
   let posts = fromSnapShotToArray(postSnapshot);

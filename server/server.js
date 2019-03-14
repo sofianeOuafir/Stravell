@@ -3,31 +3,13 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const FileStore = require('session-file-store')(session)
 const next = require('next')
-const admin = require('firebase-admin')
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
-const firebase = admin.initializeApp(
-  {
-    credential: admin.credential.cert({
-      type: process.env.FIREBASE_ADMIN_TYPE,
-      project_id: process.env.FIREBASE_PROJECT_ID,
-      private_key_id: process.env.FIREBASE_ADMIN_PRIVATE_KEY_ID,
-      private_key: process.env.FIREBASE_ADMIN_PRIVATE_KEY.replace(/\\n/g, '\n'),
-      client_email: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
-      client_id: process.env.FIREBASE_ADMIN_CLIENT_ID,
-      auth_uri: process.env.FIREBASE_ADMIN_AUTH_URI,
-      token_uri: process.env.FIREBASE_ADMIN_TOKEN_URI,
-      auth_provider_x509_cert_url: process.env.FIREBASE_ADMIN_AUTH_PROVIDER_X509_CERT_URL,
-      client_x509_cert_url: process.env.FIREBASE_ADMIN_CLIENT_X509_CERT_URL
-    }),
-    databaseURL: process.env.FIREBASE_DATABASE_URL
-  },
-  'server'
-)
+const firebase = require("./../src/firebase/firebaseAdmin");
 
 app.prepare().then(() => {
   const server = express()

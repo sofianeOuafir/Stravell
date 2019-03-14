@@ -36,7 +36,11 @@ module.exports = withCSS(withSass({
       'process.env.FIREBASE_ADMIN_CLIENT_X509_CERT_URL': JSON.stringify(process.env.FIREBASE_ADMIN_CLIENT_X509_CERT_URL),
       'process.env.GOOGLE_PLACES_API_KEY': JSON.stringify(process.env.GOOGLE_PLACES_API_KEY),
       'process.env.GOOGLE_MAPS_API_KEY': JSON.stringify(process.env.GOOGLE_MAPS_API_KEY),
-      'process.env.HOTJAR_ID': JSON.stringify(process.env.HOTJAR_ID)
+      'process.env.HOTJAR_ID': JSON.stringify(process.env.HOTJAR_ID),
+      'process.env.TWITTER_CONSUMER_KEY': JSON.stringify(process.env.TWITTER_CONSUMER_KEY),
+      'process.env.TWITTER_CONSUMER_SECRET': JSON.stringify(process.env.TWITTER_CONSUMER_SECRET),
+      'process.env.TWITTER_ACCESS_TOKEN_KEY': JSON.stringify(process.env.TWITTER_ACCESS_TOKEN_KEY),
+      'process.env.TWITTER_ACCESS_TOEKN_SECRET': JSON.stringify(process.env.TWITTER_ACCESS_TOEKN_SECRET)
     }));
 
     return config
