@@ -16,7 +16,7 @@ import { addPost } from "./../queries/post";
 class AddPostPage extends React.Component {
   onSubmit = ({ post, country, user, place, region }) => {
     const { addPost } = this.props;
-    addPost({ post, country, user, place, region }).then(() => {
+    addPost({ post, country, user, place, region, addToTweetQueue: true }).then(() => {
       this.props.router.push(
         `/dashboard?uid=${this.props.uid}`,
         `/dashboard/${slugify(this.props.userName)}/${this.props.uid}`
@@ -86,8 +86,8 @@ AddPostPage.getInitialProps = async function({ req, reduxStore, res }) {
 };
 
 const mapDispatchToProps = () => ({
-  addPost: ({ post, country, user, place, region }) => {
-    return addPost({ post, country, user, place, region });
+  addPost: (params) => {
+    return addPost(params);
   }
 });
 
