@@ -1,13 +1,12 @@
-import Twitter from 'twitter';
+const Twitter = require("twitter");
+
+require("dotenv").config({ path: ".env.development" });
 
 const client = new Twitter({
-  consumer_key: 'Qkq0LILBdbV8U4cpQdGri8LMR',
-  consumer_secret: '7YBuif7cAJxWXiISUbXMRpboM2TX28ZrSR9Vj27oj7WdlNbsJq',
-  access_token_key: '819852518960275456-S4CZJDhOESQc4R7ucsqEFIslJRUmGQX',
-  access_token_secret: 'v1MjgJg83nVOIVqyJlu8XmHe5kfLDLZkDWH3CCtVtDk8J'
+  consumer_key: process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-
-export const createTweet = () => {
-  return client.post('statuses/update', {status: 'I Love Twitter'});
-}
+module.exports = client;

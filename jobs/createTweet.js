@@ -1,38 +1,8 @@
-const Twitter = require("twitter");
-const admin = require("firebase-admin");
+const twitterClient = require("./../src/twitter/twitter");
+const firebase = require("./../src/firebase/firebaseAdmin");
 const slugify = require("underscore.string").slugify;
-
-require("dotenv").config({ path: ".env.development" });
-
-const firebase = admin.initializeApp(
-  {
-    credential: admin.credential.cert({
-      type: process.env.FIREBASE_ADMIN_TYPE,
-      project_id: process.env.FIREBASE_PROJECT_ID,
-      private_key_id: process.env.FIREBASE_ADMIN_PRIVATE_KEY_ID,
-      private_key: process.env.FIREBASE_ADMIN_PRIVATE_KEY.replace(/\\n/g, "\n"),
-      client_email: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
-      client_id: process.env.FIREBASE_ADMIN_CLIENT_ID,
-      auth_uri: process.env.FIREBASE_ADMIN_AUTH_URI,
-      token_uri: process.env.FIREBASE_ADMIN_TOKEN_URI,
-      auth_provider_x509_cert_url:
-        process.env.FIREBASE_ADMIN_AUTH_PROVIDER_X509_CERT_URL,
-      client_x509_cert_url: process.env.FIREBASE_ADMIN_CLIENT_X509_CERT_URL
-    }),
-    databaseURL: process.env.FIREBASE_DATABASE_URL
-  },
-  "server"
-);
-
 var request = require("request-promise").defaults({
   encoding: null
-});
-
-const client = new Twitter({
-  consumer_key: "Qkq0LILBdbV8U4cpQdGri8LMR",
-  consumer_secret: "7YBuif7cAJxWXiISUbXMRpboM2TX28ZrSR9Vj27oj7WdlNbsJq",
-  access_token_key: "819852518960275456-S4CZJDhOESQc4R7ucsqEFIslJRUmGQX",
-  access_token_secret: "v1MjgJg83nVOIVqyJlu8XmHe5kfLDLZkDWH3CCtVtDk8J"
 });
 
 function createTweetFromTweetQueue() {
@@ -61,7 +31,7 @@ function createTweetFromTweetQueue() {
       return request(`${post.image}`);
     })
     .then(body => {
-      return client.post("media/upload", {
+      return twitterClient.post("media/upload", {
         media: body
       });
       console.log(body);
@@ -76,7 +46,7 @@ function createTweetFromTweetQueue() {
         status: `Hey Stravellers! :) Here is a new post: « ${title} » By ${userName} ${url} #traveltips #travel #stravell`,
         media_ids: media.media_id_string
       };
-      return client.post("statuses/update", status);
+      return twitterClient.post("statuses/update", status);
     })
     .then(() => {
       let updates = {};
