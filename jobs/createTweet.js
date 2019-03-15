@@ -5,6 +5,10 @@ var request = require("request-promise").defaults({
   encoding: null
 });
 
+const getRandomItemFromArray = array => {
+  return array[Math.floor(Math.random() * array.length)];
+};
+
 function createTweetFromTweetQueue() {
   let post;
   firebase
@@ -42,8 +46,26 @@ function createTweetFromTweetQueue() {
         ? `www.stravell.com/country/${countryCode}`
         : `https://stravell.com/p/show/${slugify(title)}/${id}`;
       // Lets tweet it
+      const greetings = ["Hey Stravellers", "Hey Folks", "Hi friends"];
+      const callsToAction = [
+        "Here is a new post",
+        "Check this post out",
+        "Read this article",
+        "NEW POST",
+        "Post of the day"
+      ];
+      const hashtags = [
+        "#traveltips #travel",
+        "#TravelMassive #rtw",
+        "#BeachThursday #LP",
+        "#ttot #TBEX",
+        "#travelskills #rtwnow"
+      ];
+      const hashtag = getRandomItemFromArray(hashtags);
+      const callToAction = getRandomItemFromArray(callsToAction);
+      const greeting = getRandomItemFromArray(greetings);
       var status = {
-        status: `Hey Stravellers! :) Here is a new post: « ${title} » By ${userName} ${url} #traveltips #travel #stravell`,
+        status: `${greeting}! :) ${callToAction}: « ${title} » By ${userName} ${url} ${hashtag} #stravell`,
         media_ids: media.media_id_string
       };
       return twitterClient.post("statuses/update", status);
