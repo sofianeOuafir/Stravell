@@ -9,1933 +9,2503 @@
 
 <url>
   <loc>https://stravell.com/</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
+  <loc>https://stravell.com/country/AQ</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/AR</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://stravell.com/country/AU</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/AT</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/BE</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/BG</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/CA</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/CL</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/CN</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/CO</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/CR</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/HR</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/CZ</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/DK</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/DM</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/EC</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/FJ</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/FR</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/DE</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/GR</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/GT</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/HN</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/HK</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/HU</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/IS</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/IN</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/ID</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/IE</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/IT</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/JM</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/JP</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/KE</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/LT</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/MO</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/MY</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/MX</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/MC</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/ME</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/MA</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/NL</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/NC</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/NZ</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/NO</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/PE</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/PH</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/PT</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/PR</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/QA</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/RU</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/LC</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/SG</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/SI</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/ZA</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/ES</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/SE</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/CH</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/TW</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/TZ</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/TH</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/TR</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/AE</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/GB</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/US</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/country/UY</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/country/VN</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/place/vietnam/14058324108277199</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/country/ZW</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/u/show/travelling-tom/rB3LdzOoKeer0IMkxrKDkofGlJA2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/place/argentina/3841609763616671999999994</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/5-things-you-need-to-know-before-your-first-trip-to-vietnam/-L_jeJUMVaeYtR4pt2FZ</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/u/show/the-fearless-foreigner/gg7YATbjzBgu6N1m9zOSVVWuGBg1</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/place/venice-metropolitan-city-of-venice-italy/4544084741231551509999997</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/the-country-of-tango-futbol-steak/-La7Po5iMjmUqg7T1xVf</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/u/show/saccharine-soul/3RHEXBwxWifIEyHhGm8apen814g1</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/place/new-york-ny-usa/407127753740059728</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/how-to-spend-48-hours-in-venice/-L_i2xDRR2qWA6O6mGE2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/new-york-city-museums-by-category/-La7OtD-OiS1yRCJLaq8</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/place/jiufen-old-street-ruifang-district-new-taipei-city-taiwan/2511038512184579400000007</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/place/lanzarote-spain/29046853513589973299999997</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/2-day-jiufen-itinerary/-L_hZD8Lbob1HXBQ9uiJ</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/hiking-in-lanzarote-the-fire-mountains/-La7OJsy-GI5d5XRLYVs</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/rotterdam-netherlands/51924420144777325999999675</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/visiting-rotterdam-what-to-do-eat/-La7NtRZ6ytavu9CNU-B</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/moscow-russia/5575582637617299900000035</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/unique-things-to-do-in-moscow-russia/-La7N9k0pJQvsN-gHSzG</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/costa-teguise-spain/28998114113492963299999928</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/costa-teguise-lanzarote/-La7MP7LrQpfh9MCN9jz</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/bath-uk/51381064123590166999999838</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/the-owlet/ua8xM2nrvATj0hqt3Qjiaj23jL33</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/follow-me-to-48-hours-in-bath/-La7JrrS84Oo1fmO0K0G</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/paris-france/4885661423522219000000177</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/2-day-paris-itinerary/-L_hXspMAWqqbDZ1ydWr</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/planning-your-time-in-paris/-La7InAbjGkU6RBv-1J6</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/place/komodo-national-park-east-nusa-tenggara-indonesia/85277161194833198</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/place/county-cork-ireland/519942068728544599999964</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/u/show/margarida-vasconcelos/Fnbe1t9ZocU8TyTCTnHOm5ljlTC2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/how-to-spend-24-hours-in-county-cork/-La7I-oJ54-W_tzmbcgg</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/discover-komodo-national-park-with-flores-xp-adventure-3-days-in-paradise/-L_hY2Jt4fOM2gai7tPR</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/place/malaysia/421048410197576600000002</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/place/dubrovnik-croatia/42650660599999991809442379999996</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/u/show/strolling-adventures/hWlCfUivBwh24R0pV4uZyuQswb52</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/best-things-to-do-dubrovnik/-L_hWtVq5c57vKAsTgSo</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/self-driving-malaysia-holiday/-La7FNkSghyjlx_tLHlO</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/place/kowloon-hong-kong/22318567311417960570000002</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/place/lake-como-italy/4601604869257167600000002</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/how-to-spend-one-day-in-kowloon/-L_hW3W9pnU_ymn3JOwZ</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/4-days-in-lake-como-in-october/-La7EuLxeNainoxckSLw</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/place/hong-kong/2239642811410949700000003</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/place/singapore/135208310381983600000001</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/instagrammable-places-in-hong-kong/-L_hVDU7XGN6-ETwiKlI</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/staying-in-two-different-areas-of-singapore/-La7EPcIZGMNEeIIT9H5</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/place/haarlem-netherlands/5238738784646219400000064</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/place/byodoin-renge-116-uji-kyoto-prefecture-japan/34889290813580767830000002</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/u/show/the-silver-nomad/Bw9yJcTpZWOpWiJ7VFp4ZsERKSF3</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/uji-day-trip-byodoin-temple/-La7DxRiXbGf8DyEGrNX</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/the-de-adriaan-windmill-haarlem-amsterdam/-L_hPg6DB-6x2GotJwxa</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/place/mount-donna-buang-warburton-vic-australia/37706944414568083330000002</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/place/bali-indonesia/8340538911509195090000003</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/snow-play-near-melbourne-mount-donna-buang/-La7DY8pdmPmHdEHOVTH</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/10-things-to-do-in-the-north-of-bali/-L_hOcaw88CIEjmh5qu_</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/place/ipoh-perak-malaysia/459747910109010599999999</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/when-is-the-best-time-to-visit-bali/-L_hO81x-ckyeV6T3uty</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/ipoh-malaysia-family-stay/-La7D-9R5CKmVMUDGQNk</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://stravell.com/place/tasmania-australia/41454519614597066470000004</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://stravell.com/place/antarctica/82862752135</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/u/show/we12travel/TMOj0GRauBayQDZkfKz02TtuuO62</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://stravell.com/u/show/where-39-s-windji/PibjR5Lt8ehyYfDrpzdlp8oPdNH2</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/the-best-hikes-in-tasmania/-L_cuZtZRaxYWxcbD7Gt</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://stravell.com/p/show/packing-list-for-antarctica/-La6xSK80oIvvJmHoBNy</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/place/acropolis-of-athens-athens-greece/37971532323725749199999996</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://stravell.com/argentina/AR/regions</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/u/show/thirsty-journeys/ZPoXPC0wLpNtQfot74blHOCp2V32</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://stravell.com/place/bariloche-rio-negro-argentina/411334722713102778</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/5-helpful-tips-for-visiting-the-acropolis-and-parthenon/-L_ZANAkjggsRcFfgdFi</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://stravell.com/p/show/hiking-ice-cream-and-brews-the-best-of-bariloche/-La6wvtS0Z2__F7wlO7D</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/place/acatenango-guatemala/145004619087566620000001</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://stravell.com/place/buenos-aires-argentina/34603684458381559100000004</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/u/show/ashleys-footprints/k27vQVaRGfQMc8cxHelGPwckiCq2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/mt-acatenango-volcano-hike-guatemala/-L_Z5tZTV9nCe48-Rbwd</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/cambridge-uk/52205337012181699999996454</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/5-things-to-do-in-and-around-cambridge/-L_Z5EnBhlFrSKOmAc4i</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://stravell.com/p/show/our-favourite-neighbourhoods-in-buenos-aires/-La6wO3d_sAgBgYxBdAp</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/australia/AU/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/uluru-petermann-nt-australia/25344427713103688220000004</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/u/show/stravell-blog/pbc5jKMND4MsvlLOM1lY6WZerFx1</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/can-i-climb-uluru/-L_UKo4M_Z6utwmAL_go</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/australia/2527439813377513599999997</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/u/show/crafty-explorer/m5GPNhUhLXdN18bZr0ndAsTqXwm2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/5-tips-to-successfully-complete-your-88-days-in-australia/-L_CljsvaAN_V8P4fbNe</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/brisbane-to-cairns-the-perfect-road-trip-itinerary/-L_Ckoa5SrczOr7LQy2l</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/bondi-beach-nsw-australia/3389147551512766845</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/u/show/coco-travels/d0MQgrUpMTQumiUTyCCXbziFpIg2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/australia-travel-diary-bondi-beach/-L_9C5lyNtoFBHcogfmv</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/u/show/jamie-chance-travels/ZFucD5x1P5PlQTlEhT5Hud9nSzh2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/australia-from-above/-L_95vjlh8EJjMDFFFpf</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/sydney-nsw-australia/33868819715120929550000005</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/sydney-s-best-walk-bondi-to-coogee/-L_94i3U3QsKYJQE4ctW</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/melbourne-vic-australia/37813627614496305759999996</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/how-to-visit-melbourne-on-a-budget/-L_93j0eMH0pMswapkq6</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/the-great-ocean-road-in-two-days-our-self-drive-itinerary/-La6vRElxpJQeDr-4l3T</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/place/canberra-act-australia/35280936814913000920000002</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/place/north-queensland-qld-australia/2077222951447851531</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/u/show/every-steph/Pov9uUPg8lgGROhnyJoxFMVMrFn2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/u/show/the-rare-welsh-bit/kFoygstkAaMBmQBAXnkZG8Gnwbw2</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/9-things-to-do-in-canberra-this-spring/-LZknyCAm2r0wm_yKMq5</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/cairns-for-first-timers-things-to-see-do/-La60UB2ymK9yTpMVl6X</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/the-only-east-coast-australia-road-trip-itinerary-you-need/-LZko3Tqk9VfwfyfBrWl</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/place/australia/2527439813377513599999997</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/place/perth-wa-australia/31950526911586045719999993</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/13-free-cheap-things-to-do-in-perth/-LZko7acN-ZkKfEJtWwv</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/what-to-wear-in-australia-the-australia-packing-list-you-need/-LZkoEowig12CM7JhsLy</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/byron-bay-nsw-australia/28647367115360197700000003</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/best-things-to-do-in-byron-bay-10-places-you-can-t-miss/-LZkoJsbcNBFvpG7cX-f</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/u/show/dangerous-business/AyTetyQFRJWPMxdrDBNALK5fQwT2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/how-to-spend-36-hours-in-sydney/-LZkpE1BENDFzqKZQf3n</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/my-big-australian-bucket-list/-LZkpF06dfz94ZcLiaKb</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/whitsundays-qld-australia/20186242514872685460000002</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/u/show/volle-on-tour/sZ6l0M9jusSWwT9IaktZOTSq48x2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/whitsunday-islands-tour-a-once-in-a-lifetime-adventure/-LZkpxNDZcoAW_2MkqWQ</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/litchfield-national-park-litchfield-park-road-litchfield-park-nt-australia/13293537613084638770000004</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/terrific-litchfield-national-park-one-day-tour/-LZkq7Be_tS1dxG2v2Wo</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/ayers-rock-petermann-nt-australia/25344427713103688220000004</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/magical-3-day-ayers-rock-camping-tour/-LZkqMozfO9bI5uRBRdS</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/fitzroy-island-qld-australia/1693366691459943465</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/u/show/luxlife-blog/Opk8SdtKYBaLmH0vcYlOxNTv7T12</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/day-trip-to-fitzroy-island-queensland/-LZkr84jRqqgnDGR6KD3</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/a-summer-weekend-back-in-perth/-LZkrV9WOg0f5KrUMHrI</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/monkey-mia-wa-australia/25800384811370559530000003</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/10-photos-that-will-make-you-want-to-visit-monkey-mia/-LZkre997bu9COFp1Bzb</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/palm-beach-nsw-australia/3360111115132166699999993</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/a-day-trip-to-palm-beach-and-the-real-summer-bay/-LZkrjzdYu87JGs9hDHi</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/u/show/hand-luggage-only/q88kfT7rKgTsm9nnmhxx3EAnvd32</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/12-amazing-beaches-you-have-to-visit-in-australia/-LZksG0jHMH9gLrupVR0</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/11-incredible-places-you-must-visit-on-your-road-trip-across-australia/-LZksJk8isYIYgxeDhnD</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/10-incredible-vineyards-you-have-to-visit-in-australia/-LZksLkcWt0MdXxVyF_b</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/10-places-to-get-the-best-views-in-sydney-australia/-LZksRM5muwJzvq_pjJ4</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/u/show/the-blond-abroad/JeYOH0QVmyNR7nh5vTy7QliNlpI2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/the-best-places-to-eat-in-melbourne/-LZkeIAqSAkzO91FN4q3</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/15-free-things-to-do-in-melbourne/-LZkeQ3o_RI2RLGgNwRl</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/great-barrier-reef-qld-australia/1828706681476991918</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/diving-at-the-great-barrier-reef/-LZkeRNUYTBG31dWt8MT</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/brisbane-qld-australia/27469770715302512350000006</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/top-tips-for-visiting-brisbane/-LZkeSiQd-6tga-g4sHo</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/the-best-day-trips-from-sydney/-LZkW6MO_j8MHR6XWqsa</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/10-australian-foods-you-simply-must-try/-La5yd-Q2-oOTPHSVjCZ</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/gold-coast-qld-australia/2801666715339999999999998</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/the-little-backpacker/apB7ZY3n6RPGhTRSU6q6TrvTmhg2</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/things-to-do-on-the-gold-coast/-La0xSpALcrARpszkwFJ</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/tasmania-australia/41454519614597066470000004</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/we12travel/TMOj0GRauBayQDZkfKz02TtuuO62</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/the-best-hikes-in-tasmania/-L_cuZtZRaxYWxcbD7Gt</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/uluru-petermann-nt-australia/25344427713103688220000004</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/stravell-blog/pbc5jKMND4MsvlLOM1lY6WZerFx1</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/can-i-climb-uluru/-L_UKo4M_Z6utwmAL_go</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/crafty-explorer/m5GPNhUhLXdN18bZr0ndAsTqXwm2</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/5-tips-to-successfully-complete-your-88-days-in-australia/-L_CljsvaAN_V8P4fbNe</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/brisbane-to-cairns-the-perfect-road-trip-itinerary/-L_Ckoa5SrczOr7LQy2l</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/bondi-beach-nsw-australia/3389147551512766845</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/coco-travels/d0MQgrUpMTQumiUTyCCXbziFpIg2</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/australia-travel-diary-bondi-beach/-L_9C5lyNtoFBHcogfmv</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/jamie-chance-travels/ZFucD5x1P5PlQTlEhT5Hud9nSzh2</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/australia-from-above/-L_95vjlh8EJjMDFFFpf</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/sydney-nsw-australia/33868819715120929550000005</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/sydney-s-best-walk-bondi-to-coogee/-L_94i3U3QsKYJQE4ctW</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/how-to-visit-melbourne-on-a-budget/-L_93j0eMH0pMswapkq6</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/canberra-act-australia/35280936814913000920000002</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/every-steph/Pov9uUPg8lgGROhnyJoxFMVMrFn2</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/9-things-to-do-in-canberra-this-spring/-LZknyCAm2r0wm_yKMq5</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/the-only-east-coast-australia-road-trip-itinerary-you-need/-LZko3Tqk9VfwfyfBrWl</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/perth-wa-australia/31950526911586045719999993</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/13-free-cheap-things-to-do-in-perth/-LZko7acN-ZkKfEJtWwv</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/what-to-wear-in-australia-the-australia-packing-list-you-need/-LZkoEowig12CM7JhsLy</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/byron-bay-nsw-australia/28647367115360197700000003</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/best-things-to-do-in-byron-bay-10-places-you-can-t-miss/-LZkoJsbcNBFvpG7cX-f</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/dangerous-business/AyTetyQFRJWPMxdrDBNALK5fQwT2</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/how-to-spend-36-hours-in-sydney/-LZkpE1BENDFzqKZQf3n</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/my-big-australian-bucket-list/-LZkpF06dfz94ZcLiaKb</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/whitsundays-qld-australia/20186242514872685460000002</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/volle-on-tour/sZ6l0M9jusSWwT9IaktZOTSq48x2</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/whitsunday-islands-tour-a-once-in-a-lifetime-adventure/-LZkpxNDZcoAW_2MkqWQ</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/litchfield-national-park-litchfield-park-road-litchfield-park-nt-australia/13293537613084638770000004</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/terrific-litchfield-national-park-one-day-tour/-LZkq7Be_tS1dxG2v2Wo</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/ayers-rock-petermann-nt-australia/25344427713103688220000004</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/magical-3-day-ayers-rock-camping-tour/-LZkqMozfO9bI5uRBRdS</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/fitzroy-island-qld-australia/1693366691459943465</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/luxlife-blog/Opk8SdtKYBaLmH0vcYlOxNTv7T12</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/day-trip-to-fitzroy-island-queensland/-LZkr84jRqqgnDGR6KD3</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/a-summer-weekend-back-in-perth/-LZkrV9WOg0f5KrUMHrI</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/monkey-mia-wa-australia/25800384811370559530000003</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/10-photos-that-will-make-you-want-to-visit-monkey-mia/-LZkre997bu9COFp1Bzb</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/palm-beach-nsw-australia/3360111115132166699999993</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/a-day-trip-to-palm-beach-and-the-real-summer-bay/-LZkrjzdYu87JGs9hDHi</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/hand-luggage-only/q88kfT7rKgTsm9nnmhxx3EAnvd32</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/12-amazing-beaches-you-have-to-visit-in-australia/-LZksG0jHMH9gLrupVR0</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/11-incredible-places-you-must-visit-on-your-road-trip-across-australia/-LZksJk8isYIYgxeDhnD</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/10-incredible-vineyards-you-have-to-visit-in-australia/-LZksLkcWt0MdXxVyF_b</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/10-places-to-get-the-best-views-in-sydney-australia/-LZksRM5muwJzvq_pjJ4</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/the-blond-abroad/JeYOH0QVmyNR7nh5vTy7QliNlpI2</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/the-best-places-to-eat-in-melbourne/-LZkeIAqSAkzO91FN4q3</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/15-free-things-to-do-in-melbourne/-LZkeQ3o_RI2RLGgNwRl</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/great-barrier-reef-qld-australia/1828706681476991918</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/diving-at-the-great-barrier-reef/-LZkeRNUYTBG31dWt8MT</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/brisbane-qld-australia/27469770715302512350000006</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/top-tips-for-visiting-brisbane/-LZkeSiQd-6tga-g4sHo</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/the-best-day-trips-from-sydney/-LZkW6MO_j8MHR6XWqsa</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/visiting-australia-s-gold-coast/-LZkWN9T5aGNgjqK8LVr</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/austria/AT/regions</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/vienna-austria/4820817431637381890000006</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/the-nerdy-me/CzAVBVfYLaNF1zAiEIPtyI919Uk1</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/spending-a-weekend-in-vienna-48-hours-guide/-La65DhxZK1mQhYnfAvc</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/belgium/BE/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/bruges-belgium/5120934832246995000000425</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/u/show/enjoy-the-adventures/iX6AseppzkdI0Lwy9qxrflqTawT2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/one-day-in-bruges-belgium/-L_U3onHm9ci858-BoTp</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/brussels-belgium/5085034634351721099999963</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/travelling-tom/rB3LdzOoKeer0IMkxrKDkofGlJA2</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/video-brilliant-brussels-travel-vlog/-L_Tr0eKbgbBwEdCeQh1</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/belgium/5050388744699359999999615</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/have-these-5-things-in-your-checklist-when-travelling-to-belgium/-L_Tq7qNrDgsxQk8BaQP</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/bulgaria/BG/regions</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/borovets-bulgaria/422706674999999923605616499999996</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/ski-trips-for-winter-5-must-ski-resorts/-La5yBNuys0bqsELwgtm</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/canada/CA/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/alberta-canada/5393327061165765035</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/15-beautiful-places-you-have-to-visit-in-alberta-canada/-LZkVSbIoFIX4fcpOiDj</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/montreal-qc-canada/4550168897356725599999999</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/u/show/alex-doliver/gBKEJjZv2qPa92reRGIMEotUwOn2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/11-choses-a-faire-absolument-si-vous-visitez-montreal-pour-des-vacances/-LZkcbT3EeU1zf1_lHdG</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/chile/CL/regions</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/easter-island-chile/2711272310934968650000002</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/10-reflections-of-easter-island/-La6yUDNakd21hTMkRbP</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/china/CN/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/place/china/358616610419539699999996</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/place/shanghai-china/31230390412147370209999997</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/u/show/caravan-spirits/aojLw1hYFVhw6nsNGoyN1uFvrtB3</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/u/show/poky-little-wanderer/Bxo5TeYqH7T0G3JmGWCJ8DI1lfy2</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/can-non-native-english-teachers-work-in-china/-L_Yl_2v_w16KXZYIKUc</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/10-tips-for-moving-to-china/-L_Yl635cRH9dRqPI8iS</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/semester-at-sea-shanghai-china/-La0mOj6ws3ScclBQTho</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/beijing-china/399041998999999911640739630000007</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/claimed-baggage/809YGNpDPMbHtjexUOo3rTy72U22</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/exploring-beijing-s-forbidden-city-in-one-day/-La0_NiWoNlFUDAAYRhE</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/china/358616610419539699999996</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/caravan-spirits/aojLw1hYFVhw6nsNGoyN1uFvrtB3</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/can-non-native-english-teachers-work-in-china/-L_Yl_2v_w16KXZYIKUc</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/10-tips-for-moving-to-china/-L_Yl635cRH9dRqPI8iS</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/10-best-things-to-do-in-beijing-china/-L_YkAgjiZVNX_zF9oi6</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/chengdu-sichuan-china/3057281510406680099999994</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/why-you-should-visit-chengdu-china/-L_Yi34XDo7sbc7tB8Vg</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/colombia/CO/regions</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/salento-quindio-colombia/46373767557077700000002</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/2-nights-in-salento-our-itinerary/-La6zE5jp7ZGBNvAKfHE</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/costa-rica/CR/regions</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/dominical-puntarenas-province-savegre-costa-rica/92524310999999998385923059999999</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/explorcation-blog/0ir2KCuP2Be8LHveLcwOpcj8Q8r2</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/costa-rica-5-things-to-know-before-you-go/-La6G3ony9Vf6x_QCU3s</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/budget-bucket-list-dominical-costa-rica/-La6E_eGv_C3MhdwZZp-</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/costa-rica/97489169999999998375342799999999</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/7-things-to-do-in-costa-rica/-L_9SZHZXdYyrTEcEMYB</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/croatia/HR/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/dubrovnik-croatia/42650660599999991809442379999996</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/the-life-of-a-social-butterfly/O2uKGikZ5vPkru9XCSGkbhL6K0I3</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/croatia-top-5-things-to-do-in-dubrovnik/-La0p78QIcFgIUAgMi35</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/saccharine-soul/3RHEXBwxWifIEyHhGm8apen814g1</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/best-things-to-do-dubrovnik/-L_hWtVq5c57vKAsTgSo</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/hvar-croatia/43172947816441113599999994</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/a-guide-to-hvar-island-croatia/-L_U4KU5ifg2JemLNwjr</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/u/show/cocktail-guys-travels/N4sWtlDIZxXCbSfzdmQtUKF29Qp1</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/dubrovnik-old-town-and-game-of-thrones-tour/-L_Jdl1dHClB3T1Dkd0X</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/10-game-of-thrones-filming-locations-in-dubrovnik/-LZkUTGtawN06jlxy5fo</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/czechia/CZ/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/prague-czechia/5007553811443780049999998</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/i-am-just-a-girl/YHjTx9uMAVZGk9uoSisF78uA7Rg1</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/where-to-eat-drink-party-in-prague/-L_yR-KDhq8lNAIQrrCM</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/the-best-things-to-see-and-do-in-prague/-L_yQXP6WQ7PPsVripTQ</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/prague-travel-guide/-L_U5O-UEn3WB78i3CLu</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/copenhagen-denmark/55676096812568337199999974</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/nishi-v/NdDM8eztrRQLtsGRRZuw1FNg9fj1</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/copenhagen-city-guide/-L_oGhZq7xnZJntuYEeI</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/winter-break-in-copenhagen-denmark/-L_U5xinBkTZ9auDlbaE</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/dominica/154149996137097600000004</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/4-reasons-you-need-to-experience-dominica/-L_YmYUtBj_2_KPvzbAq</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/our-favorite-things-to-do-in-dominica/-L_Ym9lmoNarHwvGVaGm</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/ecuador/EC/regions</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/banos-de-agua-santa-ecuador/13928344784268758</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/5-reasons-not-to-bike-la-ruta-de-las-cascadas-in-banos-ecuador/-La0lJZ35myU5M-H4GuL</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/fiji/FJ/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/nadi-fiji/17776535617743562270000007</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/8-amazing-things-you-must-do-in-nadi-fiji/-L_CmpdL6Fa7FM_JrILG</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/france/FR/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/a-not-so-young-woman-abroad/KvkkjeBgE5dPLoWj3qcN6IUsuaH3</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/j-aime-paris-my-favourite-things-to-do-in-paris/-La79nl4QytgpG-ijBj0</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/food-in-paris-a-restaurant-guide-from-french-delicacies-to-rustic-charm/-La0s-93xpMlNhoTMIGy</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/24-hours-in-paris-travel-vlog/-L_oKAS7Cxyxf9yuRB9m</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/2-day-paris-itinerary/-L_hXspMAWqqbDZ1ydWr</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/provence-alpes-cote-d-azur-france/4393516916067919399999937</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/u/show/urban-pax/OpOQiDPqskgvsYNuemoo3VdN1Zw1</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/5-best-outdoor-markets-in-the-south-of-france-and-a-few-tips/-L_NBSZ8DspqY2azRjPM</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/disneyland-paris-boulevard-de-parc-coupvray-france/48868328827984212999999727</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/u/show/wanderlust-calls/sAySAzSh3sVn3StixneVCiNhMCm1</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/what-to-do-at-disneyland-paris/-LZkfRzp-MGeIg15Aqkl</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/louvre-museum-rue-de-rivoli-paris-france/48860611123376439999999548</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/u/show/the-curious-pixie/eNusTso6LKcZ7r0lsTJOqI3Axuq1</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/how-to-visit-the-louvre-with-kids/-LZkqktJx0Ihdysf7Snw</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/germany/DE/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/berlin-germany/525200065999999913404953999999975</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/xmas-markets-in-europe-travel-blogger-s-top-picks/-La5zaR1P7141lWOrSnn</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/top-10-things-to-do-in-berlin/-L_U6SkIFd2QcSiqpG7-</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/quick-travel-guide-berlin-germany/-L_Tlgurk1kVAlydZCRP</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/greece/3907420821824311999999964</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/travel-with-gabriella/29bx1UBY25euQff0Ro68mAZGPu03</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/what-it-s-really-like-to-spend-a-week-travelling-round-greece/-La0gyqh0-dILC4AMOlY</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/rhodes-greece/3624325532797176060000004</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/rhodes-city-guide-things-to-do-see-and-explore/-L_oLFJ3oTw7jEi3QtoN</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/acropolis-of-athens-athens-greece/37971532323725749199999996</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/thirsty-journeys/ZPoXPC0wLpNtQfot74blHOCp2V32</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/5-helpful-tips-for-visiting-the-acropolis-and-parthenon/-L_ZANAkjggsRcFfgdFi</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/u/show/conde-nast-traveller/mSy49agdFgcSrDRn1ZC1C0YGwwv2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/20-best-greek-islands/-LZkk7bgJfAU81CmjUMM</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/guatemala/GT/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/acatenango-guatemala/145004619087566620000001</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/ashleys-footprints/k27vQVaRGfQMc8cxHelGPwckiCq2</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/mt-acatenango-volcano-hike-guatemala/-L_Z5tZTV9nCe48-Rbwd</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/honduras/HN/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/utila-honduras/1609496048692735319999997</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/scuba-certification-on-a-budget-in-utila-honduras/-L_YmlDVBbnOrZRCvJJI</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/hong-kong/HK/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/hong-kong/2239642811410949700000003</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/free-and-cheap-things-to-do-in-hong-kong/-La79DgdKri7kOKLZOMs</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/danielle-farideh/whIq7u3ZphNkdniT0yFQUXWBwjF3</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/20-photos-of-hong-kong-that-will-convince-you-to-visit/-La65YpnqO1fStQwcKZx</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/kowloon-hong-kong/22318567311417960570000002</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/how-to-spend-one-day-in-kowloon/-L_hW3W9pnU_ymn3JOwZ</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/instagrammable-places-in-hong-kong/-L_hVDU7XGN6-ETwiKlI</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/budapest-hungary/474979121904023499999994</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/five-amazing-photography-spots-in-budapest/-LZkgKV5Cw1h1v0WTO2U</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/u/show/bryoni-burns/5AHzos3tNxQygqWNYNUdTBjYh3x2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/10-things-you-must-do-when-visiting-budapest/-LZkjUFI1vU3fcTzFPjF</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/reykjavik-iceland/6414658221942635399999972</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/7-ways-to-save-money-in-amazingly-expensive-reykjavik/-L_TpSKSll2b1TJmRRxY</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/iceland/6496305119020835000000034</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/flights-and-feelings/yr8ZLqxEKsUYlgbSYV0PC9a2QzA3</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/9-ways-to-prepare-for-a-trip-to-iceland/-La6n0B7bzzg5B0ab0YL</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/a-view-outside/ZGv3xlrE2lh4077amuVsXxayIXy1</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/7-things-you-need-to-know-before-visiting-iceland/-La1-9OKvX_tmrFxDW89</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/reykjavik-iceland/6414658221942635399999972</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/what-to-expect-from-visiting-the-blue-lagoon-in-winter/-La0w9vJINlnyFuseTMm</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/chasing-the-northern-lights-in-iceland/-La0ZgAP5xQkli_dnWTp</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/golden-circle-and-northern-lights-tour-iceland/-L_yNeYMivqnSYCZd2PY</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/what-to-do-see-and-eat-in-reykjavik-iceland/-L_yMoywwrfYKzqpmm6M</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/7-ways-to-save-money-in-amazingly-expensive-reykjavik/-L_TpSKSll2b1TJmRRxY</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/10-reasons-why-i-want-to-go-back-to-iceland/-L_TnaqRLrJA07CpWVRz</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/4-days-in-iceland-reykjavik-january-2019/-L_Jc1XOpHg64T7achyH</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/iceland-on-a-budget-reykjavik-travel-guide-itineraries/-LZkaTH18EcghssbD15d</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/india/IN/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/india/205936847896288000000004</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/5-reasons-to-visit-india/-La6-1JWq6PS63GGZm8C</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/punjab-india/3114713057534121789999995</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/u/show/andrew-mckean/AdQMlltlrofjqlfTGYCA1vsRJnn2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/the-forgotten-hinterlands-of-india/-L_CP80ZpfGg3Qr-SyyR</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/indonesia/ID/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/bali-indonesia/8340538911509195090000003</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/gluten-free-horizons/GvFE5vnjiafeixCdbceQrncy6VD2</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/photo-diary-our-day-in-bali/-La72vcVgrl8-N7Y-nYh</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/is-tourism-ruining-the-magic-of-bali/-La6vyDaYDmb4smRUF-8</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/east-kalimantan-indonesia/0538658611641938900000002</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/margarida-vasconcelos/Fnbe1t9ZocU8TyTCTnHOm5ljlTC2</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/4-days-exploring-east-kalimantan-off-the-beaten-track/-La5zZwjGrF76Emi9NXF</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/ubud-bali-travel-vlog/-L_oWjDD4EoOhHg_n48P</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/komodo-national-park-east-nusa-tenggara-indonesia/85277161194833198</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/discover-komodo-national-park-with-flores-xp-adventure-3-days-in-paradise/-L_hY2Jt4fOM2gai7tPR</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/the-silver-nomad/Bw9yJcTpZWOpWiJ7VFp4ZsERKSF3</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/10-things-to-do-in-the-north-of-bali/-L_hOcaw88CIEjmh5qu_</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/when-is-the-best-time-to-visit-bali/-L_hO81x-ckyeV6T3uty</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/bangka-island-bangka-belitung-islands-indonesia/2288478210606401789999995</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/u/show/get-wanderlusted/G3zq3pCQhAM96Y8c7gCNnZepQlz2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/indonesia-s-hidden-paradise-travel-guides-to-bangka-island/-LZkkqWpxq0E3H8Qft_B</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/danau-kaolin-nibung-air-bara-jalan-raya-gadung-ranggas-south-bangka-regency-bangka-belitung-islands-indonesia/254878110635306360000004</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/the-bluest-lake-in-indonesia-travel-guides-to-kaolin-air-bara-lake/-LZkl72RHULq2bcsWGmK</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/ireland/IE/regions</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/dublin-ireland/5334980536260309699999993</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/top-5-free-and-unusual-things-to-do-in-dublin-ireland/-La0z8kBqTUtTXo0_JTN</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/galway-ireland/532706689056790500000034</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/galway-city-guide/-L_oMju0BsbZKFQn7rIz</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/italy/IT/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/italian-riviera-italy/44497152000000018953436399999987</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/dreams-of-eating-gluten-free-on-the-italian-riviera/-La73zvxi2BY7-JsqqV9</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/venice-italy/4544084741231551509999997</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/travel-eat-slay/7lBsUys3ofcHRcJntHgWHkDGFmh1</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/venice-things-i-wish-i-knew-before-going/-La6BaX6V9xjScv-c-LB</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/rome-metropolitan-city-of-rome-italy/41902783512496365500000024</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/xxiv-hours-in-rome/-La6AnDPoP3oxoMuX0AH</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/rome-italy/41902783512496365500000024</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/12-photos-to-inspire-you-to-explore-rome-at-night/-La0lnsoUnB1NjQ09ZHk</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/naples-metropolitan-city-of-naples-italy/40851798314268119999999954</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/one-day-in-naples/-La0cLGalnQUOeWMERsB</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/venice-metropolitan-city-of-venice-italy/4544084741231551509999997</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/how-to-spend-48-hours-in-venice/-L_i2xDRR2qWA6O6mGE2</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/venice-in-winter/-L_Jd7-C3Zs_kgEzZ7YA</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/u/show/tessa-holly/iNc0kjGI1NPKO6oGKFYhc3b8Z332</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/a-few-hours-in-venice/-L_J_duruRqW1587YEMn</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/italy/418719412567379999999957</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/16-best-cities-in-italy-to-visit-this-year/-LZka1yLq911F9nr3WzJ</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/jamaica/1810958177297508</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/my-top-10-places-to-visit-in-jamaica/-La61D6U7mXpLZGAEMz4</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/japan/JP/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/tokyo-japan/35689487513969170639999993</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/u/show/serial-jet-setter/FtGHbHCpJdNZj1Oo6Hr9DDeoeEB3</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/6-things-to-do-in-tokyo/-L_Xfx73ycwomxgsJvv4</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/tokyo-bucket-list-experiences/-L_U1iV2qN-J7qz_rsIY</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/kyoto-japan/35011636313576802939999993</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/u/show/the-navigatio/U1iigAhMf3Qe192M5XcZuRfZsHL2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/7-things-you-must-see-in-kyoto-japan-travel-guide/-L_DnLXdx_kCDd70RcXl</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/4-must-see-themed-restaurants-in-tokyo/-La0zkc7B14PRiLkxiPM</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/japan/36204824138252924</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/15-things-you-need-to-eat-in-japan/-L_z6SuthlwgW10PdD7U</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/serial-jet-setter/FtGHbHCpJdNZj1Oo6Hr9DDeoeEB3</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/6-things-to-do-in-tokyo/-L_Xfx73ycwomxgsJvv4</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/tokyo-bucket-list-experiences/-L_U1iV2qN-J7qz_rsIY</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/kyoto-japan/35011636313576802939999993</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/u/show/the-navigatio/U1iigAhMf3Qe192M5XcZuRfZsHL2</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/7-things-you-must-see-in-kyoto-japan-travel-guide/-L_DnLXdx_kCDd70RcXl</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/is-japan-expensive-16-days-in-japan-cost-breakdown/-L_DmnKmrnARhwFpHN3V</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/two-weeks-in-japan-full-japan-itinerary/-L_Dm4f03MANAznDKhVI</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/kenya/KE/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/taita-taveta-county-kenya/3385364438565888900000004</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/u/show/just-rioba/VL91dogPEYOt4FY9TfWddgUtDXJ2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/12-things-to-do-in-taita-taveta-county-for-first-timers/-LZksiRigCNDO2luVmf6</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/river-sagana-kenya/0666465637189337600000044</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/white-water-rafting-at-river-sagana/-LZksrox3lBo1hITG3yC</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/lithuania/LT/regions</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/anyksciai-lithuania/555291019999999925113185899999962</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/walking-in-the-treetops-anyksciai-lithuania/-La67_mLiDOfSF4IGhWk</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/macau/2219874511354387300000008</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/the-6-best-places-to-see-in-macau/-L_wrDc4C5bueLbdlHPL</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/malaysia/MY/regions</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/kuala-lumpur-federal-territory-of-kuala-lumpur-malaysia/313900310168685499999992</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/batu-caves-a-must-see-in-kuala-lumpur/-La77lm2kZej-1BGARQz</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/mexico/2363450110255278399999997</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/moving-to-mexico-checklist-everything-you-need-to-know/-LZkaJ8voBtgh45b0H1D</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/monaco/4373841760000001742461579999997</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/20-photos-of-monaco-that-will-convince-you-to-visit/-La67nQ1W-sAFQaZN0Qi</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/montenegro/427086781937438999999995</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/why-i-m-glad-i-chose-tivat-over-kotor/-L_TsNqizzLB-ilo4nxT</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/morocco/MA/regions</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/marrakesh-morocco/3162947237981084499999952</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/footsteps-in-marrakech/-La6C5W705RsaEl7z_sW</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/netherlands/NL/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/amsterdam-netherlands/5236798434903561399999944</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/24-hours-in-amsterdam/-La6CTwQAX8m6KGallrX</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/keukenhof-stationsweg-lisse-netherlands/5227001884546389299999987</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/24-hour-spring-break-at-the-dutch-keukenhof-tulip-gardens/-La0pqRbkciVqZ76E8ei</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/haarlem-netherlands/5238738784646219400000064</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/the-de-adriaan-windmill-haarlem-amsterdam/-L_hPg6DB-6x2GotJwxa</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/u/show/lea-bella-blogs/0TthHkSBnFUfwwK9MmP1ZT75TRL2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/mini-cruise-to-amsterdam/-L_9KSb8_gkysITTaqmT</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/how-to-spend-a-weekend-in-amsterdam/-L_9EeS8j3d-BSOmVh7L</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/10-things-you-must-do-when-visiting-amsterdam/-LZkh00skvLik5xyHw5b</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/discover-a-different-side-of-amsterdam/-LZkXhD_LXGZCOat_gg6</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/new-caledonia/NC/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/isle-of-pines-new-caledonia/22614927516748166930000002</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/isle-of-pines-the-closest-island-to-paradise/-L_CnJjkOoGT9kpaxIzm</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/new-zealand/NZ/regions</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/ruakuri-cave-ruakuri-road-waitomo-new-zealand/38268052917507851660000006</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/ruakuri-cave-waitomo-glowworm-caves-new-zealand/-La78lYRkCNFMAt6MnkU</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/new-zealand/4090055717488597100000004</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/top-10-new-zealand-campsites-under-15/-L_CozN4t3lpZAuHnzFX</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/10-epic-secret-locations-in-new-zealand/-L_CoUI1p1I9MhxczuZR</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/norway/NO/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/norway/6047202399999999846894599999996</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/norway-in-a-nutshell-top-things-to-do/-L_Z1RrKRtSn3x-b1shh</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/oslo-norway/59913868810752245399999993</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/6-free-best-things-to-do-in-oslo-norway-city-break/-La66PwWWutAo-zpA3Fl</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/how-to-spend-4-days-in-oslo/-L_yPD2os2XnLvBpuZpU</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/norway/6047202399999999846894599999996</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/norway-in-a-nutshell-top-things-to-do/-L_Z1RrKRtSn3x-b1shh</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/oslo-norway-travel-guide/-L_UA3vkeI_WijUCNB4w</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/peru/918996775015152</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/laguna-de-salinas-magical-place-off-the-beaten-track/-L_xPn8P4Us8h2winKYS</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/lares-trek-to-machu-picchu-my-first-trekking-experience/-L_xMhAVl1KtFVhjjJjR</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/u/show/beauty-that-walks/J3SDDYc0ANUYfPtCxsq3XBfk91u1</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/tips-to-have-an-incredible-vacation-in-peru/-LZknYyLe-OdYfbMY6cr</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/philippines/PH/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/palawan-philippines/983494931187383615</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/qi-palawan-a-sweet-escape-in-palawan-philippines/-LZkkeN-BCuMzXw33dTP</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/portugal/PT/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/porto-portugal/4115794388629105299999992</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/eat-see-do-porto/-La6ngOcJ2xCN5Oue_lO</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/5-things-to-do-in-porto-portugal/-La6-wUEcIiqqIHS46Sw</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/lisbon-portugal/3872225249139336599999979</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/lisbon-s-best-instragram-photo-locations/-La0qwoWCIKvxEqLsgah</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/what-i-did-in-lisbon-for-my-first-solo-trip-of-2018/-LZkg8sPp6b3aB4fvTnc</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/charms-of-lisbon-the-jewel-of-the-atlantic-ocean/-LZknLHGsh_VvN7d8txG</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/puerto-rico/1822083366590149</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/puerto-rico-tourism-after-hurricane-maria-luquillo/-La6FRtwHBFigdlHm9Sy</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/the-best-things-to-do-in-san-juan-puerto-rico/-La66xHYy_83wwxuI3WQ</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/qatar/QA/regions</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/doha-qatar/2528544735153103979999992</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/10-things-to-do-in-doha-qatar/-La6-NNqf6bH8tokZyGj</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/st-lucia/139094446097889299999997</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/one-day-in-st-lucia/-La0bluV1qzT-xo7tET6</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/eating-gluten-free-in-singapore/-La71yeQQrUS9CWQf-s4</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/slovenia/SI/regions</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/lake-bled-bled-slovenia/4636359814093805299999985</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/all-you-need-to-know-before-visiting-lake-bled-slovenia/-La64XgMJxzUqEkyg7bL</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/south-africa/ZA/regions</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/johannesburg-south-africa/26204102828047305100000017</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/what-it-s-like-to-go-on-a-south-african-safari/-La0ffbWioN4UTe0DggC</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/spain/ES/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/madrid-spain/40416775437037901999999576</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/7-cliche-things-madrid-taught-us/-La6mCBHpoc2BbGsmUfN</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/tenerife-spain/28291563716629130400000008</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/5-days-out-in-tenerife-away-from-the-tourists/-La0gKY7z7VrT5__Was-</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/barcelona-spain/41385063921734034999999494</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/barcelona-4-perfect-days/-L_NC7bNFwfySxScjAxh</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/sweden/SE/regions</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/stockholm-sweden/593293234999999918068580800000063</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/72-hours-in-oslo-travel-vlog/-L_oRD3CoXDnpKhUd_M9</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/switzerland/CH/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/geneva-switzerland/4620439076143157699999961</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/lake-geneva-travel-vlog/-L_oSl85fgiTRV3sYVj5</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/p/show/10-best-things-to-do-in-geneva-switzerland/-LZk_Yz3gYp5uga_n7Q1</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/taiwan/TW/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/jiufen-old-street-ruifang-district-new-taipei-city-taiwan/2511038512184579400000007</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/2-day-jiufen-itinerary/-L_hZD8Lbob1HXBQ9uiJ</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/place/zanzibar-tanzania/61357295000000013936211960000003</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://stravell.com/p/show/why-zanzibar-should-be-on-your-bucketlist/-La0v9WrOdFkrAlXSj-q</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/thailand/TH/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://stravell.com/place/chiang-mai-thailand/1870606419898171630000002</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/elephant-rescue-camp-chiang-mai-thailand/-L_Z4hiCW7ZksncmvwKI</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/20-photos-of-chiang-mai-that-will-convince-you-to-visit/-La64xGO2eiRTt30Ki1E</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/place/baanchang-elephant-park-ki-lek-mae-taeng-district-chiang-mai-thailand/1911403689889424340000005</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/place/bangkok-thailand/13756330910050176510000006</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/ethical-elephant-experiences-in-thailand/-L_YjW0M5NYch1STnlgs</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/20-photos-of-bangkok-that-will-convince-you-to-visit/-La63JgP3M1cu4-dYSu4</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/united-arab-emirates/AE/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/place/thailand/1587003210099254100000007</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/place/dubai-united-arab-emirates/25204849355270782800000006</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/the-best-thai-food-to-try-in-thailand/-La61k5uBHBSB9Hy5jba</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/dubai-bucket-list/-L_U277nWnJEt6oaEh8I</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/the-best-things-to-do-in-thailand/-La60ontoNBNpF58EOe_</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/united-kingdom/GB/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/place/khao-sok-national-park-khlong-sok-phanom-district-surat-thani-thailand/891545499852840409999999</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/place/manchester-uk/53480759322426305000000184</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/u/show/harmony-blaze/pkxQlTGWZRNVgu6LJ9EgFj6or8p1</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/one-day-in-manchester-uk-travel-guide/-L_Dq1rO4-Z_rLrr-WHX</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/escape-reality-at-khao-sok-national-park/-La5yJ9YPiA7WqaMdNN7</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/place/belfast-uk/54597285000000015930119999999988</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/7-fun-things-to-do-whilst-in-thailand/-La0fBmlaaXi619IPg52</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/u/show/paige-minds-the-gap/TyIZucYWgMRuXPlJ9Dqo5qIfoSt1</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/u/show/one-chance-travelers/7jUCRD7MXzX9V22KrLdYE4EkqUt2</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/traveling-to-belfast-and-the-antrim-coast/-L_9TpH3vhaTCkb9IpeN</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/how-to-do-your-laundry-in-thailand/-L_xHcMIxl4CyJcftdqp</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/place/london-uk/515073509012775829999998223</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/place/phuket-thailand/795193319833808840000006</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://stravell.com/p/show/11-free-things-to-do-and-see-in-london/-L_9Opf22NH9yhCouFeJ</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
+  <loc>https://stravell.com/p/show/karon-temple-market-guide/-L_xGCrAlwhnDnw1Lpju</loc>
+  <lastmod>2019-03-16T21:38:50+00:00</lastmod>
   <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/10-things-you-must-do-when-visiting-belfast/-LZkggY8Gyb36vWuHIfS</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/bluestone-resort-narberth-wales-uk/5178401314802562500000022</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/u/show/travel-vixta/5aVWXdVOVre3zxrrR0JjAOHxumh2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/my-very-honest-bluestone-review-3-night-christmas-break-in-wales/-LZklpJmoFFlwBtp90gO</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/gloucestershire-uk/51864211222380335000000287</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/what-is-the-coopers-hill-cheese-rolling-in-gloucestershire/-LZkmAioEZYvHaXS42Hp</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/northern-ireland-uk/547877149649231450000002</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/15-best-places-in-northern-ireland-to-visit/-LZkZ_QMwJhAQrTtrAjk</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/u/show/jenna-jacquelyn/sfGlaO8UIXZeS70Ue0ROig1oa4u1</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/the-places-to-be-while-travelling-london/-LZkt8MPonO4uQlWHxbf</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/becoming-a-teacher-abroad-from-canada-to-england/-LZktEBqug0mV2OF-9zG</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/united-states/US/regions</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/boston-ma-usa/4236008257105888010000001</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/the-boston-tea-party/-L_Z3e9pokMq8ziSP30t</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/24-hours-in-boston-how-to-see-the-city-in-1-day/-L_Z2oExLLHBuqZtOXLC</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/new-york-ny-usa/407127753740059728</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/7-ways-to-save-money-in-new-york/-L_TtgQtcwphWqrlNnDr</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/quick-travel-guide-new-york-city-usa/-L_Tt30EJl9j3Rv77nRW</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/usa/37090249571289100000001</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/23-day-us-roadtrip-itinerary/-L_DouoAY0BX-ox39Lbf</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/san-francisco-ca-usa/37774929512241941550000001</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/what-to-do-in-one-day-in-san-francisco-travel-guide/-L_DcbwLdyG4o-HvC83z</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/the-breaks-breaks-interstate-park-sand-lick-va-usa/372862904822935306</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/u/show/arika-writes/P04GkiH0o3dH72sdwxGRrdYSnYq2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/visiting-the-breaks-interstate-park/-L_CgMx2i6IWFLAjGZ2x</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/hawaii-usa/19896766215558278180000002</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/discovering-the-hawaiian-islands-adventures-on-lanai-and-molokai/-L_CelA3ND0rulJl8XVw</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/italy/it-veneto</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/taiwan/tw-new-taipei-city</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/france/fr-ile-de-france</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/indonesia/id-nusa-tenggara-tim</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/croatia/hr-dubrovnik-neretva-county</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/hong-kong/hk-kowloon</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/netherlands/nl-nh</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/indonesia/id-bali</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/australia/au-tas</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/guatemala/gt-chimaltenango-department</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/united-kingdom/gb-england</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/australia/au-act</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/australia/au-nsw</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/australia/au-nt</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/australia/au-qld</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/australia/au-vic</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/australia/au-wa</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/9-ways-to-become-a-successful-travel-blogger/-LX4t5RENMS05XjOpFji</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/the-beginner-s-guide-to-backpacking-southeast-asia/-LWv1JoEigF9ZbOME5wG</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/how-to-make-friends-while-traveling-solo/-LWC3fknBOW-FQttUu41</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/10-top-tips-for-writing-inspiring-travel-articles/-LViE8G2JxZRxEW3vpj2</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/new-years-resolutions-for-travellers/-LVe-1UXeDZt2y7ElcDf</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/20-easy-ways-to-save-money-for-travel/-L_Ck8sOIuw218isWamx</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/5-of-the-best-festivals-around-the-world/-L_9FFp1impSIJUTi2RE</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/belgium/be-brussels</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/belgium/be-flanders</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/canada/ca-ab</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/canada/ca-qc</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/china/cn-beijing</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/china/cn-sichuan</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/croatia/hr-split-dalmatia-county</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/czechia/cz-prague</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/fiji/fj-western-division</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/france/fr-provence-alpes-cote-d-azur</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/place/south-east-asia/2217970411566282999999999</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/travel-to-south-east-asia/-L_NDDgLw_-O3UVA0Fpz</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/germany/de-berlin</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/honduras/hn-bay-islands-department</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/india/in-pb</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/indonesia/id-bangka-belitung-islands</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/indonesia/id-kepulauan-bangka-belitung</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/japan/jp-kyoto-prefecture</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/japan/jp-tokyo</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/kenya/ke-taita-taveta-county</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/new-caledonia/nc-south-province</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/norway/no-oslo</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/5-destinations-on-the-rise-around-the-world/-LYlVsHxPdIFTMrV7Ncx</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/philippines/ph-mimaropa</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/portugal/pt-lisbon</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/spain/es-ct</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/switzerland/ch-ge</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/thailand/th</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/united-arab-emirates/ae-dubai</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/united-kingdom/gb-northern-ireland</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/my-top-10-honeymoon-destinations/-LYm5xtlthyeVBSRrAAR</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/p/show/traveling-alone-no-problem/-LVQndY5zdKE6uyXZY4s</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/united-states/us-ca</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/united-states/us-hi</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/united-states/us-ma</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/united-states/us-ny</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://stravell.com/region/united-states/us-va</loc>
-  <lastmod>2019-03-12T03:02:01+00:00</lastmod>
-  <priority>0.51</priority>
 </url>
 
 

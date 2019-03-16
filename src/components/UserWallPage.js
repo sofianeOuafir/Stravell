@@ -1,5 +1,5 @@
 import React from "react";
-import { slugify } from 'underscore.string';
+import { slugify } from "underscore.string";
 
 import PageHeader from "./PageHeader";
 import FilterableDataList from "./FilterableDataList";
@@ -43,6 +43,7 @@ export class UserWallPage extends React.Component {
               breadCrumbProps={{
                 links: breadcrumbLinks
               }}
+              mapCallToAction={`This is ${userName}'s map! The markers represent where ${userName} have been writing about. Click on a marker to start reading about a place!`}
             />
           </div>
         </div>

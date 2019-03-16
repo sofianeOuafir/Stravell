@@ -9,6 +9,7 @@ exports[`should display correctly when post does not have address 1`] = `
   >
     <a
       className="post-list-item__link"
+      href="#"
       onClick={[Function]}
     >
       <img
@@ -44,6 +45,7 @@ exports[`should display correctly when post does not have address 1`] = `
       />
       <a
         className="button"
+        href="#"
         onClick={[Function]}
       >
         Read
@@ -73,6 +75,7 @@ exports[`should display correctly when post has an address 1`] = `
   >
     <a
       className="post-list-item__link"
+      href="#"
       onClick={[Function]}
     >
       <img
@@ -118,6 +121,7 @@ exports[`should display correctly when post has an address 1`] = `
       />
       <a
         className="button"
+        href="#"
         onClick={[Function]}
       >
         Read
@@ -147,6 +151,7 @@ exports[`the post belongs DO NOT belongs to the current user and props.editable 
   >
     <a
       className="post-list-item__link"
+      href="#"
       onClick={[Function]}
     >
       <img
@@ -192,6 +197,7 @@ exports[`the post belongs DO NOT belongs to the current user and props.editable 
       />
       <a
         className="button"
+        href="#"
         onClick={[Function]}
       >
         Read
@@ -221,6 +227,7 @@ exports[`the post belongs to the current user and props.editable is false should
   >
     <a
       className="post-list-item__link"
+      href="#"
       onClick={[Function]}
     >
       <img
@@ -289,6 +296,7 @@ exports[`the post belongs to the current user and props.editable is true should 
   >
     <a
       className="post-list-item__link"
+      href="#"
       onClick={[Function]}
     >
       <img
@@ -368,6 +376,7 @@ exports[`the post contains a body and no URL has been provided should render cor
   >
     <a
       className="post-list-item__link"
+      href="#"
       onClick={[Function]}
     >
       <img
@@ -413,6 +422,7 @@ exports[`the post contains a body and no URL has been provided should render cor
       />
       <a
         className="button"
+        href="#"
         onClick={[Function]}
       >
         Read

@@ -15,18 +15,21 @@ export const PostListItem = ({
   editable
 }) => {
   let linkProps = {
-    onClick: () => {
-      Router.push(
-        `/post?id=${post.id}`,
-        `/p/show/${slugify(post.title)}/${post.id}`
-      );
-    },
     className: "post-list-item__link"
   };
 
   if (post.provideURL) {
     linkProps.href = post.providedURL;
     linkProps.target = "_blank";
+  } else {
+    linkProps.href = '#';
+    linkProps.onClick = (e) => {
+      e.preventDefault();
+      Router.push(
+        `/post?id=${post.id}`,
+        `/p/show/${slugify(post.title)}/${post.id}`
+      );
+    };
   }
 
   return (
