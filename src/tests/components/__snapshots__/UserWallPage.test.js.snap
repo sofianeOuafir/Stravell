@@ -64,6 +64,7 @@ exports[`should render correctly 1`] = `
             "showWholeWorld": true,
           }
         }
+        mapCallToAction="This is Samia Ouafir's map! The markers represent where Samia Ouafir have been writing about. Click on a marker to start reading about a place!"
         noDataText="Samia Ouafir has not published any post yet."
       />
     </div>
