@@ -19,10 +19,11 @@ import "draft-js-focus-plugin/lib/plugin.css";
 import "draft-js-alignment-plugin/lib/plugin.css";
 import "draft-js-linkify-plugin/lib/plugin.css";
 import "draft-js-side-toolbar-plugin/lib/plugin.css";
-
+import { setTextFilter } from "./../src/actions/filters";
 
 class MyApp extends App {
   async componentDidMount() {
+    const { reduxStore } = this.props;
     // initialize React Google Analytics and track page views
     ReactGA.initialize(process.env.GA_TRACKING_CODE);
     ReactGA.pageview(Router.route);
@@ -33,9 +34,11 @@ class MyApp extends App {
 
     hotjar.initialize(process.env.HOTJAR_ID, 6);
 
-    Router.events.on("routeChangeComplete", () => NProgress.done());
+    Router.events.on("routeChangeComplete", () => {
+      reduxStore.dispatch(setTextFilter(""));
+      NProgress.done();
+    });
     Router.events.on("routeChangeError", () => NProgress.done());
-
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         return user
