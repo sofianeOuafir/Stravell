@@ -30,7 +30,8 @@ export class FilterableDataList extends React.Component {
       setMapVisibility,
       DataList,
       withMap = true,
-      searchBarPlaceHolder = "Search"
+      searchBarPlaceHolder = "Search",
+      mapCallToAction = "Click on a marker and start reading about your favourite place!"
     } = this.props;
     return (
       <div className="flex flex-direction--column">
@@ -76,7 +77,7 @@ export class FilterableDataList extends React.Component {
 
           {withMap && mapConfig.visible && (
             <div className="filterable-post-list__map-container">
-              <p className="m0 favourite-font-weight">Click on a marker and start reading about your favourite place!</p>
+              <p className="m0 favourite-font-weight">{mapCallToAction}</p>
               <GoogleMaps {...googleMapsProps} />
             </div>
           )}
