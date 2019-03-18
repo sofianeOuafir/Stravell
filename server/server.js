@@ -137,11 +137,11 @@ app.prepare().then(() => {
     const feed = new Feed({
       title: "Stravell",
       description: "Stravell's Feed",
-      id: "stravell.com/",
-      link: "stravell.com/",
+      id: "https://www.stravell.com",
+      link: "https://www.stravell.com",
       language: "en", // optional, used only in RSS 2.0, possible values: http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
-      image: "stravell.com/favicon",
-      favicon: "stravell.com/favicon",
+      image: "https://www.stravell.com/favicon",
+      favicon: "https://www.stravell.com/favicon",
       copyright: "All rights reserved 2019, Stravell Inc",
       feedLinks: {
         json: "https://example.com/json",
@@ -183,7 +183,7 @@ app.prepare().then(() => {
             name: `${userName}`
           }
         ],
-        date: undefined,
+        date: new Date(createdAt),
         image
       });
     });
