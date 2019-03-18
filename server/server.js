@@ -3,7 +3,8 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const FileStore = require("session-file-store")(session);
 const next = require("next");
-const Feed = require("feed").Feed;
+const RSS = require("rss");
+const WEBSITE_URL = 'https://stravell.com';
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
@@ -134,24 +135,17 @@ app.prepare().then(() => {
   });
 
   server.get("/feed", async (req, res) => {
-    const feed = new Feed({
+    var feed = new RSS({
       title: "Stravell",
-      description: "Stravell's Feed",
-      id: "https://www.stravell.com",
-      link: "https://www.stravell.com",
-      language: "en", // optional, used only in RSS 2.0, possible values: http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
-      image: "https://www.stravell.com/favicon",
-      favicon: "https://www.stravell.com/favicon",
-      copyright: "All rights reserved 2019, Stravell Inc",
-      feedLinks: {
-        json: "https://example.com/json",
-        atom: "https://example.com/atom"
-      },
-      author: {
-        name: "Stravell",
-        email: "stravell.com@gnail.com",
-        link: "https://www.stravell.com"
-      }
+      description: "Stravell's RSS Feed",
+      feed_url: `${WEBSITE_URL}/feed`,
+      site_url: `${WEBSITE_URL}`,
+      image_url: `${WEBSITE_URL}/favicon`,
+      managingEditor: "Stravell",
+      webMaster: "Stravell",
+      copyright: "2019 Stravell",
+      language: "en",
+      ttl: "60"
     });
 
     const posts = await firebase
@@ -171,25 +165,32 @@ app.prepare().then(() => {
       });
 
     posts.forEach(post => {
-      const { title, id, description, userName, createdAt, image } = post;
-      feed.addItem({
+      const {
         title,
         id,
-        link: `https://stravell.com/p/show/${title}/${id}`,
         description,
-        content: description,
-        author: [
-          {
-            name: `${userName}`
-          }
-        ],
-        date: new Date(createdAt),
-        image
+        userName,
+        createdAt,
+        image,
+        lat,
+        lng
+      } = post;
+
+      feed.item({
+        title,
+        description,
+        url: `https://stravell.com/p/show/${title}/${id}`, // link to the item
+        guid: id, // optional - defaults to url
+        author: userName, // optional - defaults to feed author property
+        date: new Date(createdAt), // any format that js Date can parse.
+        lat, //optional latitude field for GeoRSS
+        long: lng, //optional longitude field for GeoRSS
+        enclosure: { url: image } // optional enclosure
       });
     });
 
-    console.log(feed.rss2());
-    res.set("application/xml").send(feed.rss2());
+    console.log(feed.xml());
+    res.set("application/xml").send(feed.xml({ indent: true }));
   });
 
   server.get("*", (req, res) => {
