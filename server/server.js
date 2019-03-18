@@ -214,12 +214,19 @@ app.prepare().then(() => {
         author: userName, // optional - defaults to feed author property
         date: new Date(createdAt), // any format that js Date can parse.
         custom_elements: [{
-          "media:content": {
+          "media:content": [{
             _attr: {
               medium: 'image',
-              href: image
+              href: image,
             }
-          }
+          }, {
+            "media:thumbnail": {
+              _attr: {
+                medium: 'image',
+                href: image,
+              }
+            }
+          }]
         }]
       });
     });
