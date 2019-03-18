@@ -177,7 +177,10 @@ app.prepare().then(() => {
       webMaster: "stravell.com@gmail.com",
       copyright: "2019 Stravell",
       language: "en",
-      ttl: "60"
+      ttl: "60",
+      custom_namespaces: {
+        'media': 'http://search.yahoo.com/mrss/'
+      },
     });
 
     const posts = await firebase
@@ -217,9 +220,7 @@ app.prepare().then(() => {
           "media:content": [{
             _attr: {
               medium: 'image',
-              href: "https://www.joptimisemonsite.fr/wp-content/uploads/2018/04/recuperer-google-avis-client.jpg",
-              width: 500,
-              height: 500
+              href: image
             }
           }]
         }]
@@ -227,7 +228,7 @@ app.prepare().then(() => {
     });
 
     console.log(feed.xml());
-    res.set("application/xml").send(feed.xml({
+    res.set('Content-Type', 'text/xml').send(feed.xml({
       indent: true
     }));
   });
