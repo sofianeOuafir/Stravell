@@ -4,7 +4,7 @@ const session = require("express-session");
 const FileStore = require("session-file-store")(session);
 const next = require("next");
 const RSS = require("rss");
-const WEBSITE_URL = 'https://stravell.com';
+const WEBSITE_URL = "https://stravell.com";
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
@@ -185,7 +185,8 @@ app.prepare().then(() => {
         date: new Date(createdAt), // any format that js Date can parse.
         lat, //optional latitude field for GeoRSS
         long: lng, //optional longitude field for GeoRSS
-        enclosure: { url: image } // optional enclosure
+        enclosure: { url: image, type: "image" }, // optional enclosure
+        custom_elements: [{ "media:content": { url: image, medium: "image" } }]
       });
     });
 
