@@ -8,7 +8,9 @@ const WEBSITE_URL = "https://stravell.com";
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
-const app = next({ dev });
+const app = next({
+  dev
+});
 const handle = app.getRequestHandler();
 
 const firebase = require("./../src/firebase/firebaseAdmin");
@@ -21,11 +23,16 @@ app.prepare().then(() => {
     session({
       secret: "geheimnis",
       saveUninitialized: true,
-      store: new FileStore({ path: "/tmp/sessions", secret: "geheimnis" }),
+      store: new FileStore({
+        path: "/tmp/sessions",
+        secret: "geheimnis"
+      }),
       resave: false,
       rolling: true,
       httpOnly: true,
-      cookie: { maxAge: 604800000 } // week
+      cookie: {
+        maxAge: 604800000
+      } // week
     })
   );
 
@@ -45,13 +52,20 @@ app.prepare().then(() => {
         req.session.decodedToken = decodedToken;
         return decodedToken;
       })
-      .then(decodedToken => res.json({ status: true, decodedToken }))
-      .catch(error => res.json({ error }));
+      .then(decodedToken => res.json({
+        status: true,
+        decodedToken
+      }))
+      .catch(error => res.json({
+        error
+      }));
   });
 
   server.post("/api/logout", (req, res) => {
     req.session.decodedToken = null;
-    res.json({ status: true });
+    res.json({
+      status: true
+    });
   });
 
   server.get("/p/create", (req, res) => {
@@ -62,55 +76,73 @@ app.prepare().then(() => {
 
   server.get("/p/show/:title/:id", (req, res) => {
     const actualPage = "/post";
-    const queryParams = { id: req.params.id };
+    const queryParams = {
+      id: req.params.id
+    };
     app.render(req, res, actualPage, queryParams);
   });
 
   server.get("/dashboard/:username/:uid", (req, res) => {
     const actualPage = "/dashboard";
-    const queryParams = { uid: req.params.uid };
+    const queryParams = {
+      uid: req.params.uid
+    };
     app.render(req, res, actualPage, queryParams);
   });
 
   server.get("/p/edit/:title/:id", (req, res) => {
     const actualPage = "/editPost";
-    const queryParams = { id: req.params.id };
+    const queryParams = {
+      id: req.params.id
+    };
     app.render(req, res, actualPage, queryParams);
   });
 
   server.get("/u/show/:username/:uid", (req, res) => {
     const actualPage = "/user";
-    const queryParams = { uid: req.params.uid };
+    const queryParams = {
+      uid: req.params.uid
+    };
     app.render(req, res, actualPage, queryParams);
   });
 
   server.get("/country/:countryCode", (req, res) => {
     const actualPage = "/country";
-    const queryParams = { countryCode: req.params.countryCode };
+    const queryParams = {
+      countryCode: req.params.countryCode
+    };
     app.render(req, res, actualPage, queryParams);
   });
 
   server.get("/place/:address/:id", (req, res) => {
     const actualPage = "/place";
-    const queryParams = { id: req.params.id };
+    const queryParams = {
+      id: req.params.id
+    };
     app.render(req, res, actualPage, queryParams);
   });
 
   server.get("/region/:country/:regionCode", (req, res) => {
     const actualPage = "/region";
-    const queryParams = { regionCode: req.params.regionCode };
+    const queryParams = {
+      regionCode: req.params.regionCode
+    };
     app.render(req, res, actualPage, queryParams);
   });
 
   server.get("/:country/:countryCode/regions", (req, res) => {
     const actualPage = "/regions";
-    const queryParams = { countryCode: req.params.countryCode };
+    const queryParams = {
+      countryCode: req.params.countryCode
+    };
     app.render(req, res, actualPage, queryParams);
   });
 
   server.get("/country/:countryCode", (req, res) => {
     const actualPage = "/country";
-    const queryParams = { countryCode: req.params.countryCode };
+    const queryParams = {
+      countryCode: req.params.countryCode
+    };
     app.render(req, res, actualPage, queryParams);
   });
 
@@ -171,9 +203,7 @@ app.prepare().then(() => {
         description,
         userName,
         createdAt,
-        image,
-        lat,
-        lng
+        image
       } = post;
 
       feed.item({
@@ -183,15 +213,21 @@ app.prepare().then(() => {
         guid: id, // optional - defaults to url
         author: userName, // optional - defaults to feed author property
         date: new Date(createdAt), // any format that js Date can parse.
-        lat, //optional latitude field for GeoRSS
-        long: lng, //optional longitude field for GeoRSS
-        enclosure: { url: image, type: "image" }, // optional enclosure
-        custom_elements: [{ "media:content": { url: image, medium: "image" } }]
+        custom_elements: [{
+          "media:content": {
+            _attr: {
+              medium: 'image',
+              href: image
+            }
+          }
+        }]
       });
     });
 
     console.log(feed.xml());
-    res.set("application/xml").send(feed.xml({ indent: true }));
+    res.set("application/xml").send(feed.xml({
+      indent: true
+    }));
   });
 
   server.get("*", (req, res) => {
