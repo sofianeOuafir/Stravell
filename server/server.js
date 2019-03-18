@@ -173,8 +173,8 @@ app.prepare().then(() => {
       feed_url: `${WEBSITE_URL}/feed`,
       site_url: `${WEBSITE_URL}`,
       image_url: `${WEBSITE_URL}/favicon`,
-      managingEditor: "Stravell",
-      webMaster: "Stravell",
+      managingEditor: "stravell.com@gmail.com",
+      webMaster: "stravell.com@gmail.com",
       copyright: "2019 Stravell",
       language: "en",
       ttl: "60"
@@ -217,18 +217,9 @@ app.prepare().then(() => {
           "media:content": [{
             _attr: {
               medium: 'image',
-              href: image,
+              href: "https://www.joptimisemonsite.fr/wp-content/uploads/2018/04/recuperer-google-avis-client.jpg",
               width: 500,
               height: 500
-            }
-          }, {
-            "media:thumbnail": {
-              _attr: {
-                medium: 'image',
-                href: image,
-                width: 500,
-                height: 500
-              }
             }
           }]
         }]
