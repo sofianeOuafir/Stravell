@@ -220,7 +220,7 @@ app.prepare().then(() => {
           "media:content": [{
             _attr: {
               medium: 'image',
-              href: image
+              url: image
             }
           }]
         }]
