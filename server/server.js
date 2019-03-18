@@ -218,12 +218,16 @@ app.prepare().then(() => {
             _attr: {
               medium: 'image',
               href: image,
+              width: 500,
+              height: 500
             }
           }, {
             "media:thumbnail": {
               _attr: {
                 medium: 'image',
                 href: image,
+                width: 500,
+                height: 500
               }
             }
           }]
