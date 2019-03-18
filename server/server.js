@@ -161,7 +161,7 @@ app.prepare().then(() => {
             ...element.val()
           });
         });
-        return posts;
+        return posts.reverse();
       });
 
     posts.forEach(post => {
