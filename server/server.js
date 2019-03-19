@@ -42,6 +42,14 @@ app.prepare().then(() => {
     next();
   });
 
+  server.use((req, res, next) => {
+    if(req.secure){
+      res.redirect("http://" + req.headers.host + req.url);
+    } else {
+      next();
+    }
+  });
+
   server.post("/api/login", (req, res) => {
     if (!req.body) return res.sendStatus(400);
 
