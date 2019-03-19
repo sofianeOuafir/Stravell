@@ -59,7 +59,7 @@ export const ShowPostPage = ({ post }) => {
         </div>
         {post.provideURL ? (
           <embed
-            src={`${post.providedURL}`}
+            src={`${post.providedURL.replace("http", "https")}`}
             className="fullwidth"
             style={{ height: "1300px" }}
           />
