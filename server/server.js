@@ -5,6 +5,7 @@ const FileStore = require("session-file-store")(session);
 const next = require("next");
 const RSS = require("rss");
 const WEBSITE_URL = "https://stravell.com";
+const slugify = require("underscore.string").slugify;
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
@@ -212,7 +213,7 @@ app.prepare().then(() => {
       feed.item({
         title,
         description,
-        url: `https://stravell.com/p/show/${title}/${id}`, // link to the item
+        url: `https://stravell.com/p/show/${slugify(title)}/${id}`, // link to the item
         guid: id, // optional - defaults to url
         author: userName, // optional - defaults to feed author property
         date: new Date(createdAt), // any format that js Date can parse.
@@ -227,7 +228,6 @@ app.prepare().then(() => {
       });
     });
 
-    console.log(feed.xml());
     res.set('Content-Type', 'text/xml').send(feed.xml({
       indent: true
     }));
