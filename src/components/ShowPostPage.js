@@ -11,6 +11,7 @@ import Layout from "./Layout";
 import Address from "./Address";
 import { getPost } from "../queries/post";
 import BreadCrumb from "./Breadcrumb";
+import Loading from "./Loading";
 
 function getPluginDecorators() {
   let decorators = [];
@@ -27,16 +28,20 @@ function getPluginDecorators() {
 export class ShowPostPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { loading: true };
+    const { post } = this.props;
+    this.state = {};
+    if (post.provideURL) {
+      this.state["loading"] = true;
+    }
   }
 
   componentDidMount = () => {
-    this.refs.iframe.addEventListener("load", this.onLoad);
-  };
-
-  onLoad = () => {
-    console.log("tooooo");
-    this.setState(() => ({ loading: false }));
+    const { post } = this.props;
+    if (post.provideURL) {
+      setTimeout(() => {
+        this.setState(() => ({ loading: false }));
+      }, 3000);
+    }
   };
 
   render() {
@@ -77,9 +82,12 @@ export class ShowPostPage extends React.Component {
           </div>
           {post.provideURL ? (
             <Fragment>
-              {this.state.loading && <p>Loading</p>}
+              {this.state.loading && (
+                <div className="loading-container">
+                  <Loading size="medium" />
+                </div>
+              )}
               <iframe
-                ref="iframe"
                 src={`${post.providedURL}`}
                 className={`fullwidth ${this.state.loading ? "hide" : ""}`}
                 style={{ height: "1300px" }}
