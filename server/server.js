@@ -207,7 +207,8 @@ app.prepare().then(() => {
         description,
         userName,
         createdAt,
-        image
+        image,
+        countryCode
       } = post;
       const url = countryCode
       ? `${WEBSITE_URL}/country/${countryCode}`
