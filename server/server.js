@@ -188,6 +188,7 @@ app.prepare().then(() => {
       .database()
       .ref("posts")
       .orderByChild("createdAt")
+      .limitToLast(10)
       .once("value")
       .then(snapshot => {
         let posts = [];
