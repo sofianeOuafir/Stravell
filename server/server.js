@@ -209,11 +209,14 @@ app.prepare().then(() => {
         createdAt,
         image
       } = post;
+      const url = countryCode
+      ? `${WEBSITE_URL}/country/${countryCode}`
+      : `${WEBSITE_URL}/p/show/${slugify(title)}/${id}`;
 
       feed.item({
         title,
         description,
-        url: `https://stravell.com/p/show/${slugify(title)}/${id}`, // link to the item
+        url, // link to the item
         guid: id, // optional - defaults to url
         author: userName, // optional - defaults to feed author property
         date: new Date(createdAt), // any format that js Date can parse.
