@@ -14,39 +14,29 @@ export const PostListItem = ({
   index,
   editable
 }) => {
-  let linkProps = {
-    className: "post-list-item__link"
-  };
-
-  if (post.provideURL) {
-    linkProps.href = post.providedURL;
-    linkProps.target = "_blank";
-  } else {
-    linkProps.href = '#';
-    linkProps.onClick = (e) => {
-      e.preventDefault();
-      Router.push(
-        `/post?id=${post.id}`,
-        `/p/show/${slugify(post.title)}/${post.id}`
-      );
-    };
-  }
-
   return (
     <div className={`post-list-item`}>
       <div className="post-list-item__content-container">
-        <a {...linkProps}>
-          <img
-            className="post-list-item__image"
-            src={`${post.image}`}
-            alt={`Travel Image`}
-          />
+        <Link
+          href={`/post?id=${post.id}`}
+          as={`/p/show/${slugify(post.title)}/${post.id}`}
+        >
+          <a className="post-list-item__link">
+            <img
+              className="post-list-item__image"
+              src={`${post.image}`}
+              alt={`Travel Image`}
+            />
 
-          <div className="post-list-item__title-description-container">
-            <h1 className="post-list-item__title">{post.title}</h1>
-            <h2 className="post-list-item__description">{post.description}</h2>
-          </div>
-        </a>
+            <div className="post-list-item__title-description-container">
+              <h1 className="post-list-item__title">{post.title}</h1>
+              <h2 className="post-list-item__description">
+                {post.description}
+              </h2>
+            </div>
+          </a>
+        </Link>
+
         {post.address && (
           <div className="post-list-item__address-container">
             <Address
@@ -68,9 +58,12 @@ export const PostListItem = ({
             authorName={post.userName}
           />
           {!isOwnedByCurrentUser && (
-            <a {...linkProps} className="button">
-              Read
-            </a>
+            <Link
+              href={`/post?id=${post.id}`}
+              as={`/p/show/${slugify(post.title)}/${post.id}`}
+            >
+              <a className="button">Read</a>
+            </Link>
           )}
           {isOwnedByCurrentUser && editable && (
             <Link
