@@ -74,38 +74,57 @@ export class ShowPostPage extends React.Component {
     );
     return (
       <Layout title={`${post.title}`} description={post.description}>
-        <div className="margin-top-to-navbar">
-          <div className="content-container">
-            <div className="mb1">
-              <BreadCrumb links={breadcrumbLinks} />
-            </div>
+        <PageHeader>
+          <h1 className="favourite-font-weight m0">{post.title}</h1>
+          <div className="my1 flex justify-content--between align-items--center">
+            <PostAuthor
+              authorUid={post.uid}
+              avatarSize={50}
+              authorPhotoURL={post.userPhotoURL}
+              authorName={post.userName}
+            />
+
+            <span>{getDateFormat(post.createdAt)}</span>
           </div>
-          {post.provideURL ? (
-            <Fragment>
-              {this.state.loading && (
-                <div className="loading-container">
-                  <Loading size="medium" />
-                </div>
-              )}
-              <iframe
-                src={`${post.providedURL}`}
-                className={`fullwidth ${this.state.loading ? "hide" : ""}`}
-                style={{ height: "1300px" }}
-              />
-            </Fragment>
-          ) : (
-            <Fragment>
-              <div>{postImage}</div>
-              <div className="content-container">
-                <MyEditor
-                  readOnly={true}
-                  editorState={body}
-                  onChange={() => {}}
-                />
-              </div>
-            </Fragment>
+          {post.address && (
+            <Address
+              address={post.address}
+              placeId={post.placeId}
+              iconClassName="ml1 mr1 text-dark-grey"
+              addressClassName="text-dark-grey"
+            />
           )}
+        </PageHeader>
+        <div className="content-container">
+          <div className="mb1">
+            <BreadCrumb links={breadcrumbLinks} />
+          </div>
         </div>
+        {post.provideURL ? (
+          <Fragment>
+            {this.state.loading && (
+              <div className="loading-container">
+                <Loading size="medium" />
+              </div>
+            )}
+            <iframe
+              src={`${post.providedURL}`}
+              className={`fullwidth ${this.state.loading ? "hide" : ""}`}
+              style={{ height: "1300px" }}
+            />
+          </Fragment>
+        ) : (
+          <Fragment>
+            <div>{postImage}</div>
+            <div className="content-container">
+              <MyEditor
+                readOnly={true}
+                editorState={body}
+                onChange={() => {}}
+              />
+            </div>
+          </Fragment>
+        )}
       </Layout>
     );
   }
