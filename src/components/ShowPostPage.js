@@ -24,61 +24,84 @@ function getPluginDecorators() {
   return new MultiDecorator([new CompositeDecorator(decorators)]);
 }
 
-export const ShowPostPage = ({ post }) => {
-  const body = EditorState.createWithContent(
-    convertFromRaw(JSON.parse(post.body)),
-    getPluginDecorators()
-  );
-  const breadcrumbLinks = [
-    { href: "/", text: "Home" },
-    {
-      href: `/country?countryCode=${post.countryCode}`,
-      as: `/country/${post.countryCode}`,
-      text: post.country
-    },
-    {
-      href: `/region?regionCode=${post.regionCode}`,
-      as: `/region/${slugify(post.country)}/${post.regionCode}`,
-      text: post.region
-    },
-    {
-      href: `/post?id=${post.id}`,
-      as: `/p/show/${slugify(post.title)}/${post.id}`,
-      text: post.title,
-      active: true
-    }
-  ];
-  const postImage = <img src={`${post.image}`} alt="" className="fullwidth" />;
-  return (
-    <Layout title={`${post.title}`} description={post.description}>
-      <div className="margin-top-to-navbar">
-        <div className="content-container">
-          <div className="mb1">
-            <BreadCrumb links={breadcrumbLinks} />
-          </div>
-        </div>
-        {post.provideURL ? (
-          <embed
-            src={`${post.providedURL}`}
-            className="fullwidth"
-            style={{ height: "1300px" }}
-          />
-        ) : (
-          <Fragment>
-            <div>{postImage}</div>
-            <div className="content-container">
-              <MyEditor
-                readOnly={true}
-                editorState={body}
-                onChange={() => {}}
-              />
+export class ShowPostPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { loading: true };
+  }
+
+  componentDidMount = () => {
+    this.refs.iframe.addEventListener("load", this.onLoad);
+  };
+
+  onLoad = () => {
+    console.log("tooooo");
+    this.setState(() => ({ loading: false }));
+  };
+
+  render() {
+    const { post } = this.props;
+    const body = EditorState.createWithContent(
+      convertFromRaw(JSON.parse(post.body)),
+      getPluginDecorators()
+    );
+    const breadcrumbLinks = [
+      { href: "/", text: "Home" },
+      {
+        href: `/country?countryCode=${post.countryCode}`,
+        as: `/country/${post.countryCode}`,
+        text: post.country
+      },
+      {
+        href: `/region?regionCode=${post.regionCode}`,
+        as: `/region/${slugify(post.country)}/${post.regionCode}`,
+        text: post.region
+      },
+      {
+        href: `/post?id=${post.id}`,
+        as: `/p/show/${slugify(post.title)}/${post.id}`,
+        text: post.title,
+        active: true
+      }
+    ];
+    const postImage = (
+      <img src={`${post.image}`} alt="" className="fullwidth" />
+    );
+    return (
+      <Layout title={`${post.title}`} description={post.description}>
+        <div className="margin-top-to-navbar">
+          <div className="content-container">
+            <div className="mb1">
+              <BreadCrumb links={breadcrumbLinks} />
             </div>
-          </Fragment>
-        )}
-      </div>
-    </Layout>
-  );
-};
+          </div>
+          {post.provideURL ? (
+            <Fragment>
+              {this.state.loading && <p>Loading</p>}
+              <iframe
+                ref="iframe"
+                src={`${post.providedURL}`}
+                className={`fullwidth ${this.state.loading ? "hide" : ""}`}
+                style={{ height: "1300px" }}
+              />
+            </Fragment>
+          ) : (
+            <Fragment>
+              <div>{postImage}</div>
+              <div className="content-container">
+                <MyEditor
+                  readOnly={true}
+                  editorState={body}
+                  onChange={() => {}}
+                />
+              </div>
+            </Fragment>
+          )}
+        </div>
+      </Layout>
+    );
+  }
+}
 
 ShowPostPage.getInitialProps = async function({ query }) {
   const { id } = query;

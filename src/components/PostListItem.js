@@ -18,6 +18,7 @@ export const PostListItem = ({
     <div className={`post-list-item`}>
       <div className="post-list-item__content-container">
         <Link
+          prefetch
           href={`/post?id=${post.id}`}
           as={`/p/show/${slugify(post.title)}/${post.id}`}
         >
@@ -59,6 +60,7 @@ export const PostListItem = ({
           />
           {!isOwnedByCurrentUser && (
             <Link
+              prefetch
               href={`/post?id=${post.id}`}
               as={`/p/show/${slugify(post.title)}/${post.id}`}
             >
