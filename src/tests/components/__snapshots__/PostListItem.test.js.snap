@@ -7,34 +7,31 @@ exports[`should display correctly when post does not have address 1`] = `
   <div
     className="post-list-item__content-container"
   >
-    <Link
-      as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
-      href="/post?id=-LV-kv5VGQDljYtMPt9v"
+    <a
+      className="post-list-item__link"
+      href="#"
+      onClick={[Function]}
     >
-      <a
-        className="post-list-item__link"
+      <img
+        alt="Travel Image"
+        className="post-list-item__image"
+        src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
+      />
+      <div
+        className="post-list-item__title-description-container"
       >
-        <img
-          alt="Travel Image"
-          className="post-list-item__image"
-          src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-        />
-        <div
-          className="post-list-item__title-description-container"
+        <h1
+          className="post-list-item__title"
         >
-          <h1
-            className="post-list-item__title"
-          >
-            Don't Forget Where You Come From.
-          </h1>
-          <h2
-            className="post-list-item__description"
-          >
-            Discovering the beauty of my country, my home.
-          </h2>
-        </div>
-      </a>
-    </Link>
+          Don't Forget Where You Come From.
+        </h1>
+        <h2
+          className="post-list-item__description"
+        >
+          Discovering the beauty of my country, my home.
+        </h2>
+      </div>
+    </a>
   </div>
   <div>
     <div
@@ -46,16 +43,13 @@ exports[`should display correctly when post does not have address 1`] = `
         authorUid="YYFEgQAdBuQIsox3ojncZtpSAmG3"
         avatarSize={40}
       />
-      <Link
-        as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
-        href="/post?id=-LV-kv5VGQDljYtMPt9v"
+      <a
+        className="button"
+        href="#"
+        onClick={[Function]}
       >
-        <a
-          className="button"
-        >
-          Read
-        </a>
-      </Link>
+        Read
+      </a>
     </div>
     <p>
       December 30th, 2018
@@ -79,34 +73,31 @@ exports[`should display correctly when post has an address 1`] = `
   <div
     className="post-list-item__content-container"
   >
-    <Link
-      as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
-      href="/post?id=-LV-kv5VGQDljYtMPt9v"
+    <a
+      className="post-list-item__link"
+      href="#"
+      onClick={[Function]}
     >
-      <a
-        className="post-list-item__link"
+      <img
+        alt="Travel Image"
+        className="post-list-item__image"
+        src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
+      />
+      <div
+        className="post-list-item__title-description-container"
       >
-        <img
-          alt="Travel Image"
-          className="post-list-item__image"
-          src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-        />
-        <div
-          className="post-list-item__title-description-container"
+        <h1
+          className="post-list-item__title"
         >
-          <h1
-            className="post-list-item__title"
-          >
-            Don't Forget Where You Come From.
-          </h1>
-          <h2
-            className="post-list-item__description"
-          >
-            Discovering the beauty of my country, my home.
-          </h2>
-        </div>
-      </a>
-    </Link>
+          Don't Forget Where You Come From.
+        </h1>
+        <h2
+          className="post-list-item__description"
+        >
+          Discovering the beauty of my country, my home.
+        </h2>
+      </div>
+    </a>
     <div
       className="post-list-item__address-container"
     >
@@ -128,16 +119,13 @@ exports[`should display correctly when post has an address 1`] = `
         authorUid="YYFEgQAdBuQIsox3ojncZtpSAmG3"
         avatarSize={40}
       />
-      <Link
-        as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
-        href="/post?id=-LV-kv5VGQDljYtMPt9v"
+      <a
+        className="button"
+        href="#"
+        onClick={[Function]}
       >
-        <a
-          className="button"
-        >
-          Read
-        </a>
-      </Link>
+        Read
+      </a>
     </div>
     <p>
       December 30th, 2018
@@ -161,34 +149,31 @@ exports[`the post belongs DO NOT belongs to the current user and props.editable 
   <div
     className="post-list-item__content-container"
   >
-    <Link
-      as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
-      href="/post?id=-LV-kv5VGQDljYtMPt9v"
+    <a
+      className="post-list-item__link"
+      href="#"
+      onClick={[Function]}
     >
-      <a
-        className="post-list-item__link"
+      <img
+        alt="Travel Image"
+        className="post-list-item__image"
+        src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
+      />
+      <div
+        className="post-list-item__title-description-container"
       >
-        <img
-          alt="Travel Image"
-          className="post-list-item__image"
-          src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-        />
-        <div
-          className="post-list-item__title-description-container"
+        <h1
+          className="post-list-item__title"
         >
-          <h1
-            className="post-list-item__title"
-          >
-            Don't Forget Where You Come From.
-          </h1>
-          <h2
-            className="post-list-item__description"
-          >
-            Discovering the beauty of my country, my home.
-          </h2>
-        </div>
-      </a>
-    </Link>
+          Don't Forget Where You Come From.
+        </h1>
+        <h2
+          className="post-list-item__description"
+        >
+          Discovering the beauty of my country, my home.
+        </h2>
+      </div>
+    </a>
     <div
       className="post-list-item__address-container"
     >
@@ -210,16 +195,13 @@ exports[`the post belongs DO NOT belongs to the current user and props.editable 
         authorUid="YYFEgQAdBuQIsox3ojncZtpSAmG3"
         avatarSize={40}
       />
-      <Link
-        as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
-        href="/post?id=-LV-kv5VGQDljYtMPt9v"
+      <a
+        className="button"
+        href="#"
+        onClick={[Function]}
       >
-        <a
-          className="button"
-        >
-          Read
-        </a>
-      </Link>
+        Read
+      </a>
     </div>
     <p>
       December 30th, 2018
@@ -243,34 +225,31 @@ exports[`the post belongs to the current user and props.editable is false should
   <div
     className="post-list-item__content-container"
   >
-    <Link
-      as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
-      href="/post?id=-LV-kv5VGQDljYtMPt9v"
+    <a
+      className="post-list-item__link"
+      href="#"
+      onClick={[Function]}
     >
-      <a
-        className="post-list-item__link"
+      <img
+        alt="Travel Image"
+        className="post-list-item__image"
+        src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
+      />
+      <div
+        className="post-list-item__title-description-container"
       >
-        <img
-          alt="Travel Image"
-          className="post-list-item__image"
-          src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-        />
-        <div
-          className="post-list-item__title-description-container"
+        <h1
+          className="post-list-item__title"
         >
-          <h1
-            className="post-list-item__title"
-          >
-            Don't Forget Where You Come From.
-          </h1>
-          <h2
-            className="post-list-item__description"
-          >
-            Discovering the beauty of my country, my home.
-          </h2>
-        </div>
-      </a>
-    </Link>
+          Don't Forget Where You Come From.
+        </h1>
+        <h2
+          className="post-list-item__description"
+        >
+          Discovering the beauty of my country, my home.
+        </h2>
+      </div>
+    </a>
     <div
       className="post-list-item__address-container"
     >
@@ -315,34 +294,31 @@ exports[`the post belongs to the current user and props.editable is true should 
   <div
     className="post-list-item__content-container"
   >
-    <Link
-      as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
-      href="/post?id=-LV-kv5VGQDljYtMPt9v"
+    <a
+      className="post-list-item__link"
+      href="#"
+      onClick={[Function]}
     >
-      <a
-        className="post-list-item__link"
+      <img
+        alt="Travel Image"
+        className="post-list-item__image"
+        src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
+      />
+      <div
+        className="post-list-item__title-description-container"
       >
-        <img
-          alt="Travel Image"
-          className="post-list-item__image"
-          src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-        />
-        <div
-          className="post-list-item__title-description-container"
+        <h1
+          className="post-list-item__title"
         >
-          <h1
-            className="post-list-item__title"
-          >
-            Don't Forget Where You Come From.
-          </h1>
-          <h2
-            className="post-list-item__description"
-          >
-            Discovering the beauty of my country, my home.
-          </h2>
-        </div>
-      </a>
-    </Link>
+          Don't Forget Where You Come From.
+        </h1>
+        <h2
+          className="post-list-item__description"
+        >
+          Discovering the beauty of my country, my home.
+        </h2>
+      </div>
+    </a>
     <div
       className="post-list-item__address-container"
     >
@@ -398,34 +374,31 @@ exports[`the post contains a body and no URL has been provided should render cor
   <div
     className="post-list-item__content-container"
   >
-    <Link
-      as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
-      href="/post?id=-LV-kv5VGQDljYtMPt9v"
+    <a
+      className="post-list-item__link"
+      href="#"
+      onClick={[Function]}
     >
-      <a
-        className="post-list-item__link"
+      <img
+        alt="Travel Image"
+        className="post-list-item__image"
+        src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
+      />
+      <div
+        className="post-list-item__title-description-container"
       >
-        <img
-          alt="Travel Image"
-          className="post-list-item__image"
-          src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
-        />
-        <div
-          className="post-list-item__title-description-container"
+        <h1
+          className="post-list-item__title"
         >
-          <h1
-            className="post-list-item__title"
-          >
-            Don't Forget Where You Come From.
-          </h1>
-          <h2
-            className="post-list-item__description"
-          >
-            Discovering the beauty of my country, my home.
-          </h2>
-        </div>
-      </a>
-    </Link>
+          Don't Forget Where You Come From.
+        </h1>
+        <h2
+          className="post-list-item__description"
+        >
+          Discovering the beauty of my country, my home.
+        </h2>
+      </div>
+    </a>
     <div
       className="post-list-item__address-container"
     >
@@ -447,16 +420,13 @@ exports[`the post contains a body and no URL has been provided should render cor
         authorUid="YYFEgQAdBuQIsox3ojncZtpSAmG3"
         avatarSize={40}
       />
-      <Link
-        as="/p/show/don-t-forget-where-you-come-from/-LV-kv5VGQDljYtMPt9v"
-        href="/post?id=-LV-kv5VGQDljYtMPt9v"
+      <a
+        className="button"
+        href="#"
+        onClick={[Function]}
       >
-        <a
-          className="button"
-        >
-          Read
-        </a>
-      </Link>
+        Read
+      </a>
     </div>
     <p>
       December 30th, 2018
