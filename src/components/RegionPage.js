@@ -3,13 +3,12 @@ import { slugify } from "underscore.string";
 
 import Layout from "./Layout";
 import FilterableDataList from "./FilterableDataList";
-import PageHeader from "./PageHeader";
 import { getRegion } from "../queries/region";
 import { getRegionPosts } from "../queries/post";
 import { getRegionPlaces } from "../queries/place";
 import Place from "./Place";
 import PostList from "./PostList";
-
+import LandingPageBanner from "./LandingPageBanner";
 class RegionPage extends React.Component {
   render() {
     const { posts, region, places } = this.props;
@@ -42,14 +41,11 @@ class RegionPage extends React.Component {
         title={`Stravell | ${regionName}`}
         description={`Travel articles about ${regionName}`}
       >
-        <PageHeader>
-          <Place
-            placeName={regionName}
-            countryCode={countryCode}
-            placeNameClassName="h2 favourite-font-weight"
-            flagSize="64"
-          />
-        </PageHeader>
+        <LandingPageBanner
+          imageUrl={`https://source.unsplash.com/1026x405/?${regionName}`}
+          place={regionName}
+          placeSuggestions={[country]}
+        />
         <div className="content-container">
           <FilterableDataList
             DataList={PostList}

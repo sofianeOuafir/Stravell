@@ -3,12 +3,12 @@ import { slugify } from "underscore.string";
 
 import Layout from "./Layout";
 import FilterableDataList from "./FilterableDataList";
-import PageHeader from "./PageHeader";
 import { getPlacePosts } from "../queries/post";
 import { getPlace } from "../queries/place";
 import Place from "./Place";
 import { getRegionPlaces, getCountryPlaces } from "../queries/place";
 import PostList from "./PostList";
+import LandingPageBanner from "./LandingPageBanner";
 
 class PlacePage extends React.Component {
   render() {
@@ -49,14 +49,11 @@ class PlacePage extends React.Component {
         title={`Stravell | ${address}`}
         description={`Travel articles about ${address}`}
       >
-        <PageHeader>
-          <Place
-            placeName={address}
-            countryCode={countryCode}
-            placeNameClassName="h2 favourite-font-weight"
-            flagSize="64"
-          />
-        </PageHeader>
+        <LandingPageBanner
+          imageUrl={`https://source.unsplash.com/1026x405/?${address}`}
+          place={address}
+          placeSuggestions={[country]}
+        />
         <div className="content-container">
           <FilterableDataList
             DataList={PostList}
