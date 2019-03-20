@@ -211,7 +211,9 @@ app.prepare().then(() => {
         image,
         countryCode
       } = post;
-      const url = `${WEBSITE_URL}/p/show/${slugify(title)}/${id}`;
+      const url = countryCode
+      ? `${WEBSITE_URL}/country/${countryCode}`
+      : `${WEBSITE_URL}/p/show/${slugify(title)}/${id}`;
 
       feed.item({
         title,
