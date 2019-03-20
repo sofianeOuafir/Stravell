@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import MultiDecorator from "draft-js-plugins-editor/lib/Editor/MultiDecorator";
 import { EditorState, convertFromRaw, CompositeDecorator } from "draft-js";
 import { slugify } from "underscore.string";
@@ -51,31 +51,51 @@ export const ShowPostPage = ({ post }) => {
   const postImage = <img src={`${post.image}`} alt="" className="fullwidth" />;
   return (
     <Layout title={`${post.title}`} description={post.description}>
-      <div className="margin-top-to-navbar">
-        <div className="content-container">
-          <div className="mb1">
-            <BreadCrumb links={breadcrumbLinks} />
-          </div>
-        </div>
-        {post.provideURL ? (
-          <embed
-            src={`${post.providedURL}`}
-            className="fullwidth"
-            style={{ height: "1300px" }}
+      <PageHeader>
+        <h1 className="favourite-font-weight m0">{post.title}</h1>
+        <div className="my1 flex justify-content--between align-items--center">
+          <PostAuthor
+            authorUid={post.uid}
+            avatarSize={50}
+            authorPhotoURL={post.userPhotoURL}
+            authorName={post.userName}
           />
-        ) : (
-          <Fragment>
-            <div>{postImage}</div>
-            <div className="content-container">
-              <MyEditor
-                readOnly={true}
-                editorState={body}
-                onChange={() => {}}
-              />
-            </div>
-          </Fragment>
+
+          <span>{getDateFormat(post.createdAt)}</span>
+        </div>
+        {post.address && (
+          <Address
+            address={post.address}
+            placeId={post.placeId}
+            iconClassName="ml1 mr1 text-dark-grey"
+            addressClassName="text-dark-grey"
+          />
         )}
+      </PageHeader>
+      <div className="content-container">
+        <div className="mb1">
+          <BreadCrumb links={breadcrumbLinks} />
+        </div>
       </div>
+      {post.provideURL ? (
+        <div className="relative flex align-items--center justify-content--center">
+          <a
+            href={post.providedURL}
+            className="button absolute"
+            target="_blank"
+          >
+            Read this post on {post.userName}'s Website
+          </a>
+          {postImage}
+        </div>
+      ) : (
+        <div>{postImage}</div>
+      )}
+      {!post.provideURL && (
+        <div className="content-container">
+          <MyEditor readOnly={true} editorState={body} onChange={() => {}} />
+        </div>
+      )}
     </Layout>
   );
 };
