@@ -42,7 +42,9 @@ function createTweetFromTweetQueue() {
     })
     .then(media => {
       const { countryCode, title, id, userName } = post;
-      const url = `https://stravell.com/p/show/${slugify(title)}/${id}`;
+      const url = countryCode
+        ? `www.stravell.com/country/${countryCode}`
+        : `https://stravell.com/p/show/${slugify(title)}/${id}`;
       // Lets tweet it
       const greetings = ["Hey Stravellers", "Hey Folks", "Hi friends"];
       const callsToAction = [
