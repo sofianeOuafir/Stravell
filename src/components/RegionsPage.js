@@ -3,12 +3,11 @@ import { slugify } from "underscore.string";
 
 import Layout from "./Layout";
 import FilterableDataList from "./FilterableDataList";
-import PageHeader from "./PageHeader";
 import { getCountry } from "../queries/country";
 import { getCountryRegions } from "../queries/region";
 import { getCountryPlaces } from "../queries/place";
-import Place from "./Place";
 import RegionList from "./RegionList";
+import Banner from "./Banner";
 
 class RegionsPage extends React.Component {
   render() {
@@ -31,23 +30,20 @@ class RegionsPage extends React.Component {
       {
         href: `/regions?countryCode=${id}`,
         as: `/${slugify(countryName)}/${id}/regions`,
-        text: 'Search By State / Region',
+        text: "Search By State / Region",
         active: true
-      },
+      }
     ];
     return (
       <Layout
         title={`Stravell | Regions of ${countryName}`}
         description={`Regions of ${countryName}`}
       >
-        <PageHeader>
-          <Place
-            placeName={countryName}
-            countryCode={id}
-            placeNameClassName="h2 favourite-font-weight"
-            flagSize="64"
-          />
-        </PageHeader>
+        <Banner
+          imageUrl={`https://source.unsplash.com/1026x405/?${countryName}`}
+          place={countryName}
+          placeSuggestions={[countryName]}
+        />
         <div className="content-container">
           <FilterableDataList
             DataList={RegionList}

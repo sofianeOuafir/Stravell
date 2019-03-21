@@ -7,6 +7,7 @@ import { slugify } from "underscore.string";
 import { getDateFormat } from "./../lib/utils/date";
 import PostAuthor from "./PostAuthor";
 import Address from "./Address";
+import Image from "./Image";
 
 export const PostListItem = ({
   post,
@@ -22,8 +23,8 @@ export const PostListItem = ({
     linkProps.href = post.providedURL;
     linkProps.target = "_blank";
   } else {
-    linkProps.href = '#';
-    linkProps.onClick = (e) => {
+    linkProps.href = "#";
+    linkProps.onClick = e => {
       e.preventDefault();
       Router.push(
         `/post?id=${post.id}`,
@@ -36,12 +37,13 @@ export const PostListItem = ({
     <div className={`post-list-item`}>
       <div className="post-list-item__content-container">
         <a {...linkProps}>
-          <img
-            className="post-list-item__image"
+          <Image
             src={`${post.image}`}
             alt={`Travel Image`}
+            className="post-list-item__image"
+            loadingImageWidth={300}
+            loadingImageHeight={200}
           />
-
           <div className="post-list-item__title-description-container">
             <h1 className="post-list-item__title">{post.title}</h1>
             <h2 className="post-list-item__description">{post.description}</h2>

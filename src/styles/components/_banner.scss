@@ -1,0 +1,150 @@
+.banner__image-container {
+  margin-top: 60px;
+  position: relative;
+  opacity: 0.9;
+  overflow: hidden;
+}
+
+.banner__text-container {
+  height: 18rem;
+  width: 80rem;
+  top: 3rem;
+  position: absolute;
+  background: $dark-blue;
+  opacity: 0.6;
+
+  @media (max-width: 919px) {
+    top: 1rem;
+  }
+  @media (max-width: 819px) {
+    width: 70rem;
+  }
+  @media (max-width: 719px) {
+    width: 60rem;
+    height: 16rem;
+  }
+  @media (max-width: 619px) {
+    width: 55rem;
+  }
+  @media (max-width: 540px) {
+    width: 50rem;
+    height: 14rem;
+  }
+  @media (max-width: 500px) {
+    width: 40rem;
+    height: 3.8rem;
+  }
+}
+
+.banner__website-name {
+  font-size: $l-size;
+  margin: 0;
+  font-weight: $favourite-font-weight;
+
+  @media (max-width: 619px) {
+    font-size: $ml-size;
+  }
+}
+
+.banner__description {
+  @media (max-width: 500px) {
+    display: none;
+  }
+}
+
+.banner__text {
+  font-weight: $favourite-font-weight;
+  position: absolute;
+  font-size: $ml-size;
+  color: white;
+  padding: $s-size;
+  top: 3rem;
+
+  @media (max-width: 919px) {
+    top: 1rem;
+  }
+  @media (max-width: 719px) {
+    font-size: $m-size;
+  }
+  @media (max-width: 619px) {
+    font-size: 1.4rem;
+  }
+  @media (max-width: 500px) {
+    top: 0rem;
+  }
+}
+
+.banner__get_started-container {
+  position: absolute;
+  top: 28rem;
+  left: 123rem;
+
+  @media (max-width: 2500px) {
+    left: 103rem;
+  }
+  @media (max-width: 2130px) {
+    left: 93rem;
+  }
+  @media (max-width: 1930px) {
+    left: 83rem;
+  }
+  @media (max-width: 1740px) {
+    left: 73rem;
+  }
+  @media (max-width: 1540px) {
+    left: 63rem;
+  }
+
+
+  @media (max-width: 1019px) {
+    top: 25rem;
+  }
+  @media (max-width: 870px) {
+    top: 22rem;
+  }
+  @media (max-width: 800px) {
+    display: none;
+  }
+}
+
+.banner__typing-container {
+  height: 5rem;
+  width: 50rem;
+  top: 28rem;
+  position: absolute;
+  background: $dark-blue;
+  opacity: 0.6;
+
+  @media (max-width: 1019px) {
+    top: 25rem;
+  }
+  @media (max-width: 870px) {
+    top: 22rem;
+  }
+  @media (max-width: 800px) {
+    display: none;
+  }
+}
+
+.banner__typing {
+  padding: 0 $s-size;
+  position: absolute;
+  top: 28rem;
+  color: white;
+  font-size: $l-size;
+
+  @media (max-width: 1019px) {
+    top: 25rem;
+  }
+  @media (max-width: 870px) {
+    top: 22rem;
+  }
+  @media (max-width: 800px) {
+    display: none;
+  }
+}
+
+.banner__social_buttons {
+  position: absolute;
+  bottom: 20px;
+}

@@ -4,14 +4,12 @@ import { slugify } from "underscore.string";
 
 import Layout from "./Layout";
 import FilterableDataList from "./FilterableDataList";
-import PageHeader from "./PageHeader";
 import { getCountryPosts } from "../queries/post";
 import { getCountryPlaces } from "../queries/place";
 import { getCountry } from "../queries/country";
 import { getCountryRegions } from "../queries/region";
-import Place from "./Place";
 import PostList from "./PostList";
-
+import Banner from "./Banner";
 class CountryPage extends React.Component {
   render() {
     const { posts, country, places, regions } = this.props;
@@ -54,14 +52,12 @@ class CountryPage extends React.Component {
         title={`Stravell | ${countryName}`}
         description={`Travel articles about ${countryName}`}
       >
-        <PageHeader>
-          <Place
-            placeName={countryName}
-            countryCode={id}
-            placeNameClassName="h2 favourite-font-weight"
-            flagSize="64"
-          />
-        </PageHeader>
+        <Banner
+          imageUrl={`https://source.unsplash.com/1026x405/?${countryName}`}
+          place={countryName}
+          placeSuggestions={[countryName]}
+        />
+
         <div className="content-container">
           <FilterableDataList
             DataList={PostList}

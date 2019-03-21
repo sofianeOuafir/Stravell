@@ -12,9 +12,11 @@ exports[`should display correctly when post does not have address 1`] = `
       href="#"
       onClick={[Function]}
     >
-      <img
+      <Image
         alt="Travel Image"
         className="post-list-item__image"
+        loadingImageHeight={200}
+        loadingImageWidth={300}
         src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
       />
       <div
@@ -78,9 +80,11 @@ exports[`should display correctly when post has an address 1`] = `
       href="#"
       onClick={[Function]}
     >
-      <img
+      <Image
         alt="Travel Image"
         className="post-list-item__image"
+        loadingImageHeight={200}
+        loadingImageWidth={300}
         src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
       />
       <div
@@ -154,9 +158,11 @@ exports[`the post belongs DO NOT belongs to the current user and props.editable 
       href="#"
       onClick={[Function]}
     >
-      <img
+      <Image
         alt="Travel Image"
         className="post-list-item__image"
+        loadingImageHeight={200}
+        loadingImageWidth={300}
         src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
       />
       <div
@@ -230,9 +236,11 @@ exports[`the post belongs to the current user and props.editable is false should
       href="#"
       onClick={[Function]}
     >
-      <img
+      <Image
         alt="Travel Image"
         className="post-list-item__image"
+        loadingImageHeight={200}
+        loadingImageWidth={300}
         src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
       />
       <div
@@ -299,9 +307,11 @@ exports[`the post belongs to the current user and props.editable is true should 
       href="#"
       onClick={[Function]}
     >
-      <img
+      <Image
         alt="Travel Image"
         className="post-list-item__image"
+        loadingImageHeight={200}
+        loadingImageWidth={300}
         src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
       />
       <div
@@ -379,9 +389,11 @@ exports[`the post contains a body and no URL has been provided should render cor
       href="#"
       onClick={[Function]}
     >
-      <img
+      <Image
         alt="Travel Image"
         className="post-list-item__image"
+        loadingImageHeight={200}
+        loadingImageWidth={300}
         src="https://stravell-production.s3.amazonaws.com/pictures/ea5f10a1-10c3-4cfd-a607-982678db7159/main"
       />
       <div
