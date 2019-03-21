@@ -16,11 +16,14 @@ class Banner extends React.Component {
             <h1 className="banner__website-name">
               Stravell {place ? `| ${place}` : ""}
             </h1>
-            A search engine for travel articles. <br /> It makes it easy for you
-            to find travel articles about thousands of places
-            <br />
-            around the world written by some of the best travel bloggers
-            worldwide.
+            <span className="banner__description">
+              A search engine for travel articles. <br /> It makes it easy for you
+              to find travel articles about thousands of places
+              <br />
+              around the world written by some of the best travel bloggers
+              worldwide.
+            </span>
+
           </div>
           <div className="banner__typing-container" />
           <div className="banner__typing flex align-items--center">
