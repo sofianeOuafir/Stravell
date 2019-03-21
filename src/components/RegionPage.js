@@ -6,7 +6,6 @@ import FilterableDataList from "./FilterableDataList";
 import { getRegion } from "../queries/region";
 import { getRegionPosts } from "../queries/post";
 import { getRegionPlaces } from "../queries/place";
-import Place from "./Place";
 import PostList from "./PostList";
 import Banner from "./Banner";
 class RegionPage extends React.Component {

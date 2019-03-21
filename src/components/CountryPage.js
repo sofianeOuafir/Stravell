@@ -4,12 +4,10 @@ import { slugify } from "underscore.string";
 
 import Layout from "./Layout";
 import FilterableDataList from "./FilterableDataList";
-import PageHeader from "./PageHeader";
 import { getCountryPosts } from "../queries/post";
 import { getCountryPlaces } from "../queries/place";
 import { getCountry } from "../queries/country";
 import { getCountryRegions } from "../queries/region";
-import Place from "./Place";
 import PostList from "./PostList";
 import Banner from "./Banner";
 class CountryPage extends React.Component {
@@ -59,7 +57,7 @@ class CountryPage extends React.Component {
           place={countryName}
           placeSuggestions={[countryName]}
         />
-        
+
         <div className="content-container">
           <FilterableDataList
             DataList={PostList}

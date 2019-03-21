@@ -6,7 +6,6 @@ import FilterableDataList from "./FilterableDataList";
 import { getCountry } from "../queries/country";
 import { getCountryRegions } from "../queries/region";
 import { getCountryPlaces } from "../queries/place";
-import Place from "./Place";
 import RegionList from "./RegionList";
 import Banner from "./Banner";
 

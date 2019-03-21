@@ -5,7 +5,6 @@ import Layout from "./Layout";
 import FilterableDataList from "./FilterableDataList";
 import { getPlacePosts } from "../queries/post";
 import { getPlace } from "../queries/place";
-import Place from "./Place";
 import { getRegionPlaces, getCountryPlaces } from "../queries/place";
 import PostList from "./PostList";
 import Banner from "./Banner";
