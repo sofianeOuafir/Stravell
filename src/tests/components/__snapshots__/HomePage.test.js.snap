@@ -5,92 +5,20 @@ exports[`A userName prop is provided should render correctly 1`] = `
   description="Stravell | A search engine for travel articles. It makes it easy for you to find travel articles about thousands of places around the world written by some of the best travel bloggers worldwide."
   title="Stravell | Find and Read Travel Articles From Travelers worldwide."
 >
-  <div
-    className="homepage__image-container"
-  >
-    <div
-      className="content-container"
-    >
-      <div
-        className="homepage__image-container__text-container"
-      />
-      <div
-        className="homepage__image-container__text"
-      >
-        <h1
-          className="homepage__image-container__text--website-name"
-        >
-          Stravell
-        </h1>
-        A search engine for travel articles. 
-        <br />
-         It makes it easy for you to find travel articles about thousands of places
-        <br />
-        around the world written by some of the best travel bloggers worldwide.
-      </div>
-      <div
-        className="homepage__image-container__typing-container"
-      />
-      <div
-        className="homepage__image-container__typing flex align-items--center"
-      >
-        <IoIosSearch
-          className="mr1"
-        />
-        <ReactTyped
-          backSpeed={100}
-          loop={true}
-          strings={
-            Array [
-              "Thailand",
-              "Australia",
-              "Canada",
-              "Japan",
-              "Brazil",
-            ]
-          }
-          typeSpeed={100}
-        />
-      </div>
-      <div
-        className="absolute homepage__image-container__get_started-container"
-      >
-        <Link
-          className="button button--large button--warm-peach"
-          duration={600}
-          href="#"
-          offset={-28}
-          smooth="true"
-          to="searchBarContainer"
-        >
-          <div
-            className="flex align-items--center"
-          >
-            <IoIosAirplane
-              className="mr1"
-            />
-             
-            <span>
-              Get Started
-            </span>
-          </div>
-        </Link>
-      </div>
-      <div
-        className="homepage__image-container__social_buttons"
-      >
-        <withRouter(SocialShareButtons) />
-      </div>
-    </div>
-    <img
-      alt=""
-      className="fullwidth"
-      src="/static/images/home.svg"
-    />
-  </div>
+  <Banner
+    imageUrl="/static/images/home.svg"
+    placeSuggestions={
+      Array [
+        "Thailand",
+        "Australia",
+        "Canada",
+        "Japan",
+        "Brazil",
+      ]
+    }
+  />
   <div
     className="content-container"
-    id="searchBarContainer"
   >
     <Connect(FilterableDataList)
       DataList={[Function]}
@@ -113,7 +41,7 @@ exports[`A userName prop is provided should render correctly 1`] = `
         }
       }
       noDataText="There is no country yet."
-      searchBarPlaceHolder="Search a destination. (E.g. Australia, Thailand...)"
+      searchBarPlaceHolder="Search a destination. (Australia, Thailand...)"
     />
     <h2
       className="favourite-font-weight"
@@ -133,92 +61,20 @@ exports[`no username prop is provided should render correctly 1`] = `
   description="Stravell | A search engine for travel articles. It makes it easy for you to find travel articles about thousands of places around the world written by some of the best travel bloggers worldwide."
   title="Stravell | Find and Read Travel Articles From Travelers worldwide."
 >
-  <div
-    className="homepage__image-container"
-  >
-    <div
-      className="content-container"
-    >
-      <div
-        className="homepage__image-container__text-container"
-      />
-      <div
-        className="homepage__image-container__text"
-      >
-        <h1
-          className="homepage__image-container__text--website-name"
-        >
-          Stravell
-        </h1>
-        A search engine for travel articles. 
-        <br />
-         It makes it easy for you to find travel articles about thousands of places
-        <br />
-        around the world written by some of the best travel bloggers worldwide.
-      </div>
-      <div
-        className="homepage__image-container__typing-container"
-      />
-      <div
-        className="homepage__image-container__typing flex align-items--center"
-      >
-        <IoIosSearch
-          className="mr1"
-        />
-        <ReactTyped
-          backSpeed={100}
-          loop={true}
-          strings={
-            Array [
-              "Thailand",
-              "Australia",
-              "Canada",
-              "Japan",
-              "Brazil",
-            ]
-          }
-          typeSpeed={100}
-        />
-      </div>
-      <div
-        className="absolute homepage__image-container__get_started-container"
-      >
-        <Link
-          className="button button--large button--warm-peach"
-          duration={600}
-          href="#"
-          offset={-28}
-          smooth="true"
-          to="searchBarContainer"
-        >
-          <div
-            className="flex align-items--center"
-          >
-            <IoIosAirplane
-              className="mr1"
-            />
-             
-            <span>
-              Get Started
-            </span>
-          </div>
-        </Link>
-      </div>
-      <div
-        className="homepage__image-container__social_buttons"
-      >
-        <withRouter(SocialShareButtons) />
-      </div>
-    </div>
-    <img
-      alt=""
-      className="fullwidth"
-      src="/static/images/home.svg"
-    />
-  </div>
+  <Banner
+    imageUrl="/static/images/home.svg"
+    placeSuggestions={
+      Array [
+        "Thailand",
+        "Australia",
+        "Canada",
+        "Japan",
+        "Brazil",
+      ]
+    }
+  />
   <div
     className="content-container"
-    id="searchBarContainer"
   >
     <Connect(FilterableDataList)
       DataList={[Function]}
@@ -241,7 +97,7 @@ exports[`no username prop is provided should render correctly 1`] = `
         }
       }
       noDataText="There is no country yet."
-      searchBarPlaceHolder="Search a destination. (E.g. Australia, Thailand...)"
+      searchBarPlaceHolder="Search a destination. (Australia, Thailand...)"
     />
     <h2
       className="favourite-font-weight"
