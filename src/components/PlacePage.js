@@ -8,7 +8,7 @@ import { getPlace } from "../queries/place";
 import Place from "./Place";
 import { getRegionPlaces, getCountryPlaces } from "../queries/place";
 import PostList from "./PostList";
-import LandingPageBanner from "./LandingPageBanner";
+import Banner from "./Banner";
 
 class PlacePage extends React.Component {
   render() {
@@ -49,7 +49,7 @@ class PlacePage extends React.Component {
         title={`Stravell | ${address}`}
         description={`Travel articles about ${address}`}
       >
-        <LandingPageBanner
+        <Banner
           imageUrl={`https://source.unsplash.com/1026x405/?${address}`}
           place={address}
           placeSuggestions={[country]}

@@ -6,7 +6,7 @@ import CountryList from "./CountryList";
 import { getAllPlaces } from "./../queries/place";
 import FilterableDataList from "./FilterableDataList";
 import { getAllPosts } from "../queries/post";
-import LandingPageBanner from "./LandingPageBanner";
+import Banner from "./Banner";
 
 import { HOME_PAGE_TITLE, HOME_PAGE_DESCRIPTION } from "../constants/constants";
 import PostList from "./PostList";
@@ -21,7 +21,7 @@ class HomePage extends React.Component {
     };
     return (
       <Layout title={HOME_PAGE_TITLE} description={HOME_PAGE_DESCRIPTION}>
-        <LandingPageBanner
+        <Banner
           imageUrl="/static/images/home.svg"
           placeSuggestions={[
             "Thailand",
@@ -31,7 +31,7 @@ class HomePage extends React.Component {
             "Brazil"
           ]}
         />
-        <div className="content-container" id="searchBarContainer">
+        <div className="content-container">
           <FilterableDataList
             searchBarPlaceHolder="Search a destination. (Australia, Thailand...)"
             DataList={CountryList}

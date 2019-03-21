@@ -8,7 +8,7 @@ import { getCountryRegions } from "../queries/region";
 import { getCountryPlaces } from "../queries/place";
 import Place from "./Place";
 import RegionList from "./RegionList";
-import LandingPageBanner from "./LandingPageBanner";
+import Banner from "./Banner";
 
 class RegionsPage extends React.Component {
   render() {
@@ -40,7 +40,7 @@ class RegionsPage extends React.Component {
         title={`Stravell | Regions of ${countryName}`}
         description={`Regions of ${countryName}`}
       >
-        <LandingPageBanner
+        <Banner
           imageUrl={`https://source.unsplash.com/1026x405/?${countryName}`}
           place={countryName}
           placeSuggestions={[countryName]}
