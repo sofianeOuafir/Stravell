@@ -9,7 +9,6 @@ import { getCountryPlaces } from "../queries/place";
 import { getCountry } from "../queries/country";
 import { getCountryRegions } from "../queries/region";
 import PostList from "./PostList";
-import Banner from "./Banner";
 class CountryPage extends React.Component {
   render() {
     const { posts, country, places, regions } = this.props;
@@ -52,12 +51,6 @@ class CountryPage extends React.Component {
         title={`Stravell | ${countryName}`}
         description={`Travel articles about ${countryName}`}
       >
-        <Banner
-          imageUrl={`https://source.unsplash.com/1026x405/?${countryName}`}
-          place={countryName}
-          placeSuggestions={[countryName]}
-        />
-
         <div className="content-container">
           <FilterableDataList
             DataList={PostList}

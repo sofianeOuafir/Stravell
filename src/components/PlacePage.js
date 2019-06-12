@@ -7,7 +7,6 @@ import { getPlacePosts } from "../queries/post";
 import { getPlace } from "../queries/place";
 import { getRegionPlaces, getCountryPlaces } from "../queries/place";
 import PostList from "./PostList";
-import Banner from "./Banner";
 
 class PlacePage extends React.Component {
   render() {
@@ -48,11 +47,6 @@ class PlacePage extends React.Component {
         title={`Stravell | ${address}`}
         description={`Travel articles about ${address}`}
       >
-        <Banner
-          imageUrl={`https://source.unsplash.com/1026x405/?${address}`}
-          place={address}
-          placeSuggestions={[country]}
-        />
         <div className="content-container">
           <FilterableDataList
             DataList={PostList}

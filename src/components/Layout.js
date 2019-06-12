@@ -14,7 +14,10 @@ const Layout = ({ withTitleAndDescription = true, title, description, children }
     )}
 
     <Header />
-    {children}
+    <div className="header__margin-top">
+      {children}
+    </div>
+    
     <Footer />
   </div>
 );

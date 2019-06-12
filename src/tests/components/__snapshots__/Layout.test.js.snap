@@ -12,9 +12,13 @@ exports[`a title and description are provided should render correctly 1`] = `
     />
   </SideEffect(Head)>
   <Connect(Header) />
-  <p>
-    hello
-  </p>
+  <div
+    className="header__margin-top"
+  >
+    <p>
+      hello
+    </p>
+  </div>
   <Footer />
 </div>
 `;
@@ -22,9 +26,13 @@ exports[`a title and description are provided should render correctly 1`] = `
 exports[`not title and description are provided should render correctly 1`] = `
 <div>
   <Connect(Header) />
-  <p>
-    hello
-  </p>
+  <div
+    className="header__margin-top"
+  >
+    <p>
+      hello
+    </p>
+  </div>
   <Footer />
 </div>
 `;

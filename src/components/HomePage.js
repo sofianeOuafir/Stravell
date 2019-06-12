@@ -6,7 +6,6 @@ import CountryList from "./CountryList";
 import { getAllPlaces } from "./../queries/place";
 import FilterableDataList from "./FilterableDataList";
 import { getAllPosts } from "../queries/post";
-import Banner from "./Banner";
 
 import { HOME_PAGE_TITLE, HOME_PAGE_DESCRIPTION } from "../constants/constants";
 import PostList from "./PostList";
@@ -21,29 +20,17 @@ class HomePage extends React.Component {
     };
     return (
       <Layout title={HOME_PAGE_TITLE} description={HOME_PAGE_DESCRIPTION}>
-        <Banner
-          imageUrl="/static/images/home.svg"
-          placeSuggestions={[
-            "Thailand",
-            "Australia",
-            "Canada",
-            "Japan",
-            "Brazil"
-          ]}
-        />
         <div className="content-container">
           <FilterableDataList
-            searchBarPlaceHolder="Search a destination. (Australia, Thailand...)"
-            DataList={CountryList}
+            searchBarPlaceHolder="Search"
+            DataList={PostList}
             googleMapsProps={googleMapsProps}
-            noDataText={"There is no country yet."}
-            data={countries}
+            noDataText={"There is no post yet"}
+            data={posts}
             breadCrumbProps={{
               links: breadcrumbLinks
             }}
           />
-          <h2 className="favourite-font-weight">Latest Posts</h2>
-          <PostList noDataText={"There is no post yet."} data={posts} />
         </div>
       </Layout>
     );
@@ -53,7 +40,7 @@ class HomePage extends React.Component {
 HomePage.getInitialProps = async function() {
   const countries = await getCountries();
   const places = await getAllPlaces();
-  const posts = await getAllPosts(15);
+  const posts = await getAllPosts();
   return { countries, places, posts };
 };
 

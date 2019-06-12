@@ -5,18 +5,6 @@ exports[`A userName prop is provided should render correctly 1`] = `
   description="Stravell | A search engine for travel articles. It makes it easy for you to find travel articles about thousands of places around the world written by some of the best travel bloggers worldwide."
   title="Stravell | Find and Read Travel Articles From Travelers worldwide."
 >
-  <Banner
-    imageUrl="/static/images/home.svg"
-    placeSuggestions={
-      Array [
-        "Thailand",
-        "Australia",
-        "Canada",
-        "Japan",
-        "Brazil",
-      ]
-    }
-  />
   <div
     className="content-container"
   >
@@ -33,6 +21,7 @@ exports[`A userName prop is provided should render correctly 1`] = `
           ],
         }
       }
+      data={Array []}
       googleMapsProps={
         Object {
           "isMarkerShown": true,
@@ -40,17 +29,8 @@ exports[`A userName prop is provided should render correctly 1`] = `
           "showWholeWorld": true,
         }
       }
-      noDataText="There is no country yet."
-      searchBarPlaceHolder="Search a destination. (Australia, Thailand...)"
-    />
-    <h2
-      className="favourite-font-weight"
-    >
-      Latest Posts
-    </h2>
-    <PostList
-      data={Array []}
-      noDataText="There is no post yet."
+      noDataText="There is no post yet"
+      searchBarPlaceHolder="Search"
     />
   </div>
 </Layout>
@@ -61,18 +41,6 @@ exports[`no username prop is provided should render correctly 1`] = `
   description="Stravell | A search engine for travel articles. It makes it easy for you to find travel articles about thousands of places around the world written by some of the best travel bloggers worldwide."
   title="Stravell | Find and Read Travel Articles From Travelers worldwide."
 >
-  <Banner
-    imageUrl="/static/images/home.svg"
-    placeSuggestions={
-      Array [
-        "Thailand",
-        "Australia",
-        "Canada",
-        "Japan",
-        "Brazil",
-      ]
-    }
-  />
   <div
     className="content-container"
   >
@@ -89,6 +57,7 @@ exports[`no username prop is provided should render correctly 1`] = `
           ],
         }
       }
+      data={Array []}
       googleMapsProps={
         Object {
           "isMarkerShown": true,
@@ -96,17 +65,8 @@ exports[`no username prop is provided should render correctly 1`] = `
           "showWholeWorld": true,
         }
       }
-      noDataText="There is no country yet."
-      searchBarPlaceHolder="Search a destination. (Australia, Thailand...)"
-    />
-    <h2
-      className="favourite-font-weight"
-    >
-      Latest Posts
-    </h2>
-    <PostList
-      data={Array []}
-      noDataText="There is no post yet."
+      noDataText="There is no post yet"
+      searchBarPlaceHolder="Search"
     />
   </div>
 </Layout>

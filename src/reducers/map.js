@@ -1,5 +1,5 @@
 const mapReducerDefaultState = {
-  visible: true
+  visible: false
 };
 
 const mapReducer = (state = mapReducerDefaultState, action) => {
