@@ -70,7 +70,7 @@ DashboardPage.getInitialProps = async function({
     }
   }
   if (authorised) {
-    const posts = await getUserPosts(uid);
+    const posts = await getUserPosts({ uid, onlyPublished: false });
     const user = await getUser(uid);
     return { posts, user };
   } else {

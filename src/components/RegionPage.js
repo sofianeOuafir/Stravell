@@ -65,7 +65,7 @@ class RegionPage extends React.Component {
 RegionPage.getInitialProps = async function({ query }) {
   const { regionCode } = query;
   const region = await getRegion(regionCode);
-  const posts = await getRegionPosts(regionCode);
+  const posts = await getRegionPosts({ regionCode });
   const places = await getRegionPlaces(regionCode);
   return { posts, region, places };
 };

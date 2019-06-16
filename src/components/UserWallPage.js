@@ -54,7 +54,7 @@ export class UserWallPage extends React.Component {
 
 UserWallPage.getInitialProps = async function({ query }) {
   const { uid } = query;
-  const posts = await getUserPosts(uid);
+  const posts = await getUserPosts({ uid });
   const user = await getUser(uid);
   const places = await getUserPlaces(uid);
   return { posts, user, places };

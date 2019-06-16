@@ -70,7 +70,7 @@ class CountryPage extends React.Component {
 CountryPage.getInitialProps = async function({ query }) {
   const { countryCode } = query;
   const country = await getCountry(countryCode);
-  const posts = await getCountryPosts(countryCode);
+  const posts = await getCountryPosts({ countryCode });
   const places = await getCountryPlaces(countryCode);
   const regions = await getCountryRegions(countryCode);
   return { posts, country, places, regions };

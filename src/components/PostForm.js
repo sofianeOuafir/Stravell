@@ -4,6 +4,7 @@ import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import uuid from "uuid";
 import { connect } from "react-redux";
+import Toggle from "react-toggle";
 
 import MyEditor from "./MyEditor";
 import { uploadFile } from "./../aws/s3";
@@ -53,7 +54,8 @@ class PostForm extends React.Component {
       bodyError: "",
       providedURLError: "",
       imageUploading: false,
-      submitting: false
+      submitting: false,
+      published: (props.post && props.post.published) || true
     };
   }
 
@@ -112,6 +114,10 @@ class PostForm extends React.Component {
       }
     );
   };
+
+  onPublishedChange = () => {
+    this.setState(() => ({ published: !this.state.published }))
+  }
 
   onBodyChange = editorState => {
     const body = editorState.getCurrentContent().getPlainText();
@@ -254,7 +260,8 @@ class PostForm extends React.Component {
             uid,
             userName,
             userPhotoURL,
-            placeId
+            placeId,
+            published: this.state.published
           };
 
           this.props.onSubmit({
@@ -402,6 +409,14 @@ class PostForm extends React.Component {
             />
           </div>
         )}
+
+        <div className="flex align-items--center">
+          <p className="mr1">Published</p>
+          <Toggle
+            defaultChecked={this.state.published}
+            onChange={this.onPublishedChange}
+          />
+        </div>
 
         <div>
           <button disabled={this.state.submitting} className="button">

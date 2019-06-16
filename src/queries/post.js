@@ -196,55 +196,78 @@ export const getPost = async id => {
   return fromSnapShotToObject(snapshot);
 };
 
-export const getCountryPosts = async countryCode => {
+export const getCountryPosts = async ({ countryCode, onlyPublished = true, limit = null }) => {
   const ref = `country-posts/${countryCode}`;
-  const posts = await getPosts(ref);
+  const posts = await getPosts({ ref, onlyPublished, limit });
   return posts;
 };
 
-export const getRegionPosts = async regionCode => {
+export const getRegionPosts = async ({ regionCode, onlyPublished = true, limit = null }) => {
   const ref = `region-posts/${regionCode}`;
-  const posts = await getPosts(ref);
+  const posts = await getPosts({ ref, onlyPublished, limit });
   return posts;
 };
 
-export const getUserPosts = async uid => {
+export const getUserPosts = async ({ uid, onlyPublished = true, limit = null }) => {
   const ref = `user-posts/${uid}`;
-  const posts = await getPosts(ref);
+  const posts = await getPosts({ ref, onlyPublished, limit });
   return posts;
 };
 
-export const getPlacePosts = async id => {
+export const getPlacePosts = async ({ id, limit = null, onlyPublished = true }) => {
   const ref = `place-posts/${id}`;
-  const posts = await getPosts(ref);
+  const posts = await getPosts({ ref, onlyPublished, limit });
   return posts;
 };
 
-export const getAllPosts = async (limit = null) => {
+export const getAllPosts = async ({ limit = null, onlyPublished = true } = {}) => {
   const ref = `posts`;
-  const posts = await getPosts(ref, limit);
+  const posts = await getPosts({ ref, limit, onlyPublished });
   return posts;
 };
 
-const getPosts = async (ref, limit = null) => {
+const getPosts = async ({ ref, limit = null, onlyPublished = true } = { limit: null, onlyPublished: true }) => {
   let postSnapshot;
   if (limit) {
-    postSnapshot = await database
+    if (onlyPublished) {
+      postSnapshot = await database
       .ref(ref)
-      .orderByChild("createdAt")
+      .limitToLast(limit)
+      .orderByChild("published")
+      .equalTo(true)
+      .once("value")
+      .then(snapshot => {
+        return snapshot;
+      });
+    } else {
+      postSnapshot = await database
+      .ref(ref)
       .limitToLast(limit)
       .once("value")
       .then(snapshot => {
         return snapshot;
       });
+    }
+
   } else {
-    postSnapshot = await database
+    if (onlyPublished) {
+      postSnapshot = await database
       .ref(ref)
-      .orderByChild("createdAt")
+      .orderByChild("published")
+      .equalTo(true)
       .once("value")
       .then(snapshot => {
         return snapshot;
       });
+    } else {
+      postSnapshot = await database
+      .ref(ref)
+      .once("value")
+      .then(snapshot => {
+        return snapshot;
+      });
+    }
+
   }
 
   let posts = fromSnapShotToArray(postSnapshot);

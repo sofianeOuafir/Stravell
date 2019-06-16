@@ -73,7 +73,7 @@ class PlacePage extends React.Component {
 PlacePage.getInitialProps = async function({ query }) {
   const { id } = query;
   const place = await getPlace(id);
-  const posts = await getPlacePosts(id);
+  const posts = await getPlacePosts({ id });
   let places;
   if(place.regionCode){
     places = await getRegionPlaces(place.regionCode);
