@@ -54,8 +54,8 @@ class PostForm extends React.Component {
       bodyError: "",
       providedURLError: "",
       imageUploading: false,
-      submitting: false,
-      published: (props.post && props.post.published) || true
+      published: props.post === undefined ? true : props.post.published,
+      submitting: false
     };
   }
 
