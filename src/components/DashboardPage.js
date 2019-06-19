@@ -2,6 +2,7 @@ import React from "react";
 import Router from "next/router";
 import { slugify } from "underscore.string";
 
+
 import FilterableDataList from "./FilterableDataList";
 import PageHeader from "./PageHeader";
 import {
@@ -13,6 +14,7 @@ import Layout from "./Layout";
 import { getUserPosts } from "../queries/post";
 import PostList from "./PostList";
 import { getUser } from './../queries/user';
+import AvatarEditor from './AvatarEditor'
 
 export class DashboardPage extends React.Component {
   render() {
@@ -33,7 +35,13 @@ export class DashboardPage extends React.Component {
         title={DASHBOARD_PAGE_TITLE}
         description={DASHBOARD_PAGE_DESCRIPTION}
       >
-        <PageHeader title="Dashboard" withSocialShareButtons={false} />
+        <PageHeader withSocialShareButtons={false}>
+          <div className="flex align-items--center">
+            <AvatarEditor user={user} />
+            <span className="ml2 favourite-font-weight h2">Dashboard</span>
+          </div>
+          
+        </PageHeader>
         <div className="content-container">
           <FilterableDataList
             DataList={PostList}

@@ -10,6 +10,19 @@ export const getUser = async uid => {
   return user;
 };
 
+export const updateUserProfilePicture = ({ uid, newUserPhotoURL }) => {
+  let updates = {}
+  updates[`users/${uid}/userPhotoURL`] = newUserPhotoURL;
+  database.ref(`user-posts/${uid}/`).once("value", function(snapshot) {
+    snapshot.forEach(function(child) {
+      child.ref.update({
+        userPhotoURL: newUserPhotoURL
+      });
+    });
+  });
+  database.ref(`users/${uid}`).update(updates);
+}
+
 export const addUser = async ({ userName, userPhotoURL, uid, email }) => {
   const user = { userName, userPhotoURL, uid, email };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
-const LoadingPage = ({ size }) => (
-  <img className={`loader--${size}`} src="/static/images/loader.gif" />
+const Loader = ({ size }) => (
+  <img style={{ height: size, width: size }} src="/static/images/loader.svg" />
 );
 
-export default LoadingPage;
+export default Loader;

@@ -46,6 +46,7 @@
     "react": "^16.7.0",
     "react-addons-shallow-compare": "15.6.0",
     "react-avatar": "^3.4.6",
+    "react-avatar-editor": "^11.0.7",
     "react-dates": "12.3.0",
     "react-dom": "^16.7.0",
     "react-firebaseui": "^3.1.2",

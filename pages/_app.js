@@ -52,19 +52,25 @@ class MyApp extends App {
             });
           })
           .then(async () => {
-            const {
-              uid,
-              displayName: userName,
-              photoURL: userPhotoURL,
-              email
-            } = user;
+            const { uid } = user;
+            const userResult = await getUser(uid);
+            let userName, userPhotoURL, email
+
+            if (userResult === null) {
+               ({
+                displayName: userName,
+                photoURL: userPhotoURL,
+                email
+              } = user);
+
+              addUser({ userName, uid, userPhotoURL, email });
+            } else {
+              ({ userName, userPhotoURL, email } = userResult);
+            }
+
             this.props.reduxStore.dispatch(
               login({ uid, userName, userPhotoURL })
             );
-            const userResult = await getUser(uid);
-            if (userResult === null) {
-              addUser({ userName, uid, userPhotoURL, email });
-            }
 
             if (this.props.router.route === "/login")
               this.props.router.push("/");

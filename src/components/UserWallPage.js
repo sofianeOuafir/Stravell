@@ -9,10 +9,11 @@ import { getUserPosts } from "../queries/post";
 import { getUser } from "../queries/user";
 import { getUserPlaces } from "./../queries/place";
 import PostList from "./PostList";
+import PostAuthor from "./PostAuthor";
 export class UserWallPage extends React.Component {
   render() {
     const { posts, places, user } = this.props;
-    const { userName, id } = user;
+    const { userName, id, userPhotoURL } = user;
     const googleMapsProps = {
       isMarkerShown: true,
       places,
@@ -33,7 +34,16 @@ export class UserWallPage extends React.Component {
         description={`This page describe ${userName}'s profile`}
       >
         <div>
-          <PageHeader title={userName} />
+          <PageHeader>
+            <PostAuthor
+              authorUid={id}
+              avatarSize={50}
+              authorPhotoURL={userPhotoURL}
+              authorName={userName}
+              fontSize={30}
+            />
+          </PageHeader>
+
           <div className="content-container">
             <FilterableDataList
               DataList={PostList}
