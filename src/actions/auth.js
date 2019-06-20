@@ -7,6 +7,11 @@ export const login = ({uid, userName, userPhotoURL}) => ({
   userPhotoURL
 });
 
+export const updateAuthStatePhotoURL = (userPhotoURL) => ({
+  type: 'UPDATE_PROFILE_PICTURE',
+  userPhotoURL
+});
+
 export const logout = () => ({
   type: 'LOGOUT'
 });

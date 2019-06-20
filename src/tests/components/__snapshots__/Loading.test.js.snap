@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should correctly render Loader 1`] = `
+<img
+  src="/static/images/loader-black.svg"
+  style={
+    Object {
+      "height": undefined,
+      "width": undefined,
+    }
+  }
+/>
+`;
+
 exports[`should correctly render LoadingPage 1`] = `
 <img
   className="loader--undefined"

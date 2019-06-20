@@ -3,7 +3,7 @@ import React from "react";
 import Avatar from "react-avatar";
 import { slugify } from "underscore.string";
 
-const PostAuthor = ({ authorUid, avatarSize, authorPhotoURL, authorName }) => {
+const PostAuthor = ({ authorUid, avatarSize, authorPhotoURL, authorName, fontSize = 15 }) => {
   let avatarProps = {
     className: "mr1",
     size: avatarSize,
@@ -21,11 +21,11 @@ const PostAuthor = ({ authorUid, avatarSize, authorPhotoURL, authorName }) => {
       href={`/user?uid=${authorUid}`}
     >
       <a className="no-text-decoration">
-        <div>
+        <div className="flex align-items--center">
           <Avatar
             {...avatarProps}
           />
-          <span className="c-dark-grey">{authorName}</span>
+          <span style={{fontSize}} className="favourite-font-weight c-dark-grey">{authorName}</span>
         </div>
       </a>
     </Link>

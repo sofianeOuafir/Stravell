@@ -8,7 +8,9 @@ exports[`should render correctly 1`] = `
   <a
     className="no-text-decoration"
   >
-    <div>
+    <div
+      className="flex align-items--center"
+    >
       <withAvatarConfig
         className="mr1"
         round={true}
@@ -16,7 +18,12 @@ exports[`should render correctly 1`] = `
         src="https://graph.facebook.com/2307269322671171/picture"
       />
       <span
-        className="c-dark-grey"
+        className="favourite-font-weight c-dark-grey"
+        style={
+          Object {
+            "fontSize": 15,
+          }
+        }
       >
         Samia Ouafir
       </span>

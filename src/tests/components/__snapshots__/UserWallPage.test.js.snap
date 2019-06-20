@@ -6,9 +6,15 @@ exports[`should render correctly 1`] = `
   title="Stravell | Samia Ouafir"
 >
   <div>
-    <PageHeader
-      title="Samia Ouafir"
-    />
+    <PageHeader>
+      <PostAuthor
+        authorName="Samia Ouafir"
+        authorPhotoURL="https://graph.facebook.com/2307269322671171/picture"
+        authorUid="1pUNibuDtBPmdsBPpAqlNEZYc9r2"
+        avatarSize={100}
+        fontSize={30}
+      />
+    </PageHeader>
     <div
       className="content-container"
     >

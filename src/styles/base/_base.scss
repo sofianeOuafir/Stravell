@@ -58,6 +58,10 @@ button:disabled {
   justify-content: space-between;
 }
 
+.justify-content--around {
+  justify-content: space-around;
+}
+
 .flex-direction--column {
   flex-direction: column;
 }
@@ -68,6 +72,14 @@ button:disabled {
 
 .mr2 {
   margin-right: $m-size;
+}
+
+.ml1 {
+  margin-left: $s-size;
+}
+
+.ml2 {
+  margin-left: $m-size;
 }
 
 .mb1 {
@@ -245,4 +257,8 @@ button:disabled {
 
 .inline-block {
   display: inline-block;
+}
+
+.pointer { 
+  cursor: pointer;
 }
