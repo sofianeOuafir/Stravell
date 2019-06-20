@@ -8,7 +8,7 @@ import Toggle from "react-toggle";
 
 import MyEditor from "./MyEditor";
 import { uploadFile } from "./../aws/s3";
-import Loading from "./Loading";
+import Loader from "./Loader";
 import SearchLocationInput from "./SearchLocationInput";
 import { getLocationData } from "./../places/places";
 
@@ -346,7 +346,7 @@ class PostForm extends React.Component {
           )}
           <div className="quarterwidth flex align-items--center justify-content--center mt2">
             {this.state.imageUploading ? (
-              <Loading size="small" />
+              <Loader size={30} />
             ) : (
               this.state.image && (
                 <img

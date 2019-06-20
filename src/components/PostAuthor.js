@@ -25,7 +25,7 @@ const PostAuthor = ({ authorUid, avatarSize, authorPhotoURL, authorName, fontSiz
           <Avatar
             {...avatarProps}
           />
-          <span style={{fontSize}} className="c-dark-grey">{authorName}</span>
+          <span style={{fontSize}} className="favourite-font-weight c-dark-grey">{authorName}</span>
         </div>
       </a>
     </Link>

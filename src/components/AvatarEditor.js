@@ -8,19 +8,20 @@ import Modal from "react-modal";
 
 import { uploadFile } from "./../aws/s3";
 import { updateUserProfilePicture } from "./../queries/user";
-import { updateProfilePicture } from "./../actions/auth";
-import Loading from "./Loading";
+import { updateAuthStatePhotoURL } from "./../actions/auth";
+import Loader from "./Loader";
 
 class AvatarEditor extends React.Component {
   constructor(props) {
     super(props);
-    const { userPhotoURL: currentImageUrl, uid } = props.user;
+    const { userPhotoURL: currentImageUrl, uid, userName } = props.user;
     this.state = {
       currentImageUrl,
       uploadedImage: null,
       uid,
       uploading: false,
-      modalIsOpen: false
+      modalIsOpen: false,
+      userName
     };
   }
 
@@ -30,7 +31,7 @@ class AvatarEditor extends React.Component {
 
   onImageSave = () => {
     const { uid } = this.state;
-    const { updateProfilePicture } = this.props;
+    const { updateAuthStatePhotoURL } = this.props;
     const canvas = this.editor.getImage();
     this.setState(() => ({ uploading: true, modalIsOpen: false }));
 
@@ -46,12 +47,19 @@ class AvatarEditor extends React.Component {
             currentImageUrl: `${newUserPhotoURL}?${new Date().getTime()}`
           }));
 
-          updateUserProfilePicture({ uid, newUserPhotoURL });
-          updateProfilePicture(`${newUserPhotoURL}?${new Date().getTime()}`);
+          updateUserProfilePicture({ uid, newUserPhotoURL })
+            .then(() => {
+              updateAuthStatePhotoURL(
+                `${newUserPhotoURL}?${new Date().getTime()}`
+              );
+            })
+            .catch(e => {
+              console.log(e);
+            });
         })
         .catch(e => {
           this.setState(() => ({ uploading: false }));
-          alert(e);
+          console.log(e);
         });
     });
   };
@@ -81,7 +89,8 @@ class AvatarEditor extends React.Component {
       uploadedImage,
       currentImageUrl,
       uploading,
-      modalIsOpen
+      modalIsOpen,
+      userName
     } = this.state;
     return (
       <div
@@ -95,10 +104,12 @@ class AvatarEditor extends React.Component {
             round={true}
             size={100}
             onClick={this.triggerFileDialog}
+            name={userName}
+            textSizeRatio="-40"
           />
           {uploading ? (
             <div className="absolute">
-              <Loading size={40} />
+              <Loader color="white" size={40} />
             </div>
           ) : (
             <Fragment>
@@ -126,8 +137,15 @@ class AvatarEditor extends React.Component {
           <p className="modal__title h3 favourite-font-weight">Edit Media</p>
           <Editor ref={this.setEditorRef} image={uploadedImage} />
           <div className="flex justify-content--between">
-            <button className="button" onClick={this.onImageSave}>Save</button>
-            <button className="button button--warm-peach" onClick={this.onCancel}>Cancel</button>
+            <button className="button" onClick={this.onImageSave}>
+              Save
+            </button>
+            <button
+              className="button button--warm-peach"
+              onClick={this.onCancel}
+            >
+              Cancel
+            </button>
           </div>
         </Modal>
       </div>
@@ -136,8 +154,8 @@ class AvatarEditor extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  updateProfilePicture: userPhotoURL =>
-    dispatch(updateProfilePicture(userPhotoURL))
+  updateAuthStatePhotoURL: userPhotoURL =>
+    dispatch(updateAuthStatePhotoURL(userPhotoURL))
 });
 
 export default connect(

@@ -1,7 +1,7 @@
 import React from "react";
 import PlacesAutocomplete from "react-places-autocomplete";
 
-import Loading from "./Loading";
+import Loader from "./Loader";
 
 class SearchLocationInput extends React.Component {
   render() {
@@ -21,7 +21,7 @@ class SearchLocationInput extends React.Component {
             <div className="relative">
               {loading && (
                 <div className="absolute my1 ml1">
-                  <Loading size="small" />
+                  <Loader size={20} />
                 </div>
               )}
               <input

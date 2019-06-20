@@ -37,7 +37,7 @@ export class UserWallPage extends React.Component {
           <PageHeader>
             <PostAuthor
               authorUid={id}
-              avatarSize={50}
+              avatarSize={100}
               authorPhotoURL={userPhotoURL}
               authorName={userName}
               fontSize={30}
