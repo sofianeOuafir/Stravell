@@ -7553,6 +7553,25 @@ exports[`post - body the body is changing should render correctly 1`] = `
       s3FolderName="abc123"
     />
   </div>
+  <div
+    className="flex align-items--center"
+  >
+    <p
+      className="mr1"
+    >
+      Published
+    </p>
+    <Toggle
+      defaultChecked={true}
+      icons={
+        Object {
+          "checked": <Unknown />,
+          "unchecked": <Unknown />,
+        }
+      }
+      onChange={[Function]}
+    />
+  </div>
   <div>
     <button
       className="button"
@@ -7655,6 +7674,25 @@ exports[`post - description the description is changing should render correctly 
       onChange={[Function]}
       placeholder="Write your article here"
       s3FolderName="abc123"
+    />
+  </div>
+  <div
+    className="flex align-items--center"
+  >
+    <p
+      className="mr1"
+    >
+      Published
+    </p>
+    <Toggle
+      defaultChecked={true}
+      icons={
+        Object {
+          "checked": <Unknown />,
+          "unchecked": <Unknown />,
+        }
+      }
+      onChange={[Function]}
     />
   </div>
   <div>
@@ -7766,6 +7804,25 @@ exports[`post - description the description is too long should render correctly 
       s3FolderName="abc123"
     />
   </div>
+  <div
+    className="flex align-items--center"
+  >
+    <p
+      className="mr1"
+    >
+      Published
+    </p>
+    <Toggle
+      defaultChecked={true}
+      icons={
+        Object {
+          "checked": <Unknown />,
+          "unchecked": <Unknown />,
+        }
+      }
+      onChange={[Function]}
+    />
+  </div>
   <div>
     <button
       className="button"
@@ -7873,6 +7930,25 @@ exports[`post - description the description is too short should render correctly
       onChange={[Function]}
       placeholder="Write your article here"
       s3FolderName="abc123"
+    />
+  </div>
+  <div
+    className="flex align-items--center"
+  >
+    <p
+      className="mr1"
+    >
+      Published
+    </p>
+    <Toggle
+      defaultChecked={true}
+      icons={
+        Object {
+          "checked": <Unknown />,
+          "unchecked": <Unknown />,
+        }
+      }
+      onChange={[Function]}
     />
   </div>
   <div>
@@ -7984,6 +8060,25 @@ exports[`post - image An error occured when the image got uploaded should render
       s3FolderName="abc123"
     />
   </div>
+  <div
+    className="flex align-items--center"
+  >
+    <p
+      className="mr1"
+    >
+      Published
+    </p>
+    <Toggle
+      defaultChecked={true}
+      icons={
+        Object {
+          "checked": <Unknown />,
+          "unchecked": <Unknown />,
+        }
+      }
+      onChange={[Function]}
+    />
+  </div>
   <div>
     <button
       className="button"
@@ -8091,6 +8186,25 @@ exports[`post - image the format of the file is not an accepted format should re
       onChange={[Function]}
       placeholder="Write your article here"
       s3FolderName="abc123"
+    />
+  </div>
+  <div
+    className="flex align-items--center"
+  >
+    <p
+      className="mr1"
+    >
+      Published
+    </p>
+    <Toggle
+      defaultChecked={true}
+      icons={
+        Object {
+          "checked": <Unknown />,
+          "unchecked": <Unknown />,
+        }
+      }
+      onChange={[Function]}
     />
   </div>
   <div>
@@ -8203,6 +8317,25 @@ exports[`post - image the image got changed and uploaded successfully should ren
       s3FolderName="abc123"
     />
   </div>
+  <div
+    className="flex align-items--center"
+  >
+    <p
+      className="mr1"
+    >
+      Published
+    </p>
+    <Toggle
+      defaultChecked={true}
+      icons={
+        Object {
+          "checked": <Unknown />,
+          "unchecked": <Unknown />,
+        }
+      }
+      onChange={[Function]}
+    />
+  </div>
   <div>
     <button
       className="button"
@@ -8305,6 +8438,25 @@ exports[`post - provideURL provideURL has changed to be false should render corr
       onChange={[Function]}
       placeholder="Write your article here"
       s3FolderName="abc123"
+    />
+  </div>
+  <div
+    className="flex align-items--center"
+  >
+    <p
+      className="mr1"
+    >
+      Published
+    </p>
+    <Toggle
+      defaultChecked={true}
+      icons={
+        Object {
+          "checked": <Unknown />,
+          "unchecked": <Unknown />,
+        }
+      }
+      onChange={[Function]}
     />
   </div>
   <div>
@@ -8413,6 +8565,25 @@ exports[`post - provideURL provideURL has changed to be true should render corre
       placeholder="Provide an URL here"
       type="text"
       value=""
+    />
+  </div>
+  <div
+    className="flex align-items--center"
+  >
+    <p
+      className="mr1"
+    >
+      Published
+    </p>
+    <Toggle
+      defaultChecked={true}
+      icons={
+        Object {
+          "checked": <Unknown />,
+          "unchecked": <Unknown />,
+        }
+      }
+      onChange={[Function]}
     />
   </div>
   <div>
@@ -8528,6 +8699,25 @@ exports[`post - provided URL the provided URL has changed and is NOT valid shoul
       The URL format provided is not correct (should be in format http://www.google.com)
     </p>
   </div>
+  <div
+    className="flex align-items--center"
+  >
+    <p
+      className="mr1"
+    >
+      Published
+    </p>
+    <Toggle
+      defaultChecked={true}
+      icons={
+        Object {
+          "checked": <Unknown />,
+          "unchecked": <Unknown />,
+        }
+      }
+      onChange={[Function]}
+    />
+  </div>
   <div>
     <button
       className="button"
@@ -8636,6 +8826,25 @@ exports[`post - provided URL the provided URL has changed and is valid should re
       value="https://www.google.com"
     />
   </div>
+  <div
+    className="flex align-items--center"
+  >
+    <p
+      className="mr1"
+    >
+      Published
+    </p>
+    <Toggle
+      defaultChecked={true}
+      icons={
+        Object {
+          "checked": <Unknown />,
+          "unchecked": <Unknown />,
+        }
+      }
+      onChange={[Function]}
+    />
+  </div>
   <div>
     <button
       className="button"
@@ -8738,6 +8947,25 @@ exports[`post - title the title is changing should render correctly 1`] = `
       onChange={[Function]}
       placeholder="Write your article here"
       s3FolderName="abc123"
+    />
+  </div>
+  <div
+    className="flex align-items--center"
+  >
+    <p
+      className="mr1"
+    >
+      Published
+    </p>
+    <Toggle
+      defaultChecked={true}
+      icons={
+        Object {
+          "checked": <Unknown />,
+          "unchecked": <Unknown />,
+        }
+      }
+      onChange={[Function]}
     />
   </div>
   <div>
@@ -8849,6 +9077,25 @@ exports[`post - title the title is too long should render correctly 1`] = `
       s3FolderName="abc123"
     />
   </div>
+  <div
+    className="flex align-items--center"
+  >
+    <p
+      className="mr1"
+    >
+      Published
+    </p>
+    <Toggle
+      defaultChecked={true}
+      icons={
+        Object {
+          "checked": <Unknown />,
+          "unchecked": <Unknown />,
+        }
+      }
+      onChange={[Function]}
+    />
+  </div>
   <div>
     <button
       className="button"
@@ -8956,6 +9203,25 @@ exports[`post - title the title is too short should render correctly 1`] = `
       onChange={[Function]}
       placeholder="Write your article here"
       s3FolderName="abc123"
+    />
+  </div>
+  <div
+    className="flex align-items--center"
+  >
+    <p
+      className="mr1"
+    >
+      Published
+    </p>
+    <Toggle
+      defaultChecked={true}
+      icons={
+        Object {
+          "checked": <Unknown />,
+          "unchecked": <Unknown />,
+        }
+      }
+      onChange={[Function]}
     />
   </div>
   <div>

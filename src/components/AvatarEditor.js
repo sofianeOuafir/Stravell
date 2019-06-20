@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import Editor from "react-avatar-editor";
 import { connect } from "react-redux";
-import uuid from "uuid";
 import Avatar from "react-avatar";
 import { IoMdCamera } from "react-icons/io";
 import Modal from "react-modal";
@@ -132,7 +131,7 @@ class AvatarEditor extends React.Component {
           isOpen={modalIsOpen}
           onRequestClose={this.closeModal}
           className="modal"
-          contentLabel="Example Modal"
+          contentLabel="Edit Media"
         >
           <p className="modal__title h3 favourite-font-weight">Edit Media</p>
           <Editor ref={this.setEditorRef} image={uploadedImage} />
