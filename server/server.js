@@ -187,7 +187,8 @@ app.prepare().then(() => {
     const posts = await firebase
       .database()
       .ref("posts")
-      .orderByChild("createdAt")
+      .orderByChild('published')
+      .equalTo(true)
       .limitToLast(10)
       .once("value")
       .then(snapshot => {
@@ -211,9 +212,7 @@ app.prepare().then(() => {
         image,
         countryCode
       } = post;
-      const url = countryCode
-      ? `${WEBSITE_URL}/country/${countryCode}`
-      : `${WEBSITE_URL}/p/show/${slugify(title)}/${id}`;
+      const url = `${WEBSITE_URL}/p/show/${slugify(title)}/${id}`
 
       feed.item({
         title,
