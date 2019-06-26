@@ -11,6 +11,7 @@ import Layout from "./Layout";
 import Address from "./Address";
 import { getPost } from "../queries/post";
 import BreadCrumb from "./Breadcrumb";
+import CommentForm from './CommentForm';
 
 function getPluginDecorators() {
   let decorators = [];
@@ -96,6 +97,7 @@ export const ShowPostPage = ({ post }) => {
           <MyEditor readOnly={true} editorState={body} onChange={() => {}} />
         </div>
       )}
+      <CommentForm />
     </Layout>
   );
 };

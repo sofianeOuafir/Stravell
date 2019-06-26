@@ -1,27 +1,38 @@
 const postsReducer = (state = [], action) => {
-  switch(action.type) {
-    case 'ADD_POST':
+  switch (action.type) {
+    case "ADD_POST":
+      return [action.post, ...state];
+    case "ADD_COMMENT":
       return [
-        action.post,
-        ...state
-      ]
-    case 'EDIT_POST':
-      return [...state.map((post) => {
-        if(post.id === action.id){
-          return {
-            ...post,
-            ...action.updates
+        ...state.map(post => {
+          if (post.id === action.id) {
+            return {
+              ...post,
+              ...action.updates
+            };
+          } else {
+            return post;
           }
-        }else {
-          return post;
-        }
-      })]
-    case 'SET_POSTS': 
-      return [...action.posts]
+        })
+      ];
+    case "EDIT_POST":
+      return [
+        ...state.map(post => {
+          if (post.id === action.id) {
+            return {
+              ...post,
+              ...action.updates
+            };
+          } else {
+            return post;
+          }
+        })
+      ];
+    case "SET_POSTS":
+      return [...action.posts];
     default:
       return state;
   }
 };
 
 export default postsReducer;
-
