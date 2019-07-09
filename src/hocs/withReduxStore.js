@@ -23,7 +23,6 @@ export default App => {
       // Get or Create the store with `undefined` as initialState
       // This allows you to set a custom default initialState
       const reduxStore = getOrCreateStore()
-
       // Provide the store to getInitialProps of pages
       appContext.ctx.reduxStore = reduxStore
 
@@ -31,7 +30,7 @@ export default App => {
       if (typeof App.getInitialProps === 'function') {
         appProps = await App.getInitialProps(appContext)
       }
-
+      
       return {
         ...appProps,
         initialReduxState: reduxStore.getState()

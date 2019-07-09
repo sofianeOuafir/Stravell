@@ -83,11 +83,9 @@ app.prepare().then(() => {
     app.render(req, res, actualPage, queryParams);
   });
 
-  server.get("/dashboard/:username/:uid", (req, res) => {
+  server.get("/dashboard", (req, res) => {
     const actualPage = "/dashboard";
-    const queryParams = {
-      uid: req.params.uid
-    };
+    const queryParams = {};
     app.render(req, res, actualPage, queryParams);
   });
 

@@ -1,7 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Router from "next/router";
 import { slugify } from "underscore.string";
-
 
 import FilterableDataList from "./FilterableDataList";
 import PageHeader from "./PageHeader";
@@ -13,18 +12,24 @@ import {
 import Layout from "./Layout";
 import { getUserPosts } from "../queries/post";
 import PostList from "./PostList";
-import { getUser } from './../queries/user';
-import AvatarEditor from './AvatarEditor'
+import AvatarEditor from "./AvatarEditor";
 
 export class DashboardPage extends React.Component {
+  static getInitialProps = async function({ query, reduxStore, currentUser }) {
+    let uid;
+    if(currentUser) {
+      uid = currentUser.uid;
+    }
+    const posts = await getUserPosts({ uid, onlyPublished: false });
+    return { posts, currentUser, isPrivate: true };
+  };
+
   render() {
-    const { posts, user } = this.props;
-    const { id, userName } = user;
+    const { posts, currentUser } = this.props;
     const breadcrumbLinks = [
       { href: "/", text: "Home" },
       {
-        href: `/dashboard?uid=${id}`,
-        as: `/dashboard/${slugify(userName)}/${id}`,
+        href: `/dashboard`,
         text: "Dashboard",
         active: true
       },
@@ -37,10 +42,9 @@ export class DashboardPage extends React.Component {
       >
         <PageHeader withSocialShareButtons={false}>
           <div className="flex align-items--center">
-            <AvatarEditor user={user} />
+            <AvatarEditor user={currentUser} />
             <span className="ml2 favourite-font-weight h2">Dashboard</span>
           </div>
-          
         </PageHeader>
         <div className="content-container">
           <FilterableDataList
@@ -58,41 +62,5 @@ export class DashboardPage extends React.Component {
     );
   }
 }
-
-DashboardPage.getInitialProps = async function({
-  query,
-  req,
-  reduxStore,
-  res
-}) {
-  const { uid } = query;
-  let authorised = false;
-  if (req && req.session.decodedToken) {
-    const user = req.session.decodedToken;
-    if (user.user_id == query.uid) {
-      authorised = true;
-    }
-  } else {
-    if (reduxStore.getState().auth.uid == uid) {
-      authorised = true;
-    }
-  }
-  if (authorised) {
-    const posts = await getUserPosts({ uid, onlyPublished: false });
-    const user = await getUser(uid);
-    return { posts, user };
-  } else {
-    if (res) {
-      res.writeHead(302, {
-        Location: "/"
-      });
-      res.end();
-    } else {
-      Router.push("/");
-    }
-
-    return {}
-  }
-};
 
 export default DashboardPage;

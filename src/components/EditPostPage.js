@@ -19,6 +19,13 @@ export class EditPostPage extends React.Component {
     super(props);
   }
 
+  static getInitialProps = async function({ query, req, reduxStore, res }) {
+    const { id } = query;
+    const post = await getPost(id);
+
+    return { post, isPrivate: true };
+  };
+
   onSubmit = ({ post, country, user, place, region }) => {
     const {
       post: postBeforeUpdate,
@@ -81,36 +88,6 @@ export class EditPostPage extends React.Component {
     );
   }
 }
-
-EditPostPage.getInitialProps = async function({ query, req, reduxStore, res }) {
-  const { id } = query;
-  const post = await getPost(id);
-
-  let authorised = false;
-  if (req && req.session.decodedToken) {
-    const user = req.session.decodedToken;
-    if (user.user_id === post.uid) {
-      authorised = true;
-    }
-  } else {
-    if (reduxStore.getState().auth.uid === post.uid) {
-      authorised = true;
-    }
-  }
-
-  if (authorised) {
-    return { post };
-  } else {
-    if (res) {
-      res.writeHead(302, {
-        Location: "/"
-      });
-      res.end();
-    } else {
-      Router.push("/");
-    }
-  }
-};
 
 const mapDispatchToProps = () => ({
   removePost: postBeforeUpdate => {
