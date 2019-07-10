@@ -19,11 +19,18 @@ export class EditPostPage extends React.Component {
     super(props);
   }
 
-  static getInitialProps = async function({ query, req, reduxStore, res }) {
+  static getInitialProps = async function({ query, currentUser }) {
     const { id } = query;
-    const post = await getPost(id);
+    let post;
+    let allowAccess;
+    try {
+      post = await getPost(id)
+      allowAccess = currentUser.uid == post.uid;
+    } catch (error) {
+      allowAccess = false
+    }
 
-    return { post, isPrivate: true };
+    return { post, isPrivate: true, allowAccess };
   };
 
   onSubmit = ({ post, country, user, place, region }) => {

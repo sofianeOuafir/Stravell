@@ -14,8 +14,8 @@ import BreadCrumb from "./Breadcrumb";
 import { addPost } from "./../queries/post";
 
 class AddPostPage extends React.Component {
-  static getInitialProps = async function() {
-    return { isPrivate: true };
+  static getInitialProps = async function({ currentUser }) {
+    return { isPrivate: true, allowAccess: !!currentUser };
   };
 
   onSubmit = ({ post, country, user, place, region }) => {

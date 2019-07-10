@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import Router from "next/router";
 import { slugify } from "underscore.string";
+import { connect } from 'react-redux';
 
 import FilterableDataList from "./FilterableDataList";
 import PageHeader from "./PageHeader";
@@ -13,15 +14,20 @@ import Layout from "./Layout";
 import { getUserPosts } from "../queries/post";
 import PostList from "./PostList";
 import AvatarEditor from "./AvatarEditor";
+import { setPosts } from "./../actions/posts";
 
 export class DashboardPage extends React.Component {
-  static getInitialProps = async function({ query, reduxStore, currentUser }) {
+  static getInitialProps = async function({ reduxStore, currentUser }) {
     let uid;
-    if(currentUser) {
+    let posts = [];
+    const allowAccess = !!currentUser;
+    try {
       uid = currentUser.uid;
-    }
-    const posts = await getUserPosts({ uid, onlyPublished: false });
-    return { posts, currentUser, isPrivate: true };
+      posts = await getUserPosts({ uid, onlyPublished: false });
+      reduxStore.dispatch(setPosts(posts));
+    } catch (error) {}
+
+    return { currentUser, isPrivate: true, allowAccess };
   };
 
   render() {
@@ -63,4 +69,8 @@ export class DashboardPage extends React.Component {
   }
 }
 
-export default DashboardPage;
+const mapStateToProps = ({ posts }) => ({
+  posts
+})
+
+export default connect(mapStateToProps)(DashboardPage);

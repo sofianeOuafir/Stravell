@@ -100,10 +100,14 @@ export const ShowPostPage = ({ post }) => {
   );
 };
 
-ShowPostPage.getInitialProps = async function({ query }) {
+ShowPostPage.getInitialProps = async function({ query, currentUser }) {
   const { id } = query;
   const post = await getPost(id);
-  return { post };
+  let allowAccess = false;
+  if (post.published || (currentUser && post.uid == currentUser.uid)) {
+    allowAccess = true;
+  }
+  return { post, isPrivate: true, allowAccess };
 };
 
 export default ShowPostPage;

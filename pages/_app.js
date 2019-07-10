@@ -46,7 +46,7 @@ class MyApp extends App {
       pageProps = await Component.getInitialProps(ctx);
     }
 
-    if (pageProps.isPrivate && !currentUser) {
+    if (pageProps.isPrivate && !pageProps.allowAccess) {
       if (isServer) {
         res.writeHead(302, {
           Location: "/"
