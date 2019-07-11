@@ -84,7 +84,7 @@ class MyApp extends App {
               body: JSON.stringify({ token })
             });
           })
-          .then(async (foo) => {
+          .then(async () => {
             const { uid } = user;
             const userResult = await getUser(uid);
             let userName, userPhotoURL, email;
