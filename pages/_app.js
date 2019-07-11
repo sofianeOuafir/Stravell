@@ -23,16 +23,11 @@ import { setTextFilter } from "./../src/actions/filters";
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
-    const { query, req, res, reduxStore } = ctx;
+    const { req, res, reduxStore } = ctx;
     const isServer = !!req;
     let currentUser = null;
-
     if (isServer && req.session.decodedToken) {
-      const {
-        name: userName,
-        user_id: uid,
-        picture: userPhotoURL
-      } = req.session.decodedToken;
+      const { userName, uid, userPhotoURL } = req.session.decodedToken;
       currentUser = { userName, uid, userPhotoURL };
       reduxStore.dispatch(login({ uid, userName, userPhotoURL }));
     } else if (reduxStore.getState().auth.uid) {
@@ -89,7 +84,7 @@ class MyApp extends App {
               body: JSON.stringify({ token })
             });
           })
-          .then(async () => {
+          .then(async (foo) => {
             const { uid } = user;
             const userResult = await getUser(uid);
             let userName, userPhotoURL, email;

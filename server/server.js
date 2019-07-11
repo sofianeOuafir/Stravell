@@ -49,17 +49,26 @@ app.prepare().then(() => {
     firebase
       .auth()
       .verifyIdToken(token)
-      .then(decodedToken => {
-        req.session.decodedToken = decodedToken;
-        return decodedToken;
+      .then(async decodedToken => {
+        const userSnapshot = await firebase
+          .database()
+          .ref(`users/${decodedToken.user_id}`)
+          .once("value");
+        const user = { uid: userSnapshot.key, ...userSnapshot.val() };
+        req.session.decodedToken = user;
+        return user;
       })
-      .then(decodedToken => res.json({
-        status: true,
-        decodedToken
-      }))
-      .catch(error => res.json({
-        error
-      }));
+      .then(decodedToken =>
+        res.json({
+          status: true,
+          decodedToken
+        })
+      )
+      .catch(error =>
+        res.json({
+          error
+        })
+      );
   });
 
   server.post("/api/logout", (req, res) => {
@@ -178,14 +187,14 @@ app.prepare().then(() => {
       language: "en",
       ttl: "60",
       custom_namespaces: {
-        'media': 'http://search.yahoo.com/mrss/'
-      },
+        media: "http://search.yahoo.com/mrss/"
+      }
     });
 
     const posts = await firebase
       .database()
       .ref("posts")
-      .orderByChild('published')
+      .orderByChild("published")
       .equalTo(true)
       .limitToLast(10)
       .once("value")
@@ -210,7 +219,7 @@ app.prepare().then(() => {
         image,
         countryCode
       } = post;
-      const url = `${WEBSITE_URL}/p/show/${slugify(title)}/${id}`
+      const url = `${WEBSITE_URL}/p/show/${slugify(title)}/${id}`;
 
       feed.item({
         title,
@@ -219,20 +228,26 @@ app.prepare().then(() => {
         guid: id, // optional - defaults to url
         author: userName, // optional - defaults to feed author property
         date: new Date(createdAt), // any format that js Date can parse.
-        custom_elements: [{
-          "media:content": [{
-            _attr: {
-              medium: 'image',
-              url: image
-            }
-          }]
-        }]
+        custom_elements: [
+          {
+            "media:content": [
+              {
+                _attr: {
+                  medium: "image",
+                  url: image
+                }
+              }
+            ]
+          }
+        ]
       });
     });
 
-    res.set('Content-Type', 'text/xml').send(feed.xml({
-      indent: true
-    }));
+    res.set("Content-Type", "text/xml").send(
+      feed.xml({
+        indent: true
+      })
+    );
   });
 
   server.get("*", (req, res) => {

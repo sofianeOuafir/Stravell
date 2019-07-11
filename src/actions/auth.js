@@ -7,8 +7,8 @@ export const login = ({uid, userName, userPhotoURL}) => ({
   userPhotoURL
 });
 
-export const updateAuthStatePhotoURL = (userPhotoURL) => ({
-  type: 'UPDATE_PROFILE_PICTURE',
+export const editAuthUserPhotoURL = (userPhotoURL) => ({
+  type: 'EDIT_AUTH_USER_PHOTO_URL',
   userPhotoURL
 });
 

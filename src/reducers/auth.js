@@ -8,7 +8,7 @@ const authReducer = (state = authReducerDefaultState, action) => {
         userName: action.userName,
         userPhotoURL: action.userPhotoURL
       };
-    case 'UPDATE_PROFILE_PICTURE':
+    case 'EDIT_AUTH_USER_PHOTO_URL':
       return {
         ...state,
         userPhotoURL: action.userPhotoURL,

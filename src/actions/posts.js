@@ -4,3 +4,11 @@ export const setPosts = posts => dispatch => {
     posts
   });
 };
+
+export const editPostsUserPhotoURL = ({ uid, userPhotoURL }) => dispatch => {
+  return dispatch({
+    type: "EDIT_POSTS_USER_PHOTO_URL",
+    uid,
+    userPhotoURL
+  });
+};
