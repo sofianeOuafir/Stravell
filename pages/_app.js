@@ -22,6 +22,39 @@ import "draft-js-side-toolbar-plugin/lib/plugin.css";
 import { setTextFilter } from "./../src/actions/filters";
 
 class MyApp extends App {
+  static async getInitialProps({ Component, ctx }) {
+    const { req, res, reduxStore } = ctx;
+    const isServer = !!req;
+    let currentUser = null;
+    if (isServer && req.session.decodedToken) {
+      const { userName, uid, userPhotoURL } = req.session.decodedToken;
+      currentUser = { userName, uid, userPhotoURL };
+      reduxStore.dispatch(login({ uid, userName, userPhotoURL }));
+    } else if (reduxStore.getState().auth.uid) {
+      const { userName, uid, userPhotoURL } = reduxStore.getState().auth;
+      currentUser = { userName, uid, userPhotoURL };
+      reduxStore.dispatch(login({ uid, userName, userPhotoURL }));
+    }
+    let pageProps = {};
+    if (Component.getInitialProps) {
+      ctx.currentUser = currentUser;
+      pageProps = await Component.getInitialProps(ctx);
+    }
+
+    if (pageProps.isPrivate && !pageProps.allowAccess) {
+      if (isServer) {
+        res.writeHead(302, {
+          Location: "/"
+        });
+        res.end();
+      } else {
+        Router.push("/");
+      }
+    }
+
+    return { pageProps };
+  }
+
   async componentDidMount() {
     const { reduxStore } = this.props;
     // initialize React Google Analytics and track page views
@@ -51,17 +84,13 @@ class MyApp extends App {
               body: JSON.stringify({ token })
             });
           })
-          .then(async () => {
+          .then(async (foo) => {
             const { uid } = user;
             const userResult = await getUser(uid);
-            let userName, userPhotoURL, email
+            let userName, userPhotoURL, email;
 
             if (userResult === null) {
-               ({
-                displayName: userName,
-                photoURL: userPhotoURL,
-                email
-              } = user);
+              ({ displayName: userName, photoURL: userPhotoURL, email } = user);
 
               addUser({ userName, uid, userPhotoURL, email });
             } else {

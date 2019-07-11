@@ -1,13 +1,28 @@
 import React from "react";
 import { slugify } from "underscore.string";
+import { connect } from "react-redux";
 
 import Layout from "./Layout";
 import FilterableDataList from "./FilterableDataList";
 import { getRegion } from "../queries/region";
 import { getRegionPosts } from "../queries/post";
-import { getRegionPlaces } from "../queries/place";
+import { getAllPlaces } from "../queries/place";
 import PostList from "./PostList";
+import { setPosts } from "./../actions/posts";
+import { setPlaces } from "./../actions/places";
+
 class RegionPage extends React.Component {
+  static getInitialProps = async function({ query, reduxStore }) {
+    const { regionCode } = query;
+    const region = await getRegion(regionCode);
+    const posts = await getRegionPosts({ regionCode });
+    const places = await getAllPlaces();
+    reduxStore.dispatch(setPosts(posts));
+    reduxStore.dispatch(setPlaces(places));
+
+    return { region };
+  };
+
   render() {
     const { posts, region, places } = this.props;
     const {
@@ -62,12 +77,9 @@ class RegionPage extends React.Component {
   }
 }
 
-RegionPage.getInitialProps = async function({ query }) {
-  const { regionCode } = query;
-  const region = await getRegion(regionCode);
-  const posts = await getRegionPosts({ regionCode });
-  const places = await getRegionPlaces(regionCode);
-  return { posts, region, places };
-};
+const mapStateToProps = ({ posts, places }) => ({
+  posts,
+  places
+});
 
-export default RegionPage;
+export default connect(mapStateToProps)(RegionPage);

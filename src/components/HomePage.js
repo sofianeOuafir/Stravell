@@ -1,17 +1,27 @@
 import React from "react";
+import { connect } from 'react-redux';
 
 import Layout from "./Layout";
-import { getCountries } from "../queries/country";
 import CountryList from "./CountryList";
 import { getAllPlaces } from "./../queries/place";
 import FilterableDataList from "./FilterableDataList";
 import { getAllPosts } from "../queries/post";
-
 import { HOME_PAGE_TITLE, HOME_PAGE_DESCRIPTION } from "../constants/constants";
 import PostList from "./PostList";
-class HomePage extends React.Component {
+import { setPosts } from "./../actions/posts";
+import { setPlaces } from "./../actions/places";
+
+export class HomePage extends React.Component {
+  static getInitialProps = async function({ reduxStore }) {
+    const places = await getAllPlaces();
+    const posts = await getAllPosts();
+    reduxStore.dispatch(setPosts(posts))
+    reduxStore.dispatch(setPlaces(places))
+    return { };
+  };
+
   render() {
-    const { countries, places, posts } = this.props;
+    const { places, posts } = this.props;
     const breadcrumbLinks = [{ href: "/", text: "Home", active: true }];
     const googleMapsProps = {
       showWholeWorld: true,
@@ -36,12 +46,8 @@ class HomePage extends React.Component {
     );
   }
 }
+function mapStateToProps ({ posts, places }) {
+  return { posts, places }
+}
 
-HomePage.getInitialProps = async function() {
-  const countries = await getCountries();
-  const places = await getAllPlaces();
-  const posts = await getAllPosts();
-  return { countries, places, posts };
-};
-
-export default HomePage;
+export default connect(mapStateToProps)(HomePage);

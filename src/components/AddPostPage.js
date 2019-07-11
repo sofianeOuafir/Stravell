@@ -14,23 +14,26 @@ import BreadCrumb from "./Breadcrumb";
 import { addPost } from "./../queries/post";
 
 class AddPostPage extends React.Component {
+  static getInitialProps = async function({ currentUser }) {
+    return { isPrivate: true, allowAccess: !!currentUser };
+  };
+
   onSubmit = ({ post, country, user, place, region }) => {
     const { addPost } = this.props;
-    addPost({ post, country, user, place, region, addToTweetQueue: true }).then(() => {
-      this.props.router.push(
-        `/dashboard?uid=${this.props.uid}`,
-        `/dashboard/${slugify(this.props.userName)}/${this.props.uid}`
-      );
-    });
+    addPost({ post, country, user, place, region, addToTweetQueue: true }).then(
+      () => {
+        this.props.router.push(
+          `/dashboard`
+        );
+      }
+    );
   };
 
   render() {
-    const { userName, uid } = this.props;
     const breadcrumbLinks = [
       { href: "/", text: "Home" },
       {
-        href: `/dashboard?uid=${uid}`,
-        as: `/dashboard/${slugify(userName)}/${uid}`,
+        href: `/dashboard`,
         text: "Dashboard"
       },
       {
@@ -58,46 +61,15 @@ class AddPostPage extends React.Component {
   }
 }
 
-AddPostPage.getInitialProps = async function({ req, reduxStore, res }) {
-  let authorised = false;
-  if (req && req.session.decodedToken) {
-    const user = req.session.decodedToken;
-    if (user) {
-      authorised = true;
-    }
-  } else {
-    if (reduxStore.getState().auth.uid) {
-      authorised = true;
-    }
-  }
-
-  if (authorised) {
-    return {};
-  } else {
-    if (res) {
-      res.writeHead(302, {
-        Location: "/"
-      });
-      res.end();
-    } else {
-      Router.push("/");
-    }
-  }
-};
-
 const mapDispatchToProps = () => ({
-  addPost: (params) => {
+  addPost: params => {
     return addPost(params);
   }
 });
 
-const mapStateToProps = state => ({
-  uid: state.auth.uid,
-  userName: state.auth.userName
-});
-
 export { AddPostPage };
+
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(withRouter(AddPostPage));

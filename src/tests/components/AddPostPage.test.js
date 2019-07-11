@@ -28,8 +28,7 @@ test("should add the post and redirect the user to the dashboard when the form g
     resolve();
   }).then(() => {
     expect(router.push).toHaveBeenCalledWith(
-      "/dashboard?uid=1",
-      "/dashboard/sofiane/1"
+      "/dashboard"
     );
     done();
   });

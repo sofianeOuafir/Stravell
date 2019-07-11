@@ -6,6 +6,7 @@ import postsReducer from '../reducers/posts';
 import filtersReducer from '../reducers/filters';
 import countriesReducer from '../reducers/countries';
 import mapReducer from '../reducers/map';
+import placesReducer from '../reducers/places';
 
 let composeEnhancers;
 try {
@@ -15,15 +16,17 @@ try {
 }
 
 
-export default () => {
+export default function (initData) {
   const store = createStore(
     combineReducers({
       auth: authReducer,
       posts: postsReducer,
       filters: filtersReducer,
       countries: countriesReducer,
-      mapConfig: mapReducer
+      mapConfig: mapReducer,
+      places: placesReducer
     }),
+    initData,
     composeEnhancers(applyMiddleware(thunk))
   );
 
