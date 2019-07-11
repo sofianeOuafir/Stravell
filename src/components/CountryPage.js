@@ -1,15 +1,30 @@
 import React from "react";
 import Link from "next/link";
 import { slugify } from "underscore.string";
+import { connect } from "react-redux";
 
 import Layout from "./Layout";
 import FilterableDataList from "./FilterableDataList";
 import { getCountryPosts } from "../queries/post";
-import { getCountryPlaces } from "../queries/place";
+import { getAllPlaces } from "../queries/place";
 import { getCountry } from "../queries/country";
 import { getCountryRegions } from "../queries/region";
 import PostList from "./PostList";
+import { setPlaces } from "../actions/places";
+import { setPosts } from "../actions/posts";
+
 class CountryPage extends React.Component {
+  static getInitialProps = async function({ query, reduxStore }) {
+    const { countryCode } = query;
+    const country = await getCountry(countryCode);
+    const posts = await getCountryPosts({ countryCode });
+    const places = await getAllPlaces();
+    const regions = await getCountryRegions(countryCode);
+    reduxStore.dispatch(setPlaces(places));
+    reduxStore.dispatch(setPosts(posts));
+    return { country, regions };
+  };
+
   render() {
     const { posts, country, places, regions } = this.props;
     let regionsLink = {};
@@ -67,13 +82,9 @@ class CountryPage extends React.Component {
   }
 }
 
-CountryPage.getInitialProps = async function({ query }) {
-  const { countryCode } = query;
-  const country = await getCountry(countryCode);
-  const posts = await getCountryPosts({ countryCode });
-  const places = await getCountryPlaces(countryCode);
-  const regions = await getCountryRegions(countryCode);
-  return { posts, country, places, regions };
-};
+const mapStateToProps = ({ places, posts }) => ({
+  places,
+  posts
+});
 
-export default CountryPage;
+export default connect(mapStateToProps)(CountryPage);

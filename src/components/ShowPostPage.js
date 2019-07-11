@@ -11,7 +11,9 @@ import Layout from "./Layout";
 import Address from "./Address";
 import { getPost } from "../queries/post";
 import BreadCrumb from "./Breadcrumb";
-import CommentForm from './CommentForm';
+import PostCommentForm from "./PostCommentForm";
+import PostCommentList from "./PostCommentList";
+import { setPosts } from "./../actions/posts";
 
 function getPluginDecorators() {
   let decorators = [];
@@ -97,15 +99,27 @@ export const ShowPostPage = ({ post }) => {
           <MyEditor readOnly={true} editorState={body} onChange={() => {}} />
         </div>
       )}
-      <CommentForm />
+      <div className="content-container">
+        <PostCommentForm postId={post.id} />
+        <PostCommentList postId={post.id} />
+      </div>
     </Layout>
   );
 };
 
-ShowPostPage.getInitialProps = async function({ query }) {
+ShowPostPage.getInitialProps = async function({
+  query,
+  currentUser,
+  reduxStore
+}) {
   const { id } = query;
   const post = await getPost(id);
-  return { post };
+  let allowAccess = false;
+  if (post.published || (currentUser && post.uid == currentUser.uid)) {
+    allowAccess = true;
+  }
+  reduxStore.dispatch(setPosts([post]));
+  return { post, isPrivate: true, allowAccess };
 };
 
 export default ShowPostPage;

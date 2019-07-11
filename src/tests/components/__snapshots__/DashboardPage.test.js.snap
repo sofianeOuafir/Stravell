@@ -11,17 +11,7 @@ exports[`should render DashboardPage correctly 1`] = `
     <div
       className="flex align-items--center"
     >
-      <Connect(AvatarEditor)
-        user={
-          Object {
-            "email": "miss-samia06@hotmail.fr",
-            "id": "1pUNibuDtBPmdsBPpAqlNEZYc9r2",
-            "uid": "1pUNibuDtBPmdsBPpAqlNEZYc9r2",
-            "userName": "Samia Ouafir",
-            "userPhotoURL": "https://graph.facebook.com/2307269322671171/picture",
-          }
-        }
-      />
+      <Connect(AvatarEditor) />
       <span
         className="ml2 favourite-font-weight h2"
       >
@@ -43,8 +33,7 @@ exports[`should render DashboardPage correctly 1`] = `
             },
             Object {
               "active": true,
-              "as": "/dashboard/samia-ouafir/1pUNibuDtBPmdsBPpAqlNEZYc9r2",
-              "href": "/dashboard?uid=1pUNibuDtBPmdsBPpAqlNEZYc9r2",
+              "href": "/dashboard",
               "text": "Dashboard",
             },
             Object {

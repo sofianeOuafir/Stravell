@@ -28,8 +28,7 @@ exports[`A user is authenticated should render Header correctly 1`] = `
           className="header__right"
         >
           <Link
-            as="/dashboard/sofiane/undefined"
-            href="/dashboard?uid=undefined"
+            href="/dashboard"
             prefetch={true}
           >
             <withAvatarConfig
@@ -58,8 +57,7 @@ exports[`A user is authenticated should render Header correctly 1`] = `
               </button>
             </Link>
             <Link
-              as="/dashboard/sofiane/undefined"
-              href="/dashboard?uid=undefined"
+              href="/dashboard"
               prefetch={true}
             >
               <button

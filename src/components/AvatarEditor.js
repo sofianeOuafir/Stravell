@@ -7,7 +7,8 @@ import Modal from "react-modal";
 
 import { uploadFile } from "./../aws/s3";
 import { updateUserProfilePicture } from "./../queries/user";
-import { updateAuthStatePhotoURL } from "./../actions/auth";
+import { editAuthUserPhotoURL } from "./../actions/auth";
+import { editPostsUserPhotoURL } from "./../actions/posts";
 import Loader from "./Loader";
 
 class AvatarEditor extends React.Component {
@@ -30,7 +31,7 @@ class AvatarEditor extends React.Component {
 
   onImageSave = () => {
     const { uid } = this.state;
-    const { updateAuthStatePhotoURL } = this.props;
+    const { editAuthUserPhotoURL, editPostsUserPhotoURL } = this.props;
     const canvas = this.editor.getImage();
     this.setState(() => ({ uploading: true, modalIsOpen: false }));
 
@@ -48,9 +49,13 @@ class AvatarEditor extends React.Component {
 
           updateUserProfilePicture({ uid, newUserPhotoURL })
             .then(() => {
-              updateAuthStatePhotoURL(
+              editAuthUserPhotoURL(
                 `${newUserPhotoURL}?${new Date().getTime()}`
               );
+              editPostsUserPhotoURL({
+                userPhotoURL: `${newUserPhotoURL}?${new Date().getTime()}`,
+                uid
+              });
             })
             .catch(e => {
               console.log(e);
@@ -104,7 +109,7 @@ class AvatarEditor extends React.Component {
             size={100}
             onClick={this.triggerFileDialog}
             name={userName}
-            textSizeRatio="-40"
+            textSizeRatio={-40}
           />
           {uploading ? (
             <div className="absolute">
@@ -153,8 +158,10 @@ class AvatarEditor extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  updateAuthStatePhotoURL: userPhotoURL =>
-    dispatch(updateAuthStatePhotoURL(userPhotoURL))
+  editAuthUserPhotoURL: userPhotoURL =>
+    dispatch(editAuthUserPhotoURL(userPhotoURL)),
+  editPostsUserPhotoURL: ({ userPhotoURL, uid }) =>
+    dispatch(editPostsUserPhotoURL({ userPhotoURL, uid }))
 });
 
 export default connect(

@@ -1,14 +1,28 @@
 import React from "react";
 import { slugify } from "underscore.string";
+import { connect } from "react-redux";
 
 import Layout from "./Layout";
 import FilterableDataList from "./FilterableDataList";
 import { getPlacePosts } from "../queries/post";
 import { getPlace } from "../queries/place";
-import { getRegionPlaces, getCountryPlaces } from "../queries/place";
+import { getAllPlaces } from "../queries/place";
 import PostList from "./PostList";
+import { setPosts } from "./../actions/posts";
+import { setPlaces } from "./../actions/places";
 
 class PlacePage extends React.Component {
+  static getInitialProps = async function({ query, reduxStore }) {
+    const { id } = query;
+    const place = await getPlace(id);
+    const posts = await getPlacePosts({ id });
+    let places = await getAllPlaces();
+    reduxStore.dispatch(setPosts(posts));
+    reduxStore.dispatch(setPlaces(places));
+
+    return { place };
+  };
+
   render() {
     const { place, posts, places } = this.props;
     const {
@@ -70,19 +84,9 @@ class PlacePage extends React.Component {
   }
 }
 
-PlacePage.getInitialProps = async function({ query }) {
-  const { id } = query;
-  const place = await getPlace(id);
-  const posts = await getPlacePosts({ id });
-  let places;
-  if(place.regionCode){
-    places = await getRegionPlaces(place.regionCode);
-  } else {
-    places = await getCountryPlaces(place.countryCode);
-  }
-  
+const mapStateToProps = ({ places, posts }) => ({
+  places,
+  posts
+});
 
-  return { place, posts, places };
-};
-
-export default PlacePage;
+export default connect(mapStateToProps)(PlacePage);

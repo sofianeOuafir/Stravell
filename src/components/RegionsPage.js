@@ -5,9 +5,17 @@ import Layout from "./Layout";
 import FilterableDataList from "./FilterableDataList";
 import { getCountry } from "../queries/country";
 import { getCountryRegions } from "../queries/region";
-import { getCountryPlaces } from "../queries/place";
+import { getAllPlaces } from "../queries/place";
 import RegionList from "./RegionList";
 class RegionsPage extends React.Component {
+  static getInitialProps = async function({ query }) {
+    const { countryCode } = query;
+    const country = await getCountry(countryCode);
+    const regions = await getCountryRegions(countryCode);
+    const places = await getAllPlaces();
+    return { country, regions, places };
+  };
+
   render() {
     const { country, regions, places } = this.props;
     const {
@@ -59,13 +67,5 @@ class RegionsPage extends React.Component {
     );
   }
 }
-
-RegionsPage.getInitialProps = async function({ query }) {
-  const { countryCode } = query;
-  const country = await getCountry(countryCode);
-  const regions = await getCountryRegions(countryCode);
-  const places = await getCountryPlaces(countryCode);
-  return { country, regions, places };
-};
 
 export default RegionsPage;

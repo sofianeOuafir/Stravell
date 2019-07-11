@@ -29,12 +29,12 @@ export const Header = ({
     className: "header__user-photo show-for-tablet",
     round: true,
     size: "40"
-  }
+  };
 
-  if(userPhotoURL) {
-    avatarProps.src = userPhotoURL
+  if (userPhotoURL) {
+    avatarProps.src = userPhotoURL;
   } else {
-    avatarProps.name = userName
+    avatarProps.name = userName;
   }
 
   const AuthIndependentMenuElements = (
@@ -64,14 +64,8 @@ export const Header = ({
           <div className="header__right">
             {isAuthenticated ? (
               <div className="header__right">
-                <Link
-                  prefetch
-                  as={`/dashboard/${slugify(userName)}/${uid}`}
-                  href={`/dashboard?uid=${uid}`}
-                >
-                  <Avatar
-                    {...avatarProps}
-                  />
+                <Link prefetch href="/dashboard">
+                  <Avatar {...avatarProps} />
                 </Link>
                 <DropdownMenu title={userName}>
                   <Link prefetch as={"/p/create"} href="/createPost">
@@ -80,11 +74,7 @@ export const Header = ({
                       Create Post
                     </button>
                   </Link>
-                  <Link
-                    prefetch
-                    as={`/dashboard/${slugify(userName)}/${uid}`}
-                    href={`/dashboard?uid=${uid}`}
-                  >
+                  <Link prefetch href="/dashboard">
                     <button id="dashboardButton">
                       <IoIosList className="header__dropdown-menu-icon" />
                       Dashboard
