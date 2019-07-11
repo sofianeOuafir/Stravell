@@ -11,7 +11,7 @@ import PostList from "./PostList";
 import { setPosts } from "./../actions/posts";
 import { setPlaces } from "./../actions/places";
 
-class HomePage extends React.Component {
+export class HomePage extends React.Component {
   static getInitialProps = async function({ reduxStore }) {
     const places = await getAllPlaces();
     const posts = await getAllPosts();

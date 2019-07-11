@@ -23,8 +23,7 @@ exports[`should render correctly 1`] = `
               "text": "Home",
             },
             Object {
-              "as": "/dashboard/sofiane/1",
-              "href": "/dashboard?uid=1",
+              "href": "/dashboard",
               "text": "Dashboard",
             },
             Object {

@@ -11,10 +11,3 @@ exports[`should correctly render Loader 1`] = `
   }
 />
 `;
-
-exports[`should correctly render LoadingPage 1`] = `
-<img
-  className="loader--undefined"
-  src="/static/images/loader.gif"
-/>
-`;
