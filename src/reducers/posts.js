@@ -38,7 +38,7 @@ const postsReducer = (state = [], action) => {
               post.comments = [];
             }
             // post.comments = post.comments.push(action.comment);
-            post.comments = [action.comment, ...post.comments];
+            post.comments = [...post.comments, action.comment];
             return post;
           } else {
             return post;

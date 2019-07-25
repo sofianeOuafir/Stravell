@@ -17,14 +17,25 @@ class PostCommentForm extends React.Component {
   };
 
   onSubmit = () => {
-    const { postId, addPostComment } = this.props;
-    addPostComment({ postId, comment: { text: this.state.text } });
+    const { postId, addPostComment, uid, userName, userPhotoURL } = this.props;
+    const comment = {
+      userPhotoURL,
+      uid,
+      userName,
+      text: this.state.text
+    }
+    addPostComment({ postId, comment });
+    this.setState(() => ({ text: '' }));
   };
 
   render() {
     return (
       <div>
-        <input type="text" onChange={this.onTextChange} />
+        <input
+          type="text"
+          onChange={this.onTextChange}
+          value={this.state.text}
+        />
         <button onClick={this.onSubmit}>Submit</button>
       </div>
     );

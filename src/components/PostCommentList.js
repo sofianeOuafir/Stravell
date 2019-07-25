@@ -1,10 +1,13 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 
 const PostCommentList = ({ comments }) => (
   <div>
     {comments.map(comment => (
-      <span>{comment.text}</span>
+      <Fragment>
+        <p>{comment.userName}</p>
+        <p>{comment.text}</p>
+      </Fragment>
     ))}
   </div>
 );
