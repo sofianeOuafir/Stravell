@@ -14,7 +14,8 @@ function createTweetFromTweetQueue() {
   firebase
     .database()
     .ref("tweetQueue-posts")
-    .orderByChild("createdAt")
+    .orderByChild("published")
+    .equalTo(true)
     .once("value")
     .then(snapshot => {
       let posts = [];
@@ -42,9 +43,7 @@ function createTweetFromTweetQueue() {
     })
     .then(media => {
       const { countryCode, title, id, userName } = post;
-      const url = countryCode
-        ? `www.stravell.com/country/${countryCode}`
-        : `https://stravell.com/p/show/${slugify(title)}/${id}`;
+      const url = `https://stravell.com/p/show/${slugify(title)}/${id}`;
       // Lets tweet it
       const greetings = ["Hey Stravellers", "Hey Folks", "Hi friends"];
       const callsToAction = [
@@ -57,7 +56,6 @@ function createTweetFromTweetQueue() {
       const hashtags = [
         "#traveltips #travel",
         "#TravelMassive #rtw",
-        "#BeachThursday #LP",
         "#ttot #TBEX",
         "#travelskills #rtwnow"
       ];
