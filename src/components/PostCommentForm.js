@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
+import moment from "moment";
 
 import { addPostComment } from "./../actions/comments";
 
@@ -16,28 +17,45 @@ class PostCommentForm extends React.Component {
     this.setState(() => ({ text }));
   };
 
-  onSubmit = () => {
+  onSubmit = e => {
+    e.preventDefault();
     const { postId, addPostComment, uid, userName, userPhotoURL } = this.props;
     const comment = {
       userPhotoURL,
       uid,
       userName,
-      text: this.state.text
-    }
+      text: this.state.text,
+      createdAt: moment()
+    };
     addPostComment({ postId, comment });
-    this.setState(() => ({ text: '' }));
+    this.setState(() => ({ text: "" }));
   };
 
   render() {
+    const { uid } = this.props;
+    const authenticatedUser = !!uid;
     return (
-      <div>
-        <input
-          type="text"
-          onChange={this.onTextChange}
-          value={this.state.text}
-        />
-        <button onClick={this.onSubmit}>Submit</button>
-      </div>
+      <Fragment>
+        <form id="form" className="form" onSubmit={this.onSubmit}>
+          <div className="form__input-container">
+            <textarea
+              placeholder={
+                authenticatedUser
+                  ? "Write a comment here"
+                  : "Please log in to Stravell for leaving a comment"
+              }
+              className="textarea"
+              type="text"
+              onChange={this.onTextChange}
+              value={this.state.text}
+              disabled={!authenticatedUser}
+            />
+          </div>
+          <button disabled={!authenticatedUser} className="button">
+            Submit
+          </button>
+        </form>
+      </Fragment>
     );
   }
 }

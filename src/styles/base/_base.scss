@@ -122,12 +122,20 @@ button:disabled {
   margin-left: $l-size;
 }
 
+.ml4 {
+  margin-left: $xl-size;
+}
+
 .p1 {
   padding: $s-size;
 }
 
 .pl1 {
   padding-left: $s-size;
+}
+
+.pl2 {
+  padding-left: $m-size;
 }
 
 .pr1 {
@@ -205,6 +213,10 @@ button:disabled {
   border-top: 1px black solid;
 }
 
+.border-bottom {
+  border-bottom: 1px black solid;
+}
+
 .border--grey {
   border-color: $grey;
 }
@@ -238,8 +250,25 @@ button:disabled {
 .h3 {
   font-size: $ml-size;
 }
+.h4 {
+  font-size: $m-size;
+}
+.h5 {
+  font-size: $s-size;
+}
+.h6 {
+  font-size: $xs-size;
+}
 
 .text-dark-grey {
+  color: $dark-grey;
+}
+
+.text-light-grey {
+  color: $light-grey;
+}
+
+.text-grey {
   color: $dark-grey;
 }
 
@@ -259,6 +288,6 @@ button:disabled {
   display: inline-block;
 }
 
-.pointer { 
+.pointer {
   cursor: pointer;
 }

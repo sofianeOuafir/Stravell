@@ -6,3 +6,10 @@ export const getDateFormat = (date) => {
   }
   return moment(date).format("MMMM Do, YYYY");
 }
+
+export const getDateTimeFormat = (date) => {
+  if(!date){
+    return;
+  }
+  return moment(date).format('lll');;
+}
