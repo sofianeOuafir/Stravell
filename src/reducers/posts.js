@@ -33,7 +33,7 @@ const postsReducer = (state = [], action) => {
     case "ADD_POST_COMMENT":
       return [
         ...state.map(post => {
-          if (post.id == action.postId) {
+          if (post.id == action.comment.postId) {
             if (!post.comments) {
               post.comments = [];
             }

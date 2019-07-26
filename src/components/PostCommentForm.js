@@ -25,9 +25,10 @@ class PostCommentForm extends React.Component {
       uid,
       userName,
       text: this.state.text,
-      createdAt: moment()
+      createdAt: moment(),
+      postId
     };
-    addPostComment({ postId, comment });
+    addPostComment(comment);
     this.setState(() => ({ text: "" }));
   };
 
@@ -42,7 +43,7 @@ class PostCommentForm extends React.Component {
               placeholder={
                 authenticatedUser
                   ? "Write a comment here"
-                  : "Please log in to Stravell for leaving a comment"
+                  : "Please log in to Stravell for writing a comment"
               }
               className="textarea"
               type="text"
@@ -51,7 +52,10 @@ class PostCommentForm extends React.Component {
               disabled={!authenticatedUser}
             />
           </div>
-          <button disabled={!authenticatedUser} className="button">
+          <button
+            disabled={!(authenticatedUser && !!this.state.text.trim())}
+            className="button"
+          >
             Submit
           </button>
         </form>
@@ -67,8 +71,8 @@ const mapStateToProps = ({ auth }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addPostComment: ({ postId, comment }) => {
-    dispatch(addPostComment({ postId, comment }));
+  addPostComment: comment => {
+    dispatch(addPostComment(comment));
   }
 });
 
