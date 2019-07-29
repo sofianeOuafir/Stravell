@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import moment from "moment";
 
-import { addPostComment } from "./../actions/comments";
+import { startAddPostComment } from "./../actions/comments";
 
 class PostCommentForm extends React.Component {
   constructor(props) {
@@ -19,17 +19,28 @@ class PostCommentForm extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
-    const { postId, addPostComment, uid, userName, userPhotoURL } = this.props;
+    const {
+      postId,
+      startAddPostComment,
+      uid,
+      userName,
+      userPhotoURL
+    } = this.props;
     const comment = {
       userPhotoURL,
       uid,
       userName,
       text: this.state.text,
-      createdAt: moment(),
+      createdAt: moment().valueOf(),
       postId
     };
-    addPostComment(comment);
-    this.setState(() => ({ text: "" }));
+    startAddPostComment(comment)
+      .then(() => {
+        this.setState(() => ({ text: "" }));
+      })
+      .catch(e => {
+        console.log(e);
+      });
   };
 
   render() {
@@ -71,9 +82,7 @@ const mapStateToProps = ({ auth }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addPostComment: comment => {
-    dispatch(addPostComment(comment));
-  }
+  startAddPostComment: comment => dispatch(startAddPostComment(comment))
 });
 
 export default connect(
