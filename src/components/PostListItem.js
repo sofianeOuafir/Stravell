@@ -4,10 +4,10 @@ import Router from "next/router";
 import Link from "next/link";
 import { slugify } from "underscore.string";
 
-import { getDateFormat } from "./../lib/utils/date";
 import PostAuthor from "./PostAuthor";
 import Address from "./Address";
 import Image from "./Image";
+import CommentsModal from "./CommentsModal";
 
 export const PostListItem = ({
   post,
@@ -84,7 +84,7 @@ export const PostListItem = ({
             </Link>
           )}
         </div>
-        <p>{getDateFormat(post.createdAt)}</p>
+        <CommentsModal post={post} />
         <Link
           href={`/post?id=${post.id}`}
           as={`/p/show/${slugify(post.title)}/${post.id}`}

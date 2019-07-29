@@ -3,8 +3,8 @@ import MultiDecorator from "draft-js-plugins-editor/lib/Editor/MultiDecorator";
 import { EditorState, convertFromRaw, CompositeDecorator } from "draft-js";
 import { slugify } from "underscore.string";
 import { connect } from "react-redux";
-import { Link as ScrollLink } from "react-scroll";
-import { MdComment } from "react-icons/md";
+
+import pluralize from "pluralize";
 
 import MyEditor, { plugins } from "./MyEditor";
 import PageHeader from "./PageHeader";
@@ -17,6 +17,7 @@ import BreadCrumb from "./Breadcrumb";
 import PostCommentForm from "./PostCommentForm";
 import PostCommentList from "./PostCommentList";
 import { setPosts } from "./../actions/posts";
+import CommentsModal from "./CommentsModal";
 
 function getPluginDecorators() {
   let decorators = [];
@@ -77,19 +78,7 @@ export const ShowPostPage = ({ post, comments }) => {
             addressClassName="text-dark-grey"
           />
         )}
-        <div className="flex align-items--center mt1">
-          <MdComment className="mr1" />
-
-          <ScrollLink
-            className="pointer underline"
-            to="comments"
-            smooth={true}
-            offset={-50}
-            duration={1000}
-          >
-            {comments ? comments.length : 0} comments
-          </ScrollLink>
-        </div>
+        <CommentsModal post={post} />
       </PageHeader>
       <div className="content-container">
         <div className="mb1">
@@ -119,7 +108,7 @@ export const ShowPostPage = ({ post, comments }) => {
         name="comments"
         className="content-container border-top border--light-grey pb3"
       >
-        <PostCommentList post={post} />
+        <PostCommentList post={post} comments={comments} />
         <PostCommentForm postId={post.id} />
       </div>
     </Layout>
@@ -143,7 +132,7 @@ ShowPostPage.getInitialProps = async function({
 
 const mapStateToProps = ({ posts }) => {
   const post = posts[0];
-  const comments = post.comments;
+  const comments = post.comments || [];
   return {
     post,
     comments
