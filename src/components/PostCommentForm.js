@@ -8,7 +8,8 @@ class PostCommentForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: (props.comment && props.comment.text) || ""
+      text: (props.comment && props.comment.text) || "",
+      saving: false
     };
   }
 
@@ -34,13 +35,21 @@ class PostCommentForm extends React.Component {
       createdAt: moment().valueOf(),
       postId
     };
-    startAddPostComment(comment)
-      .then(() => {
-        this.setState(() => ({ text: "" }));
-      })
-      .catch(e => {
-        console.log(e);
-      });
+    this.setState(
+      () => ({ saving: true }),
+      () => {
+        startAddPostComment(comment)
+          .then(() => {
+            this.setState(() => ({ text: "", saving: false }));
+          })
+          .catch(e => {
+            this.setState(() => ({
+              saving: false
+            }));
+            console.log(e);
+          });
+      }
+    );
   };
 
   render() {
@@ -64,10 +73,16 @@ class PostCommentForm extends React.Component {
             />
           </div>
           <button
-            disabled={!(authenticatedUser && !!this.state.text.trim())}
+            disabled={
+              !(
+                authenticatedUser &&
+                !!this.state.text.trim() &&
+                !this.state.saving
+              )
+            }
             className="button"
           >
-            Submit
+            {this.state.saving ? "Saving..." : "Submit"}
           </button>
         </form>
       </Fragment>

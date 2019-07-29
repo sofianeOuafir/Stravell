@@ -2,6 +2,9 @@ import React from "react";
 import MultiDecorator from "draft-js-plugins-editor/lib/Editor/MultiDecorator";
 import { EditorState, convertFromRaw, CompositeDecorator } from "draft-js";
 import { slugify } from "underscore.string";
+import { connect } from "react-redux";
+import { Link as ScrollLink } from "react-scroll";
+import { MdComment } from "react-icons/md";
 
 import MyEditor, { plugins } from "./MyEditor";
 import PageHeader from "./PageHeader";
@@ -27,7 +30,7 @@ function getPluginDecorators() {
   return new MultiDecorator([new CompositeDecorator(decorators)]);
 }
 
-export const ShowPostPage = ({ post }) => {
+export const ShowPostPage = ({ post, comments }) => {
   const body = EditorState.createWithContent(
     convertFromRaw(JSON.parse(post.body)),
     getPluginDecorators()
@@ -70,10 +73,23 @@ export const ShowPostPage = ({ post }) => {
           <Address
             address={post.address}
             placeId={post.placeId}
-            iconClassName="ml1 mr1 text-dark-grey"
+            iconClassName="mr1 text-dark-grey"
             addressClassName="text-dark-grey"
           />
         )}
+        <div className="flex align-items--center mt1">
+          <MdComment className="mr1" />
+
+          <ScrollLink
+            className="pointer underline"
+            to="comments"
+            smooth={true}
+            offset={-50}
+            duration={1000}
+          >
+            {comments ? comments.length : 0} comments
+          </ScrollLink>
+        </div>
       </PageHeader>
       <div className="content-container">
         <div className="mb1">
@@ -99,7 +115,10 @@ export const ShowPostPage = ({ post }) => {
           <MyEditor readOnly={true} editorState={body} onChange={() => {}} />
         </div>
       )}
-      <div className="content-container border-top border--light-grey pb3">
+      <div
+        name="comments"
+        className="content-container border-top border--light-grey pb3"
+      >
         <PostCommentList post={post} />
         <PostCommentForm postId={post.id} />
       </div>
@@ -119,7 +138,16 @@ ShowPostPage.getInitialProps = async function({
     allowAccess = true;
   }
   reduxStore.dispatch(setPosts([post]));
-  return { post, isPrivate: true, allowAccess };
+  return { isPrivate: true, allowAccess };
 };
 
-export default ShowPostPage;
+const mapStateToProps = ({ posts }) => {
+  const post = posts[0];
+  const comments = post.comments;
+  return {
+    post,
+    comments
+  };
+};
+
+export default connect(mapStateToProps)(ShowPostPage);
