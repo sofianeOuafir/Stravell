@@ -3,9 +3,9 @@ import pluralize from "pluralize";
 import Modal from "react-modal";
 import { connect } from "react-redux";
 
+import { MdComment } from "react-icons/md";
 import PostCommentForm from "./PostCommentForm";
 import PostCommentList from "./PostCommentList";
-import { MdComment } from "react-icons/md";
 
 class CommentsModal extends React.Component {
   constructor(props) {
@@ -38,10 +38,9 @@ class CommentsModal extends React.Component {
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
-          className="modal"
+          className="large-modal scrollable-modal"
           contentLabel="Comments"
         >
-          <p className="modal__title h3 favourite-font-weight">Comments</p>
           <PostCommentList post={post} comments={comments} />
           <PostCommentForm postId={post.id} />
         </Modal>

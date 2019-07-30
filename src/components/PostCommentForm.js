@@ -25,7 +25,7 @@ class PostCommentForm extends React.Component {
       startAddPostComment,
       uid,
       userName,
-      userPhotoURL
+      userPhotoURL = null
     } = this.props;
     const comment = {
       userPhotoURL,
@@ -57,7 +57,7 @@ class PostCommentForm extends React.Component {
     const authenticatedUser = !!uid;
     return (
       <Fragment>
-        <form id="form" className="form" onSubmit={this.onSubmit}>
+        <form id="form" className="form" name="postCommentForm" onSubmit={this.onSubmit}>
           <div className="form__input-container">
             <textarea
               placeholder={
