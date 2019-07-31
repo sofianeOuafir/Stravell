@@ -21,7 +21,7 @@ class PostCommentForm extends React.Component {
   onSubmit = e => {
     e.preventDefault();
     const {
-      postId,
+      post,
       startAddPostComment,
       uid,
       userName,
@@ -33,12 +33,12 @@ class PostCommentForm extends React.Component {
       userName,
       text: this.state.text,
       createdAt: moment().valueOf(),
-      postId
+      postId: post.id
     };
     this.setState(
       () => ({ saving: true }),
       () => {
-        startAddPostComment(comment)
+        startAddPostComment({ comment, post })
           .then(() => {
             this.setState(() => ({ text: "", saving: false }));
           })
@@ -57,7 +57,12 @@ class PostCommentForm extends React.Component {
     const authenticatedUser = !!uid;
     return (
       <Fragment>
-        <form id="form" className="form" name="postCommentForm" onSubmit={this.onSubmit}>
+        <form
+          id="form"
+          className="form"
+          name="postCommentForm"
+          onSubmit={this.onSubmit}
+        >
           <div className="form__input-container">
             <textarea
               placeholder={
@@ -97,7 +102,8 @@ const mapStateToProps = ({ auth }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  startAddPostComment: comment => dispatch(startAddPostComment(comment))
+  startAddPostComment: ({ comment, post }) =>
+    dispatch(startAddPostComment({ post, comment }))
 });
 
 export default connect(

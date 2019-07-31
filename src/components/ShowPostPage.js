@@ -109,7 +109,7 @@ export const ShowPostPage = ({ post, comments }) => {
         className="content-container border-top border--light-grey pb3"
       >
         <PostCommentList post={post} comments={comments} />
-        <PostCommentForm postId={post.id} />
+        <PostCommentForm post={post} />
       </div>
     </Layout>
   );

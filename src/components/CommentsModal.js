@@ -42,7 +42,7 @@ class CommentsModal extends React.Component {
           contentLabel="Comments"
         >
           <PostCommentList post={post} comments={comments} />
-          <PostCommentForm postId={post.id} />
+          <PostCommentForm post={post} />
         </Modal>
       </Fragment>
     );
