@@ -12,7 +12,7 @@ import {
 import Layout from "./Layout";
 import { getPost } from "../queries/post";
 import BreadCrumb from "./Breadcrumb";
-import { editPost } from "./../queries/post";
+import { addPost, removePost } from "./../queries/post";
 
 export class EditPostPage extends React.Component {
   constructor(props) {
@@ -24,10 +24,10 @@ export class EditPostPage extends React.Component {
     let post;
     let allowAccess;
     try {
-      post = await getPost(id);
+      post = await getPost(id)
       allowAccess = currentUser.uid == post.uid;
     } catch (error) {
-      allowAccess = false;
+      allowAccess = false
     }
 
     return { post, isPrivate: true, allowAccess };
@@ -38,15 +38,28 @@ export class EditPostPage extends React.Component {
       post: postBeforeUpdate,
       uid,
       userName,
-      editPost,
+      removePost,
+      addPost,
       router
     } = this.props;
-    editPost({ postBeforeUpdate, post, country, place, region }).then(() => {
-      router.push(
-        `/dashboard`,
-        `/dashboard`
-      );
-    });
+    const { id: postId } = postBeforeUpdate;
+    removePost(postBeforeUpdate)
+      .then(() => {
+        return addPost({
+          post,
+          country,
+          user,
+          place,
+          region,
+          postId
+        });
+      })
+      .then(() => {
+        router.push(
+          `/dashboard?uid=${uid}`,
+          `/dashboard/${slugify(userName)}/${uid}`
+        );
+      });
   };
 
   render() {
@@ -84,8 +97,11 @@ export class EditPostPage extends React.Component {
 }
 
 const mapDispatchToProps = () => ({
-  editPost: ({ postBeforeUpdate, post, country, place, region }) => {
-    return editPost({ postBeforeUpdate, post,  country, place, region });
+  removePost: postBeforeUpdate => {
+    return removePost(postBeforeUpdate);
+  },
+  addPost: ({ post, country, user, place, region, postId }) => {
+    return addPost({ post, country, user, place, region, postId });
   }
 });
 
