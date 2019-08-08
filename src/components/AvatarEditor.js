@@ -131,7 +131,7 @@ class AvatarEditor extends React.Component {
         >
           <p className="modal__title h3 favourite-font-weight">Edit Media</p>
           <Editor ref={this.setEditorRef} image={uploadedImage} />
-          <div className="flex justify-content--between">
+          <div className="flex justify-content--between mb1">
             <button className="button" onClick={this.onImageSave}>
               Save
             </button>

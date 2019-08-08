@@ -55,7 +55,8 @@ class PostForm extends React.Component {
       providedURLError: "",
       imageUploading: false,
       published: props.post === undefined ? true : props.post.published,
-      submitting: false
+      submitting: false,
+      comments: (props.post && props.post.comments) || null
     };
   }
 
@@ -116,8 +117,8 @@ class PostForm extends React.Component {
   };
 
   onPublishedChange = () => {
-    this.setState(() => ({ published: !this.state.published }))
-  }
+    this.setState(() => ({ published: !this.state.published }));
+  };
 
   onBodyChange = editorState => {
     const body = editorState.getCurrentContent().getPlainText();
@@ -261,7 +262,8 @@ class PostForm extends React.Component {
             userName,
             userPhotoURL,
             placeId,
-            published: this.state.published
+            published: this.state.published,
+            comments: this.state.comments
           };
 
           this.props.onSubmit({

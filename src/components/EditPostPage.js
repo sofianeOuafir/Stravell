@@ -67,8 +67,8 @@ export class EditPostPage extends React.Component {
     const breadcrumbLinks = [
       { href: "/", text: "Home" },
       {
-        href: `/dashboard?uid=${uid}`,
-        as: `/dashboard/${slugify(userName)}/${uid}`,
+        href: `/dashboard`,
+        as: `/dashboard`,
         text: "Dashboard"
       },
       {

@@ -13,7 +13,13 @@ export const startUpdateUserProfilePicture = ({
 
   // user-posts
   await database.ref(`user-posts/${uid}/`).once("value", function(snapshot) {
-    const postKeys = Object.keys(snapshot.val());
+    let postKeys;
+    try {
+      postKeys = Object.keys(snapshot.val());
+    } catch (error) {
+      postKeys = [];
+    }
+
     postKeys.forEach(key => {
       updateObject[`user-posts/${uid}/${key}/userPhotoURL`] = userPhotoURL;
     });
@@ -25,7 +31,12 @@ export const startUpdateUserProfilePicture = ({
     .orderByChild("uid")
     .equalTo(uid)
     .once("value", function(snapshot) {
-      const postKeys = Object.keys(snapshot.val());
+      let postKeys;
+      try {
+        postKeys = Object.keys(snapshot.val());
+      } catch (error) {
+        postKeys = [];
+      }
       postKeys.forEach(key => {
         updateObject[`posts/${key}/userPhotoURL`] = userPhotoURL;
       });

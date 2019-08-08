@@ -12,6 +12,7 @@ export const startAddPostComment = ({ comment, post }) => dispatch => {
     .ref()
     .child(`posts/${post.id}/comments`)
     .push().key;
+  updateObject[`user-commented-posts/${comment.uid}/${post.id}`] = true;
   updateObject[`posts/${post.id}/comments/${commentRef}`] = comment;
   if (post.countryCode) {
     updateObject[
