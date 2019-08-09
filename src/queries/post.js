@@ -70,8 +70,8 @@ export const editPost = async ({
   }
 
   if (newPlaceId) {
-    if (countryCode) {
-      updates[`/country-places/${countryCode}/${newPlaceId}`] = place;
+    if (newCountryCode) {
+      updates[`/country-places/${newCountryCode}/${newPlaceId}`] = place;
     }
 
     updates[`/place-posts/${newPlaceId}/${id}`] = post;
