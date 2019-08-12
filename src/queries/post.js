@@ -10,9 +10,9 @@ import {
 export const editPost = async ({
   postBeforeUpdate,
   post,
-  country,
-  place,
-  region
+  country = null,
+  place = null,
+  region = null
 }) => {
   const {
     uid,

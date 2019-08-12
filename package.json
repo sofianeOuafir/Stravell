@@ -9,7 +9,8 @@
     "build": "next build",
     "test": "cross-env NODE_ENV=test jest --verbose",
     "start": "NODE_ENV=production node server/server.js",
-    "heroku-postbuild": "yarn run build"
+    "heroku-postbuild": "yarn run build",
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand"
   },
   "engines": {
     "node": "8.11.2"
