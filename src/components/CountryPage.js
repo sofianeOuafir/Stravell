@@ -70,7 +70,7 @@ class CountryPage extends React.Component {
           <FilterableDataList
             DataList={PostList}
             data={posts}
-            noDataText={`There is no post about ${countryName} yet.`}
+            noDataText={`Be the first to write about ${countryName}!`}
             googleMapsProps={googleMapsProps}
             breadCrumbProps={{
               links: breadcrumbLinks

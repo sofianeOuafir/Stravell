@@ -58,7 +58,7 @@ class RegionPage extends React.Component {
           <FilterableDataList
             DataList={PostList}
             data={posts}
-            noDataText={`There is no post about ${regionName} yet.`}
+            noDataText={`Be the first to write about ${regionName}!`}
             googleMapsProps={{
               isMarkerShown: true,
               places,

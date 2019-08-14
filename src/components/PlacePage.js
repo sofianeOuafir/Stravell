@@ -65,7 +65,7 @@ class PlacePage extends React.Component {
           <FilterableDataList
             DataList={PostList}
             data={posts}
-            noDataText={`There is no post about ${address} yet.`}
+            noDataText={`Be the first to write about ${address}!`}
             googleMapsProps={{
               isMarkerShown: true,
               places,

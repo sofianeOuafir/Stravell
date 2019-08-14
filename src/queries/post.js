@@ -3,9 +3,7 @@ import {
   fromSnapShotToObject,
   fromSnapShotToArray
 } from "./../lib/utils/snapshot";
-import {
-  getPlaceIdFromLatLng
-} from "./../lib/utils/place";
+import { getPlaceIdFromLatLng } from "./../lib/utils/place";
 
 export const editPost = async ({
   postBeforeUpdate,
@@ -57,12 +55,14 @@ export const editPost = async ({
     // create or update new country
     updates[`/countries/${newCountryCode}`] = country;
     updates[`/user-countries/${uid}/${newCountryCode}`] = country;
-
   }
 
   if (newRegionCode) {
     updates[`/region-posts/${newRegionCode}/${id}`] = post;
     updates[`/regions/${newRegionCode}`] = region;
+    if (newCountryCode) {
+      updates[`country-regions/${newCountryCode}/${newRegionCode}`] = region;
+    }
   }
 
   if (formerRegionCode && newRegionCode !== formerRegionCode) {
@@ -188,28 +188,14 @@ export const addPost = ({
   user,
   place = {},
   region = {},
-  postId,
   addToTweetQueue = false
 }) => {
-  const {
-    uid
-  } = user;
-  const {
-    countryCode,
-    ...countryData
-  } = country;
-  const {
-    regionCode,
-    ...regionData
-  } = region;
-  const {
-    placeId,
-    ...placeData
-  } = place;
+  const { uid } = user;
+  const { countryCode, ...countryData } = country;
+  const { regionCode, ...regionData } = region;
+  const { placeId, ...placeData } = place;
 
-  postId = postId ?
-    postId :
-    database
+  postId = database
     .ref()
     .child("posts")
     .push().key;
@@ -333,14 +319,12 @@ export const getAllPosts = async ({
   return posts;
 };
 
-const getPosts = async ({
-  ref,
-  limit = null,
-  onlyPublished = true
-} = {
-  limit: null,
-  onlyPublished: true
-}) => {
+const getPosts = async (
+  { ref, limit = null, onlyPublished = true } = {
+    limit: null,
+    onlyPublished: true
+  }
+) => {
   let postSnapshot;
   if (limit) {
     if (onlyPublished) {
