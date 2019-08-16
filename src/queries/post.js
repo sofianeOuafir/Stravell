@@ -48,6 +48,18 @@ export const editPost = async ({
     }
     updates[`/country-posts/${formerCountryCode}/${id}`] = null;
   }
+  if (uid && formerPlaceId && newPlaceId !== formerPlaceId) {
+    const snapshot = await database
+      .ref(`/user-posts/${uid}`)
+      .orderByChild("placeId")
+      .equalTo(formerPlaceId)
+      .limitToFirst(2)
+      .once("value");
+    const posts = fromSnapShotToArray(snapshot);
+    if (posts.length !== 2) {
+      updates[`/user-places/${uid}/${formerPlaceId}`] = null;
+    }
+  }
 
   if (newCountryCode) {
     // update post
@@ -74,8 +86,16 @@ export const editPost = async ({
       updates[`/country-places/${newCountryCode}/${newPlaceId}`] = place;
     }
 
+    if (newRegionCode) {
+      updates[`region-places/${newRegionCode}/${newPlaceId}`] = place;
+    }
+
     updates[`/place-posts/${newPlaceId}/${id}`] = post;
     updates[`/places/${newPlaceId}`] = place;
+
+    if(uid) {
+      updates[`user-places/${uid}/${newPlaceId}`] = place;
+    }
   }
 
   if (formerPlaceId && newPlaceId !== formerPlaceId) {
