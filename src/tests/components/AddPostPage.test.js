@@ -21,7 +21,6 @@ test("should render correctly", () => {
 });
 
 test("should add the post and redirect the user to the dashboard when the form get submitted", done => {
-  console.log(wrapper.debug());
   wrapper.find(PostForm).simulate("submit", {});
   new Promise((resolve, reject) => {
     expect(addPost).toHaveBeenCalled();

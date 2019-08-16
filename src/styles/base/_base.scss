@@ -101,6 +101,9 @@ button:disabled {
 .mt2 {
   margin-top: $m-size;
 }
+.mt3 {
+  margin-top: $l-size;
+}
 
 .my1 {
   @extend .mt1, .mb1;
@@ -122,12 +125,20 @@ button:disabled {
   margin-left: $l-size;
 }
 
+.ml4 {
+  margin-left: $xl-size;
+}
+
 .p1 {
   padding: $s-size;
 }
 
 .pl1 {
   padding-left: $s-size;
+}
+
+.pl2 {
+  padding-left: $m-size;
 }
 
 .pr1 {
@@ -140,6 +151,9 @@ button:disabled {
 
 .pt2 {
   padding-top: $m-size;
+}
+.pt3 {
+  padding-top: $l-size;
 }
 
 .py1 {
@@ -161,6 +175,10 @@ button:disabled {
   padding-left: $m-size;
 }
 
+.pb2 {
+  padding-bottom: $m-size;
+}
+
 .pb3 {
   padding-bottom: $l-size;
 }
@@ -179,6 +197,10 @@ button:disabled {
 
 .fullwidth {
   width: 100%;
+}
+
+.underline {
+  text-decoration: underline;
 }
 
 .halfwidth {
@@ -203,6 +225,10 @@ button:disabled {
 
 .border-top {
   border-top: 1px black solid;
+}
+
+.border-bottom {
+  border-bottom: 1px black solid;
 }
 
 .border--grey {
@@ -238,8 +264,25 @@ button:disabled {
 .h3 {
   font-size: $ml-size;
 }
+.h4 {
+  font-size: $m-size;
+}
+.h5 {
+  font-size: $s-size;
+}
+.h6 {
+  font-size: $xs-size;
+}
 
 .text-dark-grey {
+  color: $dark-grey;
+}
+
+.text-light-grey {
+  color: $light-grey;
+}
+
+.text-grey {
   color: $dark-grey;
 }
 
@@ -259,6 +302,6 @@ button:disabled {
   display: inline-block;
 }
 
-.pointer { 
+.pointer {
   cursor: pointer;
 }

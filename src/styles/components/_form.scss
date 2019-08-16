@@ -1,7 +1,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  >* {
+  > * {
     margin-bottom: $s-size;
   }
 }
@@ -12,7 +12,11 @@
 
 .form__input-container input {
   text-indent: 30px;
-  width:100%;
+  width: 100%;
+}
+
+.form__input-container textarea {
+  width: 100%;
 }
 
 .form__input-container .icon {

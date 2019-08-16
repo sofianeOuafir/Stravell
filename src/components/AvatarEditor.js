@@ -6,9 +6,7 @@ import { IoMdCamera } from "react-icons/io";
 import Modal from "react-modal";
 
 import { uploadFile } from "./../aws/s3";
-import { updateUserProfilePicture } from "./../queries/user";
-import { editAuthUserPhotoURL } from "./../actions/auth";
-import { editPostsUserPhotoURL } from "./../actions/posts";
+import { startUpdateUserProfilePicture } from "./../actions/users";
 import Loader from "./Loader";
 
 class AvatarEditor extends React.Component {
@@ -31,7 +29,7 @@ class AvatarEditor extends React.Component {
 
   onImageSave = () => {
     const { uid } = this.state;
-    const { editAuthUserPhotoURL, editPostsUserPhotoURL } = this.props;
+    const { startUpdateUserProfilePicture } = this.props;
     const canvas = this.editor.getImage();
     this.setState(() => ({ uploading: true, modalIsOpen: false }));
 
@@ -41,21 +39,14 @@ class AvatarEditor extends React.Component {
       });
       uploadFile({ file, location: `users/${uid}` })
         .then(data => {
-          const { Location: newUserPhotoURL } = data;
-          this.setState(() => ({
-            uploading: false,
-            currentImageUrl: `${newUserPhotoURL}?${new Date().getTime()}`
-          }));
+          const { Location: userPhotoURL } = data;
 
-          updateUserProfilePicture({ uid, newUserPhotoURL })
+          startUpdateUserProfilePicture({ uid, userPhotoURL })
             .then(() => {
-              editAuthUserPhotoURL(
-                `${newUserPhotoURL}?${new Date().getTime()}`
-              );
-              editPostsUserPhotoURL({
-                userPhotoURL: `${newUserPhotoURL}?${new Date().getTime()}`,
-                uid
-              });
+              this.setState(() => ({
+                uploading: false,
+                currentImageUrl: `${userPhotoURL}?${new Date().getTime()}`
+              }));
             })
             .catch(e => {
               console.log(e);
@@ -140,7 +131,7 @@ class AvatarEditor extends React.Component {
         >
           <p className="modal__title h3 favourite-font-weight">Edit Media</p>
           <Editor ref={this.setEditorRef} image={uploadedImage} />
-          <div className="flex justify-content--between">
+          <div className="flex justify-content--between mb1">
             <button className="button" onClick={this.onImageSave}>
               Save
             </button>
@@ -158,10 +149,8 @@ class AvatarEditor extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  editAuthUserPhotoURL: userPhotoURL =>
-    dispatch(editAuthUserPhotoURL(userPhotoURL)),
-  editPostsUserPhotoURL: ({ userPhotoURL, uid }) =>
-    dispatch(editPostsUserPhotoURL({ userPhotoURL, uid }))
+  startUpdateUserProfilePicture: ({ uid, userPhotoURL }) =>
+    dispatch(startUpdateUserProfilePicture({ uid, userPhotoURL }))
 });
 
 export default connect(

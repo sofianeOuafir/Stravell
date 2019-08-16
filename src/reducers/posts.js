@@ -16,7 +16,18 @@ const postsReducer = (state = [], action) => {
         })
       ];
     case "SET_POSTS":
-      return [...action.posts];
+      return [
+        ...action.posts.map(post => {
+          if (post.comments) {
+            let comments = [];
+            for (let i in post.comments) {
+              comments.push(post.comments[i]);
+            }
+            post.comments = comments;
+          }
+          return post;
+        })
+      ];
     case "EDIT_POSTS_USER_PHOTO_URL":
       return [
         ...state.map(post => {
@@ -25,6 +36,21 @@ const postsReducer = (state = [], action) => {
               ...post,
               userPhotoURL: action.userPhotoURL
             };
+          } else {
+            return post;
+          }
+        })
+      ];
+    case "ADD_POST_COMMENT":
+      return [
+        ...state.map(post => {
+          if (post.id == action.comment.postId) {
+            if (!post.comments) {
+              post.comments = [];
+            }
+            // post.comments = post.comments.push(action.comment);
+            post.comments = [...post.comments, action.comment];
+            return post;
           } else {
             return post;
           }

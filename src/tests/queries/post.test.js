@@ -1,31 +1,1757 @@
-// import { addPost } from "./../../queries/post";
-// import posts from "./../fixtures/posts";
-// import users from "./../fixtures/users";
-// import places from "./../fixtures/places";
-// import regions from "./../fixtures/regions";
-// import countries from "./../fixtures/countries";
-// import database from "./../../firebase/firebase";
-// import {
-//   generateTooShortString,
-//   generateTooLongString
-// } from "./../helpers/helpers";
-// import {
-//   MIN_NUM_OF_CHARACTERS_FOR_TITLE,
-//   MAX_NUM_OF_CHARACTERS_FOR_TITLE,
-//   MIN_NUM_OF_CHARACTERS_FOR_DESCRIPTION,
-//   MAX_NUM_OF_CHARACTERS_FOR_DESCRIPTION
-// } from "./../../constants/constants";
-// import {
-//   fromSnapShotToObject,
-//   fromSnapShotToArray
-// } from "./../../lib/utils/snapshot";
+import { addPost, editPost } from "./../../queries/post";
+import posts from "./../fixtures/posts";
+import users from "./../fixtures/users";
+import places from "./../fixtures/places";
+import regions from "./../fixtures/regions";
+import countries from "./../fixtures/countries";
+import database from "./../../firebase/firebase";
+import {
+  generateTooShortString,
+  generateTooLongString
+} from "./../helpers/helpers";
+import {
+  MIN_NUM_OF_CHARACTERS_FOR_TITLE,
+  MAX_NUM_OF_CHARACTERS_FOR_TITLE,
+  MIN_NUM_OF_CHARACTERS_FOR_DESCRIPTION,
+  MAX_NUM_OF_CHARACTERS_FOR_DESCRIPTION
+} from "./../../constants/constants";
+import {
+  fromSnapShotToObject,
+  fromSnapShotToArray
+} from "./../../lib/utils/snapshot";
+
+const france = countries[0];
+const brazil = countries[1];
+const newSouthWales = regions[1];
+const paca = regions[0];
+const cannes = places[0];
+const sydney = places[1];
+
+describe("editPost", () => {
+  let post = posts[0];
+  let postBeforeUpdate = {
+    ...post
+  };
+
+  beforeEach(done => {
+    let updateObject = {};
+    updateObject[`/posts/${postBeforeUpdate.id}`] = postBeforeUpdate;
+    updateObject[
+      `/user-posts/${postBeforeUpdate.uid}/${post.id}`
+    ] = postBeforeUpdate;
+    updateObject[
+      `/region-posts/${postBeforeUpdate.regionCode}/${post.id}`
+    ] = postBeforeUpdate;
+    updateObject[
+      `/place-posts/${postBeforeUpdate.placeId}/${post.id}`
+    ] = postBeforeUpdate;
+    updateObject[
+      `/country-posts/${postBeforeUpdate.countryCode}/${postBeforeUpdate.id}`
+    ] = postBeforeUpdate;
+    updateObject[
+      `/user-countries/${postBeforeUpdate.uid}/${postBeforeUpdate.countryCode}`
+    ] = france;
+    updateObject[
+      `/user-places/${postBeforeUpdate.uid}/${postBeforeUpdate.placeId}`
+    ] = cannes;
+    database
+      .ref()
+      .update(updateObject)
+      .then(() => {
+        done();
+      });
+  });
+
+  afterEach(done => {
+    database
+      .ref()
+      .set({})
+      .then(() => {
+        done();
+      });
+  });
+
+  test("should edit post at /post/:id", done => {
+    database
+      .ref(`posts/${post.id}`)
+      .once("value")
+      .then(snapshot => {
+        const post = fromSnapShotToObject(snapshot);
+        expect(post.address).toEqual("Cannes");
+      })
+      .then(() => {
+        post.address = "Briançon";
+        return editPost({
+          postBeforeUpdate,
+          post
+        });
+      })
+      .then(() => {
+        return database
+          .ref(`posts/${post.id}`)
+          .once("value")
+          .then(snapshot => {
+            const post = fromSnapShotToObject(snapshot);
+            expect(post.address).toEqual("Briançon");
+            done();
+          });
+      });
+  });
+
+  test("should edit post at /user-posts/:uid/:id", done => {
+    database
+      .ref(`user-posts/${post.uid}/${post.id}`)
+      .once("value")
+      .then(snapshot => {
+        const post = fromSnapShotToObject(snapshot);
+        expect(post.address).toEqual("Cannes");
+      })
+      .then(() => {
+        post.address = "Briançon";
+        return editPost({
+          postBeforeUpdate,
+          post
+        });
+      })
+      .then(() => {
+        return database
+          .ref(`user-posts/${post.uid}/${post.id}`)
+          .once("value")
+          .then(snapshot => {
+            const post = fromSnapShotToObject(snapshot);
+            expect(post.address).toEqual("Briançon");
+            done();
+          });
+      });
+  });
+
+  describe("countryCode", () => {
+    describe("was not null before update", () => {
+      beforeEach(() => {
+        expect(postBeforeUpdate.countryCode).toBeTruthy();
+      });
+      describe("has not changed", () => {
+        beforeEach(() => {
+          expect(postBeforeUpdate.countryCode).toEqual("FR");
+        });
+        test("should edit post at /country-posts/:countryCode/:id", done => {
+          database
+            .ref(`country-posts/FR/${post.id}`)
+            .once("value")
+            .then(snapshot => {
+              const post = fromSnapShotToObject(snapshot);
+              expect(post.address).toEqual("Cannes");
+            })
+            .then(() => {
+              post.address = "Briançon";
+              return editPost({
+                postBeforeUpdate,
+                post
+              });
+            })
+            .then(() => {
+              return database
+                .ref(`country-posts/${post.countryCode}/${post.id}`)
+                .once("value")
+                .then(snapshot => {
+                  const post = fromSnapShotToObject(snapshot);
+                  expect(post.address).toEqual("Briançon");
+                  done();
+                });
+            });
+        });
+      });
+      describe("has changed", () => {
+        describe("and is not null", () => {
+          beforeEach(() => {
+            post.countryCode = "BR";
+            expect(post.countryCode).not.toEqual("FR");
+            expect(post).toBeTruthy();
+          });
+          test("should add post at /country-posts/:newCountryCode/:id", done => {
+            return database
+              .ref(`/country-posts/BR/${post.id}`)
+              .once("value")
+              .then(snapshot => {
+                const post = fromSnapShotToObject(snapshot);
+                expect(post).toBeNull();
+              })
+              .then(() => {
+                return editPost({
+                  postBeforeUpdate,
+                  post
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`/country-posts/BR/${post.id}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const post = fromSnapShotToObject(snapshot);
+                    expect(post.countryCode).toEqual("BR");
+                    done();
+                  });
+              });
+          });
+          test("should remove post at /country-posts/:formerCountryCode/:id", done => {
+            return database
+              .ref(`/country-posts/FR/${post.id}`)
+              .once("value")
+              .then(snapshot => {
+                const post = fromSnapShotToObject(snapshot);
+                expect(post).toBeTruthy();
+                expect(post.countryCode).toEqual("FR");
+              })
+              .then(() => {
+                return editPost({
+                  postBeforeUpdate,
+                  post
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`/country-posts/FR/${post.id}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const post = fromSnapShotToObject(snapshot);
+                    expect(post).toBeNull();
+                    done();
+                  });
+              });
+          });
+          test("should add new country at countries/:newCountryCode", done => {
+            database
+              .ref("countries/BR")
+              .once("value")
+              .then(snapshot => {
+                const country = fromSnapShotToObject(snapshot);
+                expect(country).toBeNull();
+              })
+              .then(() => {
+                return editPost({
+                  postBeforeUpdate,
+                  post,
+                  country: brazil
+                });
+              })
+              .then(() => {
+                database
+                  .ref("countries/BR")
+                  .once("value")
+                  .then(snapshot => {
+                    const country = fromSnapShotToObject(snapshot);
+                    expect(country).toBeTruthy();
+                    expect(country.countryCode).toEqual("BR");
+                    done();
+                  });
+              });
+          });
+
+          test("should add the new country at user-countries/:uid/:newCountryCode", done => {
+            database
+              .ref(`user-countries/${post.uid}/BR`)
+              .once("value")
+              .then(snapshot => {
+                const country = fromSnapShotToArray(snapshot);
+                expect(country.length).toEqual(0);
+              })
+              .then(() => {
+                return editPost({
+                  postBeforeUpdate,
+                  post,
+                  country: brazil
+                });
+              })
+              .then(snapshot => {
+                return database
+                  .ref(`user-countries/${post.uid}/BR`)
+                  .once("value");
+              })
+              .then(snapshot => {
+                const country = fromSnapShotToObject(snapshot);
+                expect(country).toBeTruthy();
+                expect(country.countryCode).toEqual("BR");
+                done();
+              });
+          });
+          test("should remove the former country at user-countries/:uid/:formerCountry if not another article belonging to that same user talk about the former country", done => {
+            database
+              .ref(`user-countries/${post.uid}/FR`)
+              .once("value")
+              .then(snapshot => {
+                const country = fromSnapShotToObject(snapshot);
+                expect(country).toBeTruthy();
+                expect(country.countryCode).toEqual("FR");
+              })
+              .then(() => {
+                database
+                  .ref(`user-posts/${post.uid}`)
+                  .orderByChild("countryCode")
+                  .equalTo("FR")
+                  .once("value")
+                  .then(snapshot => {
+                    // proof that there is only one post talking about that former country
+                    const post = fromSnapShotToObject(snapshot);
+                    expect(post).toBeTruthy();
+                  });
+              })
+              .then(() => {
+                return editPost({
+                  postBeforeUpdate,
+                  post,
+                  country: brazil
+                });
+              })
+              .then(snapshot => {
+                return database
+                  .ref(`user-countries/${post.uid}/FR`)
+                  .once("value");
+              })
+              .then(snapshot => {
+                const country = fromSnapShotToObject(snapshot);
+                expect(country).toBeNull();
+                done();
+              });
+          });
+          test("should not remove the former country at user-countries/:uid/:formerCountry if another article belonging to that same user talk about the former country", done => {
+            database
+              .ref(`user-posts/${post.uid}/abc123`)
+              .update(postBeforeUpdate)
+              .then(() => {
+                database
+                  .ref(`user-countries/${post.uid}/FR`)
+                  .once("value")
+                  .then(snapshot => {
+                    const country = fromSnapShotToObject(snapshot);
+                    expect(country).toBeTruthy();
+                    expect(country.countryCode).toEqual("FR");
+                  })
+                  .then(() => {
+                    database
+                      .ref(`user-posts/${post.uid}`)
+                      .orderByChild("countryCode")
+                      .equalTo("FR")
+                      .once("value")
+                      .then(snapshot => {
+                        const posts = fromSnapShotToArray(snapshot);
+                        expect(posts.length).toEqual(2);
+                      });
+                  })
+                  .then(() => {
+                    return editPost({
+                      postBeforeUpdate,
+                      post,
+                      country: brazil
+                    });
+                  })
+                  .then(snapshot => {
+                    return database
+                      .ref(`user-countries/${post.uid}/FR`)
+                      .once("value");
+                  })
+                  .then(snapshot => {
+                    const country = fromSnapShotToObject(snapshot);
+                    expect(country).toBeTruthy();
+                    done();
+                  });
+              });
+          });
+        });
+        describe("and is null", () => {
+          beforeEach(() => {
+            post.countryCode = null;
+            expect(post.countryCode).not.toEqual("FR");
+            expect(post.countryCode).toBeNull();
+          });
+          test("should not add new country at countries/:newCountryCode", done => {
+            database
+              .ref(`coutries/${null}`)
+              .once("value")
+              .then(snapshot => {
+                const country = fromSnapShotToObject(snapshot);
+                expect(country).toBeNull();
+              })
+              .then(() => {
+                return editPost({
+                  post,
+                  postBeforeUpdate,
+                  country: brazil
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`coutries/${null}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const country = fromSnapShotToObject(snapshot);
+                    expect(country).toBeNull();
+                    done();
+                  });
+              });
+          });
+          test("should not add new country at user-countries/:uid/:newCountryCode", done => {
+            database
+              .ref(`user-coutries/${post.uid}/${null}`)
+              .once("value")
+              .then(snapshot => {
+                const country = fromSnapShotToObject(snapshot);
+                expect(country).toBeNull();
+              })
+              .then(() => {
+                return editPost({
+                  post,
+                  postBeforeUpdate,
+                  country: brazil
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`user-coutries/${post.uid}/${null}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const country = fromSnapShotToObject(snapshot);
+                    expect(country).toBeNull();
+                    done();
+                  });
+              });
+          });
+          test("should not add post at /country-posts/:newCountryCode/:id", done => {
+            database
+              .ref(`country-posts/${null}/${post.id}`)
+              .once("value")
+              .then(snapshot => {
+                const post = fromSnapShotToObject(snapshot);
+                expect(post).toBeNull();
+              })
+              .then(() => {
+                return editPost({
+                  post,
+                  postBeforeUpdate,
+                  country: brazil
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`country-posts/${null}/${post.id}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const post = fromSnapShotToObject(snapshot);
+                    expect(post).toBeNull();
+                    done();
+                  });
+              });
+          });
+          test("should remove the former country at user-countries/:uid/:formerCountryCode if not another article belonging to that same user talk about the former country", done => {
+            database
+              .ref(`user-countries/${post.uid}/FR`)
+              .once("value")
+              .then(snapshot => {
+                const country = fromSnapShotToObject(snapshot);
+                expect(country).toBeTruthy();
+                expect(country.countryCode).toEqual("FR");
+              })
+              .then(() => {
+                database
+                  .ref(`user-posts/${post.uid}`)
+                  .orderByChild("countryCode")
+                  .equalTo("FR")
+                  .once("value")
+                  .then(snapshot => {
+                    // proof that there is only one post talking about that former country
+                    const post = fromSnapShotToObject(snapshot);
+                    expect(post).toBeTruthy();
+                  });
+              })
+              .then(() => {
+                return editPost({
+                  postBeforeUpdate,
+                  post,
+                  country: brazil
+                });
+              })
+              .then(snapshot => {
+                return database
+                  .ref(`user-countries/${post.uid}/FR`)
+                  .once("value");
+              })
+              .then(snapshot => {
+                const country = fromSnapShotToObject(snapshot);
+                expect(country).toBeNull();
+                done();
+              });
+          });
+          test("should not remove the former country at user-countries/:uid/:formerCountryCode if another article belonging to that same user talk about the former country", done => {
+            database
+              .ref(`user-posts/${post.uid}/abc123`)
+              .update(postBeforeUpdate)
+              .then(() => {
+                database
+                  .ref(`user-countries/${post.uid}/FR`)
+                  .once("value")
+                  .then(snapshot => {
+                    const country = fromSnapShotToObject(snapshot);
+                    expect(country).toBeTruthy();
+                    expect(country.countryCode).toEqual("FR");
+                  })
+                  .then(() => {
+                    database
+                      .ref(`user-posts/${post.uid}`)
+                      .orderByChild("countryCode")
+                      .equalTo("FR")
+                      .once("value")
+                      .then(snapshot => {
+                        const posts = fromSnapShotToArray(snapshot);
+                        expect(posts.length).toEqual(2);
+                      });
+                  })
+                  .then(() => {
+                    return editPost({
+                      postBeforeUpdate,
+                      post,
+                      country: brazil
+                    });
+                  })
+                  .then(snapshot => {
+                    return database
+                      .ref(`user-countries/${post.uid}/FR`)
+                      .once("value");
+                  })
+                  .then(snapshot => {
+                    const country = fromSnapShotToObject(snapshot);
+                    expect(country).toBeTruthy();
+                    done();
+                  });
+              });
+          });
+          test("should remove the post at /country-posts/:formerCountryCode/:id", done => {
+            database
+              .ref(`/country-posts/FR/${post.id}`)
+              .once("value")
+              .then(snapshot => {
+                const post = fromSnapShotToObject(snapshot);
+                expect(post).toBeTruthy();
+              })
+              .then(() => {
+                return editPost({
+                  post,
+                  postBeforeUpdate
+                }).then(() => {
+                  database
+                    .ref(`country-posts/FR`)
+                    .once("value")
+                    .then(snapshot => {
+                      const post = fromSnapShotToObject(snapshot);
+                      expect(post).toBeNull();
+                      done();
+                    });
+                });
+              });
+          });
+        });
+      });
+    });
+
+    describe("was null before update", () => {
+      beforeEach(() => {
+        postBeforeUpdate.countryCode = null;
+        expect(postBeforeUpdate.countryCode).toBeNull();
+      });
+      describe("countryCode has changed", () => {
+        beforeEach(() => {
+          post.countryCode = "BR";
+          expect(post.countryCode).not.toBeNull();
+        });
+        test("should add the post at /country-posts/:newCountryCode/:id", done => {
+          database
+            .ref(`country-posts/BR/${post.id}`)
+            .once("value")
+            .then(snapshot => {
+              const post = fromSnapShotToObject(snapshot);
+              expect(post).toBeNull();
+            })
+            .then(() => {
+              return editPost({
+                post,
+                postBeforeUpdate
+              });
+            })
+            .then(() => {
+              database
+                .ref(`country-posts/BR/${post.id}`)
+                .once("value")
+                .then(snapshot => {
+                  const post = fromSnapShotToObject(snapshot);
+                  expect(post).toBeTruthy();
+                  expect(post.id).toEqual(postBeforeUpdate.id);
+                  done();
+                });
+            });
+        });
+        test("should add the new country at countries/:newCountryCode", done => {
+          database
+            .ref("countries/BR")
+            .once("value")
+            .then(snapshot => {
+              const country = fromSnapShotToObject(snapshot);
+              expect(country).toBeNull();
+            })
+            .then(() => {
+              return editPost({
+                post,
+                postBeforeUpdate,
+                country: brazil
+              }).then(() => {
+                database
+                  .ref("countries/BR")
+                  .once("value")
+                  .then(snapshot => {
+                    const country = fromSnapShotToObject(snapshot);
+                    expect(country).toBeTruthy();
+                    expect(post.id).toEqual(postBeforeUpdate.id);
+                    done();
+                  });
+              });
+            });
+        });
+        test("should add the new country at user-countries/:uid/:newCountryCode", done => {
+          database
+            .ref(`user-countries/${post.uid}/BR`)
+            .once("value")
+            .then(snapshot => {
+              const country = fromSnapShotToObject(snapshot);
+              expect(country).toBeNull();
+            })
+            .then(() => {
+              return editPost({
+                post,
+                postBeforeUpdate,
+                country: brazil
+              });
+            })
+            .then(() => {
+              database
+                .ref(`user-countries/${post.uid}/BR`)
+                .once("value")
+                .then(snapshot => {
+                  const country = fromSnapShotToObject(snapshot);
+                  expect(country).toBeTruthy();
+                  expect(country.countryCode).toEqual("BR");
+                  done();
+                });
+            });
+        });
+      });
+    });
+  });
+  describe("regionCode", () => {
+    describe("was not null before update", () => {
+      beforeEach(() => {
+        expect(postBeforeUpdate.regionCode).toBeTruthy();
+      });
+      describe("has not changed", () => {
+        beforeEach(() => {
+          expect(postBeforeUpdate.regionCode).toEqual(post.regionCode);
+        });
+        test("should edit post at /region-posts/regionCode/:id", done => {
+          database
+            .ref(`region-posts/${paca.regionCode}/${post.id}`)
+            .once("value")
+            .then(snapshot => {
+              const post = fromSnapShotToObject(snapshot);
+              expect(post).toBeTruthy();
+              expect(post.address).toEqual("Cannes");
+            })
+            .then(() => {
+              post.address = "Paris";
+              return editPost({
+                postBeforeUpdate,
+                post
+              });
+            })
+            .then(() => {
+              database
+                .ref(`region-posts/${paca.regionCode}/${post.id}`)
+                .once("value")
+                .then(snapshot => {
+                  const post = fromSnapShotToObject(snapshot);
+                  expect(post).toBeTruthy();
+                  expect(post.address).toEqual("Paris");
+                  done();
+                });
+            });
+        });
+      });
+      describe("has changed", () => {
+        beforeEach(() => {
+          post.regionCode = newSouthWales.regionCode;
+          post.countryCode = newSouthWales.countryCode;
+          expect(postBeforeUpdate.regionCode).not.toEqual(post.regionCode);
+        });
+        describe("and is not null", () => {
+          beforeEach(() => {
+            expect(post.regionCode).toBeTruthy();
+          });
+          test("should add new region at regions/:newRegionCode", done => {
+            database
+              .ref(`regions/${post.regionCode}`)
+              .once("value")
+              .then(snapshot => {
+                const region = fromSnapShotToObject(snapshot);
+                expect(region).toBeNull();
+              })
+              .then(() => {
+                return editPost({
+                  post,
+                  postBeforeUpdate,
+                  region: newSouthWales
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`regions/${post.regionCode}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const region = fromSnapShotToObject(snapshot);
+                    expect(region).toBeTruthy();
+                    expect(region).toMatchObject(newSouthWales);
+                    done();
+                  });
+              });
+          });
+          test("should add post at /region-posts/newRegionCode/:id", done => {
+            database
+              .ref(`region-posts/${post.countryCode}/${post.id}`)
+              .once("value")
+              .then(snapshot => {
+                const post = fromSnapShotToObject(snapshot);
+                expect(post).toBeNull();
+              })
+              .then(() => {
+                return editPost({
+                  postBeforeUpdate,
+                  post
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`region-posts/${post.regionCode}/${post.id}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const post = fromSnapShotToObject(snapshot);
+                    expect(post).toBeTruthy();
+                    expect(post.regionCode).toEqual(newSouthWales.regionCode);
+                    done();
+                  });
+              });
+          });
+          test("should remove post at /region-posts/:formerRegionCode/:id", done => {
+            database
+              .ref(`region-posts/${postBeforeUpdate.regionCode}/${post.id}`)
+              .once("value")
+              .then(snapshot => {
+                const post = fromSnapShotToObject(snapshot);
+                expect(post).toBeTruthy();
+              })
+              .then(() => {
+                return editPost({
+                  postBeforeUpdate,
+                  post
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`region-posts/${postBeforeUpdate.regionCode}/${post.id}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const post = fromSnapShotToObject(snapshot);
+                    expect(post).toBeNull();
+                    done();
+                  });
+              });
+          });
+
+          describe("countryCode is not null", () => {
+            beforeEach(() => {
+              expect(post.countryCode).toBeTruthy();
+            });
+            test("should add new region at country-regions/:countryCode/newRegionCode", done => {
+              database
+                .ref(`/country-regions/${post.countryCode}/${post.regionCode}`)
+                .once("value")
+                .then(snapshot => {
+                  const region = fromSnapShotToObject(snapshot);
+                  expect(region).toBeNull();
+                })
+                .then(() => {
+                  return editPost({
+                    post,
+                    postBeforeUpdate,
+                    region: newSouthWales
+                  });
+                })
+                .then(() => {
+                  database
+                    .ref(
+                      `/country-regions/${post.countryCode}/${post.regionCode}`
+                    )
+                    .once("value")
+                    .then(snapshot => {
+                      const region = fromSnapShotToObject(snapshot);
+                      expect(region).toBeTruthy();
+                      expect(region).toMatchObject(newSouthWales);
+                      done();
+                    });
+                });
+            });
+          });
+
+          describe("countryCode is null", () => {
+            beforeEach(() => {
+              post.countryCode = null;
+              expect(post.countryCode).toBeNull();
+            });
+            test("should not add new region at country-regions/null/newRegionCode", done => {
+              database
+                .ref(`/country-regions/${post.countryCode}/${post.regionCode}`)
+                .once("value")
+                .then(snapshot => {
+                  const region = fromSnapShotToObject(snapshot);
+                  expect(region).toBeNull();
+                })
+                .then(() => {
+                  return editPost({
+                    post,
+                    postBeforeUpdate,
+                    region: newSouthWales
+                  });
+                })
+                .then(() => {
+                  database
+                    .ref(
+                      `/country-regions/${post.countryCode}/${
+                        newSouthWales.regionCode
+                      }`
+                    )
+                    .once("value")
+                    .then(snapshot => {
+                      const region = fromSnapShotToObject(snapshot);
+                      expect(region).toBeNull();
+                      done();
+                    });
+                });
+            });
+          });
+        });
+        describe("and is null", () => {
+          beforeEach(() => {
+            post.regionCode = null;
+            expect(post.regionCode).toBeNull();
+            expect(post.countryCode).toBeTruthy();
+          });
+          test("should not add post at /region-posts/newRegionCode/:id", done => {
+            database
+              .ref(`/region-posts/${post.regionCode}/${post.id}`)
+              .once("value")
+              .then(snapshot => {
+                const post = fromSnapShotToObject(snapshot);
+                expect(post).toBeNull();
+              })
+              .then(() => {
+                return editPost({
+                  post,
+                  postBeforeUpdate
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`/region-posts/${post.regionCode}/${post.id}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const post = fromSnapShotToObject(snapshot);
+                    expect(post).toBeNull();
+                    done();
+                  });
+              });
+          });
+          test("should remove post at /region-posts/:formerRegionCode/:id", done => {
+            database
+              .ref(`/region-posts/${postBeforeUpdate.regionCode}/${post.id}`)
+              .once("value")
+              .then(snapshot => {
+                const post = fromSnapShotToObject(snapshot);
+                expect(post).toBeTruthy();
+              })
+              .then(() => {
+                return editPost({
+                  post,
+                  postBeforeUpdate
+                });
+              })
+              .then(() => {
+                database
+                  .ref(
+                    `/region-posts/${postBeforeUpdate.regionCode}/${post.id}`
+                  )
+                  .once("value")
+                  .then(snapshot => {
+                    const post = fromSnapShotToObject(snapshot);
+                    expect(post).toBeNull();
+                    done();
+                  });
+              });
+          });
+          test("should not add new region at country-regions/:countryCode/newRegionCode", done => {
+            database
+              .ref(`/country-regions/${post.countryCode}/${post.regionCode}`)
+              .once("value")
+              .then(snapshot => {
+                const region = fromSnapShotToObject(snapshot);
+                expect(region).toBeNull();
+              })
+              .then(() => {
+                return editPost({
+                  post,
+                  postBeforeUpdate,
+                  region: newSouthWales
+                });
+              })
+              .then(() => {
+                database
+                  .ref(
+                    `/country-regions/${post.countryCode}/${post.regionCode}`
+                  )
+                  .once("value")
+                  .then(snapshot => {
+                    const region = fromSnapShotToObject(snapshot);
+                    expect(region).toBeNull();
+                    done();
+                  });
+              });
+          });
+          test("should not add new region at regions/:newRegionCode", done => {
+            database
+              .ref(`regions/${post.regionCode}`)
+              .once("value")
+              .then(snapshot => {
+                const region = fromSnapShotToObject(snapshot);
+                expect(region).toBeNull();
+              })
+              .then(() => {
+                return editPost({
+                  post,
+                  postBeforeUpdate,
+                  region: newSouthWales
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`regions/${post.regionCode}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const region = fromSnapShotToObject(snapshot);
+                    expect(region).toBeNull();
+                    done();
+                  });
+              });
+          });
+        });
+      });
+    });
+
+    describe("was null before update", () => {
+      beforeEach(() => {
+        postBeforeUpdate.regionCode = null;
+        expect(postBeforeUpdate.regionCode).toBeNull();
+      });
+      describe("has changed", () => {
+        beforeEach(() => {
+          post.countryCode = newSouthWales.countryCode;
+          post.regionCode = newSouthWales.regionCode;
+          expect(post.regionCode).not.toEqual(postBeforeUpdate);
+          expect(post.regionCode).toEqual(newSouthWales.regionCode);
+        });
+        test("should add post at /region-posts/newRegionCode/:id", done => {
+          database
+            .ref(`/region-posts/${newSouthWales.regionCode}/${post.id}`)
+            .once("value")
+            .then(snapshot => {
+              const post = fromSnapShotToObject(snapshot);
+              expect(post).toBeNull();
+            })
+            .then(() => {
+              return editPost({
+                post,
+                postBeforeUpdate,
+                region: newSouthWales
+              });
+            })
+            .then(() => {
+              database
+                .ref(`/region-posts/${newSouthWales.regionCode}/${post.id}`)
+                .once("value")
+                .then(snapshot => {
+                  const post = fromSnapShotToObject(snapshot);
+                  expect(post).toBeTruthy();
+                  expect(post.id).toEqual(postBeforeUpdate.id);
+                  done();
+                });
+            });
+        });
+        test("should add new region at country-regions/:countryCode/newRegionCode", done => {
+          database
+            .ref(`country-regions/${post.countryCode}/${post.regionCode}`)
+            .once("value")
+            .then(snapshot => {
+              const region = fromSnapShotToObject(snapshot);
+              expect(region).toBeNull();
+            })
+            .then(() => {
+              return editPost({
+                post,
+                postBeforeUpdate,
+                region: newSouthWales
+              }).then(() => {
+                database
+                  .ref(`country-regions/${post.countryCode}/${post.regionCode}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const region = fromSnapShotToObject(snapshot);
+                    expect(region).toBeTruthy();
+                    expect(region).toMatchObject(newSouthWales);
+                    done();
+                  });
+              });
+            });
+        });
+        test("should add new region at regions/:newRegionCode", done => {
+          database
+            .ref(`regions/${post.regionCode}`)
+            .once("value")
+            .then(snapshot => {
+              const region = fromSnapShotToObject(snapshot);
+              expect(region).toBeNull();
+            })
+            .then(() => {
+              return editPost({
+                post,
+                postBeforeUpdate,
+                region: newSouthWales
+              }).then(() => {
+                database
+                  .ref(`regions/${post.regionCode}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const region = fromSnapShotToObject(snapshot);
+                    expect(region).toBeTruthy();
+                    expect(region).toMatchObject(newSouthWales);
+                    done();
+                  });
+              });
+            });
+        });
+      });
+    });
+  });
+
+  describe("placeId", () => {
+    describe("was not null before update", () => {
+      beforeEach(() => {
+        expect(postBeforeUpdate.placeId).toBeTruthy();
+      });
+      describe("has not changed", () => {
+        beforeEach(() => {
+          expect(post.placeId).toEqual(postBeforeUpdate.placeId);
+        });
+        test("should edit post at /place-posts/placeId/:id", done => {
+          database
+            .ref(`place-posts/${postBeforeUpdate.placeId}/${post.id}`)
+            .once("value")
+            .then(snapshot => {
+              const post = fromSnapShotToObject(snapshot);
+              expect(post).toBeTruthy();
+              expect(post.address).toEqual("Cannes");
+            })
+            .then(() => {
+              post.address = "New York";
+              return editPost({
+                post,
+                postBeforeUpdate
+              });
+            })
+            .then(() => {
+              database
+                .ref(`place-posts/${postBeforeUpdate.placeId}/${post.id}`)
+                .once("value")
+                .then(snapshot => {
+                  const post = fromSnapShotToObject(snapshot);
+                  expect(post.address).toEqual("New York");
+                  done();
+                });
+            });
+        });
+      });
+      describe("has changed", () => {
+        beforeEach(() => {
+          post.placeId = sydney.placeId;
+          post.regionCode = sydney.regionCode;
+          post.countryCode = sydney.countryCode;
+          expect(post.placeId).not.toEqual(postBeforeUpdate.placeId);
+        });
+        describe("and is not null", () => {
+          beforeEach(() => {
+            expect(post.placeId).toBeTruthy();
+          });
+          test("should add new place at places/:newPlaceId", done => {
+            database
+              .ref(`places/${sydney.placeId}`)
+              .once("value")
+              .then(snapshot => {
+                const place = fromSnapShotToObject(snapshot);
+                expect(place).toBeNull();
+              })
+              .then(() => {
+                return editPost({
+                  post,
+                  postBeforeUpdate,
+                  place: sydney
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`places/${sydney.placeId}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const place = fromSnapShotToObject(snapshot);
+                    expect(place).toBeTruthy();
+                    expect(place).toMatchObject(sydney);
+                    done();
+                  });
+              });
+          });
+          test("should add post at /place-posts/newPlaceId/:id", done => {
+            database
+              .ref(`place-posts/${post.placeId}/${post.id}`)
+              .once("value")
+              .then(snapshot => {
+                const post = fromSnapShotToObject(snapshot);
+                expect(post).toBeNull();
+              })
+              .then(() => {
+                return editPost({
+                  post,
+                  postBeforeUpdate
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`place-posts/${post.placeId}/${post.id}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const post = fromSnapShotToObject(snapshot);
+                    expect(post).toBeTruthy();
+                    expect(post.placeId).toEqual(sydney.placeId);
+                    done();
+                  });
+              });
+          });
+          test("should remove post at /place-posts/:formerPlaceId/:id", done => {
+            database
+              .ref(`place-posts/${postBeforeUpdate.placeId}/${post.id}`)
+              .once("value")
+              .then(snapshot => {
+                const post = fromSnapShotToObject(snapshot);
+                expect(post).toBeTruthy();
+              })
+              .then(() => {
+                return editPost({
+                  post,
+                  postBeforeUpdate
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`place-posts/${postBeforeUpdate.placeId}/${post.id}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const post = fromSnapShotToObject(snapshot);
+                    expect(post).toBeNull();
+                    done();
+                  });
+              });
+          });
+          describe("regionCode is not null", () => {
+            beforeEach(() => {
+              expect(post.regionCode).toBeTruthy();
+            });
+            test("should add new place at region-places/:regionCode/newPlaceId", done => {
+              database
+                .ref(`region-places/${post.regionCode}/${post.placeId}`)
+                .once("value")
+                .then(snapshot => {
+                  const place = fromSnapShotToObject(snapshot);
+                  expect(place).toBeNull();
+                })
+                .then(() => {
+                  return editPost({
+                    post,
+                    postBeforeUpdate,
+                    place: sydney
+                  });
+                })
+                .then(() => {
+                  database
+                    .ref(`region-places/${post.regionCode}/${post.placeId}`)
+                    .once("value")
+                    .then(snapshot => {
+                      const place = fromSnapShotToObject(snapshot);
+                      expect(place).toMatchObject(sydney);
+                      done();
+                    });
+                });
+            });
+          });
+
+          describe("regionCode is null", () => {
+            beforeEach(() => {
+              post.regionCode = null;
+              expect(post.regionCode).toBeNull();
+            });
+            test("should not add new place at region-places/:regionCode/newPlaceId", done => {
+              database
+                .ref(`region-places/${post.regionCode}/${post.placeId}`)
+                .once("value")
+                .then(snapshot => {
+                  const place = fromSnapShotToObject(snapshot);
+                  expect(place).toBeNull();
+                })
+                .then(() => {
+                  return editPost({
+                    post,
+                    postBeforeUpdate,
+                    place: sydney
+                  });
+                })
+                .then(() => {
+                  database
+                    .ref(`region-places/${post.regionCode}/${post.placeId}`)
+                    .once("value")
+                    .then(snapshot => {
+                      const place = fromSnapShotToObject(snapshot);
+                      expect(place).toBeNull();
+                      done();
+                    });
+                });
+            });
+          });
+
+          describe("countryCode is not null", () => {
+            beforeEach(() => {
+              expect(post.countryCode).toBeTruthy();
+            });
+            test("should add new place at country-places/:countryCode/newPlaceId", done => {
+              database
+                .ref(`country-places/${post.countryCode}/${post.placeId}`)
+                .once("value")
+                .then(snapshot => {
+                  const place = fromSnapShotToObject(snapshot);
+                  expect(place).toBeNull();
+                })
+                .then(() => {
+                  return editPost({
+                    post,
+                    postBeforeUpdate,
+                    place: sydney
+                  });
+                })
+                .then(() => {
+                  database
+                    .ref(`country-places/${post.countryCode}/${post.placeId}`)
+                    .once("value")
+                    .then(snapshot => {
+                      const place = fromSnapShotToObject(snapshot);
+                      expect(place).toMatchObject(sydney);
+                      done();
+                    });
+                });
+            });
+          });
+          describe("countryCode is null", () => {
+            beforeEach(() => {
+              post.countryCode = null;
+              expect(post.countryCode).toBeNull();
+            });
+            test("should not add new place at country-places/:countryCode/newPlaceId", done => {
+              database
+                .ref(`country-places/${post.countryCode}/${post.placeId}`)
+                .once("value")
+                .then(snapshot => {
+                  const place = fromSnapShotToObject(snapshot);
+                  expect(place).toBeNull();
+                })
+                .then(() => {
+                  return editPost({
+                    post,
+                    postBeforeUpdate,
+                    place: sydney
+                  });
+                })
+                .then(() => {
+                  database
+                    .ref(`country-places/${post.countryCode}/${post.placeId}`)
+                    .once("value")
+                    .then(snapshot => {
+                      const place = fromSnapShotToObject(snapshot);
+                      expect(place).toBeNull();
+                      done();
+                    });
+                });
+            });
+          });
+
+          test("should add new place at user-places/:uid/newPlaceId", done => {
+            database
+              .ref(`user-places/${post.uid}/${post.placeId}`)
+              .once("value")
+              .then(snapshot => {
+                const place = fromSnapShotToObject(snapshot);
+                expect(place).toBeNull();
+              })
+              .then(() => {
+                return editPost({
+                  post,
+                  postBeforeUpdate,
+                  place: sydney
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`user-places/${post.uid}/${post.placeId}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const place = fromSnapShotToObject(snapshot);
+                    expect(place).toBeTruthy();
+                    done();
+                  });
+              });
+          });
+          test("should remove the former place at user-places/:uid/:formerPlaceId if not another article belonging to that same user talk about the former place", done => {
+            database
+              .ref(`user-posts/${post.uid}`)
+              .orderByChild("placeId")
+              .equalTo(postBeforeUpdate.placeId)
+              .once("value")
+              .then(snapshot => {
+                // proof there is only one post
+                const post = fromSnapShotToObject(snapshot);
+                expect(post).toBeTruthy();
+              })
+              .then(() => {
+                database
+                  .ref(`user-places/${post.uid}/${postBeforeUpdate.placeId}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const place = fromSnapShotToObject(snapshot);
+                    expect(place).toBeTruthy();
+                  });
+              })
+              .then(() => {
+                return editPost({
+                  post,
+                  postBeforeUpdate
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`user-places/${post.uid}/${postBeforeUpdate.placeId}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const place = fromSnapShotToObject(snapshot);
+                    expect(place).toBeNull();
+                    done();
+                  });
+              });
+          });
+          test("should not remove the former place at user-places/:uid/:formerPlaceId if another article belonging to that same user talk about the former place", done => {
+            database
+              .ref(`user-posts/${postBeforeUpdate.uid}/abc123`)
+              .update(postBeforeUpdate)
+              .then(() => {
+                return database
+                  .ref(`user-posts/${post.uid}`)
+                  .orderByChild("placeId")
+                  .equalTo(postBeforeUpdate.placeId)
+                  .once("value");
+              })
+              .then(snapshot => {
+                const posts = fromSnapShotToArray(snapshot);
+                expect(posts.length).toEqual(2);
+              })
+              .then(() => {
+                return database
+                  .ref(`user-places/${post.uid}/${postBeforeUpdate.placeId}`)
+                  .once("value");
+              })
+              .then(snapshot => {
+                const place = fromSnapShotToObject(snapshot);
+                expect(place).toBeTruthy();
+              })
+              .then(() => {
+                return editPost({
+                  post,
+                  postBeforeUpdate
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`user-places/${post.uid}/${postBeforeUpdate.placeId}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const place = fromSnapShotToObject(snapshot);
+                    expect(place).toMatchObject(cannes);
+                    done();
+                  });
+              });
+          });
+        });
+        describe("and is null", () => {
+          beforeEach(() => {
+            post.placeId = null;
+            expect(post.placeId).toBeNull();
+          });
+          test("should remove post at /place-posts/:formerPlaceId/:id", done => {
+            database
+              .ref(`place-posts/${postBeforeUpdate.placeId}/${post.id}`)
+              .once("value")
+              .then(snapshot => {
+                const post = fromSnapShotToObject(snapshot);
+                expect(post).toBeTruthy();
+              })
+              .then(() => {
+                return editPost({
+                  post,
+                  postBeforeUpdate
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`place-posts/${postBeforeUpdate.placeId}/${post.id}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const post = fromSnapShotToObject(snapshot);
+                    expect(post).toBeNull();
+                    done();
+                  });
+              });
+          });
+          test("should not add new place at places/:newPlaceId", done => {
+            database
+              .ref(`places/${post.placeId}`)
+              .once("value")
+              .then(snapshot => {
+                const place = fromSnapShotToObject(snapshot);
+                expect(place).toBeNull();
+              })
+              .then(() => {
+                return editPost({
+                  post,
+                  postBeforeUpdate,
+                  place: sydney
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`places/${post.placeId}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const place = fromSnapShotToObject(snapshot);
+                    expect(place).toBeNull();
+                    done();
+                  });
+              });
+          });
+          test("should not add place at /region-places/regionCode/:newPlaceId", done => {
+            database
+              .ref(`region-places/${post.regionCode}/${post.placeId}`)
+              .once("value")
+              .then(snapshot => {
+                const place = fromSnapShotToObject(snapshot);
+                expect(place).toBeNull();
+              })
+              .then(() => {
+                return editPost({
+                  post,
+                  postBeforeUpdate,
+                  place: sydney
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`region-places/${post.regionCode}/${post.placeId}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const place = fromSnapShotToObject(snapshot);
+                    expect(place).toBeNull();
+                    done();
+                  });
+              });
+          });
+          test("should not add place at /country-places/countryCode/:newPlaceId", done => {
+            database
+              .ref(`country-places/${post.countryCode}/${post.placeId}`)
+              .once("value")
+              .then(snapshot => {
+                const place = fromSnapShotToObject(snapshot);
+                expect(place).toBeNull();
+              })
+              .then(() => {
+                return editPost({
+                  post,
+                  postBeforeUpdate,
+                  place: sydney
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`country-places/${post.countryCode}/${post.placeId}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const place = fromSnapShotToObject(snapshot);
+                    expect(place).toBeNull();
+                    done();
+                  });
+              });
+          });
+          test("should not add new place at user-places/:uid/newPlaceId", done => {
+            database
+              .ref(`user-places/${post.uid}/${post.placeId}`)
+              .once("value")
+              .then(snapshot => {
+                const place = fromSnapShotToObject(snapshot);
+                expect(place).toBeNull();
+              })
+              .then(() => {
+                return editPost({
+                  post,
+                  postBeforeUpdate,
+                  place: sydney
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`user-places/${post.uid}/${post.placeId}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const place = fromSnapShotToObject(snapshot);
+                    expect(place).toBeNull();
+                    done();
+                  });
+              });
+          });
+
+          test("should remove the former place at user-places/:uid/:formerPlaceId if not another article belonging to that same user talk about the former place", done => {
+            database
+              .ref(`user-posts/${post.uid}`)
+              .orderByChild("placeId")
+              .equalTo(postBeforeUpdate.placeId)
+              .once("value")
+              .then(snapshot => {
+                // proof there is only one post
+                const post = fromSnapShotToObject(snapshot);
+                expect(post).toBeTruthy();
+              })
+              .then(() => {
+                database
+                  .ref(`user-places/${post.uid}/${postBeforeUpdate.placeId}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const place = fromSnapShotToObject(snapshot);
+                    expect(place).toBeTruthy();
+                  });
+              })
+              .then(() => {
+                return editPost({
+                  post,
+                  postBeforeUpdate
+                });
+              })
+              .then(() => {
+                database
+                  .ref(`user-places/${post.uid}/${postBeforeUpdate.placeId}`)
+                  .once("value")
+                  .then(snapshot => {
+                    const place = fromSnapShotToObject(snapshot);
+                    expect(place).toBeNull();
+                    done();
+                  });
+              });
+          });
+        });
+      });
+    });
+
+    describe("was null before update", () => {
+      beforeEach(() => {
+        postBeforeUpdate.placeId = null;
+        expect(postBeforeUpdate.placeId).toBeNull();
+      });
+      describe("has changed", () => {
+        beforeEach(() => {
+          post.regionCode = sydney.regionCode;
+          post.countryCode = sydney.countryCode;
+          post.placeId = sydney.placeId;
+          expect(post.placeId).toBeTruthy();
+        });
+        test("should add post at /place-posts/newPlaceId/:id", done => {
+          database
+            .ref(`place-posts/${post.placeId}/${post.id}`)
+            .once("value")
+            .then(snapshot => {
+              const post = fromSnapShotToObject(snapshot);
+              expect(post).toBeNull();
+            })
+            .then(() => {
+              return editPost({
+                post,
+                postBeforeUpdate
+              });
+            })
+            .then(() => {
+              database
+                .ref(`place-posts/${post.placeId}/${post.id}`)
+                .once("value")
+                .then(snapshot => {
+                  const post = fromSnapShotToObject(snapshot);
+                  expect(post).toBeTruthy();
+                  expect(post.placeId).toEqual(sydney.placeId);
+                  done();
+                });
+            });
+        });
+        test("should add new place at country-places/:countryCode/newPlaceId", done => {
+          database
+            .ref(`country-places/${post.countryCode}/${post.placeId}`)
+            .once("value")
+            .then(snapshot => {
+              const place = fromSnapShotToObject(snapshot);
+              expect(place).toBeNull();
+            })
+            .then(() => {
+              return editPost({
+                post,
+                postBeforeUpdate,
+                place: sydney
+              });
+            })
+            .then(() => {
+              database
+                .ref(`country-places/${post.countryCode}/${post.placeId}`)
+                .once("value")
+                .then(snapshot => {
+                  const place = fromSnapShotToObject(snapshot);
+                  expect(place).toMatchObject(sydney);
+                  done();
+                });
+            });
+        });
+        test("should add new place at places/:newPlaceId", done => {
+          database
+            .ref(`places/${sydney.placeId}`)
+            .once("value")
+            .then(snapshot => {
+              const place = fromSnapShotToObject(snapshot);
+              expect(place).toBeNull();
+            })
+            .then(() => {
+              return editPost({
+                post,
+                postBeforeUpdate,
+                place: sydney
+              });
+            })
+            .then(() => {
+              database
+                .ref(`places/${sydney.placeId}`)
+                .once("value")
+                .then(snapshot => {
+                  const place = fromSnapShotToObject(snapshot);
+                  expect(place).toBeTruthy();
+                  expect(place).toMatchObject(sydney);
+                  done();
+                });
+            });
+        });
+        test("should add new place at region-places/regionCode/:newPlaceId", done => {
+          database
+            .ref(`region-places/${post.regionCode}/${post.placeId}`)
+            .once("value")
+            .then(snapshot => {
+              const place = fromSnapShotToObject(snapshot);
+              expect(place).toBeNull();
+            })
+            .then(() => {
+              return editPost({
+                post,
+                postBeforeUpdate,
+                place: sydney
+              });
+            })
+            .then(() => {
+              database
+                .ref(`region-places/${post.regionCode}/${post.placeId}`)
+                .once("value")
+                .then(snapshot => {
+                  const place = fromSnapShotToObject(snapshot);
+                  expect(place).toMatchObject(sydney);
+                  done();
+                });
+            });
+        });
+        test("should add new place at user-places/:uid/:newPlaceId", done => {
+          database
+            .ref(`user-places/${post.uid}/${post.placeId}`)
+            .once("value")
+            .then(snapshot => {
+              const place = fromSnapShotToObject(snapshot);
+              expect(place).toBeNull();
+            })
+            .then(() => {
+              return editPost({
+                post,
+                postBeforeUpdate,
+                place: sydney
+              });
+            })
+            .then(() => {
+              database
+                .ref(`user-places/${post.uid}/${post.placeId}`)
+                .once("value")
+                .then(snapshot => {
+                  const place = fromSnapShotToObject(snapshot);
+                  expect(place).toBeTruthy();
+                  done();
+                });
+            });
+        });
+      });
+    });
+  });
+});
 
 // describe("addPost", () => {
-//   let id, post, country, region, place, user, uid, countryCode, regionCode, placeId;
+//   let id,
+//     post,
+//     country,
+//     region,
+//     place,
+//     user,
+//     uid,
+//     countryCode,
+//     regionCode,
+//     placeId;
 
 //   beforeEach(done => {
 //     ({ id, ...post } = posts[0]);
-//     country = countries[0];
+//     country = france;
 //     region = regions[0];
 //     place = places[0];
 //     user = users[0];
@@ -93,7 +1819,7 @@
 //     describe("the countryCode is null", () => {
 //       test("should NOT persist a post at /country-posts/:countryCode/:postId", done => {
 //         post.countryCode = null;
-//         country.countryCode = null
+//         country.countryCode = null;
 //         addPost({ post, user, country, place, region })
 //           .then(() => {
 //             return database
@@ -534,137 +2260,3 @@
 //       });
 //   });
 // });
-
-// describe("editPost", () => {
-//   describe("countryCode", () => {
-//     describe("was not null before update", () => {
-//       describe("has not changed", () => {
-//         test("should edit post at /post/:id", () => {});
-//         test("should edit post at /country-posts/:countryCode/:id", () => {});
-//         test("should edit post at /user-posts/:id when uid is not null", () => {});
-//         test("should not edit post at /user-posts/:id when uid is null", () => {});
-//         test("should edit post at /region-posts/:id when regionCode is not null", () => {});
-//         test("should not edit post at /region-posts/:id when regionCode is null", () => {});
-//         test("should edit post at /place-posts/:id when placeId is not null", () => {});
-//         test("should not edit post at /place-posts/:id when placeId is null", () => {});
-//       });
-//       describe("has changed", () => {
-//         describe("and is not null", () => {
-//           test("should edit post at /post/:id", () => {});
-//           test("should edit post at /country-posts/:countryCode/:id", () => {});
-//           test("should edit post at /user-posts/:id when uid is not null", () => {});
-//           test("should not edit post at /user-posts/:id when uid is null", () => {});
-//           test("should edit post at /region-posts/:id when regionCode is not null", () => {});
-//           test("should not edit post at /region-posts/:id when regionCode is null", () => {});
-//           test("should edit post at /place-posts/:id when placeId is not null", () => {});
-//           test("should not edit post at /place-posts/:id when placeId is null", () => {});
-//           test("should add post at /country-posts/:newCountryCode/:id", () => {});
-//           test("should remove post at /country-posts/:formerCountryCode/:id", () => {});
-//           test("should add new country at countries/:newCountryCode", () => {});
-//           test("should remove the former country at countries/:formerCountryCode if not another article talk about this country", () => {});
-//           test("should add the new country at user-countries/:uid/:newCountryCode", () => {});
-//           test("should remove the former country at user-countries/:uid/:formerCountry if not another article belonging to that same user talk about the former country", () => {});
-//         });
-//         describe("and is null", () => {
-//           test("should edit post at /post/:id", () => {});
-//           test("should edit post at /user-posts/:id when uid is not null", () => {});
-//           test("should not edit post at /user-posts/:id when uid is null", () => {});
-//           test("should edit post at /region-posts/:id when regionCode is not null", () => {});
-//           test("should not edit post at /region-posts/:id when regionCode is null", () => {});
-//           test("should edit post at /place-posts/:id when placeId is not null", () => {});
-//           test("should not edit post at /place-posts/:id when placeId is null", () => {});
-//           test("should not add new country at countries/:newCountryCode", () => {});
-//           test("should not add new country at user-countries/:uid/:newCountryCode", () => {});
-//           test("should not add post at /country-posts/:newCountryCode/:id", () => {});
-//           test("should remove the former country at countries/:formerCountryCode if not another article talk about this country", () => {});
-//           test("should remove the former country at user-countries/:uid/:formerCountryCode if not another article belonging to that same user talk about the former country", () => {});
-//           test("should remove the post at /country-posts/:formerCountryCode/:id", () => {});
-//         });
-//       });
-//     });
-
-//     describe("was null before update", () => {
-//       describe("countryCode has changed", () => {
-//         test("should edit post at /post/:id", () => {});
-//         test("should edit post at /country-posts/:countryCode/:id", () => {});
-//         test("should edit post at /user-posts/:id when uid is not null", () => {});
-//         test("should not edit post at /user-posts/:id when uid is null", () => {});
-//         test("should edit post at /region-posts/:id when regionCode is not null", () => {});
-//         test("should not edit post at /region-posts/:id when regionCode is null", () => {});
-//         test("should edit post at /place-posts/:id when placeId is not null", () => {});
-//         test("should not edit post at /place-posts/:id when placeId is null", () => {});
-//         test("should add the post at /country-posts/:newCountryCode/:id", () => {});
-//         test("should add the new country at countries/:newCountryCode", () => {});
-//         test("should add the new country at user-countries/:uid/:newCountryCode", () => {});
-//       });
-//     });
-//   });
-//   describe("regionCode", () => {
-//     describe("was not null before update", () => {
-//       describe("has not changed", () => {
-//         test("should edit post at /post/:id", () => {});
-//         test("should edit post at /country-posts/:countryCode/:id", () => {});
-//         test("should edit post at /user-posts/:id when uid is not null", () => {});
-//         test("should not edit post at /user-posts/:id when uid is null", () => {});
-//         test("should edit post at /region-posts/:id when regionCode is not null", () => {});
-//         test("should not edit post at /region-posts/:id when regionCode is null", () => {});
-//         test("should edit post at /place-posts/:id when placeId is not null", () => {});
-//         test("should not edit post at /place-posts/:id when placeId is null", () => {});
-//       });
-//       describe("has changed", () => {
-//         describe("and is not null", () => {
-//           test("should edit post at /post/:id", () => {});
-//           test("should edit post at /country-posts/:countryCode/:id when countryCode is not null", () => {});
-//           test("should not edit post at /country-posts/:countryCode/:id when countryCode is null", () => {});
-//           test("should edit post at /user-posts/:id when uid is not null", () => {});
-//           test("should not edit post at /user-posts/:id when uid is null", () => {});
-//           test("should edit post at /region-posts/:id when regionCode", () => {});
-//           test("should edit post at /place-posts/:id when placeId is not null", () => {});
-//           test("should not edit post at /place-posts/:id when placeId is null", () => {});
-//           test("should add post at /country-posts/:newCountryCode/:id", () => {});
-//           test("should remove post at /country-posts/:formerCountryCode/:id", () => {});
-//           test("should add new country at countries/:newCountryCode", () => {});
-//           test("should remove the former country at countries/:formerCountryCode if not another article talk about this country", () => {});
-//           test("should add the new country at user-countries/:uid/:newCountryCode", () => {});
-//           test("should remove the former country at user-countries/:uid/:formerCountry if not another article belonging to that same user talk about the former country", () => {});
-//         });
-//         describe("and is null", () => {
-//           test("should edit post at /post/:id", () => {});
-//           test("should edit post at /user-posts/:id when uid is not null", () => {});
-//           test("should not edit post at /user-posts/:id when uid is null", () => {});
-//           test("should edit post at /region-posts/:id when regionCode is not null", () => {});
-//           test("should not edit post at /region-posts/:id when regionCode is null", () => {});
-//           test("should edit post at /place-posts/:id when placeId is not null", () => {});
-//           test("should not edit post at /place-posts/:id when placeId is null", () => {});
-//           test("should not add new country at countries/:newCountryCode", () => {});
-//           test("should not add new country at user-countries/:uid/:newCountryCode", () => {});
-//           test("should not add post at /country-posts/:newCountryCode/:id", () => {});
-//           test("should remove the former country at countries/:formerCountryCode if not another article talk about this country", () => {});
-//           test("should remove the former country at user-countries/:uid/:formerCountryCode if not another article belonging to that same user talk about the former country", () => {});
-//           test("should remove the post at /country-posts/:formerCountryCode/:id", () => {});
-//         });
-//       });
-//     });
-
-//     describe("was null before update", () => {
-//       describe("countryCode has changed", () => {
-//         test("should edit post at /post/:id", () => {});
-//         test("should edit post at /country-posts/:countryCode/:id", () => {});
-//         test("should edit post at /user-posts/:id when uid is not null", () => {});
-//         test("should not edit post at /user-posts/:id when uid is null", () => {});
-//         test("should edit post at /region-posts/:id when regionCode is not null", () => {});
-//         test("should not edit post at /region-posts/:id when regionCode is null", () => {});
-//         test("should edit post at /place-posts/:id when placeId is not null", () => {});
-//         test("should not edit post at /place-posts/:id when placeId is null", () => {});
-//         test("should add the post at /country-posts/:newCountryCode/:id", () => {});
-//         test("should add the new country at countries/:newCountryCode", () => {});
-//         test("should add the new country at user-countries/:uid/:newCountryCode", () => {});
-//       });
-//     });
-//   });
-  
-// });
-
-test('to be written', () => {
-  
-});

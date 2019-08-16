@@ -2,6 +2,9 @@ import React from "react";
 import MultiDecorator from "draft-js-plugins-editor/lib/Editor/MultiDecorator";
 import { EditorState, convertFromRaw, CompositeDecorator } from "draft-js";
 import { slugify } from "underscore.string";
+import { connect } from "react-redux";
+
+import pluralize from "pluralize";
 
 import MyEditor, { plugins } from "./MyEditor";
 import PageHeader from "./PageHeader";
@@ -11,6 +14,10 @@ import Layout from "./Layout";
 import Address from "./Address";
 import { getPost } from "../queries/post";
 import BreadCrumb from "./Breadcrumb";
+import PostCommentForm from "./PostCommentForm";
+import PostCommentList from "./PostCommentList";
+import { setPosts } from "./../actions/posts";
+import CommentsModal from "./CommentsModal";
 
 function getPluginDecorators() {
   let decorators = [];
@@ -24,7 +31,7 @@ function getPluginDecorators() {
   return new MultiDecorator([new CompositeDecorator(decorators)]);
 }
 
-export const ShowPostPage = ({ post }) => {
+export const ShowPostPage = ({ post, comments }) => {
   const body = EditorState.createWithContent(
     convertFromRaw(JSON.parse(post.body)),
     getPluginDecorators()
@@ -67,10 +74,11 @@ export const ShowPostPage = ({ post }) => {
           <Address
             address={post.address}
             placeId={post.placeId}
-            iconClassName="ml1 mr1 text-dark-grey"
+            iconClassName="mr1 text-dark-grey"
             addressClassName="text-dark-grey"
           />
         )}
+        <CommentsModal post={post} />
       </PageHeader>
       <div className="content-container">
         <div className="mb1">
@@ -96,18 +104,39 @@ export const ShowPostPage = ({ post }) => {
           <MyEditor readOnly={true} editorState={body} onChange={() => {}} />
         </div>
       )}
+      <div
+        name="comments"
+        className="content-container border-top border--light-grey pb3"
+      >
+        <PostCommentList post={post} comments={comments} />
+        <PostCommentForm post={post} />
+      </div>
     </Layout>
   );
 };
 
-ShowPostPage.getInitialProps = async function({ query, currentUser }) {
+ShowPostPage.getInitialProps = async function({
+  query,
+  currentUser,
+  reduxStore
+}) {
   const { id } = query;
   const post = await getPost(id);
   let allowAccess = false;
   if (post.published || (currentUser && post.uid == currentUser.uid)) {
     allowAccess = true;
   }
-  return { post, isPrivate: true, allowAccess };
+  reduxStore.dispatch(setPosts([post]));
+  return { isPrivate: true, allowAccess };
 };
 
-export default ShowPostPage;
+const mapStateToProps = ({ posts }) => {
+  const post = posts[0];
+  const comments = post.comments || [];
+  return {
+    post,
+    comments
+  };
+};
+
+export default connect(mapStateToProps)(ShowPostPage);

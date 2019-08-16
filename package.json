@@ -9,7 +9,8 @@
     "build": "next build",
     "test": "cross-env NODE_ENV=test jest --verbose",
     "start": "NODE_ENV=production node server/server.js",
-    "heroku-postbuild": "yarn run build"
+    "heroku-postbuild": "yarn run build",
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand"
   },
   "engines": {
     "node": "8.11.2"
@@ -42,6 +43,7 @@
     "normalize.css": "7.0.0",
     "nprogress": "^0.2.0",
     "numeral": "2.0.6",
+    "pluralize": "^8.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-addons-shallow-compare": "15.6.0",
