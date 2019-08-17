@@ -215,7 +215,7 @@ export const addPost = ({
   const { regionCode, ...regionData } = region;
   const { placeId, ...placeData } = place;
 
-  postId = database
+  const postId = database
     .ref()
     .child("posts")
     .push().key;

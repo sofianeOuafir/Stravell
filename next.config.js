@@ -40,7 +40,8 @@ module.exports = withCSS(withSass({
       'process.env.TWITTER_CONSUMER_KEY': JSON.stringify(process.env.TWITTER_CONSUMER_KEY),
       'process.env.TWITTER_CONSUMER_SECRET': JSON.stringify(process.env.TWITTER_CONSUMER_SECRET),
       'process.env.TWITTER_ACCESS_TOKEN_KEY': JSON.stringify(process.env.TWITTER_ACCESS_TOKEN_KEY),
-      'process.env.TWITTER_ACCESS_TOEKN_SECRET': JSON.stringify(process.env.TWITTER_ACCESS_TOEKN_SECRET)
+      'process.env.TWITTER_ACCESS_TOKEN_SECRET': JSON.stringify(process.env.TWITTER_ACCESS_TOKEN_SECRET),
+      'process.env.SENDGRID_API_KEY': JSON.stringify(process.env.SENDGRID_API_KEY)
     }));
 
     return config

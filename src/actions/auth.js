@@ -1,10 +1,11 @@
 import { firebase } from '../firebase/firebase';
 
-export const login = ({uid, userName, userPhotoURL}) => ({
+export const login = ({uid, userName, userPhotoURL, email}) => ({
   type: 'LOGIN',
   uid,
   userName,
-  userPhotoURL
+  userPhotoURL,
+  email
 });
 
 export const editAuthUserPhotoURL = (userPhotoURL) => ({
