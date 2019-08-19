@@ -6,6 +6,7 @@ const next = require("next");
 const RSS = require("rss");
 const WEBSITE_URL = "https://stravell.com";
 const slugify = require("underscore.string").slugify;
+const sgMail = require('./../src/sendgrid/sendgridMail');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
@@ -172,6 +173,42 @@ app.prepare().then(() => {
       }
     };
     res.status(200).sendFile("favicon.png", faviconOptions);
+  });
+
+  server.post("/send-comment-notification-emails", async (req, res) => {
+    const comment = req.body;
+    // const commentAuthorUid = comment.uid;
+    // const postAuthorUid = await firebase
+    //   .database()
+    //   .ref(`/posts/${comment.postId}`)
+    //   .once("value")
+    //   .then(snapshot => {
+    //     const post = { id: snapshot.key, ...snapshot.val() };
+    //     return post.uid;
+    //   });
+    //   const commentSubscriberUids = await firebase
+    //   .database()
+    //   .ref(`/post-comment-subscribers/${comment.postId}`)
+    //   .once("value")
+    //   .then(snapshot => {
+    //     const post = { id: snapshot.key, ...snapshot.val() };
+    //     return post.uid;
+    //   });
+
+      const msg = {
+        to: 'sofiane.ouafir@live.fr',
+        from: 'test@example.com',
+        templateId: 'd-ffba723cac634a438abc49714dd9d37c',
+        dynamic_template_data: {
+          text: comment.text
+        }
+      };
+      sgMail.send(msg);
+    // get postAuthorUid;
+    // get all uid of users who are subscribers of that post for comment notifications
+    // should have an array of uids
+    // remove commentAuthorUid from this array
+    // for each uid, get user and send email
   });
 
   server.get("/feed", async (req, res) => {

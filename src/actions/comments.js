@@ -1,4 +1,6 @@
 import database from "./../firebase/firebase";
+import axios from "axios";
+
 export const addPostComment = comment => dispatch => {
   return dispatch({
     type: "ADD_POST_COMMENT",
@@ -42,6 +44,9 @@ export const startAddPostComment = ({ comment, post }) => dispatch => {
     .update(updateObject)
     .then(() => {
       dispatch(addPostComment(comment));
+    })
+    .then(() => {
+      axios.post("/send-comment-notification-emails", comment);
     })
     .catch(e => {
       console.log(e);
