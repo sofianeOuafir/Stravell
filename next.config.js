@@ -2,13 +2,6 @@ const withCSS = require('@zeit/next-css');
 const withSass = require('@zeit/next-sass');
 const webpack = require('webpack');
 
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-
-if (process.env.NODE_ENV === 'test') {
-  require('dotenv').config({ path: '.env.test' });
-} else if (process.env.NODE_ENV === 'development') {
-  require('dotenv').config({ path: '.env.development' });
-}
 
 module.exports = withCSS(withSass({
   webpack(config) {
@@ -40,7 +33,8 @@ module.exports = withCSS(withSass({
       'process.env.TWITTER_CONSUMER_KEY': JSON.stringify(process.env.TWITTER_CONSUMER_KEY),
       'process.env.TWITTER_CONSUMER_SECRET': JSON.stringify(process.env.TWITTER_CONSUMER_SECRET),
       'process.env.TWITTER_ACCESS_TOKEN_KEY': JSON.stringify(process.env.TWITTER_ACCESS_TOKEN_KEY),
-      'process.env.TWITTER_ACCESS_TOEKN_SECRET': JSON.stringify(process.env.TWITTER_ACCESS_TOEKN_SECRET)
+      'process.env.TWITTER_ACCESS_TOKEN_SECRET': JSON.stringify(process.env.TWITTER_ACCESS_TOKEN_SECRET),
+      'process.env.SENDGRID_API_KEY': JSON.stringify(process.env.SENDGRID_API_KEY)
     }));
 
     return config

@@ -104,11 +104,11 @@ export const ShowPostPage = ({ post, comments }) => {
           <MyEditor readOnly={true} editorState={body} onChange={() => {}} />
         </div>
       )}
-      <div
-        name="comments"
-        className="content-container border-top border--light-grey pb3"
-      >
+      <div className="content-container border-top border--light-grey pb3">
         <PostCommentList post={post} comments={comments} />
+        <a id="comments" href="#comments">
+        </a>
+
         <PostCommentForm post={post} />
       </div>
     </Layout>

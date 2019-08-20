@@ -195,7 +195,8 @@ class PostForm extends React.Component {
           const {
             uid = null,
             userName = null,
-            userPhotoURL = null
+            userPhotoURL = null,
+            email = null
           } = this.props;
 
           const country = {
@@ -261,6 +262,7 @@ class PostForm extends React.Component {
             uid,
             userName,
             userPhotoURL,
+            email,
             placeId,
             published: this.state.published,
             comments: this.state.comments
@@ -437,7 +439,8 @@ class PostForm extends React.Component {
 const mapStateToProps = ({ auth }) => ({
   uid: auth.uid,
   userName: auth.userName,
-  userPhotoURL: auth.userPhotoURL
+  userPhotoURL: auth.userPhotoURL,
+  email: auth.email
 });
 
 export { PostForm };

@@ -6,7 +6,8 @@ const authReducer = (state = authReducerDefaultState, action) => {
       return {
         uid: action.uid,
         userName: action.userName,
-        userPhotoURL: action.userPhotoURL
+        userPhotoURL: action.userPhotoURL,
+        email: action.email
       };
     case 'EDIT_AUTH_USER_PHOTO_URL':
       return {

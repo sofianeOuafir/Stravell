@@ -27,13 +27,13 @@ class MyApp extends App {
     const isServer = !!req;
     let currentUser = null;
     if (isServer && req.session.decodedToken) {
-      const { userName, uid, userPhotoURL } = req.session.decodedToken;
-      currentUser = { userName, uid, userPhotoURL };
-      reduxStore.dispatch(login({ uid, userName, userPhotoURL }));
+      const { userName, uid, userPhotoURL, email } = req.session.decodedToken;
+      currentUser = { userName, uid, userPhotoURL, email };
+      reduxStore.dispatch(login({ uid, userName, userPhotoURL, email }));
     } else if (reduxStore.getState().auth.uid) {
-      const { userName, uid, userPhotoURL } = reduxStore.getState().auth;
-      currentUser = { userName, uid, userPhotoURL };
-      reduxStore.dispatch(login({ uid, userName, userPhotoURL }));
+      const { userName, uid, userPhotoURL, email } = reduxStore.getState().auth;
+      currentUser = { userName, uid, userPhotoURL, email };
+      reduxStore.dispatch(login({ uid, userName, userPhotoURL, email }));
     }
     let pageProps = {};
     if (Component.getInitialProps) {
@@ -98,7 +98,7 @@ class MyApp extends App {
             }
 
             this.props.reduxStore.dispatch(
-              login({ uid, userName, userPhotoURL })
+              login({ uid, userName, userPhotoURL, email })
             );
 
             if (this.props.router.route === "/login")

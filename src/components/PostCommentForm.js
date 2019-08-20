@@ -25,12 +25,14 @@ class PostCommentForm extends React.Component {
       startAddPostComment,
       uid,
       userName,
-      userPhotoURL = null
+      userPhotoURL = null,
+      email
     } = this.props;
     const comment = {
       userPhotoURL,
       uid,
       userName,
+      email,
       text: this.state.text,
       createdAt: moment().valueOf(),
       postId: post.id
@@ -98,7 +100,8 @@ class PostCommentForm extends React.Component {
 const mapStateToProps = ({ auth }) => ({
   uid: auth.uid,
   userName: auth.userName,
-  userPhotoURL: auth.userPhotoURL
+  userPhotoURL: auth.userPhotoURL,
+  email: auth.email
 });
 
 const mapDispatchToProps = dispatch => ({
