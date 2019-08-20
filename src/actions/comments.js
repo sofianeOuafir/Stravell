@@ -39,6 +39,8 @@ export const startAddPostComment = ({ comment, post }) => dispatch => {
     ] = comment;
   }
 
+  updateObject[`post-comment-subscribed-users/${post.id}/${comment.uid}`] = true;
+
   return database
     .ref()
     .update(updateObject)

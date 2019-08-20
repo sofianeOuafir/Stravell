@@ -1,3 +1,12 @@
+process.env.NODE_ENV = process.env.NODE_ENV || "development";
+
+if (process.env.NODE_ENV === "test") {
+  require("dotenv").config({ path: ".env.test" });
+} else if (process.env.NODE_ENV === "development") {
+  require("dotenv").config({ path: ".env.development" });
+}
+
+const dev = process.env.NODE_ENV === "development";
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
@@ -6,10 +15,10 @@ const next = require("next");
 const RSS = require("rss");
 const WEBSITE_URL = "https://stravell.com";
 const slugify = require("underscore.string").slugify;
-const sgMail = require('./../src/sendgrid/sendgridMail');
+const sgMail = require("./../src/sendgrid/sendgridMail");
 
 const port = parseInt(process.env.PORT, 10) || 3000;
-const dev = process.env.NODE_ENV !== "production";
+
 const app = next({
   dev
 });
@@ -177,38 +186,62 @@ app.prepare().then(() => {
 
   server.post("/send-comment-notification-emails", async (req, res) => {
     const comment = req.body;
-    // const commentAuthorUid = comment.uid;
-    // const postAuthorUid = await firebase
-    //   .database()
-    //   .ref(`/posts/${comment.postId}`)
-    //   .once("value")
-    //   .then(snapshot => {
-    //     const post = { id: snapshot.key, ...snapshot.val() };
-    //     return post.uid;
-    //   });
-    //   const commentSubscriberUids = await firebase
-    //   .database()
-    //   .ref(`/post-comment-subscribers/${comment.postId}`)
-    //   .once("value")
-    //   .then(snapshot => {
-    //     const post = { id: snapshot.key, ...snapshot.val() };
-    //     return post.uid;
-    //   });
+    const post = await firebase
+      .database()
+      .ref(`/posts/${comment.postId}`)
+      .once("value")
+      .then(snapshot => {
+        const post = { id: snapshot.key, ...snapshot.val() };
+        return post;
+      });
+    let uids = [];
+    uids.push(post.uid);
 
-      const msg = {
-        to: 'sofiane.ouafir@live.fr',
-        from: 'test@example.com',
-        templateId: 'd-ffba723cac634a438abc49714dd9d37c',
-        dynamic_template_data: {
-          text: comment.text
-        }
-      };
-      sgMail.send(msg);
-    // get postAuthorUid;
-    // get all uid of users who are subscribers of that post for comment notifications
-    // should have an array of uids
-    // remove commentAuthorUid from this array
-    // for each uid, get user and send email
+    const commentSubscriberUids = firebase
+      .database()
+      .ref(`/post-comment-subscribed-users/${comment.postId}`)
+      .once("value")
+      .then(snapshot => {
+        snapshot.forEach(element => {
+          console.log(element.key);
+          uids.push(element.key);
+        });
+        // const post = { id: snapshot.key, ...snapshot.val() };
+        // return post.uid;
+      })
+      .then(() => {
+        uids = uids.filter(element => element !== comment.uid);
+        uids.forEach(uid => {
+          firebase
+            .database()
+            .ref(`/users/${uid}`)
+            .once("value")
+            .then(snapshot => {
+              const user = { id: snapshot.key, ...snapshot.val() };
+              console.log(user);
+              const msg = {
+                to: user.email,
+                from: "contact@stravell.com",
+                templateId: "d-ffba723cac634a438abc49714dd9d37c",
+                dynamic_template_data: {
+                  text: `${comment.text.substring(0, 25)}...`,
+                  postTitle: post.title,
+                  postUrl: `${WEBSITE_URL}/p/show/${slugify(post.title)}/${
+                    post.id
+                  }#comments`,
+                  commentAuthor: comment.userName
+                },
+                mail_settings: {
+                  sandbox_mode: {
+                    // put  process.env.NODE_ENV !== 'production' here
+                    enable: false
+                  }
+                }
+              };
+              const response = sgMail.send(msg);
+            });
+        });
+      });
   });
 
   server.get("/feed", async (req, res) => {
