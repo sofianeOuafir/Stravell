@@ -197,20 +197,20 @@ app.prepare().then(() => {
     let uids = [];
     uids.push(post.uid);
 
-    const commentSubscriberUids = firebase
+    firebase
       .database()
       .ref(`/post-comment-subscribed-users/${comment.postId}`)
       .once("value")
       .then(snapshot => {
         snapshot.forEach(element => {
-          console.log(element.key);
           uids.push(element.key);
         });
-        // const post = { id: snapshot.key, ...snapshot.val() };
-        // return post.uid;
       })
       .then(() => {
+        // comment author shouldn't receive email
         uids = uids.filter(element => element !== comment.uid);
+        // remove duplicates (if postAuthor is also subscriber)
+        uids = Array.from(new Set(uids));
         uids.forEach(uid => {
           firebase
             .database()
@@ -218,7 +218,6 @@ app.prepare().then(() => {
             .once("value")
             .then(snapshot => {
               const user = { id: snapshot.key, ...snapshot.val() };
-              console.log(user);
               const msg = {
                 to: user.email,
                 from: "contact@stravell.com",
@@ -233,15 +232,15 @@ app.prepare().then(() => {
                 },
                 mail_settings: {
                   sandbox_mode: {
-                    // put  process.env.NODE_ENV !== 'production' here
-                    enable: false
+                    enable: process.env.NODE_ENV !== "production"
                   }
                 }
               };
-              const response = sgMail.send(msg);
+              sgMail.send(msg);
             });
         });
       });
+    res.send();
   });
 
   server.get("/feed", async (req, res) => {

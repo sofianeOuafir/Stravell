@@ -7582,7 +7582,6 @@ exports[`should render correctly if post do not have an address 1`] = `
   </div>
   <div
     className="content-container border-top border--light-grey pb3"
-    name="comments"
   >
     <PostCommentList
       post={
@@ -7610,6 +7609,10 @@ exports[`should render correctly if post do not have an address 1`] = `
           "userPhotoURL": "https://graph.facebook.com/10161147754845459/picture",
         }
       }
+    />
+    <a
+      href="#comments"
+      id="comments"
     />
     <Connect(PostCommentForm)
       post={
@@ -15230,7 +15233,6 @@ exports[`should render correctly if post have an address 1`] = `
   </div>
   <div
     className="content-container border-top border--light-grey pb3"
-    name="comments"
   >
     <PostCommentList
       post={
@@ -15258,6 +15260,10 @@ exports[`should render correctly if post have an address 1`] = `
           "userPhotoURL": "https://graph.facebook.com/10161147754845459/picture",
         }
       }
+    />
+    <a
+      href="#comments"
+      id="comments"
     />
     <Connect(PostCommentForm)
       post={
@@ -15402,7 +15408,6 @@ exports[`should render correctly if post have been provided a link 1`] = `
   </div>
   <div
     className="content-container border-top border--light-grey pb3"
-    name="comments"
   >
     <PostCommentList
       post={
@@ -15430,6 +15435,10 @@ exports[`should render correctly if post have been provided a link 1`] = `
           "userPhotoURL": "https://graph.facebook.com/10161147754845459/picture",
         }
       }
+    />
+    <a
+      href="#comments"
+      id="comments"
     />
     <Connect(PostCommentForm)
       post={
